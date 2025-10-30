@@ -1,0 +1,4 @@
+# pimcore_elasticsearch_client:
+#     enabled: true
+#     hosts:
+#         - 'http://localhost:9200'

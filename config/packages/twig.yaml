@@ -1,0 +1,9 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    form_themes:
+        - '@PimcoreCore/form_div_layout.html.twig'
+    globals:
+        # Make some commonly used services available in templates
+        pimcore_settings: '@Pimcore\Config'

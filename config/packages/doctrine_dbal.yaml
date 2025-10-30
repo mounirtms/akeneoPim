@@ -1,0 +1,6 @@
+# DBAL-specific configurations
+doctrine:
+    dbal:
+        # Map enum type globally - this should resolve the enum issue
+        mapping_types:
+            enum: string

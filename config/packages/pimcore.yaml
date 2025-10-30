@@ -1,0 +1,25 @@
+pimcore:
+    general:
+        timezone: 'Europe/Berlin'
+    full_page_cache:
+        enabled: false
+
+doctrine:
+    dbal:
+        connections:
+            default:
+                host: 127.0.0.1
+                port: 3307
+                dbname: pimcore
+                user: root
+                password: YourNewStrongPassword
+                driver: pdo_mysql
+                charset: UTF8MB4
+                # Map enum type to string to avoid issues with MariaDB
+                mapping_types:
+                    enum: string
+
+# pimcore_elasticsearch_client:
+#     enabled: true
+#     hosts:
+#     - 'http://localhost:9200'

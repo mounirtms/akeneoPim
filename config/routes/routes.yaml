@@ -1,0 +1,18 @@
+# Main application routes
+controllers:
+    resource: '../../src/Controller/'
+    type: annotation
+
+# Kernel routes
+kernel:
+    resource: '../../src/Kernel.php'
+    type: annotation
+
+# Pimcore admin routes
+pimcore_admin:
+    resource: '@PimcoreAdminBundle/config/pimcore/routing.yaml'
+    prefix: /admin
+
+# Pimcore standard routes
+pimcore:
+    resource: '@PimcoreCoreBundle/config/routing.yaml'

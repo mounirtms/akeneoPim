@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page_title|default('Welcome to Pimcore') }}{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">{{ page_title }}</h1>
+            <p class="lead">This is a default page for your Pimcore installation.</p>
+            <hr class="my-4">
+            <p>You can start managing your content by accessing the administration panel.</p>
+            <a class="btn btn-primary btn-lg" href="/admin/login" role="button">Go to Admin Panel</a>
+        </div>
+    </div>
+{% endblock %}

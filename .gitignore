@@ -1,0 +1,70 @@
+# Symfony / Pimcore .gitignore
+
+# Composer
+/vendor/
+/composer.lock
+
+# Symfony cache, logs, sessions
+/var/cache/
+/var/log/
+/var/sessions/
+/var/tmp/
+/var/recyclebin/
+/var/installer/
+/var/versions/
+
+# Pimcore generated files
+/web/var/
+/web/backup/
+/web/website_var/
+/website/var/
+/website/backup/
+/website/website_var/
+/public/var/
+/public/backup/
+/public/website_var/
+
+# Assets built/generated
+/public/bundles/
+/public/build/
+/public/assets/
+
+# Environment and local override files
+/.env.local
+/.env.local.php
+/.env.*.local
+/.env.test
+/.env.dev
+/.env.dev.local
+/.env.test.local
+
+# IDE/editor
+/.idea/
+/.vscode/
+*.iml
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Node/npm/yarn
+/node_modules/
+/yarn.lock
+/package-lock.json
+
+# Logs & temp at root
+error_log
+
+# PHPUnit / test artifacts
+/phpunit.xml
+/phpunit.xml.dist
+/.phpunit.result.cache
+/coverage/
+
+# Cache and dumps
+/var/dump/
+/var/backups/
+
+# Misc
+/build/
+/tmp/

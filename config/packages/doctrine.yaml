@@ -1,0 +1,23 @@
+# If this file doesn't exist, we'll create it with the proper configuration
+doctrine:
+    dbal:
+        connections:
+            default:
+                host: 127.0.0.1
+                port: 3307
+                dbname: pimcore
+                user: root
+                password: YourNewStrongPassword
+                driver: pdo_mysql
+                charset: UTF8MB4
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
