@@ -1,7 +1,8 @@
+#!/usr/bin/env php
 <?php
 
 // Script to manually install Pimcore database schema
-chdir('/home/pim/public_html');
+// No need to chdir as we're already in the correct directory
 
 require_once 'vendor/autoload_runtime.php';
 
@@ -27,7 +28,7 @@ if (!$parsedUrl) {
 }
 
 $dbHost = $parsedUrl['host'] ?? 'localhost';
-$dbPort = $parsedUrl['port'] ?? '3306';
+$dbPort = $parsedUrl['port'] ?? '3307'; // Changed to 3307 based on memory
 $dbName = substr($parsedUrl['path'], 1); // Remove leading slash
 $dbUser = $parsedUrl['user'] ?? 'root';
 $dbPass = $parsedUrl['pass'] ?? '';

@@ -6,10 +6,12 @@ framework:
     # Enables session support. Note that the session will ONLY be started if you read or write from it.
     # Remove or comment this section to explicitly disable session support.
     session:
-        handler_id: 'session.handler.native_file'
-        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        handler_id: 'session.handler.pdo'
         cookie_secure: auto
         cookie_samesite: lax
+        gc_maxlifetime: 1440
+        gc_probability: 1
+        gc_divisor: 100
 
     #esi: true
     #fragments: true

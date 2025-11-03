@@ -18,6 +18,10 @@ RewriteEngine On
 # Pimcore redirects & rewrites
 # --------------------------------------------------------------------
 
+# Allow direct access to techno directory - this should come before other rules
+RewriteCond %{REQUEST_URI} ^/techno/
+RewriteRule ^.*$ - [L]
+
 # ADMIN: redirect admin requests to Symfony front controller
 RewriteCond %{REQUEST_URI} ^/admin
 RewriteRule ^(.*)$ index.php [QSA,L]
