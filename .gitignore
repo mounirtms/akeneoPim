@@ -12,6 +12,9 @@
 /var/recyclebin/
 /var/installer/
 /var/versions/
+/var/assets/
+/var/classes/
+/var/config/
 
 # Pimcore generated files
 /web/var/
@@ -28,6 +31,8 @@
 /public/bundles/
 /public/build/
 /public/assets/
+/public/js/fos_js_routes.js
+/public/js/fos_js_routes.json
 
 # Environment and local override files
 /.env.local
@@ -54,6 +59,7 @@ Thumbs.db
 
 # Logs & temp at root
 error_log
+*.log
 
 # PHPUnit / test artifacts
 /phpunit.xml
@@ -64,7 +70,38 @@ error_log
 # Cache and dumps
 /var/dump/
 /var/backups/
+/var/admin/minified_javascript_core_*.js
 
-# Misc
+# Build artifacts
 /build/
 /tmp/
+
+# Test and debug files
+*test*
+*debug*
+*import*
+*export*
+/import-progress.log
+/check-import-progress.php
+
+# Temporary and backup files
+*.tmp
+*.bak
+*.backup
+*~
+
+# Duplicate .htaccess files
+.htaccess-*
+
+# Empty directories
+/app/
+/bundles/
+
+# Test files
+/public/techno/test.php
+/public/info.php
+/src/Controller/TestController.php
+
+# Pimcore specific
+/var/admin/custom-logo.image
+/var/admin/user-image/

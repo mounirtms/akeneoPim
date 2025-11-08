@@ -10,9 +10,17 @@
         }
     },
     "require": {
+        "dachcom-digital/toolbox": "^5.3",
+        "elements/process-manager-bundle": "^5.0",
+        "fzaninotto/faker": "^1.5",
+        "lemonmind/pimcore-message-bundle": "^2.0",
+        "lemonmind/pimcore-object-update-logger": "^2.0",
         "pimcore/admin-ui-classic-bundle": "^1.7",
+        "pimcore/data-hub": "^1.9",
+        "pimcore/data-importer": "^1.10",
         "pimcore/pimcore": "^11.0",
         "symfony/dotenv": "^7.3",
+        "symfony/monolog-bundle": "^3.10",
         "symfony/runtime": "^7.3"
     },
     "autoload": {

@@ -1,0 +1,4 @@
+fos_js_routing:
+    routes_to_expose:
+        - pimcore_admin_gdpr_dataobject_searchdataobjects
+        - pimcore_admin_gdpr_dataobject_exportdataobject

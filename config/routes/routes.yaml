@@ -16,3 +16,13 @@ pimcore_admin:
 # Pimcore standard routes
 pimcore:
     resource: '@PimcoreCoreBundle/config/routing.yaml'
+
+# FOSJsRoutingBundle
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing-sf4.xml"
+    prefix: /js
+
+# Elements Process Manager routes
+elements_process_manager:
+    resource: "@ElementsProcessManagerBundle/Resources/config/pimcore/routing.yml"
+    prefix: /admin
