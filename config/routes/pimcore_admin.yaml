@@ -1,0 +1,9 @@
+# Let Pimcore handle admin routes automatically
+_pimcore_admin:
+    resource: .
+    type: attribute
+    prefix: /admin
+    name_prefix: pimcore_admin_
+    defaults: { _bundle: PimcoreAdminBundle }
+    options:
+        expose: true

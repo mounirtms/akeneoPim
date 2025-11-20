@@ -1,2 +1,6 @@
-# Empty routes file
-# Add your custom routes here if needed
+# Default homepage route
+homepage:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+# Additional routes can be added here

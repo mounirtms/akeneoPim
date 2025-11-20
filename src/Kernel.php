@@ -4,6 +4,7 @@ namespace App;
 
 use Pimcore\Kernel as PimcoreKernel;
 use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use Pimcore\Bundle\AdminBundle\PimcoreAdminBundle;
 
 class Kernel extends PimcoreKernel
 {
@@ -19,10 +20,8 @@ class Kernel extends PimcoreKernel
             $collection->addBundle(new \AppBundle\AppBundle());
         }
         
-        // Register Pimcore Admin UI Classic Bundle (correct class name for Pimcore 11)
-        if (class_exists('\\Pimcore\\Bundle\\AdminClassicBundle\\PimcoreAdminClassicBundle')) {
-            $collection->addBundle(new \Pimcore\Bundle\AdminClassicBundle\PimcoreAdminClassicBundle());
-        }
+        // Register Pimcore Admin UI Bundle
+        $collection->addBundle(new PimcoreAdminBundle());
         
         // Register FOSJsRoutingBundle for JavaScript routing
         if (class_exists('\\FOS\\JsRoutingBundle\\FOSJsRoutingBundle')) {
@@ -56,6 +55,21 @@ class Kernel extends PimcoreKernel
         // Register Process Manager Bundle
         if (class_exists('\\Elements\Bundle\ProcessManagerBundle\ElementsProcessManagerBundle')) {
             $collection->addBundle(new \Elements\Bundle\ProcessManagerBundle\ElementsProcessManagerBundle());
+        }
+        
+        // Register Dachcom Toolbox bundle (content areas, themes, etc.)
+        if (class_exists('\\ToolboxBundle\\ToolboxBundle')) {
+            $collection->addBundle(new \ToolboxBundle\ToolboxBundle());
+        }
+
+        // Register Dachcom SEO bundle (meta data, indexing)
+        if (class_exists('\\SeoBundle\\SeoBundle')) {
+            $collection->addBundle(new \SeoBundle\SeoBundle());
+        }
+
+        // Register Application Logger Bundle for enhanced logging
+        if (class_exists('\\Pimcore\\Bundle\\ApplicationLoggerBundle\\PimcoreApplicationLoggerBundle')) {
+            $collection->addBundle(new \Pimcore\Bundle\ApplicationLoggerBundle\PimcoreApplicationLoggerBundle());
         }
     }
 }

@@ -2,7 +2,7 @@
 
 // Script to optimize all data types in Pimcore
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Pimcore\Bootstrap;
 use Pimcore\Model\DataObject;

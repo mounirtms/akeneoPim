@@ -10,6 +10,7 @@
         }
     },
     "require": {
+        "dachcom-digital/seo": "^3.2",
         "dachcom-digital/toolbox": "^5.3",
         "elements/process-manager-bundle": "^5.0",
         "fzaninotto/faker": "^1.5",

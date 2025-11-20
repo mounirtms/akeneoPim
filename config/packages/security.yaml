@@ -1,26 +1,16 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        # used to reload user from session & other features (e.g. switch_user)
         pimcore_admin:
             id: Pimcore\Security\User\UserProvider
-
+    
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        # Pimcore WebDAV authentication
-        webdav:
-            pattern: ^/admin/webdav
-            provider: pimcore_admin
-            http_basic: ~
-
-        # Pimcore admin firewall (do not change its name!)
+        
         pimcore_admin:
             pattern: ^/admin(/.*)?$
             provider: pimcore_admin
-            # Use form_login instead of pimcore_admin
             form_login:
                 login_path: /admin/login
                 check_path: /admin/login/login
@@ -28,20 +18,21 @@ security:
                 always_use_default_target_path: false
                 username_parameter: username
                 password_parameter: password
+                csrf_parameter: csrfToken
+                csrf_token_id: authenticate
             logout:
                 path: /admin/logout
                 target: /admin/login
+            remember_me:
+                secret: '%env(APP_SECRET)%'
+                lifetime: 2592000
+                path: /admin
 
-        # Pimcore frontend firewall (you can change its name)
-        # Use this firewall to secure your frontend website
-        # It's currently completely open
         website:
             pattern: ^/.*
             provider: pimcore_admin
             security: false
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin/login, roles: PUBLIC_ACCESS }
         - { path: ^/admin, roles: ROLE_PIMCORE_ADMIN }
