@@ -17,3 +17,5 @@ pimcore_admin:
         login_screen_custom_image: ''
     admin_languages:
         - en
+        - fr
+        - ar

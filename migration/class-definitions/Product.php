@@ -170,6 +170,7 @@ class ProductClass
         $classificationStore = new ClassDefinition\Data\Classificationstore();
         $classificationStore->setName("attributes");
         $classificationStore->setTitle("Product Attributes");
+        $classificationStore->setStoreId(1); // Default store
         $panel->addChild($classificationStore);
         
         // SEO Panel
@@ -266,6 +267,7 @@ class ProductClass
         $inventoryPanel->addChild($qtyIncrements);
 
         $panel->addChild($inventoryPanel);
+        $class->setLayoutDefinitions($panel);
         $class->save();
         
         return $class;

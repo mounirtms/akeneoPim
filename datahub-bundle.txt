@@ -1,0 +1,1 @@
+| PimcoreDataHubBundle                | yes     | yes       | no          | yes           | 20       |

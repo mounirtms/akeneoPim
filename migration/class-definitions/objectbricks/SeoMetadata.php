@@ -23,11 +23,11 @@ class SeoMetadata
         $ob->setClassDefinitions([
             [
                 'classname' => 'Product',
-                'fieldname' => 'attributes'
+                'fieldname' => 'localizedfields'
             ],
             [
                 'classname' => 'Category',
-                'fieldname' => 'attributes'
+                'fieldname' => 'localizedfields'
             ]
         ]);
         

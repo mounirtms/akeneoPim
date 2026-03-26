@@ -1,9 +1,34 @@
-# php -- BEGIN cPanel-generated handler, do not edit
-# Set the "ea-php83" package as the default "PHP" programming language.
-<IfModule mime_module>
-  AddHandler application/x-httpd-ea-php83 .php .php8 .phtml
-</IfModule>
-# php -- END cPanel-generated handler, do not edit
+# Use the front controller as index file
+DirectoryIndex index.php
 
-# Note: DocumentRoot is set to /home/pim/public_html/public in Apache config
-# No rewrites needed here since Apache serves from public/ directly
+# Disable MultiViews
+Options -MultiViews +FollowSymLinks
+
+# Set UTF-8 as default
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Set base directory
+    RewriteBase /
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .+
+    RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Don't rewrite files or directories that exist
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+    
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Route everything else to front controller
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Prevent access to hidden files (except .well-known)
+<FilesMatch "^\.(?!well-known)">
+    Require all denied
+</FilesMatch>

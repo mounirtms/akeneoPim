@@ -2,11 +2,37 @@ pimcore:
     general:
         # instance_identifier: 'pimcore_installation'  # This option is not recognized
         timezone: 'Europe/Berlin'
+        valid_languages:
+            - en
+            - fr
+            - ar
+        fallback_languages:
+            en:
+                - fr
+                - ar
+            fr:
+                - en
+                - ar
+            ar:
+                - en
+                - fr
+        default_language: en
     full_page_cache:
         enabled: false
+    assets:
+        thumbnails:
+            enabled: true
+            cache: true
+            quality: 90
+            format: AUTO
+        image:
+            low_quality_image_preview:
+                enabled: true
+        versions:
+            use_hardlinks: true
 
 # Comment out Elasticsearch configuration if not needed
 # pimcore_elasticsearch_client:
 #     enabled: true
 #     hosts:
-#         - 'http://localhost:9200'
+#     - 'http://localhost:9200'

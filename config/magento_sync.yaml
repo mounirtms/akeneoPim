@@ -1,0 +1,40 @@
+# Magento Synchronization Configuration
+
+magento:
+  database:
+    host: '127.0.0.1'
+    port: 3307
+    name: 'beta_dBT8x12y22'
+    username: 'root'
+    password: 'YourNewStrongPassword'
+
+sync:
+  # Which entities to sync
+  products: true
+  categories: true
+  
+  # Product sync options
+  product:
+    # Only sync published products
+    only_published: true
+    
+    # Fields to sync
+    fields:
+      - sku
+      - name
+      - description
+      - short_description
+      - price
+      - status
+      - visibility
+      - weight
+      
+  # Category sync options
+  category:
+    fields:
+      - name
+      - description
+      
+logging:
+  enabled: true
+  file: '/home/pim/public_html/var/log/magento_sync.log'

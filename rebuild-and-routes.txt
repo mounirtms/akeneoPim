@@ -1,0 +1,5 @@
+done
+Content-type: text/html; charset=UTF-8
+
+  test_graphql_route                                                                  ANY               ANY      ANY    /test-graphql-route                                                                     
+  admin_pimcoredatahub_webservice                                                     ANY               ANY      ANY    /pimcore-graphql-webservices/{clientname}                                               

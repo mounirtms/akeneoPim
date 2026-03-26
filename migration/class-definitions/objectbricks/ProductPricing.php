@@ -23,7 +23,7 @@ class ProductPricing
         $ob->setClassDefinitions([
             [
                 'classname' => 'Product',
-                'fieldname' => 'attributes'
+                'fieldname' => 'localizedfields'
             ]
         ]);
         

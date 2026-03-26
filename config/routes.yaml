@@ -4,3 +4,11 @@ homepage:
     controller: App\Controller\DefaultController::index
 
 # Additional routes can be added here
+
+app_test_create_product:
+    path: /test/create-product
+    controller: App\Controller\TestController::createProductAction
+
+app_test_class:
+    path: /test/class
+    controller: App\Controller\TestController::testClassAction

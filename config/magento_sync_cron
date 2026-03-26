@@ -1,0 +1,16 @@
+# Magento-Pimcore Synchronization Cron Jobs
+# 
+# This file contains cron job configurations for automatic synchronization
+# between Pimcore and Magento.
+#
+# To install these cron jobs, run:
+# crontab /home/pim/public_html/config/magento_sync_cron
+
+# Sync products and categories every hour
+0 * * * * cd /home/pim/public_html && /usr/bin/php bin/magento-sync >> var/log/magento_sync_cron.log 2>&1
+
+# Alternative: Sync only products every 30 minutes
+# */30 * * * * cd /home/pim/public_html && /usr/bin/php scripts/sync/pimcore_to_magento_sync.php --sync-products >> var/log/magento_sync_cron.log 2>&1
+
+# Alternative: Sync only categories every 2 hours
+# 0 */2 * * * cd /home/pim/public_html && /usr/bin/php scripts/sync/pimcore_to_magento_sync.php --sync-categories >> var/log/magento_sync_cron.log 2>&1

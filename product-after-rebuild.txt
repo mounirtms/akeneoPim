@@ -1,0 +1,7 @@
+
+ [INFO] Creating product...                                                                                             
+
+11:58:29 CRITICAL  [console] Error thrown while running command "app:create-product". Message: "Class "Pimcore\Model\DataObject\Product" not found" ["exception" => Error { …},"command" => "app:create-product","message" => "Class "Pimcore\Model\DataObject\Product" not found"]
+Status: 500 Internal Server Error
+Content-type: text/html; charset=UTF-8
+
