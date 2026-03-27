@@ -1,0 +1,98 @@
+{% extends 'AkeneoPlatformBundle::layout.html.twig' %}
+
+{% block title %}
+    Dashboard - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="AknDefault-layout">
+    <div class="AknDefault-header">
+        <header class="AknHeader">
+            <div class="AknHeader-mainPanel">
+                <div class="AknHeader-logo">
+                    <img src="{{ asset('bundles/akeneopimtheme/images/logo.png') }}" alt="Akeneo PIM">
+                </div>
+            </div>
+        </header>
+    </div>
+    
+    <div class="AknDefault-content">
+        <div class="AknDashboard">
+            <div class="AknDashboard-title">
+                <h1>{{ 'Welcome to Akeneo PIM'|trans }}</h1>
+                <p>{{ 'dashboard.welcome_message'|trans }}</p>
+            </div>
+            
+            <div class="AknDashboard-content">
+                <div class="AknDashboard-widgets">
+                    <div class="AknDashboardWidget">
+                        <div class="AknDashboardWidget-title">
+                            <h3>{{ 'dashboard.quick_links'|trans }}</h3>
+                        </div>
+                        <div class="AknDashboardWidget-content">
+                            <div class="AknGrid">
+                                <a href="{{ path('pim_enrich_product_index') }}" class="AknGrid-cell AknGrid-cell--action">
+                                    <span class="AknGrid-cellIcon">
+                                        <i class="icon-item"></i>
+                                    </span>
+                                    <span class="AknGrid-cellTitle">{{ 'Products'|trans }}</span>
+                                </a>
+                                <a href="{{ path('pim_enrich_category_tree_index') }}" class="AknGrid-cell AknGrid-cell--action">
+                                    <span class="AknGrid-cellIcon">
+                                        <i class="icon-folder"></i>
+                                    </span>
+                                    <span class="AknGrid-cellTitle">{{ 'Categories'|trans }}</span>
+                                </a>
+                                <a href="{{ path('pim_enrich_attribute_index') }}" class="AknGrid-cell AknGrid-cell--action">
+                                    <span class="AknGrid-cellIcon">
+                                        <i class="icon-cog"></i>
+                                    </span>
+                                    <span class="AknGrid-cellTitle">{{ 'Attributes'|trans }}</span>
+                                </a>
+                                <a href="{{ path('pim_enrich_family_index') }}" class="AknGrid-cell AknGrid-cell--action">
+                                    <span class="AknGrid-cellIcon">
+                                        <i class="icon-docs"></i>
+                                    </span>
+                                    <span class="AknGrid-cellTitle">{{ 'Families'|trans }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="AknDashboardWidget">
+                        <div class="AknDashboardWidget-title">
+                            <h3>{{ 'dashboard.system_info'|trans }}</h3>
+                        </div>
+                        <div class="AknDashboardWidget-content">
+                            <dl class="AknDefinitionList">
+                                <dt>{{ 'dashboard.user'|trans }}</dt>
+                                <dd>{{ app.user.username }}</dd>
+                                
+                                <dt>{{ 'dashboard.environment'|trans }}</dt>
+                                <dd>{{ app.environment }}</dd>
+                                
+                                <dt>{{ 'dashboard.version'|trans }}</dt>
+                                <dd>{{ constant('PIM_VERSION')|default('Akeneo PIM') }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="{{ asset('dist/vendor.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('dist/main.min.js') }}"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Dashboard initialization code
+            console.log('Dashboard loaded');
+        });
+    </script>
+{% endblock %}

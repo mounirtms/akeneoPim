@@ -1,0 +1,5 @@
+services:
+    app.shipping.yalidine.carrier:
+        class: AppBundle\Component\Shipping\Yalidine\Carrier
+        tags:
+            - { name: akeneo.shipping.carrier }

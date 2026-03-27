@@ -1,0 +1,20 @@
+{
+    "extends": "./vendor/akeneo/pim-community-dev/tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": "./public/bundles",
+        "outDir": "./public/dist",
+        "rootDir": "./public/bundles",
+        "skipLibCheck": true,
+        "strict": false,
+        "noImplicitAny": false
+    },
+    "include": [
+        "public/bundles/**/*.ts",
+        "public/bundles/**/*.tsx",
+        "vendor/akeneo/pim-community-dev/frontend/types.d.ts"
+    ],
+    "exclude": [
+        "public/bundles/**/*.js",
+        "node_modules"
+    ]
+}

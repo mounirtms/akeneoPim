@@ -1,0 +1,10 @@
+app_dashboard:
+    path: /
+    defaults:
+        _controller: AppBundle:Dashboard:dashboard
+
+app_login_check:
+    path: /login_check
+
+app_logout:
+    path: /logout

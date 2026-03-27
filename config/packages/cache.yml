@@ -1,0 +1,13 @@
+framework:
+    cache:
+        # Use file system cache instead of APCu to avoid the APCu not enabled error
+        app: cache.adapter.filesystem
+        system: cache.adapter.system
+        default_memcached_provider: 'memcached://localhost'
+        pools:
+            doctrine.result_cache_pool:
+                adapters:
+                    - cache.adapter.filesystem
+                    - cache.adapter.array
+            doctrine.system_cache_pool:
+                adapter: cache.system

@@ -1,0 +1,5 @@
+framework:
+    cache:
+        # Use file system cache instead of APCu to avoid the APCu not enabled error
+        app: cache.adapter.filesystem
+        system: cache.adapter.system

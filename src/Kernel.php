@@ -1,75 +1,121 @@
 <?php
 
-namespace App;
+declare(strict_types=1);
 
-use Pimcore\Kernel as PimcoreKernel;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
-use Pimcore\Bundle\AdminBundle\PimcoreAdminBundle;
+/*
+ * @copyright 2021 Akeneo SAS (https://www.akeneo.com)
+ * @license   https://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
 
-class Kernel extends PimcoreKernel
+use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\Config\Resource\FileResource;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Kernel as BaseKernel;
+use Symfony\Component\Routing\RouteCollectionBuilder;
+
+/**
+ * PIM Kernel
+ *
+ * @author Nicolas Dupont <nicolas@akeneo.com>
+ */
+class Kernel extends BaseKernel
 {
-    /**
-     * Adds bundles to the bundle collection. Bundle registration depends on the environment.
-     *
-     * @param BundleCollection $collection
-     */
-    public function registerBundlesToCollection(BundleCollection $collection): void
+    use MicroKernelTrait;
+
+    public function registerBundles(): iterable
     {
-        // Check if AppBundle class exists before adding it
-        if (class_exists('\\AppBundle\\AppBundle')) {
-            $collection->addBundle(new \AppBundle\AppBundle());
+        $bundles = require $this->getProjectDir() . '/vendor/akeneo/pim-community-dev/config/bundles.php';
+        $bundles += require $this->getProjectDir() . '/config/bundles.php';
+        foreach ($bundles as $class => $envs) {
+            if ($envs[$this->environment] ?? $envs['all'] ?? false) {
+                yield new $class();
+            }
         }
-        
-        // Register Pimcore Admin UI Bundle
-        $collection->addBundle(new PimcoreAdminBundle());
-        
-        // Register FOSJsRoutingBundle for JavaScript routing
-        if (class_exists('\\FOS\\JsRoutingBundle\\FOSJsRoutingBundle')) {
-            $collection->addBundle(new \FOS\JsRoutingBundle\FOSJsRoutingBundle());
-        }
-        
-        // Register additional bundles for enhanced dashboard experience
-        if (class_exists('\\Pimcore\\Bundle\\SimpleBackendSearchBundle\\PimcoreSimpleBackendSearchBundle')) {
-            $collection->addBundle(new \Pimcore\Bundle\SimpleBackendSearchBundle\PimcoreSimpleBackendSearchBundle());
-        }
-        
-        if (class_exists('\\Pimcore\\Bundle\\CustomReportsBundle\\PimcoreCustomReportsBundle')) {
-            $collection->addBundle(new \Pimcore\Bundle\CustomReportsBundle\PimcoreCustomReportsBundle());
-        }
-        
-        // Register DataHub Bundle
-        if (class_exists('\\Pimcore\\Bundle\\DataHubBundle\\PimcoreDataHubBundle')) {
-            $collection->addBundle(new \Pimcore\Bundle\DataHubBundle\PimcoreDataHubBundle());
-        }
-        
-        // Register DataImporter Bundle
-        if (class_exists('\\Pimcore\\Bundle\\DataImporterBundle\\PimcoreDataImporterBundle')) {
-            $collection->addBundle(new \Pimcore\Bundle\DataImporterBundle\PimcoreDataImporterBundle());
-        }
-        
-        // Register Message Bundle for notifications
-        if (class_exists('\\LemonMind\\MessageBundle\\LemonmindMessageBundle')) {
-            $collection->addBundle(new \LemonMind\MessageBundle\LemonmindMessageBundle());
-        }
-        
-        // Register Process Manager Bundle
-        if (class_exists('\\Elements\Bundle\ProcessManagerBundle\ElementsProcessManagerBundle')) {
-            $collection->addBundle(new \Elements\Bundle\ProcessManagerBundle\ElementsProcessManagerBundle());
-        }
-        
-        // Register Dachcom Toolbox bundle (content areas, themes, etc.)
-        if (class_exists('\\ToolboxBundle\\ToolboxBundle')) {
-            $collection->addBundle(new \ToolboxBundle\ToolboxBundle());
-        }
+    }
 
-        // Register Dachcom SEO bundle (meta data, indexing)
-        if (class_exists('\\SeoBundle\\SeoBundle')) {
-            $collection->addBundle(new \SeoBundle\SeoBundle());
-        }
+    public function getProjectDir(): string
+    {
+        return \dirname(__DIR__);
+    }
 
-        // Register Application Logger Bundle for enhanced logging
-        if (class_exists('\\Pimcore\\Bundle\\ApplicationLoggerBundle\\PimcoreApplicationLoggerBundle')) {
-            $collection->addBundle(new \Pimcore\Bundle\ApplicationLoggerBundle\PimcoreApplicationLoggerBundle());
+    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
+    {
+        $container->addResource(new FileResource($this->getProjectDir() . '/config/bundles.php'));
+        $container->setParameter('container.dumper.inline_class_loader', true);
+
+        $ceConfDir = $this->getProjectDir() . '/vendor/akeneo/pim-community-dev/config';
+        $projectConfDir = $this->getProjectDir() . '/config';
+
+        $this->loadPackagesConfigurationExceptSecurity($loader, $ceConfDir, $this->environment);
+        $this->loadPackagesConfiguration($loader, $projectConfDir, $this->environment);
+
+        $this->loadContainerConfiguration($loader, $ceConfDir, $this->environment);
+        $this->loadContainerConfiguration($loader, $projectConfDir, $this->environment);
+    }
+
+    protected function configureRoutes(RouteCollectionBuilder $routes): void
+    {
+        $this->loadRoutesConfiguration($routes, $this->getProjectDir() . '/vendor/akeneo/pim-community-dev/config', $this->environment);
+        $this->loadRoutesConfiguration($routes, $this->getProjectDir() . '/config', $this->environment);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCacheDir(): string
+    {
+        return $this->getProjectDir() . '/var/cache/' . $this->environment;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLogDir(): string
+    {
+        return $this->getProjectDir() . '/var/logs';
+    }
+
+    private function loadRoutesConfiguration(RouteCollectionBuilder $routes, string $confDir, string $environment): void
+    {
+        $routes->import($confDir . '/{routes}/' . $environment . '/**/*.yml', '/', 'glob');
+        $routes->import($confDir . '/{routes}/*.yml', '/', 'glob');
+    }
+
+    private function loadPackagesConfiguration(LoaderInterface $loader, string $confDir, string $environment): void
+    {
+        $loader->load($confDir . '/{packages}/*.yml', 'glob');
+        $loader->load($confDir . '/{packages}/' . $environment . '/**/*.yml', 'glob');
+    }
+
+    /**
+     * "security.yml" is the only configuration file that can not be override
+     * Thus, we don't load it from the Community Edition.
+     * We copied/pasted its content into Enterprise Edition and added what was missing.
+     */
+    private function loadPackagesConfigurationExceptSecurity(LoaderInterface $loader, string $confDir, string $environment): void
+    {
+        $files = array_merge(
+            glob($confDir . '/packages/*.yml'),
+            glob($confDir . '/packages/' . $environment . '/*.yml'),
+            glob($confDir . '/packages/' . $environment . '/**/*.yml')
+        );
+
+        $files = array_filter(
+            $files,
+            function ($file) {
+                return 'security.yml' !== basename($file);
+            }
+        );
+
+        foreach ($files as $file) {
+            $loader->load($file, 'yaml');
         }
+    }
+
+    private function loadContainerConfiguration(LoaderInterface $loader, string $confDir, string $environment): void
+    {
+        $loader->load($confDir . '/{services}/*.yml', 'glob');
+        $loader->load($confDir . '/{services}/' . $environment . '/**/*.yml', 'glob');
     }
 }

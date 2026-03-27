@@ -1,107 +1,89 @@
-# Symfony / Pimcore .gitignore
+# Public assets and generated files
+/public/bundles/*
+!public/bundles/.gitkeep
+/public/media/*
+/public/css/*
+/public/js/*
+/public/dist/*
+/public/test_dist/*
+/public/cache/
+/public/uploads/*
+/public/uploads_test/*
+/public/log
+/public/app_local.php
+
+# Symfony cache and logs
+/var/*
+!var/SymfonyRequirements.php
+!var/PimRequirements.php
+/var/cache/*
+/var/logs/*
+/var/sessions/*
+/var/archive/*
+/var/uploads/*
+/var/uploads/product/*
+/var/file_storage/*
 
 # Composer
 /vendor/
+/composer.phar
+/.php-version
 /composer.lock
 
-# Symfony cache, logs, sessions
-/var/cache/
-/var/log/
-/var/sessions/
-/var/tmp/
-/var/recyclebin/
-/var/installer/
-/var/versions/
-/var/assets/
-/var/classes/
-/var/config/
+# Node/Yarn/NPM
+/node_modules/
+/yarn-error.log
+/.yarn-metadata.json
+/npm-debug.log*
+/package-lock.json
+/.pnp.*
+/.yarn/*
+!/.yarn/patches
+!/.yarn/plugins
+!/.yarn/releases
+!/.yarn/sdks
+!/.yarn/versions
 
-# Pimcore generated files
-/web/var/
-/web/backup/
-/web/website_var/
-/website/var/
-/website/backup/
-/website/website_var/
-/public/var/
-/public/backup/
-/public/website_var/
+# Testing and CI
+/coverage/
+/.phpunit.result.cache
+/cypress/videos/
+/cypress/screenshots/
+/phpspec.yml
+/.phpspec/*.tpl
+/cov/
+/uploads_test/
 
-# Assets built/generated
-/public/bundles/
-/public/build/
-/public/assets/
-/public/js/fos_js_routes.js
-/public/js/fos_js_routes.json
-
-# Environment and local override files
-/.env.local
-/.env.local.php
-/.env.*.local
-/.env.test
-/.env.dev
-/.env.dev.local
-/.env.test.local
-
-# IDE/editor
+# IDE and editor files
 /.idea/
 /.vscode/
-*.iml
-
-# System files
+*.sublime-workspace
+*.sublime-project
 .DS_Store
 Thumbs.db
 
-# Node/npm/yarn
-/node_modules/
-/yarn.lock
-/package-lock.json
+# Docker
+/docker-compose.override.yml
+/.web-server-pid
 
-# Logs & temp at root
-error_log
-*.log
+# Elasticsearch
+/var/elasticsearch/*
 
-# PHPUnit / test artifacts
-/phpunit.xml
-/phpunit.xml.dist
-/.phpunit.result.cache
-/coverage/
+# Redis
+/var/redis/*
 
-# Cache and dumps
-/var/dump/
-/var/backups/
-/var/admin/minified_javascript_core_*.js
+# Front-end builds
+/front-packages/akeneo-design-system/lib
 
-# Build artifacts
-/build/
-/tmp/
+# The "lib/" folder must be ignored here to not be taken into account when the DSM is extracted to its own repository.
+# See ".github/actions/extract/entrypoint.sh"
+front-packages/akeneo-design-system/lib
 
-# Test and debug files
-*test*
-*debug*
-*import*
-*export*
-/import-progress.log
-/check-import-progress.php
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/cache/*
 
-# Temporary and backup files
-*.tmp
-*.bak
-*.backup
-*~
-
-# Duplicate .htaccess files
-.htaccess-*
-
-# Empty directories
-/app/
-/bundles/
-
-# Test files
-/public/techno/test.php
-/public/info.php
-/src/Controller/TestController.php
-
-# Pimcore specific
-/var/admin/custom-logo.image
-/var/admin/user-image/
+/public/
+/logs/

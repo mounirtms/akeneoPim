@@ -1,5 +1,0 @@
-framework:
-    mailer:
-        enabled: true
-        transports:
-            main: '%env(MAILER_DSN)%'

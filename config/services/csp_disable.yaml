@@ -1,0 +1,13 @@
+# Disable CSP completely
+services:
+    # Override the CSP provider to return empty policy
+    akeneo_platform_ui.content_security_policy_provider:
+        class: AppBundle\Provider\ContentSecurityPolicy\EmptyContentSecurityPolicyProvider
+        arguments:
+            - []
+
+    # Override the CSP listener to do nothing
+    akeneo_platform_ui.event_listener.add_content_security_policy:
+        class: AppBundle\EventListener\EmptyContentSecurityPolicyListener
+        arguments:
+            - '@akeneo_platform_ui.content_security_policy_provider'

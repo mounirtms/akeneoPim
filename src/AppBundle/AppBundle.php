@@ -2,17 +2,8 @@
 
 namespace AppBundle;
 
-use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AppBundle extends AbstractPimcoreBundle
+class AppBundle extends Bundle
 {
-    public function getNiceName(): string
-    {
-        return 'App Bundle';
-    }
-
-    public function getDescription(): string
-    {
-        return 'App Bundle';
-    }
 }

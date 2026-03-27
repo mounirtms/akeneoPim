@@ -1,0 +1,69 @@
+security:
+    providers:
+        chain_provider:
+            chain:
+                providers: [pim_user]
+        pim_user:
+            id: pim_user.provider.user
+        pim_user_api:
+            id: pim_user.provider.user_api
+
+    encoders:
+        Akeneo\UserManagement\Component\Model\User: sha512
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        api:
+            pattern: ^/api
+            provider: pim_user_api
+            stateless: true
+            fos_oauth: true
+            access_denied_handler: pim_api.security.access_denied_handler
+
+        main:
+            pattern: ^/
+            provider: chain_provider
+            form_login:
+                provider: chain_provider
+                csrf_token_generator: security.csrf.token_manager
+                login_path: pim_user_security_login
+                check_path: pim_user_security_check
+                default_target_path: oro_default
+                use_referer: true
+                require_previous_session: false
+                use_forward: true
+            logout:
+                path: pim_user_security_logout
+                target: pim_user_security_login
+                invalidate_session: false
+            remember_me:
+                secret: "%env(APP_SECRET)%"
+                name: BAPRM
+                lifetime: 1209600   # stay logged for two weeks
+                samesite: 'lax'
+            anonymous: true
+            switch_user: { role: ROLE_ALLOWED_TO_SWITCH, parameter: su }
+
+    access_control:
+        - { path: ^/api/rest/v1/connections/.*/credentials, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/user/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/reset, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+
+    role_hierarchy:
+        ROLE_ADMINISTRATOR:
+            - ROLE_USER
+            - ROLE_SYSTEM_USER
+        ROLE_SYSTEM_USER:
+            - ROLE_USER
+
+acl:
+    connection: default
+    cache:
+        id: security.acl.cache.doctrine
+        prefix: sf2_acl_

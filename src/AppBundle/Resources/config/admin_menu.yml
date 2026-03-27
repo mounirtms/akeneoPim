@@ -1,0 +1,9 @@
+services:
+    app.menu.builder.admin:
+        class: AppBundle\Menu\AdminMenuBuilder
+        arguments:
+            - '@knp_menu.factory'
+            - '@security.authorization_checker'
+            - '@?pim_menu.provider'
+        tags:
+            - { name: knp_menu.menu_builder, method: mainMenu, alias: pim_menu }

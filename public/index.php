@@ -1,21 +1,28 @@
 <?php
 
-use App\Kernel;
-use Pimcore\Bootstrap;
+use Symfony\Component\ErrorHandler\Debug;
+use Symfony\Component\HttpFoundation\Request;
 
-require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
+// Fixed the path to correctly point to the config directory
+require dirname(__DIR__).'/config/bootstrap.php';
 
-return function (array $context) {
-    // Set the project root before bootstrapping
-    Bootstrap::setProjectRoot();
-    
-    // Bootstrap Pimcore
-    Bootstrap::bootstrap();
-    
-    $kernel = new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
-    
-    // Initialize Pimcore with the kernel
-    \Pimcore::setKernel($kernel);
-    
-    return $kernel;
-};
+// Start session if not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if ($_SERVER['APP_DEBUG']) {
+    umask(0000);
+
+    Debug::enable();
+}
+
+if ($trustedProxies = $_SERVER['TRUSTED_PROXY_IPS'] ?? $_ENV['TRUSTED_PROXY_IPS'] ?? false) {
+    Request::setTrustedProxies(explode(',', $trustedProxies),Request::HEADER_X_FORWARDED_ALL);
+}
+
+$kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
+$request = Request::createFromGlobals();
+$response = $kernel->handle($request);
+$response->send();
+$kernel->terminate($request, $response);

@@ -1,0 +1,74 @@
+datagrid:
+    app-yalidine-parcels-grid:
+        extended_entity_name: AppBundle\Entity\Yalidine\Parcel
+        options:
+            entity_pagination: true
+        source:
+            type: orm
+            query:
+                select:
+                    - p.id
+                    - p.trackingNumber
+                    - p.status
+                    - p.createdAt
+                    - p.weight
+                    - p.destination
+                from:
+                    - { table: AppBundle\Entity\Yalidine\Parcel, alias: p }
+        columns:
+            trackingNumber:
+                label: app.grid.columns.tracking_number
+            status:
+                label: app.grid.columns.status
+            weight:
+                label: app.grid.columns.weight
+            destination:
+                label: app.grid.columns.destination
+            createdAt:
+                label: app.grid.columns.created_at
+                frontend_type: datetime
+        properties:
+            id: ~
+        sorters:
+            columns:
+                trackingNumber:
+                    data_name: p.trackingNumber
+                status:
+                    data_name: p.status
+                createdAt:
+                    data_name: p.createdAt
+            default:
+                createdAt: DESC
+        filters:
+            columns:
+                trackingNumber:
+                    type: string
+                    data_name: p.trackingNumber
+                status:
+                    type: choice
+                    data_name: p.status
+                    options:
+                        field_options:
+                            choices:
+                                created: 'Created'
+                                in_transit: 'In Transit'
+                                delivered: 'Delivered'
+                                returned: 'Returned'
+                createdAt:
+                    type: datetime
+                    data_name: p.createdAt
+        actions:
+            view:
+                type: navigate
+                label: app.grid.actions.view
+                link: app_yalidine_parcel_view
+                icon: eye
+            edit:
+                type: navigate
+                label: app.grid.actions.edit
+                link: app_yalidine_parcel_edit
+                icon: pencil
+            delete:
+                type: delete
+                label: app.grid.actions.delete
+                icon: trash

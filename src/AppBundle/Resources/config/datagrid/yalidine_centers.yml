@@ -1,0 +1,66 @@
+datagrid:
+    app-yalidine-centers-grid:
+        extended_entity_name: AppBundle\Entity\Yalidine\Center
+        options:
+            entity_pagination: true
+        source:
+            type: orm
+            query:
+                select:
+                    - c.id
+                    - c.name
+                    - c.address
+                    - c.city
+                    - c.postcode
+                    - c.isOpen
+                from:
+                    - { table: AppBundle\Entity\Yalidine\Center, alias: c }
+        columns:
+            name:
+                label: app.grid.columns.name
+            address:
+                label: app.grid.columns.address
+            city:
+                label: app.grid.columns.city
+            postcode:
+                label: app.grid.columns.postcode
+            isOpen:
+                label: app.grid.columns.is_open
+                frontend_type: boolean
+        properties:
+            id: ~
+        sorters:
+            columns:
+                name:
+                    data_name: c.name
+                city:
+                    data_name: c.city
+                isOpen:
+                    data_name: c.isOpen
+            default:
+                name: ASC
+        filters:
+            columns:
+                name:
+                    type: string
+                    data_name: c.name
+                city:
+                    type: string
+                    data_name: c.city
+                postcode:
+                    type: string
+                    data_name: c.postcode
+                isOpen:
+                    type: boolean
+                    data_name: c.isOpen
+        actions:
+            view:
+                type: navigate
+                label: app.grid.actions.view
+                link: app_yalidine_center_view
+                icon: eye
+            edit:
+                type: navigate
+                label: app.grid.actions.edit
+                link: app_yalidine_center_edit
+                icon: pencil

@@ -1,34 +1,25 @@
-# Use the front controller as index file
-DirectoryIndex index.php
+RewriteEngine On
 
-# Disable MultiViews
-Options -MultiViews +FollowSymLinks
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]
 
-# Set UTF-8 as default
-AddDefaultCharset UTF-8
+# AddHandler for PHP 8.3
+AddHandler application/x-httpd-ea-php83 .php
 
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    
-    # Set base directory
-    RewriteBase /
+# First, unset ALL existing CSP and CORS headers from the application
+Header unset Content-Security-Policy
+Header unset X-Content-Security-Policy
+Header unset X-WebKit-CSP
+Header unset Access-Control-Allow-Origin
+Header unset Access-Control-Allow-Methods
+Header unset Access-Control-Allow-Headers
 
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .+
-    RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+# Set permissive CSP allowing all necessary third-party scripts
+# Note: 'nonce-*' is invalid CSP syntax - removed. Using 'unsafe-inline' instead.
+Header always set Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; img-src 'self' data: blob: *; font-src 'self' data: *; connect-src 'self' *; frame-src *;"
+Header always set X-Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; img-src 'self' data: *; font-src 'self' data: *; connect-src 'self' *;"
 
-    # Don't rewrite files or directories that exist
-    RewriteCond %{REQUEST_FILENAME} -f
-    RewriteRule ^ - [L]
-    
-    RewriteCond %{REQUEST_FILENAME} -d
-    RewriteRule ^ - [L]
-
-    # Route everything else to front controller
-    RewriteRule ^ index.php [L]
-</IfModule>
-
-# Prevent access to hidden files (except .well-known)
-<FilesMatch "^\.(?!well-known)">
-    Require all denied
-</FilesMatch>
+# Set CORS headers
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"

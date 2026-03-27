@@ -1,0 +1,22 @@
+<?php
+
+namespace AppBundle\Provider\ContentSecurityPolicy;
+
+use Akeneo\Platform\Bundle\UIBundle\Provider\ContentSecurityPolicy\ContentSecurityPolicyProviderInterface;
+
+class CustomContentSecurityPolicyProvider implements ContentSecurityPolicyProviderInterface
+{
+    public function getContentSecurityPolicy(): array
+    {
+        $domain = $_SERVER['HTTP_HOST'] ?? 'pim.technostationery.com';
+        
+        return [
+            'default-src' => ["'self'", "*.akeneo.com", "'unsafe-inline'", "https://connect.facebook.net", "https://www.clarity.ms", "https://stats.g.doubleclick.net", "https://analytics.google.com", "https://www.google.dz", "https://scripts.clarity.ms", "https://c.clarity.ms", "https://www.facebook.com", "https://v.clarity.ms", "https://{$domain}", "https://static.cloudflareinsights.com"],
+            'script-src' => ["'self'", "'unsafe-eval'", "'unsafe-inline'", "https://connect.facebook.net", "https://www.clarity.ms", "https://stats.g.doubleclick.net", "https://analytics.google.com", "https://www.google.dz", "https://ff.kes.v2.scr.kaspersky-labs.com", "wss://ff.kes.v2.scr.kaspersky-labs.com", "https://scripts.clarity.ms", "https://c.clarity.ms", "https://v.clarity.ms", "https://static.cloudflareinsights.com", "https://{$domain}"],
+            'img-src' => ["'self'", "data:", "*.akeneo.com", "https://connect.facebook.net", "https://www.clarity.ms", "https://stats.g.doubleclick.net", "https://analytics.google.com", "https://www.google.dz", "https://c.clarity.ms", "https://www.facebook.com", "https://v.clarity.ms", "https://{$domain}"],
+            'frame-src' => ["*"],
+            'font-src' => ["'self'", "data:", "https://fonts.gstatic.com", "https://{$domain}"],
+            'connect-src'=> ["'self'", "*.akeneo.com", "https://connect.facebook.net", "https://www.clarity.ms", "https://stats.g.doubleclick.net", "https://analytics.google.com", "https://www.google.dz", "wss://ff.kes.v2.scr.kaspersky-labs.com", "https://ff.kes.v2.scr.kaspersky-labs.com", "https://v.clarity.ms", "https://c.clarity.ms", "https://{$domain}", "https://static.cloudflareinsights.com"],
+        ];
+    }
+}

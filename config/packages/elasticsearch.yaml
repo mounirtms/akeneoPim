@@ -1,4 +1,3 @@
-# pimcore_elasticsearch_client:
-#     enabled: true
-#     hosts:
-#         - 'http://localhost:9200'
+# Akeneo Elasticsearch Configuration
+# Akeneo uses APP_INDEX_HOSTS env variable for Elasticsearch configuration
+# which is defined in .env and handled by vendor config services.yml
