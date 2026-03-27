@@ -1,2 +1,0 @@
-id	name	type	active
-2	products	graphql	1

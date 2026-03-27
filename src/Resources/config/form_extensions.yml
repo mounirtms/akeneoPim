@@ -1,0 +1,6 @@
+extensions:
+    pim-my-custom-form:
+        module: pimui/js/form/common/simple-view # Base module to extend
+        parent: pim-main-form # Parent form to extend
+        targetZone: container # Where to inject this form
+        position: 100 # Position in target zone

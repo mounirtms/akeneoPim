@@ -1,0 +1,10 @@
+[19-Oct-2025 11:22:45 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/akeneo/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+[19-Oct-2025 11:22:45 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/akeneo/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+[19-Oct-2025 11:24:43 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/akeneo/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+[19-Oct-2025 11:24:43 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/akeneo/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+[19-Oct-2025 11:27:46 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/akeneo/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+[19-Oct-2025 11:27:46 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/akeneo/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+[19-Oct-2025 11:55:45 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/akeneo/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+[19-Oct-2025 11:55:45 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/akeneo/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+[19-Oct-2025 11:58:43 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/akeneo/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+[19-Oct-2025 11:58:44 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/akeneo/vendor/monolog/monolog/src/Monolog/Logger.php on line 324

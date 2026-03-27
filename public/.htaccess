@@ -1,5 +1,12 @@
 RewriteEngine On
 
+# Pass Authorization header to PHP (required for API OAuth)
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Pass PHP_AUTH headers for Basic Auth
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [QSA,L]
 

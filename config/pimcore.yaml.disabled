@@ -1,0 +1,6 @@
+pimcore:
+    general:
+        instance_identifier: 'pimcore_installation'
+        timezone: 'Europe/Berlin'
+    full_page_cache:
+        enabled: false

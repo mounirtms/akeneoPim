@@ -17,12 +17,43 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        install:
+            pattern: ^/installer
+            security: false
+            anonymous: true
+
+        login:
+            pattern: ^/user/(login|reset-request|send-email|check-email)$
+            provider: chain_provider
+            anonymous: true
+
+        reset_password:
+            pattern: ^/user/reset/*
+            provider: chain_provider
+            anonymous: true
+
+        oauth_token:
+            pattern: ^/api/oauth/v1/token
+            security: false
+
+        oauth2_token:
+            pattern: ^/connect/apps/v1/oauth2/token
+            security: false
+
+        openid_public_key:
+            pattern: ^/connect/apps/v1/openid/public-key
+            security: false
+
+        api_index:
+            pattern: ^/api/rest/v1$
+            security: false
+
         api:
             pattern: ^/api
-            provider: pim_user_api
-            stateless: true
             fos_oauth: true
+            stateless: true
             access_denied_handler: pim_api.security.access_denied_handler
+            provider: pim_user_api
 
         main:
             pattern: ^/
@@ -50,6 +81,7 @@ security:
 
     access_control:
         - { path: ^/api/rest/v1/connections/.*/credentials, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/api/oauth/v1/token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/user/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/reset, roles: IS_AUTHENTICATED_ANONYMOUSLY }

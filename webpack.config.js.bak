@@ -1,0 +1,78 @@
+const path = require('path');
+
+module.exports = {
+  mode: 'production',
+  entry: {
+    main: './vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/index.js',
+    vendor: './vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/vendor.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'public/dist'),
+    filename: '[name].min.js'
+  },
+  resolve: {
+    extensions: ['.js', '.json'],
+    modules: [
+      path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/frontend/node_modules'),
+      path.resolve(__dirname, 'node_modules'),
+      path.resolve(__dirname, 'public/bundles')
+    ],
+    alias: {
+      'routes': path.resolve(__dirname, 'public/js/fos_js_routes.json'),
+      'routing': path.resolve(__dirname, 'public/js/fos_js_routes.json'),
+      'jquery': 'jquery',
+      'backbone': 'backbone',
+      'underscore': 'underscore',
+      'require-context': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/frontend/webpack/require-context.js'),
+      'pim/feature-flags': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/feature-flags.js'),
+      'pim/form-builder': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/form/builder.js'),
+      'pim/form-registry': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/form/registry.js'),
+      'pim/form-config-provider': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/form/config-provider.js'),
+      'pim/fetcher-registry': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/fetcher/registry.js'),
+      'pim/init': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/pim-init.js'),
+      'pim/init-translator': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/init-translator.js'),
+      'pim/init-layout': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/init-layout.js'),
+      'pim/page-title': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/page-title.js'),
+      'pim/date-context': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/date-context.js'),
+      'pim/user-context': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/user-context.js'),
+      'pim/template/app': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/templates/app.js'),
+      'oro/mediator': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Oro/Bundle/UIBundle/Resources/public/js/mediator.js'),
+      'oro/init-layout': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Oro/Bundle/UIBundle/Resources/public/js/init-layout.js'),
+      'pimuser/js/init-signin': path.resolve(__dirname, 'public/bundles/pimuser/js/init-signin.js'),
+      'pim/router': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/router.js'),
+      'pim/security-context': path.resolve(__dirname, 'vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/UIBundle/Resources/public/js/security-context.js')
+    },
+    fallback: {
+      "path": false,
+      "fs": false
+    }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
+      {
+        test: /\.json$/,
+        type: 'javascript/auto',
+        use: [
+          {
+            loader: 'json-loader'
+          }
+        ]
+      }
+    ]
+  },
+  externals: {
+    'jquery': 'jQuery',
+    'backbone': 'Backbone',
+    'underscore': '_'
+  }
+};

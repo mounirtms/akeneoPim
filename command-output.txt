@@ -1,9 +1,0 @@
-
-                                                     
-  Command "app:create-test-product" is not defined.  
-                                                     
-
- Do you want to run "app:create-product" instead?  (yes/no) [no]:
- > Status: 500 Internal Server Error
-Content-type: text/html; charset=UTF-8
-
