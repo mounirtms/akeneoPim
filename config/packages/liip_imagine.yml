@@ -1,0 +1,4 @@
+# LiipImagine GD driver override
+# Resolves: "Imagick not installed" RuntimeException
+liip_imagine:
+    driver: gd

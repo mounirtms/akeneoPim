@@ -1,0 +1,464 @@
+#!/usr/bin/env bash
+###############################################################################
+# Akeneo PIM - Maintenance Utilities
+# Purpose: Job management, versioning, data quality, user management, system info
+# Usage:   ./maintenance.sh [action] [options]
+###############################################################################
+
+set -euo pipefail
+
+# ── Configuration ────────────────────────────────────────────────────────────
+PIM_ROOT="/home/pim/public_html"
+PHP_BIN="php"
+ENV="prod"
+LOG_DIR="${PIM_ROOT}/var/logs"
+LOG_FILE="${LOG_DIR}/maintenance.log"
+VERBOSE=0
+
+# ── Colors ───────────────────────────────────────────────────────────────────
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
+NC='\033[0m'
+
+# ── Helper functions ─────────────────────────────────────────────────────────
+timestamp() { date '+%Y-%m-%d %H:%M:%S'; }
+log()       { echo -e "[$(timestamp)] $1" | tee -a "$LOG_FILE"; }
+info()      { log "${BLUE}[INFO]${NC} $1"; }
+success()   { log "${GREEN}[OK]${NC} $1"; }
+warn()      { log "${YELLOW}[WARN]${NC} $1"; }
+error()     { log "${RED}[ERROR]${NC} $1"; }
+separator() { echo -e "${CYAN}────────────────────────────────────────────────────────────${NC}"; }
+
+usage() {
+    cat <<EOF
+${CYAN}Akeneo PIM Maintenance Utilities${NC}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Usage: $0 <action> [options]
+
+${BOLD}Job Management:${NC}
+  list-jobs            List all registered batch jobs
+  run-job CODE         Publish a job to the execution queue
+  clean-jobs [DAYS]    Mark stuck jobs as failed (default: mark STARTED/STOPPING)
+  purge-jobs [DAYS]    Purge job executions older than N days (default: 90)
+  purge-messages [SEC] Purge messenger queue table (default: 7200s retention)
+
+${BOLD}Data Quality:${NC}
+  dqi-evaluate         Run Data Quality Insights evaluations
+  dqi-prepare          Prepare DQI evaluations
+  dqi-consolidate      Consolidate DQI dashboard rates
+  dqi-schedule         Schedule DQI periodic tasks
+  dqi-recompute        Recompute all product scores
+  dqi-init             Initialize all product evaluations
+  dqi-purge            Purge outdated DQI data
+
+${BOLD}Completeness:${NC}
+  completeness         Calculate product completeness
+  clean-attributes     Clean removed attribute values from products
+
+${BOLD}Versioning:${NC}
+  version-refresh      Refresh entity versions
+  version-purge [DAYS] Purge old versions (keeps first and last)
+
+${BOLD}User Management:${NC}
+  create-user          Create a new PIM user (interactive)
+  restore-admin        Restore admin role permissions
+  list-oauth           List OAuth API clients
+  create-oauth         Create new OAuth client for API
+
+${BOLD}System:${NC}
+  system-info          Display system information
+  check-requirements   Check PIM requirements
+  check-categories     Verify category tree structure
+  check-refs           Check reference data configuration
+  volume-report        Aggregate volume metrics
+  db-validate          Validate Doctrine schema
+
+${BOLD}Connectivity:${NC}
+  audit-update         Update connectivity audit data
+  audit-purge          Purge connectivity error counts
+  conn-purge-errors    Purge connection errors
+  conn-purge-events    Purge events API logs
+  oauth-clean          Clean expired OAuth tokens
+
+Options:
+  -e, --env ENV        Symfony environment (default: prod)
+  -v, --verbose        Verbose output
+  -h, --help           Show this help
+
+Examples:
+  $0 list-jobs
+  $0 run-job csv_product_quick_export
+  $0 purge-jobs 30
+  $0 dqi-evaluate
+  $0 completeness
+  $0 create-user
+EOF
+    exit 0
+}
+
+# ── Parse arguments ──────────────────────────────────────────────────────────
+ACTION="${1:-help}"
+shift || true
+
+EXTRA_ARG=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -e|--env)    ENV="$2"; shift 2 ;;
+        -v|--verbose) VERBOSE=1; shift ;;
+        -h|--help)   usage ;;
+        *)           EXTRA_ARG="$1"; shift ;;
+    esac
+done
+
+# ── Console helper ───────────────────────────────────────────────────────────
+run_console() {
+    local cmd="$1"
+    shift
+    local full_cmd="${PHP_BIN} ${PIM_ROOT}/bin/console ${cmd} --env=${ENV} $*"
+    if [[ $VERBOSE -eq 1 ]]; then
+        info "Running: ${full_cmd}"
+    fi
+    cd "$PIM_ROOT" && eval "$full_cmd" 2>&1
+}
+
+# ══════════════════════════════════════════════════════════════════════════════
+# JOB MANAGEMENT
+# ══════════════════════════════════════════════════════════════════════════════
+
+do_list_jobs() {
+    separator
+    info "Registered batch jobs:"
+    run_console "akeneo:batch:list-jobs"
+}
+
+do_run_job() {
+    local job_code="${EXTRA_ARG:-}"
+    if [[ -z "$job_code" ]]; then
+        error "Job code required. Usage: $0 run-job <job_code>"
+        echo ""
+        info "Available jobs:"
+        run_console "akeneo:batch:list-jobs"
+        return 1
+    fi
+    separator
+    info "Publishing job '${job_code}' to execution queue..."
+    run_console "akeneo:batch:publish-job-to-queue" "$job_code"
+    success "Job '${job_code}' published."
+}
+
+do_clean_jobs() {
+    separator
+    info "Cleaning stuck job executions (STARTED/STOPPING -> FAILED)..."
+
+    # This command requires comma-separated job codes
+    local job_codes
+    job_codes=$(run_console "akeneo:batch:list-jobs" 2>/dev/null | grep "|" | grep -v "type" | grep -v "^+" | awk -F'|' '{print $3}' | sed 's/^[[:space:]]*//' | sed 's/[[:space:]]*$//' | grep -v "^$" | paste -sd "," -)
+
+    if [[ -z "$job_codes" ]]; then
+        warn "No job codes found. Cannot clean jobs."
+        return 0
+    fi
+
+    info "Job codes: ${job_codes}"
+    run_console "akeneo:batch:clean-job-executions" "\"${job_codes}\""
+    success "Stuck jobs marked as failed."
+}
+
+do_purge_jobs() {
+    local days="${EXTRA_ARG:-90}"
+    separator
+    info "Purging job executions older than ${days} days..."
+    run_console "akeneo:batch:purge-job-execution" "--days=${days}"
+    success "Old job executions purged (>${days} days)."
+}
+
+do_purge_messages() {
+    local retention="${EXTRA_ARG:-7200}"
+    separator
+    info "Purging messenger queue (retention: ${retention}s)..."
+    run_console "akeneo:messenger:doctrine:purge-messages" "${retention}"
+    success "Messenger queue purged."
+}
+
+# ══════════════════════════════════════════════════════════════════════════════
+# DATA QUALITY INSIGHTS
+# ══════════════════════════════════════════════════════════════════════════════
+
+do_dqi_evaluate() {
+    separator
+    info "Running DQI evaluations..."
+    run_console "pim:data-quality-insights:evaluations"
+    success "DQI evaluations complete."
+}
+
+do_dqi_prepare() {
+    separator
+    info "Preparing DQI evaluations..."
+    run_console "pim:data-quality-insights:prepare-evaluations"
+    success "DQI evaluations prepared."
+}
+
+do_dqi_consolidate() {
+    separator
+    info "Consolidating DQI dashboard rates..."
+    run_console "pim:data-quality-insights:consolidate-dashboard-rates"
+    success "DQI dashboard rates consolidated."
+}
+
+do_dqi_schedule() {
+    separator
+    info "Scheduling DQI periodic tasks..."
+    run_console "pim:data-quality-insights:schedule-periodic-tasks"
+    success "DQI periodic tasks scheduled."
+}
+
+do_dqi_recompute() {
+    separator
+    info "Recomputing all product scores..."
+    run_console "pim:data-quality-insights:recompute-product-scores"
+    success "Product scores recompute job launched."
+}
+
+do_dqi_init() {
+    separator
+    info "Initializing all product evaluations..."
+    run_console "pim:data-quality-insights:initialize-products-evaluations"
+    success "Product evaluations initialized."
+}
+
+do_dqi_purge() {
+    separator
+    info "Purging outdated DQI data..."
+    run_console "pim:data-quality-insights:purge-outdated-data"
+    success "Outdated DQI data purged."
+}
+
+# ══════════════════════════════════════════════════════════════════════════════
+# COMPLETENESS
+# ══════════════════════════════════════════════════════════════════════════════
+
+do_completeness() {
+    separator
+    info "Calculating product completeness..."
+    run_console "pim:completeness:calculate"
+    success "Completeness calculation complete."
+}
+
+do_clean_attributes() {
+    separator
+    info "Cleaning removed attribute values from products..."
+    run_console "pim:product:clean-removed-attributes"
+    success "Removed attribute values cleaned."
+}
+
+# ══════════════════════════════════════════════════════════════════════════════
+# VERSIONING
+# ══════════════════════════════════════════════════════════════════════════════
+
+do_version_refresh() {
+    separator
+    info "Refreshing entity versions..."
+    run_console "pim:versioning:refresh"
+    success "Entity versions refreshed."
+}
+
+do_version_purge() {
+    local days="${EXTRA_ARG:-90}"
+    separator
+    info "Purging versions older than ${days} days (keeps first and last)..."
+    run_console "pim:versioning:purge" "--more-than-days ${days}" "--force"
+    success "Old versions purged."
+}
+
+# ══════════════════════════════════════════════════════════════════════════════
+# USER MANAGEMENT
+# ══════════════════════════════════════════════════════════════════════════════
+
+do_create_user() {
+    separator
+    info "Creating a new PIM user..."
+    run_console "pim:user:create"
+}
+
+do_restore_admin() {
+    separator
+    info "Restoring admin role permissions..."
+    run_console "pim:user:restore-admin-permissions" "-n"
+    success "Admin permissions restored."
+}
+
+do_list_oauth() {
+    separator
+    info "OAuth API clients:"
+    run_console "pim:oauth-server:list-clients"
+}
+
+do_create_oauth() {
+    separator
+    info "Creating new OAuth client..."
+    run_console "pim:oauth-server:create-client"
+}
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SYSTEM
+# ══════════════════════════════════════════════════════════════════════════════
+
+do_system_info() {
+    separator
+    info "System Information:"
+    echo ""
+
+    # PHP info
+    echo -e "  ${CYAN}PHP:${NC}           $(php -v 2>&1 | head -1)"
+    echo -e "  ${CYAN}Node:${NC}          $(node -v 2>&1)"
+    echo -e "  ${CYAN}Yarn:${NC}          $(yarn -v 2>&1)"
+    echo -e "  ${CYAN}MySQL:${NC}         $(mysql --version 2>&1 | head -1 || echo 'not available')"
+    echo -e "  ${CYAN}Environment:${NC}   ${ENV}"
+    echo -e "  ${CYAN}PIM Root:${NC}      ${PIM_ROOT}"
+    echo ""
+
+    # Try the system info command (may fail on some installs)
+    run_console "pim:system:information" 2>/dev/null || warn "  pim:system:information command failed (known issue with CREATE_TIME)."
+
+    # Disk usage
+    echo ""
+    echo -e "  ${CYAN}Disk Usage:${NC}"
+    echo -e "    PIM root:     $(du -sh "$PIM_ROOT" 2>/dev/null | awk '{print $1}')"
+    echo -e "    Cache:        $(du -sh "${PIM_ROOT}/var/cache" 2>/dev/null | awk '{print $1}')"
+    echo -e "    Logs:         $(du -sh "${PIM_ROOT}/var/logs" 2>/dev/null | awk '{print $1}')"
+    echo -e "    File storage: $(du -sh "${PIM_ROOT}/var/file_storage" 2>/dev/null | awk '{print $1}')"
+}
+
+do_check_requirements() {
+    separator
+    info "Checking PIM requirements..."
+    run_console "pim:installer:check-requirements"
+}
+
+do_check_categories() {
+    separator
+    info "Checking category tree structure..."
+    run_console "pim:categories:check-order"
+    success "Category tree check complete."
+}
+
+do_check_refs() {
+    separator
+    info "Checking reference data configuration..."
+    run_console "pim:reference-data:check"
+    success "Reference data check complete."
+}
+
+do_volume_report() {
+    separator
+    info "Aggregating volume metrics..."
+    run_console "pim:volume:aggregate"
+    success "Volume metrics aggregated."
+}
+
+do_db_validate() {
+    separator
+    info "Validating Doctrine schema..."
+    run_console "doctrine:schema:validate"
+}
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CONNECTIVITY
+# ══════════════════════════════════════════════════════════════════════════════
+
+do_audit_update() {
+    separator
+    info "Updating connectivity audit data..."
+    run_console "akeneo:connectivity-audit:update-data"
+    success "Audit data updated."
+}
+
+do_audit_purge() {
+    separator
+    info "Purging connectivity error counts..."
+    run_console "akeneo:connectivity-audit:purge-error-count"
+    success "Error counts purged."
+}
+
+do_conn_purge_errors() {
+    separator
+    info "Purging connection errors..."
+    run_console "akeneo:connectivity-connection:purge-error"
+    success "Connection errors purged."
+}
+
+do_conn_purge_events() {
+    separator
+    info "Purging events API logs..."
+    run_console "akeneo:connectivity-connection:purge-events-api-logs"
+    success "Events API logs purged."
+}
+
+do_oauth_clean() {
+    separator
+    info "Cleaning expired OAuth tokens..."
+    run_console "fos:oauth-server:clean"
+    success "Expired OAuth tokens cleaned."
+}
+
+# ── Dispatch ─────────────────────────────────────────────────────────────────
+case "$ACTION" in
+    # Job Management
+    list-jobs)         do_list_jobs ;;
+    run-job)           do_run_job ;;
+    clean-jobs)        do_clean_jobs ;;
+    purge-jobs)        do_purge_jobs ;;
+    purge-messages)    do_purge_messages ;;
+
+    # Data Quality
+    dqi-evaluate)      do_dqi_evaluate ;;
+    dqi-prepare)       do_dqi_prepare ;;
+    dqi-consolidate)   do_dqi_consolidate ;;
+    dqi-schedule)      do_dqi_schedule ;;
+    dqi-recompute)     do_dqi_recompute ;;
+    dqi-init)          do_dqi_init ;;
+    dqi-purge)         do_dqi_purge ;;
+
+    # Completeness
+    completeness)      do_completeness ;;
+    clean-attributes)  do_clean_attributes ;;
+
+    # Versioning
+    version-refresh)   do_version_refresh ;;
+    version-purge)     do_version_purge ;;
+
+    # User Management
+    create-user)       do_create_user ;;
+    restore-admin)     do_restore_admin ;;
+    list-oauth)        do_list_oauth ;;
+    create-oauth)      do_create_oauth ;;
+
+    # System
+    system-info)       do_system_info ;;
+    check-requirements) do_check_requirements ;;
+    check-categories)  do_check_categories ;;
+    check-refs)        do_check_refs ;;
+    volume-report)     do_volume_report ;;
+    db-validate)       do_db_validate ;;
+
+    # Connectivity
+    audit-update)      do_audit_update ;;
+    audit-purge)       do_audit_purge ;;
+    conn-purge-errors) do_conn_purge_errors ;;
+    conn-purge-events) do_conn_purge_events ;;
+    oauth-clean)       do_oauth_clean ;;
+
+    help|-h|--help)    usage ;;
+    *)
+        error "Unknown action: ${ACTION}"
+        usage
+        ;;
+esac
+
+exit 0

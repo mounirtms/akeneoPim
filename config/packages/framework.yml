@@ -14,6 +14,8 @@ framework:
         name: BAPID
         handler_id: ~
         cookie_samesite: 'lax'
+        cookie_secure: true
+        cookie_httponly: true
         gc_maxlifetime: 86400
     serializer:
         enabled: true
