@@ -1,0 +1,399 @@
+======================================================================
+  BETA CATALOG FULL AUDIT REPORT
+  Generated: 2026-03-28 20:16:44
+  Database: beta_dBT8x12y22
+======================================================================
+
+======================================================================
+  1. CATALOG OVERVIEW
+======================================================================
+  Total Products:    9538
+    - Simple:        8051
+    - Configurable:  1366
+    - Other:         121
+  Total Categories:  694
+  Attribute Sets:    14
+
+======================================================================
+  2. ATTRIBUTE AUDIT
+======================================================================
+
+  Attribute                 Input Type   Backend  Fill Rate  Used  
+  -----------------------------------------------------------------
+  amasty_conf_flipper_image media_image  varchar  3714/9538 (39%) OK    
+  amasty_conf_matrix        boolean      int      1003/9538 (11%) OK    
+  amasty_preorder_cart_labe hidden       varchar  2/9538 (0%) LOW   
+  amasty_preorder_note      hidden       varchar  1/9538 (0%) LOW   
+  amrolepermissions_owner   text         int      4076/9538 (43%) OK    
+  amtoolkit_canonical       text         varchar  0/9538 (0%) UNUSED
+  amtoolkit_robots          select       varchar  6657/9538 (70%) OK    
+  amxnotif_hide_alert       boolean      int      6818/9538 (71%) OK    
+  am_allow_open_amount      boolean      int      0/9538 (0%) UNUSED
+  am_available_for_wrapping boolean      int      7839/9538 (82%) OK    
+  am_email_template         select       varchar  0/9538 (0%) UNUSED
+  am_giftcard_code_image    multiselect  text     0/9538 (0%) UNUSED
+  am_giftcard_code_set      select       int      0/9538 (0%) UNUSED
+  am_giftcard_fee_enable    boolean      int      0/9538 (0%) UNUSED
+  am_giftcard_fee_type      select       int      0/9538 (0%) UNUSED
+  am_giftcard_fee_value     text         decimal  0/9538 (0%) UNUSED
+  am_giftcard_lifetime      text         int      0/9538 (0%) UNUSED
+  am_giftcard_prices        price        decimal  0/9538 (0%) UNUSED
+  am_giftcard_type          select       int      0/9538 (0%) UNUSED
+  am_giftcard_usage         select       varchar  0/9538 (0%) UNUSED
+  am_offer_item_condition   select       int      6818/9538 (71%) OK    
+  am_open_amount_max        price        decimal  0/9538 (0%) UNUSED
+  am_open_amount_min        price        decimal  0/9538 (0%) UNUSED
+  am_shipping_type          select       varchar  4360/9538 (46%) OK    
+  a_la_une                  boolean      int      9476/9538 (99%) OK    
+  best_seller               boolean      int      9528/9538 (100%) OK    
+  capacity                  select       int      430/9538 (5%) LOW   
+  category_ids              text         static   0/9538 (0%) UNUSED
+  ce_updated_at             date         datetime 0/9538 (0%) UNUSED
+  color                     select       int      4325/9538 (45%) OK    
+  cost                      price        decimal  19/9538 (0%) LOW   
+  country_of_manufacture    select       varchar  9411/9538 (99%) OK    
+  custom_design             select       varchar  0/9538 (0%) UNUSED
+  custom_design_from        date         datetime 0/9538 (0%) UNUSED
+  custom_design_to          date         datetime 0/9538 (0%) UNUSED
+  custom_layout             select       varchar  0/9538 (0%) UNUSED
+  custom_layout_update      textarea     text     0/9538 (0%) UNUSED
+  custom_layout_update_file select       varchar  0/9538 (0%) UNUSED
+  custom_stock_status       select       int      0/9538 (0%) UNUSED
+  description               textarea     text     9492/9538 (100%) OK    
+  diameter                  select       int      164/9538 (2%) LOW   
+  dimension                 select       int      279/9538 (3%) LOW   
+  en_promo                  text         varchar  0/9538 (0%) UNUSED
+  format                    select       int      0/9538 (0%) UNUSED
+  gallery                   gallery      varchar  0/9538 (0%) UNUSED
+  gender_product            select       int      373/9538 (4%) LOW   
+  gift_message_available    select       varchar  8599/9538 (90%) OK    
+  google_product_category   select       varchar  0/9538 (0%) UNUSED
+  hide_quote_buy_button     boolean      int      6781/9538 (71%) OK    
+  image                     media_image  varchar  8719/9538 (91%) OK    
+  image_label               text         varchar  3780/9538 (40%) OK    
+  links_exist               n/a          int      0/9538 (0%) UNUSED
+  links_purchased_separatel n/a          int      0/9538 (0%) UNUSED
+  links_title               n/a          varchar  0/9538 (0%) UNUSED
+  manufacturer              select       int      0/9538 (0%) UNUSED
+  media_gallery             gallery      static   0/9538 (0%) UNUSED
+  meta_description          textarea     varchar  9528/9538 (100%) OK    
+  meta_keyword              textarea     text     3628/9538 (38%) OK    
+  meta_title                text         varchar  9528/9538 (100%) OK    
+  mgs_brand                 select       int      9337/9538 (98%) OK    
+  minimal_price             price        decimal  0/9538 (0%) UNUSED
+  mptablerate_shipping_grou select       text     0/9538 (0%) UNUSED
+  msrp                      price        decimal  157/9538 (2%) LOW   
+  msrp_display_actual_price select       varchar  9527/9538 (100%) OK    
+  mwishlist_sku             text         text     0/9538 (0%) UNUSED
+  name                      text         varchar  9538/9538 (100%) OK    
+  news_from_date            date         datetime 0/9538 (0%) UNUSED
+  news_to_date              date         datetime 0/9538 (0%) UNUSED
+  old_id                    text         int      0/9538 (0%) UNUSED
+  options_container         select       varchar  9528/9538 (100%) OK    
+  page_layout               select       varchar  18/9538 (0%) LOW   
+  pattern                   select       int      1055/9538 (11%) OK    
+  price                     price        decimal  8436/9538 (88%) OK    
+  price_type                boolean      int      37/9538 (0%) LOW   
+  price_view                select       int      37/9538 (0%) LOW   
+  quantity_and_stock_status select       int      9466/9538 (99%) OK    
+  quickorder_sku            text         text     0/9538 (0%) UNUSED
+  rma_allowed               select       int      7880/9538 (83%) OK    
+  samples_title             n/a          varchar  0/9538 (0%) UNUSED
+  send_to_facebook          select       int      0/9538 (0%) UNUSED
+  shipment_type             select       int      37/9538 (0%) LOW   
+  short_description         textarea     text     9449/9538 (99%) OK    
+  simple_preselect          text         text     0/9538 (0%) UNUSED
+  size                      select       int      34/9538 (0%) LOW   
+  sku                       text         static   1001/9538 (10%) OK    
+  sku_type                  boolean      int      37/9538 (0%) LOW   
+  small_image               media_image  varchar  8719/9538 (91%) OK    
+  small_image_label         text         varchar  3779/9538 (40%) OK    
+  sm_degree_height          text         text     0/9538 (0%) UNUSED
+  sm_degree_index           text         text     0/9538 (0%) UNUSED
+  sm_degree_path            text         text     0/9538 (0%) UNUSED
+  sm_degree_width           text         text     0/9538 (0%) UNUSED
+  sm_featured               boolean      int      4389/9538 (46%) OK    
+  sm_hoverimage             media_image  varchar  8596/9538 (90%) OK    
+  sm_sizechart              text         text     0/9538 (0%) UNUSED
+  special_from_date         date         datetime 0/9538 (0%) UNUSED
+  special_price             price        decimal  250/9538 (3%) LOW   
+  special_to_date           date         datetime 0/9538 (0%) UNUSED
+  status                    select       int      9538/9538 (100%) OK    
+  swatch_image              media_image  varchar  7470/9538 (78%) OK    
+  tax_class_id              select       int      9537/9538 (100%) OK    
+  techno_ref                text         varchar  7812/9538 (82%) OK    
+  thickness                 select       int      2/9538 (0%) LOW   
+  thumbnail                 media_image  varchar  8719/9538 (91%) OK    
+  thumbnail_label           text         varchar  3779/9538 (40%) OK    
+  thumb_ar_image            media_image  varchar  3789/9538 (40%) OK    
+  thumb_degree_image        media_image  varchar  3786/9538 (40%) OK    
+  tier_price                text         decimal  0/9538 (0%) UNUSED
+  trending                  boolean      int      9528/9538 (100%) OK    
+  type                      select       int      185/9538 (2%) LOW   
+  url_key                   text         varchar  9528/9538 (100%) OK    
+  url_path                  text         varchar  43/9538 (0%) LOW   
+  visibility                select       int      9538/9538 (100%) OK    
+  weight                    weight       decimal  9058/9538 (95%) OK    
+  weight_type               boolean      int      37/9538 (0%) LOW   
+
+  SUMMARY:
+  Total Attributes: 115
+  Unused (0 values): 50
+    -> amtoolkit_canonical, am_allow_open_amount, am_email_template, am_giftcard_code_image, am_giftcard_code_set, am_giftcard_fee_enable, am_giftcard_fee_type, am_giftcard_fee_value, am_giftcard_lifetime, am_giftcard_prices, am_giftcard_type, am_giftcard_usage, am_open_amount_max, am_open_amount_min, category_ids, ce_updated_at, custom_design, custom_design_from, custom_design_to, custom_layout
+  Low Usage (<10%): 19
+    -> amasty_preorder_cart_label (0.0%)
+    -> amasty_preorder_note (0.0%)
+    -> capacity (4.5%)
+    -> cost (0.2%)
+    -> diameter (1.7%)
+    -> dimension (2.9%)
+    -> gender_product (3.9%)
+    -> msrp (1.6%)
+    -> page_layout (0.2%)
+    -> price_type (0.4%)
+  Select Attributes: 39
+  Text/Textarea Attributes: 5
+
+======================================================================
+  3. ATTRIBUTE SETS (FAMILIES) AUDIT
+======================================================================
+
+  Attribute Set        Attrs    Products   Status                                  
+  --------------------------------------------------------------------------------
+  Products             119      9538                                               
+  Maglux               38       0          EMPTY - can remove                      
+  Bags Sac             79       0          EMPTY - can remove                      
+  CALCULATRICES        118      0          EMPTY - can remove                      
+  BUREAUTIQUE          118      0          EMPTY - can remove                      
+  INFORMATIQUE         118      0          EMPTY - can remove                      
+  TABLEAU              118      0          EMPTY - can remove                      
+  madeInAlgeria        118      0          EMPTY - can remove                      
+  CAHIER               118      0          EMPTY - can remove                      
+  ECRITURE             118      0          EMPTY - can remove                      
+  Techno               81       0          EMPTY - can remove                      
+  CRAYONS              118      0          EMPTY - can remove                      
+  SCOLAIRE             38       0          EMPTY - can remove                      
+  BEAUX ARTS           118      0          EMPTY - can remove                      
+
+  Empty Sets (no products): 13
+    -> Maglux, Bags Sac, CALCULATRICES, BUREAUTIQUE, INFORMATIQUE, TABLEAU, madeInAlgeria, CAHIER, ECRITURE, Techno, CRAYONS, SCOLAIRE, BEAUX ARTS
+
+  ATTRIBUTE OVERLAP ANALYSIS:
+  CALCULATRICES   <-> BUREAUTIQUE    : 118 shared attributes
+  TABLEAU         <-> Products       : 118 shared attributes
+  INFORMATIQUE    <-> CAHIER         : 118 shared attributes
+  CALCULATRICES   <-> INFORMATIQUE   : 118 shared attributes
+  TABLEAU         <-> madeInAlgeria  : 118 shared attributes
+  INFORMATIQUE    <-> ECRITURE       : 118 shared attributes
+  CALCULATRICES   <-> TABLEAU        : 118 shared attributes
+  TABLEAU         <-> CAHIER         : 118 shared attributes
+  INFORMATIQUE    <-> CRAYONS        : 118 shared attributes
+  BEAUX ARTS      <-> Products       : 118 shared attributes
+  CALCULATRICES   <-> madeInAlgeria  : 118 shared attributes
+  TABLEAU         <-> ECRITURE       : 118 shared attributes
+  INFORMATIQUE    <-> BEAUX ARTS     : 118 shared attributes
+  BUREAUTIQUE     <-> Products       : 118 shared attributes
+  CALCULATRICES   <-> CAHIER         : 118 shared attributes
+
+======================================================================
+  4. CATEGORIES AUDIT
+======================================================================
+
+  CATEGORY DEPTH DISTRIBUTION:
+    Level 1: 8 categories
+    Level 2: 28 categories
+    Level 3: 23 categories
+    Level 4: 110 categories
+    Level 5: 533 categories
+
+  Total Categories (level 2+): 694
+  Empty Categories (no products): 40
+  Top 15 empty categories:
+    -> [L2] SAC A DOS SCOLAIRES TIGER FAMILY (id=319)
+    -> [L2] BRANDS (id=1965)
+    -> [L4] COLLES, ADHESIFS & ACCESSOIRES (id=128)
+    -> [L4] COLLES, ADHESIFS & ACCESSOIRES (id=1357)
+    -> [L4] COLLES, ADHESIFS & ACCESSOIRES (id=134)
+    -> [L4] COLLES, ADHESIFS & ACCESSOIRES (id=136)
+    -> [L5] PAPIER MILIMETRE (id=1363)
+    -> [L5] CHEMISE DOSSIER (id=296)
+    -> [L5] CHEMISE DOSSIER (id=295)
+    -> [L5] BOITE D ARCHIVES (id=919)
+    -> [L5] PAPIER CALQUE (id=1364)
+    -> [L5] SOUS-CHEMISE DOSSIER (id=425)
+    -> [L5] SOUS-CHEMISE DOSSIER (id=426)
+    -> [L5] TABLIER (id=2126)
+    -> [L5] CORBEILLE A COURRIERS (id=2148)
+
+  Oversized Categories (>500 products): 28
+    -> Tous les produits: 8432 products
+    -> Promo Rentree Univ: 2228 products
+    -> Made in Algeria: 644 products
+    -> TIGER FAMILY: 534 products
+    -> SCOLAIRE: 5304 products
+    -> MAPED: 1106 products
+    -> LOISIRS CREATIFS: 4302 products
+    -> BEAUX ARTS: 2947 products
+    -> BUREAUTIQUE & INFORMATIQUE: 674 products
+    -> BEAUX ART: 1544 products
+    -> BRICOLAGE: 782 products
+    -> ECRITURE & COLORIAGE: 563 products
+    -> TECHNIQUE: 662 products
+    -> BUREAUTIQUE & INFORMATIQUE: 907 products
+    -> ECRITURE & CORRECTION: 1196 products
+    -> COLORIAGE: 648 products
+    -> ECRITURE & CORRECTION: 1189 products
+    -> COLORIAGE: 623 products
+    -> SUPPORTS EN PAPIER: 593 products
+    -> COLORIAGE: 670 products
+    -> DESSIN ET ART GRAPHIQUE: 738 products
+    -> ECRITURE & CORRECTION: 1105 products
+    -> COLORIAGE: 671 products
+    -> BAGAGERIE & ACCESSOIRES: 585 products
+    -> FOURNITURES ET ACCESSOIRES: 695 products
+    -> FOURNITURES ET ACCESSOIRES: 725 products
+    -> DESSIN ET ART GRAPHIQUE: 751 products
+    -> SAC À DOS ECOLIER: 635 products
+
+  Duplicate Category Names: 203
+    -> 'peintures' x8 (levels: 5,5,5,5,5,5,5,5)
+    -> 'colles liquides' x7 (levels: 2,5,5,5,5,5,5)
+    -> 'ecriture & correction' x7 (levels: 4,4,4,4,4,4,4)
+    -> 'colle blanche' x6 (levels: 2,5,5,5,5,5)
+    -> 'colles gel' x6 (levels: 2,5,5,5,5,5)
+    -> 'colles, adhesifs & accessoires' x6 (levels: 4,4,4,4,4,4)
+    -> 'fournitures et accessoires' x6 (levels: 4,4,4,4,4,4)
+    -> 'colles' x6 (levels: 4,4,4,4,4,4)
+    -> 'crayons noir' x6 (levels: 5,5,5,5,5,5)
+    -> 'mines' x6 (levels: 5,5,5,5,5,5)
+    -> 'portes mines' x6 (levels: 5,5,5,5,5,5)
+    -> 'gommes' x6 (levels: 5,5,5,5,5,5)
+    -> 'adhesif double face' x5 (levels: 2,5,5,5,5)
+    -> 'colles stick' x5 (levels: 2,5,5,5,5)
+    -> 'ruban adhesif' x5 (levels: 2,5,5,5,5)
+
+======================================================================
+  5. SEO & METADATA AUDIT
+======================================================================
+
+  Field                Fill Count   Fill Rate      Priority                      
+  --------------------------------------------------------------------------------
+  meta_title           9528          99.9%  OK     Critical - page title tag     
+  meta_description     3571          37.4%  CRITICAL Critical - search snippet     
+  meta_keyword         3628          38.0%  CRITICAL Low priority - deprecated by Google
+  url_key              9528          99.9%  OK     Critical - URL slug           
+  description          9492          99.5%  OK     Important - product detail page
+  short_description    9449          99.1%  OK     Important - catalog listing   
+  name                 9538         100.0%  OK     Critical - product identification
+
+  SEO QUALITY CHECKS:
+  Meta Title Length Distribution:
+    Too Short (<30): 62 (1%)
+    Optimal (30-60): 2380 (25%)
+    Too Long (>60):  7086 (74%)
+  Meta Description Length Distribution:
+    Too Short (<70):   1707 (48%)
+    Optimal (70-160):  1721 (48%)
+    Too Long (>160):   140 (4%)
+  Duplicate Meta Titles: 6 groups
+  Duplicate URL Keys: 1 groups
+
+======================================================================
+  6. SELECT ATTRIBUTE OPTIONS AUDIT
+======================================================================
+
+  Attribute            Options      Status                                  
+  ---------------------------------------------------------------------------
+  color                631          HIGH - consider cleanup/consolidation   
+  pattern              465          HIGH - consider cleanup/consolidation   
+  dimension            160          moderate                                
+  capacity             134          moderate                                
+  type                 95           moderate                                
+  diameter             69           moderate                                
+  mgs_brand            37                                                   
+  size                 17                                                   
+  custom_stock_status  5                                                    
+  thickness            2                                                    
+  gender_product       2                                                    
+
+  UNUSED OPTION CHECK (top attrs):
+    color: 3 unused options
+    pattern: 8 unused options
+    dimension: 7 unused options
+    capacity: 2 unused options
+
+======================================================================
+  7. DATA QUALITY AUDIT
+======================================================================
+  Products without name: 0
+  Products without price: 1102
+  Products without categories: 95
+  Disabled products: 249 (3%)
+
+  Visibility Distribution:
+    Search: 12
+    Catalog & Search: 9526
+
+======================================================================
+  8. AKENEO PIM COMPARISON
+======================================================================
+
+                            Magento Beta    Akeneo PIM      Gap       
+  ----------------------------------------------------------------------
+  Products                  9538            1               -9537     
+  Categories                694             0               -694      
+  Attr Sets / Families      14              6               -8        
+  Attributes (user-defined) 115             33              -82       
+
+  Akeneo Families:
+    -> Fine Arts Supplies: 27 attributes
+    -> Bags & Accessories: 28 attributes
+    -> Notebooks & Cahiers: 27 attributes
+    -> Office Supplies: 27 attributes
+    -> General Stationery: 32 attributes
+    -> Writing Instruments: 28 attributes
+
+  Akeneo Attribute Groups:
+    -> Description: 2 attributes
+    -> Dimensions & Weight: 6 attributes
+    -> E-commerce & Visibility: 7 attributes
+    -> Identification: 6 attributes
+    -> Marketing & Branding: 2 attributes
+    -> Media & Images: 0 attributes
+    -> Other: 0 attributes
+    -> Pricing: 3 attributes
+    -> SEO & Metadata: 3 attributes
+    -> Technical Specifications: 4 attributes
+
+======================================================================
+  9. OPTIMIZATION RECOMMENDATIONS
+======================================================================
+
+  PRIORITY 1 - IMMEDIATE FIXES:
+  [SEO] Fill 'meta_description' for all products (currently 37%)
+  [DATA] Fix 1102 products without prices
+  [SEO] Fix 1 duplicate URL keys
+
+  PRIORITY 2 - ATTRIBUTE OPTIMIZATION:
+  [ATTRS] Remove 50 unused attributes:
+    -> amtoolkit_canonical, am_allow_open_amount, am_email_template, am_giftcard_code_image, am_giftcard_code_set, am_giftcard_fee_enable, am_giftcard_fee_type, am_giftcard_fee_value, am_giftcard_lifetime, am_giftcard_prices
+  [SETS] Remove 13 empty attribute sets:
+    -> Maglux, Bags Sac, CALCULATRICES, BUREAUTIQUE, INFORMATIQUE, TABLEAU, madeInAlgeria, CAHIER, ECRITURE, Techno, CRAYONS, SCOLAIRE, BEAUX ARTS
+
+  PRIORITY 3 - CATEGORY OPTIMIZATION:
+  [CATS] Clean up 40 empty categories
+  [CATS] Consolidate 203 duplicate category name groups
+
+  PRIORITY 4 - SEO OPTIMIZATION (via Akeneo):
+  [SEO] Auto-generate meta_title from product name + brand
+  [SEO] Auto-generate meta_description from short_description
+  [SEO] Ensure all URL keys are unique and SEO-friendly
+  [SEO] Set up Akeneo rules for enforcing SEO field completion
+
+  PRIORITY 5 - LATER PHASE AKENEO ENHANCEMENTS:
+  [PIM] Configure data quality rules for completeness scoring
+  [PIM] Set up product models for configurable products
+  [PIM] Implement multi-locale support (en_US, fr_FR, ar_DZ)
+  [PIM] Configure channel-specific attribute requirements
+  [PIM] Enable Data Quality Insights for automated scoring
+  [PIM] Set up import/export profiles for automated sync

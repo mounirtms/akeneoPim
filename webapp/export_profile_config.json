@@ -1,0 +1,49 @@
+{
+  "code": "csv_product_full_export",
+  "type": "export",
+  "configuration": {
+    "storage": {
+      "type": "local",
+      "file_path": "/home/pim/public_html/var/file_storage/export/%job_label%_%datetime%.csv"
+    },
+    "delimiter": ";",
+    "enclosure": "\"",
+    "withHeader": true,
+    "with_media": false,
+    "filePath": "/tmp/export/products_%datetime%.csv",
+    "filters": {
+      "data": [
+        {
+          "field": "enabled",
+          "operator": "=",
+          "value": true
+        },
+        {
+          "field": "completeness",
+          "operator": ">=",
+          "value": 50,
+          "context": {
+            "locales": [
+              "en_US",
+              "fr_FR",
+              "ar_DZ"
+            ],
+            "channel": "ecommerce"
+          }
+        }
+      ],
+      "structure": {
+        "scope": "ecommerce",
+        "locales": [
+          "en_US",
+          "fr_FR",
+          "ar_DZ"
+        ]
+      }
+    }
+  },
+  "labels": {
+    "en_US": "CSV Full Product Export for Magento",
+    "fr_FR": "Export CSV complet des produits pour Magento"
+  }
+}

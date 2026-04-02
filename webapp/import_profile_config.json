@@ -1,0 +1,23 @@
+{
+  "code": "csv_product_magento_import",
+  "type": "import",
+  "configuration": {
+    "storage": {
+      "type": "local",
+      "file_path": "/home/pim/public_html/var/file_storage/import/magento_products.csv"
+    },
+    "delimiter": ";",
+    "enclosure": "\"",
+    "enabled": true,
+    "categoriesColumn": "categories",
+    "familyColumn": "family",
+    "groupsColumn": "groups",
+    "enabledComparison": true,
+    "decimalSeparator": ".",
+    "dateFormat": "yyyy-MM-dd"
+  },
+  "labels": {
+    "en_US": "CSV Product Import from Magento",
+    "fr_FR": "Import CSV des produits depuis Magento"
+  }
+}
