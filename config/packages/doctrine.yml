@@ -16,6 +16,10 @@ doctrine:
                         collate: utf8mb4_unicode_ci
                         row_format: DYNAMIC
                 server_version: '8.0'
+                options:
+                    !php/const PDO::ATTR_TIMEOUT: 30
+                    !php/const PDO::ATTR_PERSISTENT: false
+                    !php/const PDO::MYSQL_ATTR_INIT_COMMAND: 'SET wait_timeout=28800, interactive_timeout=28800'
                 mapping_types:
                     json: string
         types:
