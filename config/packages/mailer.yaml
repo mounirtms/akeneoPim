@@ -1,0 +1,18 @@
+# Akeneo PIM Mailer Configuration
+framework:
+    mailer:
+        enabled: true
+        dsn: '%env(MAILER_URL)%'
+        headers:
+            From: 'noreply@technostationery.com'
+        message_bus: false
+
+# Symfony Mailer Configuration
+# MAILER_URL should be set in .env file
+# Format examples:
+# - Gmail: smtp://username%40gmail.com:app-password@smtp.gmail.com:587?encryption=tls
+# - SendGrid: smtp://apikey:YOUR_API_KEY@smtp.sendgrid.net:587
+# - Office365: smtp://user%40domain.com:password@smtp.office365.com:587
+# - Generic SMTP: smtp://username:password@smtp.example.com:587?encryption=tls
+
+# Note: For production, get real SMTP credentials and update MAILER_URL in .env
