@@ -22,15 +22,9 @@ security:
             security: false
             anonymous: true
 
-        login:
-            pattern: ^/user/(login|reset-request|send-email|check-email)$
-            provider: chain_provider
-            anonymous: true
-
-        reset_password:
-            pattern: ^/user/reset/*
-            provider: chain_provider
-            anonymous: true
+        user_area:
+            pattern: ^/user
+            security: false
 
         oauth_token:
             pattern: ^/api/oauth/v1/token
@@ -80,11 +74,11 @@ security:
             switch_user: { role: ROLE_ALLOWED_TO_SWITCH, parameter: su }
 
     access_control:
+        - { path: ^/user/(login|reset-request|send-email|check-email), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/reset, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/rest/v1/connections/.*/credentials, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         - { path: ^/api/oauth/v1/token, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/user/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user/reset, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
 
     role_hierarchy:
