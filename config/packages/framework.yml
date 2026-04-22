@@ -4,6 +4,7 @@ framework:
     secret: '%env(APP_SECRET)%'
     router:
         strict_requirements: '%env(APP_DEBUG)%'
+        default_uri: '%env(AKENEO_PIM_URL)%'
     form: true
     csrf_protection: true
     validation:

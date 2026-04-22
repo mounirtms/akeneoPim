@@ -1,0 +1,37 @@
+{% extends '@PimUser/Mail/layout.html.twig' %}
+
+{% block title %}Password Reset Request - Akeneo PIM{% endblock %}
+
+{% block content %}
+<h2>Hello, {{ user.username }}!</h2>
+
+<p>We received a request to reset your password for your Akeneo PIM account at <strong>Techno Stationery</strong>.</p>
+
+<p>To reset your password, please click the button below:</p>
+
+{% set resetUrl = url('pim_user_reset_reset', { token: user.confirmationToken }) %}
+{% if not (resetUrl starts with 'http://') and not (resetUrl starts with 'https://') %}
+    {% set resetUrl = 'https://pim.technostationery.com' ~ resetUrl %}
+{% endif %}
+
+<div style="text-align: center;">
+    <a href="{{ resetUrl }}" class="button">Reset My Password</a>
+</div>
+
+<div class="alternative-link">
+    <p><strong>Button not working?</strong> Copy and paste this link into your browser:</p>
+    <p><a href="{{ resetUrl }}">{{ resetUrl }}</a></p>
+</div>
+
+<div class="warning-box">
+    <p><strong>⏱️ Important:</strong> This password reset link will expire in <strong>24 hours</strong> for security reasons.</p>
+    <p><strong>🔒 Security tip:</strong> If you didn't request this password reset, please ignore this email or contact your system administrator immediately.</p>
+</div>
+
+<p style="margin-top: 30px;">If you have any questions or need assistance, please contact your system administrator at <a href="mailto:webmaster@techno-dz.com">webmaster@techno-dz.com</a>.</p>
+
+<p style="margin-top: 20px;">
+    Best regards,<br>
+    <strong>The Techno Stationery PIM Team</strong>
+</p>
+{% endblock %}
