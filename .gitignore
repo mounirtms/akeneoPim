@@ -87,3 +87,5 @@ front-packages/akeneo-design-system/lib
 
 /public/
 /logs/.git-credentials
+.git-credentials
+error_log
