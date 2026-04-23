@@ -1,0 +1,152 @@
+========================================
+IMAGE IMPORT - LIVE EXECUTION
+========================================
+Started: 2026-04-23 23:34:31
+
+Loading existing file keys...
+Existing records: 99
+
+Analyzing file_key pattern from existing records...
+  Pattern: c/6/7/5/c6750e0edbbfc4286861f1a08437e63f48ed79b4_techno.png
+    Filename: techno.png
+    Hash: 353f023493b32126a91d06574585f3de2fbdf2e2
+
+  Pattern: b/b/bb591bed1e6575e106a62c0556584a58/protege-documents-osmose-a4-80-pochettes-pp-trans-turquoise-elba-400105190.jpg
+    Filename: protege-documents-osmose-a4-80-pochettes-pp-trans-turquoise-elba-400105190.jpg
+    Hash: bb591bed1e6575e106a62c0556584a58
+
+  Pattern: 3/3/330b44bb8c7f6704c23bdbb82bbcf1c9/037400-01_imresizer.jpg
+    Filename: 037400-01_imresizer.jpg
+    Hash: 330b44bb8c7f6704c23bdbb82bbcf1c9
+
+  Pattern: 4/7/47caf3a8731a61caf35c2989acbd8ca6/37585_uhu_wood_30g_blister_hhr_en_es_ar_fr_549x1024px_j_nr-15048.gif
+    Filename: 37585_uhu_wood_30g_blister_hhr_en_es_ar_fr_549x1024px_j_nr-15048.gif
+    Hash: 47caf3a8731a61caf35c2989acbd8ca6
+
+  Pattern: b/5/b576ee575688652abe1f4e2d091acbfe/037400-01_imresizer.jpg
+    Filename: 037400-01_imresizer.jpg
+    Hash: b576ee575688652abe1f4e2d091acbfe
+
+Scanning catalog directory...
+Files to process: 2000
+
+Starting import in batches of 500...
+===========================================
+
+Batch 1: Processing 500 files...
+  ✓ Batch complete: 500 imported, 0 skipped, 0 errors
+  ⏱ Time: 0.82s (610 files/sec)
+  📊 Progress: 25.0%
+
+Batch 2: Processing 500 files...
+  ✓ Batch complete: 1000 imported, 0 skipped, 0 errors
+  ⏱ Time: 0.10s (4,896 files/sec)
+  📊 Progress: 50.0%
+
+Batch 3: Processing 500 files...
+  ✓ Batch complete: 1500 imported, 0 skipped, 0 errors
+  ⏱ Time: 0.13s (3,772 files/sec)
+  📊 Progress: 75.0%
+
+Batch 4: Processing 500 files...
+  ✓ Batch complete: 2000 imported, 0 skipped, 0 errors
+  ⏱ Time: 0.14s (3,552 files/sec)
+  📊 Progress: 100.0%
+
+
+========================================
+IMPORT COMPLETE
+========================================
+Finished: 2026-04-23 23:34:33
+
+Summary:
+  ✓ Successfully imported: 2000 files
+  ⊘ Skipped (duplicates): 0 files
+  ✗ Errors: 0 files
+  📦 Total processed: 2000 files
+
+Verifying import...
+  Database records after import: 2099
+  New records added: 2000
+
+✓ Import successful! Images should now be available in Akeneo.
+
+Next steps:
+1. Clear Akeneo cache: php bin/console cache:clear --env=prod
+2. Check dashboard: https://pim.technostationery.com/dashboard.php
+3. Verify images in Akeneo UI
+4. Run this script again to import remaining files
+
+========================================
+IMAGE IMPORT - LIVE EXECUTION
+========================================
+Started: 2026-04-23 23:34:38
+
+Loading existing file keys...
+Existing records: 2099
+
+Analyzing file_key pattern from existing records...
+  Pattern: c/6/7/5/c6750e0edbbfc4286861f1a08437e63f48ed79b4_techno.png
+    Filename: techno.png
+    Hash: 353f023493b32126a91d06574585f3de2fbdf2e2
+
+  Pattern: b/b/bb591bed1e6575e106a62c0556584a58/protege-documents-osmose-a4-80-pochettes-pp-trans-turquoise-elba-400105190.jpg
+    Filename: protege-documents-osmose-a4-80-pochettes-pp-trans-turquoise-elba-400105190.jpg
+    Hash: bb591bed1e6575e106a62c0556584a58
+
+  Pattern: 3/3/330b44bb8c7f6704c23bdbb82bbcf1c9/037400-01_imresizer.jpg
+    Filename: 037400-01_imresizer.jpg
+    Hash: 330b44bb8c7f6704c23bdbb82bbcf1c9
+
+  Pattern: 4/7/47caf3a8731a61caf35c2989acbd8ca6/37585_uhu_wood_30g_blister_hhr_en_es_ar_fr_549x1024px_j_nr-15048.gif
+    Filename: 37585_uhu_wood_30g_blister_hhr_en_es_ar_fr_549x1024px_j_nr-15048.gif
+    Hash: 47caf3a8731a61caf35c2989acbd8ca6
+
+  Pattern: b/5/b576ee575688652abe1f4e2d091acbfe/037400-01_imresizer.jpg
+    Filename: 037400-01_imresizer.jpg
+    Hash: b576ee575688652abe1f4e2d091acbfe
+
+Scanning catalog directory...
+Files to process: 2000
+
+Starting import in batches of 500...
+===========================================
+
+Batch 1: Processing 500 files...
+  ✓ Batch complete: 0 imported, 500 skipped, 0 errors
+  ⏱ Time: 0.00s (822,090 files/sec)
+  📊 Progress: 25.0%
+
+Batch 2: Processing 500 files...
+  ✓ Batch complete: 0 imported, 1000 skipped, 0 errors
+  ⏱ Time: 0.00s (654,338 files/sec)
+  📊 Progress: 50.0%
+
+Batch 3: Processing 500 files...
+  ✓ Batch complete: 0 imported, 1500 skipped, 0 errors
+  ⏱ Time: 0.00s (716,485 files/sec)
+  📊 Progress: 75.0%
+
+Batch 4: Processing 500 files...
+  ✓ Batch complete: 0 imported, 2000 skipped, 0 errors
+  ⏱ Time: 0.00s (688,720 files/sec)
+  📊 Progress: 100.0%
+
+
+========================================
+IMPORT COMPLETE
+========================================
+Finished: 2026-04-23 23:34:39
+
+Summary:
+  ✓ Successfully imported: 0 files
+  ⊘ Skipped (duplicates): 2000 files
+  ✗ Errors: 0 files
+  📦 Total processed: 2000 files
+
+Verifying import...
+  Database records after import: 2099
+  New records added: 0
+
+⚠ No new files imported. All files may already be in database.
+
