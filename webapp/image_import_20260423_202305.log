@@ -1,0 +1,9 @@
+[2026-04-23 20:Apr:rd] Starting image import for 5000 products
+[2026-04-23 20:Apr:rd] ✓ Database connected
+[2026-04-23 20:Apr:rd] Step 1: Getting 5000 products...
+[2026-04-23 20:Apr:rd] ✓ Retrieved 5000 products
+[2026-04-23 20:Apr:rd] Step 2: Building image index...
+[2026-04-23 20:Apr:rd] ✓ Indexed 16216 images
+[2026-04-23 20:Apr:rd] Step 3: Matching and importing images...
+[2026-04-23 20:Apr:rd] ✓ Import complete
+[2026-04-23 20:Apr:rd] Import session complete!
