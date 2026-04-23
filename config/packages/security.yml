@@ -22,8 +22,8 @@ security:
             security: false
             anonymous: true
 
-        user_area:
-            pattern: ^/user
+        user_password_reset:
+            pattern: ^/user/(reset-request|send-email|check-email|reset)
             security: false
 
         oauth_token:
