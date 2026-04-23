@@ -1,0 +1,79 @@
+==========================================
+SETTING UP AUTOMATED BACKUPS
+==========================================
+
+✓ Backup script created: /home/pim/backups/daily_backup.sh
+
+✓ Cron job already exists
+
+Current cron jobs:
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin:/opt/cpanel/ea-php82/root/usr/bin
+
+
+*/20 * * * * /opt/cpanel/ea-php82/root/usr/bin/php /home/technadminy7/public_html/bin/magento cron:run >> /home/technadminy7/public_html/var/log/magento.cron.log 2>&1
+
+5-59/20 * * * * /opt/cpanel/ea-php82/root/usr/bin/php /home/technadminy7/public_html/bin/magento setup:cron:run >> /home/technadminy7/public_html/var/log/magento.setup.log 2>&1
+
+
+* * * * * /usr/bin/flock -n /tmp/pim_messenger.lock -c "cd /home/pim/public_html && php /home/pim/public_html/bin/console messenger:consume ui_job import_export_job data_maintenance_job --env=prod --time-limit=300 --limit=10 >> /home/pim/public_html/var/logs/cron_messenger.log 2>&1"
+
+
+0 1 * * * cd /home/pim/public_html && php /home/pim/public_html/bin/console akeneo:batch:purge-job-execution --days=90 --env=prod >> /home/pim/public_html/var/logs/cron_purge_jobs.log 2>&1 && php /home/pim/public_html/bin/console pim:versioning:purge --more-than-days 90 --force --env=prod >> /home/pim/public_html/var/logs/cron_versioning.log 2>&1
+
+0 2 * * * cd /home/pim/public_html && php /home/pim/public_html/bin/console pim:data-quality-insights:prepare-evaluations --env=prod >> /home/pim/public_html/var/logs/cron_dqi.log 2>&1 && php /home/pim/public_html/bin/console pim:data-quality-insights:evaluations --env=prod >> /home/pim/public_html/var/logs/cron_dqi.log 2>&1
+
+0 3 * * * /home/technadminy7/public_html/scripts/master_cleanup.sh >> /home/technadminy7/public_html/var/log/master_cleanup.log 2>&1
+
+30 3 * * * /home/technadminy7/public_html/scripts/smart_log_cleanup.sh >> /home/technadminy7/public_html/var/log/log_cleanup.log 2>&1
+
+0 4 * * * cd /home/pim/public_html && php /home/pim/public_html/bin/console akeneo:connectivity-audit:purge-error-count --env=prod >> /home/pim/public_html/var/logs/cron_audit.log 2>&1
+
+30 4 * * * /home/technadminy7/public_html/scripts/nightly_cache_flush.sh >> /home/technadminy7/public_html/var/log/cache_flush.log 2>&1
+
+0 5 * * * cd /home/pim/public_html && php /home/pim/public_html/bin/console fos:oauth-server:clean --env=prod >> /home/pim/public_html/var/logs/cron_oauth.log 2>&1
+
+
+0 1 * * 0 cd /home/pim/public_html && php /home/pim/public_html/bin/console pim:completeness:calculate --env=prod >> /home/pim/public_html/var/logs/cron_completeness.log 2>&1 && php /home/pim/public_html/bin/console pim:product:index --all --env=prod >> /home/pim/public_html/var/logs/cron_reindex.log 2>&1
+
+0 3 * * 0 cd /home/pim/public_html && php /home/pim/public_html/bin/console pim:versioning:refresh --env=prod >> /home/pim/public_html/var/logs/cron_versioning.log 2>&1
+
+0 5 * * 0 /home/technadminy7/public_html/scripts/performance_tuning.sh >> /home/technadminy7/public_html/var/log/performance_tuning.log 2>&1
+
+*/3 * * * * /home/beta/public_html/scripts/cleanup_stuck_crons.sh >> /dev/null 2>&1
+
+0 2 * * * /home/pim/daily_backup.sh > /home/pim/backup.log 2>&1
+
+=== Running Test Backup ===
+=== Akeneo PIM Backup Started: Thu Apr 23 23:42:09 CET 2026 ===
+Backing up database...
+✓ Database backup completed: /home/pim/backups/akeneo_backup_20260423_234209.sql.gz (901K)
+Backing up file storage...
+✓ Files backup completed: /home/pim/backups/akeneo_files_20260423_234209.tar.gz (2.1G)
+Cleaning up old backups (retention: 7 days)...
+✓ Old backups removed
+
+=== Backup Summary ===
+Database backup: /home/pim/backups/akeneo_backup_20260423_234209.sql.gz
+Files backup: /home/pim/backups/akeneo_files_20260423_234209.tar.gz
+Total backups in directory: 7
+Disk usage: 4.1G
+
+=== Backup Completed: Thu Apr 23 23:43:34 CET 2026 ===
+
+==========================================
+AUTOMATED BACKUPS CONFIGURED
+==========================================
+
+Backup Configuration:
+- Schedule: Daily at 2:00 AM
+- Retention: 7 days
+- Location: /home/pim/backups/
+- Log file: /home/pim/backups/backup.log
+
+Manual backup command:
+  bash /home/pim/backups/daily_backup.sh
+
+View backup log:
+  tail -f /home/pim/backups/backup.log
+
