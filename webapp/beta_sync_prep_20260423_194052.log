@@ -1,0 +1,12 @@
+[0;34mℹ️[0m  Started at: Thu Apr 23 19:40:52 CET 2026
+[0;34mℹ️[0m  Log file: /home/pim/public_html/webapp/beta_sync_prep_20260423_194052.log
+[0;34mℹ️[0m  Report file: /home/pim/public_html/webapp/beta_sync_readiness_20260423_194052.md
+[0;35m▶[0m  PHASE 1: DATA VALIDATION AND CLEANUP
+[0;34mℹ️[0m  Running data validation checks...
+[0;32m✅[0m All products have valid SKUs
+[0;32m✅[0m No duplicate SKUs found
+[0;32m✅[0m All products have families assigned
+[0;34mℹ️[0m  Cleaning up orphaned category links...
+[0;32m✅[0m Data validation complete
+[0;35m▶[0m  PHASE 2: SKU CONSISTENCY VERIFICATION
+[0;34mℹ️[0m  Comparing SKUs between Akeneo and Magento...
