@@ -1,0 +1,57 @@
+==========================================
+MAGENTO CONNECTOR CHECK
+==========================================
+Date: Fri Apr 24 00:16:01 CET 2026
+
+=== 1. Magento Installation Check ===
+✓ Magento installation found
+  Version: Magento CLI 2.4.6
+  Path: /home/technadminy7/public_html
+
+=== 2. Magento Database Check ===
+metric	count
+Products in Magento	9538
+Categories	703
+Attributes	116
+✓ Magento database accessible
+
+=== 3. Akeneo Connector Packages ===
+akeneo/oauth-server-bundle          2.0.0    Fork of Symfony2 OAuth Server ...
+akeneo/pim-community-dev            6.0.113  Akeneo PIM, the future of cata...
+
+=== 4. Akeneo Export Profiles ===
+code	label	job_name	connector
+csv_product_grid_context_quick_export	CSV product quick export grid context	csv_product_grid_context_quick_export	Akeneo CSV Connector
+csv_product_quick_export	CSV product quick export	csv_product_quick_export	Akeneo CSV Connector
+xlsx_product_grid_context_quick_export	XLSX product quick export grid context	xlsx_product_grid_context_quick_export	Akeneo XLSX Connector
+xlsx_product_quick_export	XLSX product quick export	xlsx_product_quick_export	Akeneo XLSX Connector
+
+=== 5. API Connections ===
+
+=== 6. Network Connectivity Test ===
+Testing connection to Magento frontend...
+Magento URL: https://beta.technostationery.com
+Response: HTTP 500
+⚠ Magento response: 500
+
+=== 7. Magento REST API Check ===
+API Endpoint: https://beta.technostationery.com/rest/V1/products
+Response: HTTP 401
+✓ API endpoint exists (401 = authentication required)
+
+==========================================
+RECOMMENDATIONS
+==========================================
+
+Current Status:
+- Akeneo PIM: ✓ Online (9,538 products)
+- Magento: ⚠ Check status
+- Connector: ⚠ Not found
+
+Next Steps for Magento Sync:
+1. Install Akeneo Magento connector (if missing)
+2. Configure API credentials in Akeneo
+3. Create export profile for Magento
+4. Test with 20 sample products
+5. Monitor sync logs and validate data
+

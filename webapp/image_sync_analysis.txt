@@ -1,0 +1,103 @@
+==========================================
+IMAGE SYNC GAP ANALYSIS
+==========================================
+Date: Fri Apr 24 00:15:57 CET 2026
+
+=== 1. Physical File Analysis ===
+Total files in catalog: 11561
+
+Sample file names (first 10):
+/home/pim/public_html/var/file_storage/catalog/3/3/3/0/3330edb39c40c9c2cfd709516aac3fc69f13220e_1140633545.jpg
+/home/pim/public_html/var/file_storage/catalog/3/3/3/b/333b9073157bd68e7019ce170f95f84870005e4c_cahier_pique_calligraphe_en_pp_48p_17x22_cm_90g_seyes_vert.jpg
+/home/pim/public_html/var/file_storage/catalog/3/3/0/6/3306931aaa595680534b930f75e0533f9488a71b_1140659857.jpg
+/home/pim/public_html/var/file_storage/catalog/3/3/0/a/330acacecf50eec55b131919d03b80dce1ff4de7_1140634070.jpg
+/home/pim/public_html/var/file_storage/catalog/3/3/0/1/3301bc0d50f39111eab3378541bccbd67d7bd01e_1140659971.jpg
+/home/pim/public_html/var/file_storage/catalog/3/3/9/5/33954f16f12a6c9d42de658dd51fabab4744f88f_1140632334.jpg
+/home/pim/public_html/var/file_storage/catalog/3/3/2/c/332cd18ceb5072cfc15719dcf0997b3ef12bb63a_1140612168.jpg
+/home/pim/public_html/var/file_storage/catalog/3/3/6/0/33605f56232e3e968fa560ea0f6bfb531b024bab_1140616551.jpg
+/home/pim/public_html/var/file_storage/catalog/3/3/6/7/3367d33559ffa01fda7fa9446c17b485685d960b_1140619812.jpg
+/home/pim/public_html/var/file_storage/catalog/3/3/a/1/33a1124bcc9e3ee26a2752d2277337f14e255788_231.jpg
+
+File types distribution:
+  10667 jpg
+    848 png
+     40 jpeg
+      5 gif
+      1 webp
+
+Total storage size:
+2.2G	/home/pim/public_html/var/file_storage/catalog
+
+=== 2. Database Records Analysis ===
+metric	count
+Total file records	99
+Sample file keys	0/0/009b58651fc5223a14555c39ed0d4ce0/cahier-piqure-17cmx22cm-96-pages-90g-orange-conquerant--ref-100105476--020396-0_1.jpg
+Sample file keys	0/2/02928687076e52c44c19f39c359bd84f/peinture-acrylique-75ml-jaune-azo-fonce-talens-art-creation--ref-3511270m-0.jpg
+Sample file keys	0/4/04cd99d68c66ef58c86c93f9f6a89dc2/peinture_vitrea_160_brillant_flacon_de_45ml_ambre_pebeo_ref_111017.jpg
+Sample file keys	0/5/053cb59c6fbfc0eba84b1157632b85d5/crayons-de-couleur-classic-boite-de-60-pcs-faber-castell-ref-111260.jpg
+info	code	attribute_type
+Image attributes	image	pim_catalog_image
+Image attributes	amasty_conf_flipper_image	pim_catalog_image
+Image attributes	small_image	pim_catalog_image
+Image attributes	sm_hoverimage	pim_catalog_image
+Image attributes	swatch_image	pim_catalog_image
+Image attributes	thumbnail	pim_catalog_image
+Image attributes	thumb_ar_image	pim_catalog_image
+Image attributes	thumb_degree_image	pim_catalog_image
+info	count
+Products with image data in raw_values	18
+
+=== 3. Gap Analysis ===
+Physical files: 11561
+Database records: 99
+Gap: 11462 files (99% of total)
+
+=== 4. Magento Image Catalog Check ===
+Magento product images: 371427
+Magento storage size: 10G
+
+Sample Magento images (first 10):
+/home/technadminy7/public_html/pub/media/catalog/product/3/3/339410_pr_open_3x4_imresizer.webp
+/home/technadminy7/public_html/pub/media/catalog/product/3/3/339410_pr_open_3x4_imresizer.jpg
+/home/technadminy7/public_html/pub/media/catalog/product/3/9/392510_pa_cb_none_imresizer.webp
+/home/technadminy7/public_html/pub/media/catalog/product/3/9/392510_pa_cb_none_imresizer.jpg
+/home/technadminy7/public_html/pub/media/catalog/product/3/6/36-optimized.webp
+/home/technadminy7/public_html/pub/media/catalog/product/3/6/36psc.png
+/home/technadminy7/public_html/pub/media/catalog/product/3/6/36psc-optimized.webp
+/home/technadminy7/public_html/pub/media/catalog/product/3/6/36.webp
+/home/technadminy7/public_html/pub/media/catalog/product/3/6/36-optimized.png
+/home/technadminy7/public_html/pub/media/catalog/product/3/6/36psc-optimized.png
+
+=== 5. Import Strategy Recommendations ===
+
+CRITICAL FINDINGS:
+1. Large sync gap: 11462 files not registered in Akeneo database
+2. Files exist physically but are not linked to products
+3. This prevents products from displaying images in Akeneo UI
+
+RECOMMENDED ACTIONS:
+
+Option A: Direct Database Import (Fastest)
+  - Parse existing file_storage directory structure
+  - Insert records into akeneo_file_storage_file_info
+  - Update product raw_values with image references
+  - Estimated time: 2-3 hours
+  - Risk: Medium (requires careful validation)
+
+Option B: API Import via Akeneo Commands (Safest)
+  - Use Akeneo import commands to process images
+  - Create CSV mapping file: SKU, image_path
+  - Run: php bin/console akeneo:batch:job
+  - Estimated time: 6-8 hours
+  - Risk: Low (uses official import mechanism)
+
+Option C: Hybrid Approach (Recommended)
+  - Analyze existing patterns to create mapping
+  - Import in batches of 1000 images
+  - Validate after each batch
+  - Estimated time: 4-5 hours
+  - Risk: Low-Medium (controlled batches)
+
+==========================================
+ANALYSIS COMPLETE
+==========================================
