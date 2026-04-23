@@ -1,0 +1,11 @@
+This action will entirely reset the following indexes in the PIM:
+akeneo_pim_product_and_product_model
+akeneo_pim_connection_error
+akeneo_pim_events_api_debug
+Are you sure you want to proceed ? (Y/n)Resetting the index: akeneo_pim_product_and_product_model
+Resetting the index: akeneo_pim_connection_error
+Resetting the index: akeneo_pim_events_api_debug
+
+All the indexes have been successfully reset!
+
+You can now use the command pim:product:index and pim:product-model:index to start re-indexing your product and product models.
