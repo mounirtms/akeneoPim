@@ -1,0 +1,53 @@
+# Akeneo PIM Email Notification Configuration
+# Event-based email notifications for webmaster and marketing teams
+
+parameters:
+    # Email Recipients
+    notification_email_webmaster: 'webmaster@techno-dz.com'
+    notification_email_marketing: 'marketing@techno-dz.com'
+    notification_email_from: 'noreply@technostationery.com'
+    
+    # Notification Settings
+    notification_enabled: true
+    notification_batch_size: 50
+    notification_send_interval: 300  # 5 minutes
+
+# Framework Mailer (must be enabled)
+framework:
+    mailer:
+        enabled: true
+        dsn: '%env(MAILER_URL)%'
+        headers:
+            From: '%notification_email_from%'
+
+# Monolog Configuration - Email Handlers
+monolog:
+    handlers:
+        # Critical errors to webmaster
+        webmaster_email:
+            type: native_mailer
+            from_email: '%notification_email_from%'
+            to_email: ['%notification_email_webmaster%']
+            subject: '[AKENEO CRITICAL] System Error on PIM'
+            level: error
+            formatter: monolog.formatter.html
+            content_type: text/html
+            
+        # Daily digest to webmaster
+        webmaster_daily:
+            type: fingers_crossed
+            action_level: warning
+            handler: buffered_webmaster
+            
+        buffered_webmaster:
+            type: buffer
+            handler: webmaster_email_buffered
+            
+        webmaster_email_buffered:
+            type: native_mailer
+            from_email: '%notification_email_from%'
+            to_email: ['%notification_email_webmaster%']
+            subject: '[AKENEO] Daily System Report'
+            level: warning
+            formatter: monolog.formatter.html
+            content_type: text/html
