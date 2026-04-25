@@ -56,8 +56,15 @@ class Kernel extends BaseKernel
 
     protected function configureRoutes(RouteCollectionBuilder $routes): void
     {
+        // Load vendor (CE) routes first
         $this->loadRoutesConfiguration($routes, $this->getProjectDir() . '/vendor/akeneo/pim-community-dev/config', $this->environment);
+        // Load project routes AFTER vendor - project routes override vendor routes with same name
         $this->loadRoutesConfiguration($routes, $this->getProjectDir() . '/config', $this->environment);
+        // Also explicitly load project routes.yaml if it exists (supports .yaml extension)
+        $projectRoutesYaml = $this->getProjectDir() . '/config/routes.yaml';
+        if (is_file($projectRoutesYaml)) {
+            $routes->import($projectRoutesYaml, '/');
+        }
     }
 
     /**
