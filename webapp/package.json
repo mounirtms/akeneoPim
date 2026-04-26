@@ -1,15 +1,28 @@
 {
-  "name": "webapp",
+  "name": "akeneo-pim-tests",
   "version": "1.0.0",
-  "main": "spa_builder_test.js",
+  "description": "Comprehensive testing suite for Akeneo PIM",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "test:auth": "playwright test tests/akeneo.spec.js --grep Authentication",
+    "test:assets": "playwright test tests/akeneo.spec.js --grep 'Asset Loading'",
+    "test:ui-render": "playwright test tests/akeneo.spec.js --grep 'UI Rendering'",
+    "quick-test": "node test_new_user.js"
   },
-  "keywords": [],
+  "keywords": [
+    "akeneo",
+    "pim",
+    "testing",
+    "playwright"
+  ],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "playwright": "^1.52.0"
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "playwright": "^1.40.0"
   }
 }
