@@ -103,6 +103,18 @@ else
     bin/console assets:install public --symlink --env=prod || echo "⚠️  Assets install failed"
 fi
 
+# Copy extensions.json if it exists in web/js but not in public/js
+if [ -f "web/js/extensions.json" ]; then
+    echo "Copying extensions.json to public/js..."
+    mkdir -p public/js
+    cp web/js/extensions.json public/js/
+    echo "✅ extensions.json copied"
+elif [ -f "public/js/extensions.json" ]; then
+    echo "✅ extensions.json already present"
+else
+    echo "⚠️  No extensions.json found"
+fi
+
 # Step 6: Clear and Warm Cache
 print_step "6️⃣  CACHE MANAGEMENT"
 echo "Clearing production cache..."
@@ -170,6 +182,14 @@ if [ -f "public/js/require-paths.js" ]; then
     echo "✅ public/js/require-paths.js exists"
 else
     echo "⚠️  public/js/require-paths.js missing"
+fi
+
+# Check extensions.json
+if [ -f "public/js/extensions.json" ]; then
+    echo "✅ public/js/extensions.json exists"
+else
+    echo "❌ public/js/extensions.json MISSING!"
+    ERRORS=$((ERRORS + 1))
 fi
 
 # Step 9: Summary
