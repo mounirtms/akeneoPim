@@ -1,0 +1,8 @@
+[23-Apr-2026 20:01:34 UTC] PHP Fatal error:  Uncaught Error: Class "Symfony\Component\Mailer\Transport" not found in /home/pim/public_html/webapp/test_email.php:37
+Stack trace:
+#0 {main}
+  thrown in /home/pim/public_html/webapp/test_email.php on line 37
+[23-Apr-2026 20:14:00 UTC] PHP Fatal error:  Uncaught Error: Undefined constant PDO::ERRMODE in /home/pim/public_html/webapp/image_import_phase1_analysis.php:28
+Stack trace:
+#0 {main}
+  thrown in /home/pim/public_html/webapp/image_import_phase1_analysis.php on line 28
