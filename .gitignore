@@ -12,6 +12,10 @@
 /public/log
 /public/app_local.php
 
+/webapp/node_modules/
+/webapp/test-results/
+
+
 # Symfony cache and logs
 /var/*
 !var/SymfonyRequirements.php
