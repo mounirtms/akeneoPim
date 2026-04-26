@@ -1,0 +1,108 @@
+{
+  "_links": {
+    "self": {
+      "href": "https://pim.technostationery.com/api/rest/v1/locales?page=1&limit=10&with_count=false"
+    },
+    "first": {
+      "href": "https://pim.technostationery.com/api/rest/v1/locales?page=1&limit=10&with_count=false"
+    },
+    "next": {
+      "href": "https://pim.technostationery.com/api/rest/v1/locales?page=2&limit=10&with_count=false"
+    }
+  },
+  "current_page": 1,
+  "_embedded": {
+    "items": [
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/locales/af_ZA"
+          }
+        },
+        "code": "af_ZA",
+        "enabled": false
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/locales/am_ET"
+          }
+        },
+        "code": "am_ET",
+        "enabled": false
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/locales/ar_AE"
+          }
+        },
+        "code": "ar_AE",
+        "enabled": false
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/locales/ar_BH"
+          }
+        },
+        "code": "ar_BH",
+        "enabled": false
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/locales/ar_DZ"
+          }
+        },
+        "code": "ar_DZ",
+        "enabled": false
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/locales/ar_EG"
+          }
+        },
+        "code": "ar_EG",
+        "enabled": false
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/locales/ar_IQ"
+          }
+        },
+        "code": "ar_IQ",
+        "enabled": false
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/locales/ar_JO"
+          }
+        },
+        "code": "ar_JO",
+        "enabled": false
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/locales/ar_KW"
+          }
+        },
+        "code": "ar_KW",
+        "enabled": false
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/locales/ar_LB"
+          }
+        },
+        "code": "ar_LB",
+        "enabled": false
+      }
+    ]
+  }
+}

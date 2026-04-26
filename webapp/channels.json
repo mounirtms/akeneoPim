@@ -1,0 +1,80 @@
+{
+  "_links": {
+    "self": {
+      "href": "https://pim.technostationery.com/api/rest/v1/channels?page=1&limit=10&with_count=false"
+    },
+    "first": {
+      "href": "https://pim.technostationery.com/api/rest/v1/channels?page=1&limit=10&with_count=false"
+    }
+  },
+  "current_page": 1,
+  "_embedded": {
+    "items": [
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/channels/cegid_erp"
+          }
+        },
+        "code": "cegid_erp",
+        "currencies": [
+          "EUR",
+          "DZD"
+        ],
+        "locales": [
+          "en_US",
+          "fr_FR"
+        ],
+        "category_tree": "master",
+        "conversion_units": {},
+        "labels": {
+          "en_US": "Cegid ERP",
+          "fr_FR": "Cegid ERP"
+        }
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/channels/ecommerce"
+          }
+        },
+        "code": "ecommerce",
+        "currencies": [
+          "DZD"
+        ],
+        "locales": [
+          "en_US",
+          "fr_FR"
+        ],
+        "category_tree": "master",
+        "conversion_units": {},
+        "labels": {
+          "en_US": "Ecommerce",
+          "fr_FR": "Ecommerce"
+        }
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/channels/jde_edwards"
+          }
+        },
+        "code": "jde_edwards",
+        "currencies": [
+          "EUR",
+          "DZD"
+        ],
+        "locales": [
+          "en_US",
+          "fr_FR"
+        ],
+        "category_tree": "master",
+        "conversion_units": {},
+        "labels": {
+          "en_US": "JDE Edwards ERP",
+          "fr_FR": "JDE Edwards ERP"
+        }
+      }
+    ]
+  }
+}

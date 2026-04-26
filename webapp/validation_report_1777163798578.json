@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-04-26T00:36:38.314Z",
+  "totalProducts": 50,
+  "validProducts": 50,
+  "invalidProducts": 0,
+  "warnings": [],
+  "errors": [],
+  "summary": {
+    "withImages": 49,
+    "withPrice": 0,
+    "withName": 0,
+    "withDescription": 0,
+    "withCategories": 50,
+    "enabled": 50,
+    "disabled": 0,
+    "averageAttributes": "2.9",
+    "families": {
+      "products": 50
+    }
+  }
+}
