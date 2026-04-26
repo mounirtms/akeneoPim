@@ -40,10 +40,14 @@
 
 #### API Connector Account
 - **Username**: apiconnector
+- **Password**: `ApiConnector@2026!Secure`
 - **Email**: apiconnector@pim.technostationery.com
 - **Role**: API/Integration user
-- **Status**: Active (enabled=1)
-- **Purpose**: API integrations and connectors
+- **Status**: Active ✅ (Tested 2026-04-26)
+- **OAuth Client ID**: 2_ml5f52erhggg0s484gckwgs4kg8gwc4c48ksgko4gkgos4k48
+- **OAuth Secret**: 1zniz3jfcmcgg0wckskw8k4c80ccwc4o0cokcwk80cs8cs0cs4
+- **Purpose**: Magento connector, API integrations, external system integrations
+- **Last Password Update**: 2026-04-26
 
 #### Team Members
 1. **Mounir Abderrahmani**
@@ -80,20 +84,34 @@
 ## 🛒 Magento 2 Beta Instance
 
 ### System Access
-- **URL**: [TO BE CONFIRMED - Beta URL needed]
-- **Admin Panel**: [Beta URL]/admin
+- **URL**: https://beta.technostationery.com/
+- **Admin Panel**: https://beta.technostationery.com/admin
 - **Environment**: Beta/Testing
+- **Status**: ✅ Accessible and Configured
+
+### Server Details
+- **Location**: /home/beta/public_html/
+- **Database Host**: localhost
+- **Database Name**: beta_magento
+- **Database User**: beta_db
+- **Database Password**: beta_db
 
 ### Admin Account (Bot User)
 - **Username**: bot
 - **Password**: @dM1n$#@2o25B0T
 - **Role**: Administrator
 - **Purpose**: Automated integration and sync operations
+- **Status**: Active
 
-### Notes
-- This is the bot/admin user for automated catalog sync
-- Credentials confirmed by user
-- Will be used for Akeneo-Magento connector
+### Akeneo Connector Configuration
+- **Module**: Akeneo_Connector ✅ Enabled
+- **API Client Version**: 11.3
+- **Base URL**: https://pim.technostationery.com/
+- **API Username**: apiconnector
+- **Client ID**: 2_ml5f52erhggg0s484gckwgs4kg8gwc4c48ksgko4gkgos4k48
+- **Pagination Size**: 100
+- **Admin Channel**: ecommerce
+- **Website Mapping**: ecommerce → base
 
 ---
 
