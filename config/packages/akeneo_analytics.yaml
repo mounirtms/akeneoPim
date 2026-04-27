@@ -1,0 +1,3 @@
+# Disable analytics to prevent 500 errors
+akeneo_analytics:
+    is_enabled: false
