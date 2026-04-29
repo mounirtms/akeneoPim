@@ -1,0 +1,132 @@
+=== COMPREHENSIVE POST-VARNISH AUDIT ===
+Date: 2026-04-29 10:59:32
+Server Time: Wed Apr 29 11:59:32 CET 2026
+
+================================================================================
+
+📊 1. SYSTEM HEALTH OVERVIEW
+--------------------------------------------------------------------------------
+System Uptime: 11:59:32 up 23 days, 13:25,  3 users,  load average: 12.30, 7.67, 7.47
+Load Average: 12.3, 7.67, 7.47
+Disk Free: 1.4T
+Memory Usage: 15Gi/31Gi
+
+🗄️  2. AKENEO DATABASE HEALTH
+--------------------------------------------------------------------------------
+  Products:                     9,538
+  Attributes:                   112
+  Families:                     18
+  Channels:                     3
+  Completeness Tracked:         9,538
+
+Data Quality:
+  Price Coverage:  9538/9538 (100%)
+  Weight Coverage: 9058/9538 (95%)
+  Image Coverage:  8777/9538 (92%)
+
+🛒 3. MAGENTO DATABASE HEALTH
+--------------------------------------------------------------------------------
+  Total Products: 9,538
+  Product-Category Relations: 46,190
+  Products with Stock: 8,135
+  Sync Status: ✅ Perfect
+
+📋 4. PRODUCTION LOG ANALYSIS (Last 24 Hours)
+--------------------------------------------------------------------------------
+  ERROR entries: 125
+  CRITICAL entries: 17
+  WARNING entries: 833
+
+Recent Error Types:
+      5 10] request.ERROR
+      4 58] request.ERROR
+      4 42] request.ERROR
+      4 37] request.ERROR
+      4 19] request.ERROR
+
+🚀 5. VARNISH CACHE STATUS
+--------------------------------------------------------------------------------
+  Varnish Service: active
+
+Cache Statistics:
+MAIN.cache_hit                      2284         0.92 Cache hits
+MAIN.cache_hit_grace                   0         0.00 Cache grace hits
+MAIN.cache_hitpass                     0         0.00 Cache hits for pass.
+MAIN.cache_hitmiss                     0         0.00 Cache hits for miss.
+MAIN.cache_miss                     3329         1.34 Cache misses
+
+🌐 6. WEB SERVER STATUS
+--------------------------------------------------------------------------------
+  Nginx: inactive
+not_running
+  Apache: active
+
+Listening Ports:
+
+443
+80
+8080
+
+🐘 7. PHP-FPM STATUS
+--------------------------------------------------------------------------------
+  PHP Version: PHP 8.3.29 (cli) (built: Dec 18 2025 21:02:59) (NTS)
+  PHP-FPM Service: inactive
+  Active PHP-FPM Pools: 16
+
+💾 8. CACHE SYSTEM STATUS
+--------------------------------------------------------------------------------
+  Akeneo Cache Size: 63M
+  Last Cache Clear: 2026-04-29
+
+🔍 9. ELASTICSEARCH STATUS
+--------------------------------------------------------------------------------
+  Elasticsearch Service: active
+  Cluster Health: yellow
+
+✅ 10. COMPLETENESS STATUS
+--------------------------------------------------------------------------------
+  CEGID_ERP (en_US): 0% complete (0/9538) | Avg missing: 4.00
+  CEGID_ERP (fr_FR): 0% complete (0/9538) | Avg missing: 4.00
+  ECOMMERCE (en_US): 100% complete (9538/9538) | Avg missing: 0.00
+  ECOMMERCE (fr_FR): 100% complete (9538/9538) | Avg missing: 0.00
+  JDE_EDWARDS (en_US): 0% complete (0/9538) | Avg missing: 4.00
+  JDE_EDWARDS (fr_FR): 0% complete (0/9538) | Avg missing: 4.00
+
+📝 11. RECENT CHANGES (Last 2 Days)
+--------------------------------------------------------------------------------
+9285f1f test: Comprehensive Playwright stability testing - Platform approved for production
+b1e1701 docs: Add Executive Summary and Quick Status Dashboard
+6894d93 feat: Comprehensive Next Phase Audit - Color, Complex Values & Production Optimization
+3864fb6 docs: Add final comprehensive summary of all audit work
+ece65b9 docs: Add comprehensive progress tracking & roadmap
+391b788 docs: Add comprehensive audit session summary
+e7d1918 feat: Add comprehensive production audit & critical findings
+bada9b3 docs: Add comprehensive Akeneo-Magento beta readiness report
+80142f9 docs: Add comprehensive final session report
+f3b1118 feat: Critical issues resolution & Phase 1.2/2.2 implementation
+
+🔐 12. CRITICAL FILE PERMISSIONS
+--------------------------------------------------------------------------------
+  Cache directory: 0775 (pim)
+  Logs directory: 0775 (pim)
+  Media directory: 2777 (pim)
+
+🔍 13. MISSING ISSUES DETECTION
+--------------------------------------------------------------------------------
+  ⚠️  Favicon 404 errors: 75 occurrences
+
+⚡ 14. PERFORMANCE METRICS
+--------------------------------------------------------------------------------
+  Database Queries per Second: 1231.85
+  Slow Queries (last run): 0
+
+💡 15. RECOMMENDATIONS
+--------------------------------------------------------------------------------
+  1. P2: Add favicon.ico to public directory
+  2. P1: Add images for 761 products
+  3. P1: Add weight for 480 products
+  4. P1: High system load detected: 12.3
+
+================================================================================
+Audit completed at 2026-04-29 10:59:37
+Report saved to: logs/post_varnish_audit_20260429_105937.log
