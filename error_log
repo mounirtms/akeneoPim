@@ -183,3 +183,5 @@ Stack trace:
 [29-Apr-2026 14:04:16 UTC] PHP Deprecated:  Use of "static" in callables is deprecated in /home/pim/public_html/vendor/webmozart/assert/src/Assert.php on line 1955
 [29-Apr-2026 14:04:16 UTC] PHP Deprecated:  Creation of dynamic property Oro\Bundle\DataGridBundle\Twig\MetadataExtension::$metadataParser is deprecated in /home/pim/public_html/vendor/akeneo/pim-community-dev/src/Oro/Bundle/DataGridBundle/Twig/MetadataExtension.php on line 15
 [29-Apr-2026 14:04:16 UTC] PHP Deprecated:  Creation of dynamic property Akeneo\Platform\Bundle\InstallerBundle\Command\CheckRequirementsCommand::$rootDirectory is deprecated in /home/pim/public_html/vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/InstallerBundle/Command/CheckRequirementsCommand.php on line 38
+[29-Apr-2026 19:20:42 UTC] PHP Deprecated:  Use of "static" in callables is deprecated in /home/pim/public_html/vendor/webmozart/assert/src/Assert.php on line 1955
+[29-Apr-2026 19:20:42 UTC] PHP Deprecated:  Use of "static" in callables is deprecated in /home/pim/public_html/vendor/webmozart/assert/src/Assert.php on line 1955
