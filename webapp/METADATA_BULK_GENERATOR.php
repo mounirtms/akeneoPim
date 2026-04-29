@@ -22,7 +22,7 @@ $config = [
 ];
 
 // Database connection
-$db = new mysqli('127.0.0.1', 'root', 'YourNewStrongPassword', 'akeneo_pim', 3307);
+$db = new mysqli('127.0.0.1', 'akeneo_pim', 'akeneo_pim', 'akeneo_pim', 3307);
 if ($db->connect_error) {
     die("Database connection failed: " . $db->connect_error);
 }

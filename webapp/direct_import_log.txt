@@ -1,0 +1,26 @@
+=== DIRECT AKENEO IMAGE IMPORT ===
+Date: 2026-04-29 16:23:39
+
+✓ Database connected
+
+Step 1: Processing CSV file...
+✓ Processed 9401 rows, kept 9399 valid records
+✓ Fixed CSV: /home/pim/public_html/webapp/image_import_fixed.csv
+
+Step 2: Getting attribute information...
+✓ Found attribute 'image' with ID: 13
+✓ Found attribute 'thumbnail' with ID: 117
+✓ Found attribute 'small_image' with ID: 101
+
+Step 3: Importing images to products...
+
+❌ Transaction failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'akeneo_pim.pim_catalog_product_value' doesn't exist
+
+=== IMPORT COMPLETE ===
+Total processed: 1
+Successfully updated: 0
+Products not found: 0
+Failed: 1
+Success rate: 0%
+
+Step 4: Verifying import...
