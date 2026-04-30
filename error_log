@@ -229,3 +229,28 @@ Stack trace:
 #0 Command line code(8): PDO->query('\n    SELECT \n  ...')
 #1 {main}
   thrown in Command line code on line 8
+[30-Apr-2026 16:58:07 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'c.label' in 'field list' in /home/pim/public_html/webapp/CATALOG_HEALTH_MONITOR.php:113
+Stack trace:
+#0 /home/pim/public_html/webapp/CATALOG_HEALTH_MONITOR.php(113): PDO->query('\n    SELECT c.c...')
+#1 {main}
+  thrown in /home/pim/public_html/webapp/CATALOG_HEALTH_MONITOR.php on line 113
+[30-Apr-2026 17:24:26 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'enabled' in 'where clause' in /home/pim/public_html/webapp/full_data_sync_check.php:25
+Stack trace:
+#0 /home/pim/public_html/webapp/full_data_sync_check.php(25): PDO->query('SELECT COUNT(*)...')
+#1 {main}
+  thrown in /home/pim/public_html/webapp/full_data_sync_check.php on line 25
+[30-Apr-2026 17:26:37 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000]: General error: 1364 Field 'created' doesn't have a default value in /home/pim/public_html/webapp/phase2_reorganize_groups.php:157
+Stack trace:
+#0 /home/pim/public_html/webapp/phase2_reorganize_groups.php(157): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/pim/public_html/webapp/phase2_reorganize_groups.php on line 157
+[30-Apr-2026 17:27:52 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'enabled' in 'where clause' in /home/pim/public_html/webapp/full_data_sync_check.php:25
+Stack trace:
+#0 /home/pim/public_html/webapp/full_data_sync_check.php(25): PDO->query('SELECT COUNT(*)...')
+#1 {main}
+  thrown in /home/pim/public_html/webapp/full_data_sync_check.php on line 25
+[30-Apr-2026 17:28:58 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'c.label' in 'field list' in /home/pim/public_html/webapp/CATALOG_HEALTH_MONITOR.php:113
+Stack trace:
+#0 /home/pim/public_html/webapp/CATALOG_HEALTH_MONITOR.php(113): PDO->query('\n    SELECT c.c...')
+#1 {main}
+  thrown in /home/pim/public_html/webapp/CATALOG_HEALTH_MONITOR.php on line 113

@@ -89,3 +89,6 @@ front-packages/akeneo-design-system/lib
 /logs/.git-credentials
 .git-credentials
 error_log
+.aider*
+.env
+.env

@@ -1,0 +1,72 @@
+[2026-04-30 23:13:57] Phase 1: Terminating malware processes...
+[2026-04-30 23:13:57] Found 245 nuclear.x86 processes
+[2026-04-30 23:13:59] ✅ Killed 245 processes
+[2026-04-30 23:13:59] Remaining: 0 processes
+[2026-04-30 23:13:59] Phase 2: Searching for malware files...
+[2026-04-30 23:13:59] Scanning /tmp...
+[2026-04-30 23:13:59] Scanning /var/tmp...
+[2026-04-30 23:13:59] Scanning /dev/shm...
+[2026-04-30 23:13:59] Scanning /root...
+[2026-04-30 23:14:54] Scanning /home...
+[2026-04-30 23:15:07] Checking for suspicious executables...
+[2026-04-30 23:15:07] Phase 3: Blocking mining pool connections...
+[2026-04-30 23:15:07] ✅ Blocked port 5221
+[2026-04-30 23:15:07] ✅ Blocked port 3333
+[2026-04-30 23:15:07] ✅ Blocked port 4444
+[2026-04-30 23:15:07] ✅ Blocked port 8080
+[2026-04-30 23:15:07] ✅ Blocked port 14444
+[2026-04-30 23:15:07] ✅ Blocked port 45560
+[2026-04-30 23:15:08] ✅ Firewall rules updated
+[2026-04-30 23:15:08] Phase 4: Checking persistence mechanisms...
+[2026-04-30 23:15:08] Checking cron jobs...
+[2026-04-30 23:15:08] ✅ Cron clean
+[2026-04-30 23:15:08] Checking startup scripts...
+[2026-04-30 23:15:08] ✅ rc.local clean
+[2026-04-30 23:15:08] Checking systemd services...
+[2026-04-30 23:15:10] ✅ Systemd clean
+[2026-04-30 23:15:10] Phase 5: Terminating credential scanner...
+[2026-04-30 23:15:10] ✅ No credential scanner found
+[2026-04-30 23:15:10] Phase 6: System cleanup...
+[2026-04-30 23:15:10] ✅ Temp directories cleaned
+[2026-04-30 23:15:10] Phase 7: Final verification...
+[2026-04-30 23:15:10] Final process count: 0
+[2026-04-30 23:15:10] Current load average: 7.65,
+MALWARE REMOVAL REPORT
+======================
+Date: Thu Apr 30 23:15:10 CET 2026
+Duration: Script completed
+
+STATISTICS:
+- Processes found: 245
+- Processes killed: 245
+- Processes remaining: 0
+- Current load: 7.65,
+
+ACTIONS TAKEN:
+✅ Terminated 245 nuclear.x86 processes
+✅ Searched and removed malware files
+✅ Blocked mining pool ports: 5221 3333 4444 8080 14444 45560
+✅ Firewall rules updated
+✅ Persistence mechanisms checked
+✅ Credential scanner terminated
+✅ Temp directories cleaned
+
+RECOMMENDATION:
+✅ SUCCESS: All malware processes removed
+→ Monitor system for 24 hours for re-infection
+→ Run full security scan with: clamscan -r /
+→ Review access logs for entry point
+
+NEXT STEPS:
+1. Monitor system load: watch -n 5 'uptime'
+2. Check for new processes: watch -n 5 'ps aux --sort=-%cpu | head -20'
+3. Review logs: tail -f /var/log/messages
+4. Run security scan: clamscan -r /home /root
+5. Update all software: yum update -y
+6. Change all passwords
+7. Review SSH access logs
+8. Enable fail2ban
+9. Install intrusion detection (AIDE)
+10. Set up monitoring alerts
+
+Full log: /home/pim/public_html/webapp/logs/emergency_cleanup_20260430_231357.log

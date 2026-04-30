@@ -24,16 +24,16 @@ $config = [
     // Akeneo PIM Configuration
     'akeneo' => [
         'base_url' => 'https://pim.technostationery.com',
-        'client_id' => '4_2o7xez37350kkck0cgo4w4o4o4ogsgcg0oowgsg4s8g4g84c8k',
-        'client_secret' => '19zy0z10644kw0gwgs0oc4w4cgss88c0g00844ssso8g0c4og8',
-        'username' => 'testadmin',
-        'password' => 'testpass',
+        'client_id' => '2_ml5f52erhggg0s484gckwgs4kg8gwc4c48ksgko4gkgos4k48',
+        'client_secret' => '1zniz3jfcmcgg0wckskw8k4c80ccwc4o0cokcwk80cs8cs0cs4',
+        'username' => 'apiconnector',
+        'password' => 'ApiConnector@2026!Secure',
     ],
     
     // Magento 2 Configuration (TO BE FILLED)
     'magento' => [
-        'base_url' => '', // e.g., 'https://beta.magento.technostationery.com'
-        'api_token' => '', // To be generated after providing URL
+        'base_url' => 'https://beta.technostationery.com',
+        'api_token' => 'eyJraWQiOiIxIiwiYWxnIjoiSFMyNTYifQ.eyJ1aWQiOjU5LCJ1dHlwaWQiOjIsImlhdCI6MTc3NzU2OTU5NywiZXhwIjoxNzc3NjU1OTk3fQ.fK7m0ccu8YCjVGbgZop8LJtu-dmGEHWfEHg-Rq4tkcY',
         'admin_user' => 'bot',
         'admin_password' => '@dM1n$#@2o25B0T',
     ],
@@ -326,6 +326,7 @@ class AkeneoMagentoSync {
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Authorization: Bearer ' . $this->config['magento']['api_token'],
             'Content-Type: application/json',
+            'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
         ]);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);

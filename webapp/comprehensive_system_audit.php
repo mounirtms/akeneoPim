@@ -135,12 +135,12 @@ try {
     $attributeCount = $pdo->query('SELECT COUNT(*) FROM pim_catalog_attribute')->fetchColumn();
     echo "Attributes: $attributeCount\n";
     $results['attributes'] = $attributeCount;
-    
     // Attribute types
-    $attrTypes = $pdo->query('SELECT type, COUNT(*) as cnt FROM pim_catalog_attribute GROUP BY type ORDER BY cnt DESC')->fetchAll(PDO::FETCH_ASSOC);
-    echo "  - Types:\n";
+    $attrTypes = $pdo->query('SELECT attribute_type, COUNT(*) as cnt FROM pim_catalog_attribute GROUP BY attribute_type ORDER BY cnt DESC')->fetchAll(PDO::FETCH_ASSOC);
+
+    echo "  - Type Distribution:\n";
     foreach ($attrTypes as $type) {
-        echo "    • {$type['type']}: {$type['cnt']}\n";
+        echo "    • {$type['attribute_type']}: {$type['cnt']}\n";
     }
     
     // 2.4 Attribute Groups
@@ -172,10 +172,10 @@ try {
     $results['channels'] = $channelCount;
     
     // List channels
-    $channels = $pdo->query('SELECT code, label FROM pim_catalog_channel')->fetchAll(PDO::FETCH_ASSOC);
+    $channels = $pdo->query('SELECT code FROM pim_catalog_channel')->fetchAll(PDO::FETCH_ASSOC);
     echo "  - Configured:\n";
     foreach ($channels as $ch) {
-        echo "    • {$ch['code']}: {$ch['label']}\n";
+        echo "    • {$ch['code']}\n";
     }
     
     // 2.7 Locales

@@ -151,8 +151,8 @@ foreach ($group_definitions as $code => $definition) {
     if (!$group_id) {
         // Create new group
         $insert = $pdo->prepare("
-            INSERT INTO pim_catalog_attribute_group (code, sort_order)
-            VALUES (?, 0)
+            INSERT INTO pim_catalog_attribute_group (code, sort_order, created, updated)
+            VALUES (?, 0, NOW(), NOW())
         ");
         $insert->execute([$code]);
         $group_id = $pdo->lastInsertId();
