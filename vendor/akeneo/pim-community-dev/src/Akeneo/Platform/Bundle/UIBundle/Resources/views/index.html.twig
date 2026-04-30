@@ -28,6 +28,9 @@
         <script type="text/javascript" src="/js/require-paths.js?v={{ cache_buster }}"></script>
         <script type="text/javascript" src="/js/require-config.js?v={{ cache_buster }}"></script>
 
+        {# Bootstrap JS - required for popover, tooltip, etc. on global jQuery #}
+        <script type="text/javascript" src="/bundles/pimui/lib/bootstrap/js/bootstrap.js?v={{ cache_buster }}"></script>
+
         {# Webpack bundles - rebuilt with esModule:false fix for raw-loader #}
                 {# Process polyfill for Node.js globals used in webpack bundles #}
         <script type="text/javascript" src="/dist/process-polyfill.js?v={{ cache_buster }}"></script>

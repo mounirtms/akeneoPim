@@ -1,0 +1,132 @@
+=====================================================================
+REAL DATA QUALITY ASSESSMENT - Akeneo PIM
+Date: 2026-04-23 10:04:34
+=====================================================================
+
+1. DATABASE CONFIGURATION
+-------------------------
+Database settings from .env:
+APP_DATABASE_HOST=127.0.0.1
+APP_DATABASE_NAME=akeneo_pim
+APP_DATABASE_PASSWORD=akeneo_pim
+APP_DATABASE_PORT=3307
+APP_DATABASE_USER=akeneo_pim
+
+2. PARAMETERS CONFIGURATION
+---------------------------
+parameters.yml not found!
+
+3. ELASTICSEARCH STATUS
+-----------------------
+All Indices:
+index                                                                     docs.count store.size health
+.geoip_databases                                                                  41     75.7mb green
+techno_stationery_product_1_v54                                                 8217     12.4mb yellow
+akeneo_pim_connection_error_ed9e2510-3b43-4af3-b3b8-a8722dc0efba                   0       227b yellow
+akeneo_pim_product_and_product_model_d7b81f90-adf6-4754-abab-c7773aa8a798          0       227b yellow
+akeneo_pim_events_api_debug_d6354d15-f1c8-493b-ad33-d8c32c4b9a24                   0       227b yellow
+
+Checking techno_stationery_product_1_v54 index:
+{"count":8217,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}
+Sample product from techno_stationery index:
+{
+    "took": 1,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 8217,
+            "relation": "eq"
+        },
+        "max_score": 1.0,
+        "hits": [
+            {
+                "_index": "techno_stationery_product_1_v54",
+                "_type": "document",
+                "_id": "2566",
+                "_score": 1.0,
+                "_source": {
+                    "store_id": "1",
+                    "sku": "1140619022",
+                    "status": 1,
+                    "status_value": "Activ\u00e9",
+                    "visibility": 4,
+                    "tax_class_id": 2,
+                    "tax_class_id_value": "Taxable Goods",
+                    "mgs_brand": 401,
+                    "mgs_brand_value": "TECHNO",
+                    "a_la_une": 0,
+                    "a_la_une_value": "Non",
+                    "name": "classeur a 4 anneaux personnalisable 16 mm \"techno\" ref: 5159",
+                    "url_key": "classeur-a-4-anneaux-personnalisable-16-mm-techno-ref-5159",
+                    "description": "Classeur personnalisable pour vos documents de format A4. Classeur 4 anneaux en forme D pour un alignement parfait des feuilles. Dos 16 mm . Nombre de feuilles: 160.",
+                    "short_description": "Une solution rapide et qualitative pour pr\u00e9senter un dossier personnalis\u00e9.",
+                    "category_ids": [
+                        2,
+                        3,
+                        8,
+                        21,
+                        326,
+                        328,
+                        330,
+                        331,
+                        2374
+                    ],
+                    "position_category_2": "0",
+                    "name_category_2": "Default Category",
+                    "position_category_3": "0",
+                    "name_category_3": "Tous les produits",
+                    "position_category_8": "3026",
+                    "name_category_8": "SCOLAIRE",
+                    "position_category_21": "10000",
+                    "name_category_21": "BUREAUTIQUE & INFORMATIQUE",
+                    "position_category_326": "0",
+                    "name_category_326": "CLASSEMENT & ARCHIVAGE",
+                    "position_category_328": "0",
+                    "name_category_328": "CLASSEMENT & ARCHIVAGE",
+                    "position_category_330": "0",
+                    "name_category_330": "CLASSEURS",
+                    "position_category_331": "0",
+                    "name_category_331": "CLASSEURS",
+                    "position_category_2374": "-462",
+                    "name_category_2374": "Promo Rentree Univ",
+                    "price_0_1": "1380.000000",
+                    "price_1_1": "1380.000000",
+                    "price_2_1": "1380.000000",
+                    "price_3_1": "1380.000000",
+                    "price_4_1": "1380.000000",
+                    "is_out_of_stock": 1
+                }
+            }
+        ]
+    }
+}
+
+4. WEBSITE STATUS
+-----------------
+Login page: HTTP 200
+Page load time: 0.070053s
+
+5. CACHE STATUS
+---------------
+Cache directory size: 41M
+Cache permissions:
+drwxrwxrwx 11 pim pim 4096 Apr 23 09:35 /home/pim/public_html/var/cache/prod
+
+6. LOG FILE STATUS
+------------------
+prod.log size: 96K
+Recent critical errors:
+[2026-04-23 08:53:02] console.CRITICAL: Error thrown while running command "messenger:consume ui_job import_export_job data_maintenance_job --env=prod --time-limit=300 --limit=10". Message: "An exception occurred while executing 'SELECT m.* FROM messenger_messages m WHERE (m.queue_name = ?) AND (m.delivered_at is null OR m.delivered_at < ?) AND (m.available_at <= ?) ORDER BY available_at ASC LIMIT 1 FOR UPDATE' with params ["ui_job", "2026-04-22 08:53:02", "2026-04-23 08:53:02"]:  SQLSTATE[42S02]: Base table or view not found: 1146 Table 'akeneo_pim.messenger_messages' doesn't exist" {"exception":"[object] (Symfony\\Component\\Messenger\\Exception\\TransportException(code: 0): An exception occurred while executing 'SELECT m.* FROM messenger_messages m WHERE (m.queue_name = ?) AND (m.delivered_at is null OR m.delivered_at < ?) AND (m.available_at <= ?) ORDER BY available_at ASC LIMIT 1 FOR UPDATE' with params [\"ui_job\", \"2026-04-22 08:53:02\", \"2026-04-23 08:53:02\"]:\n\nSQLSTATE[42S02]: Base table or view not found: 1146 Table 'akeneo_pim.messenger_messages' doesn't exist at /home/pim/public_html/vendor/symfony/doctrine-messenger/Transport/DoctrineReceiver.php:61, Doctrine\\DBAL\\Exception\\TableNotFoundException(code: 0): An exception occurred while executing 'SELECT m.* FROM messenger_messages m WHERE (m.queue_name = ?) AND (m.delivered_at is null OR m.delivered_at < ?) AND (m.available_at <= ?) ORDER BY available_at ASC LIMIT 1 FOR UPDATE' with params [\"ui_job\", \"2026-04-22 08:53:02\", \"2026-04-23 08:53:02\"]:\n\nSQLSTATE[42S02]: Base table or view not found: 1146 Table 'akeneo_pim.messenger_messages' doesn't exist at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:61, Doctrine\\DBAL\\Driver\\PDO\\Exception(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'akeneo_pim.messenger_messages' doesn't exist at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDO/Exception.php:18, PDOException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'akeneo_pim.messenger_messages' doesn't exist at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:117)","command":"messenger:consume ui_job import_export_job data_maintenance_job --env=prod --time-limit=300 --limit=10","message":"An exception occurred while executing 'SELECT m.* FROM messenger_messages m WHERE (m.queue_name = ?) AND (m.delivered_at is null OR m.delivered_at < ?) AND (m.available_at <= ?) ORDER BY available_at ASC LIMIT 1 FOR UPDATE' with params [\"ui_job\", \"2026-04-22 08:53:02\", \"2026-04-23 08:53:02\"]:\n\nSQLSTATE[42S02]: Base table or view not found: 1146 Table 'akeneo_pim.messenger_messages' doesn't exist"} []
+[2026-04-23 08:53:03] request.CRITICAL: Uncaught PHP Exception Doctrine\DBAL\Exception\TableNotFoundException: "An exception occurred while executing 'SELECT t0.id AS id_1, t0.username AS username_2, t0.email AS email_3, t0.name_prefix AS name_prefix_4, t0.first_name AS first_name_5, t0.middle_name AS middle_name_6, t0.last_name AS last_name_7, t0.name_suffix AS name_suffix_8, t0.image AS image_9, t0.enabled AS enabled_10, t0.salt AS salt_11, t0.password AS password_12, t0.confirmation_token AS confirmation_token_13, t0.password_requested AS password_requested_14, t0.last_login AS last_login_15, t0.login_count AS login_count_16, t0.createdAt AS createdAt_17, t0.updatedAt AS updatedAt_18, t0.product_grid_filters AS product_grid_filters_19, t0.emailNotifications AS emailNotifications_20, t0.phone AS phone_21, t0.timezone AS timezone_22, t0.user_type AS user_type_23, t0.properties AS properties_24, t0.consecutive_authentication_failure_counter AS consecutive_authentication_failure_counter_25, t0.authentication_failure_reset_date AS authentication_failure_reset_date_26, t0.profile AS profile_27, t0.file_info_id AS file_info_id_28, t0.catalogLocale_id AS catalogLocale_id_29, t0.ui_locale_id AS ui_locale_id_30, t0.catalogScope_id AS catalogScope_id_31, t0.defaultTree_id AS defaultTree_id_32 FROM oro_user t0 WHERE t0.id = ?' with params [2]:  SQLSTATE[42S02]: Base table or view not found: 1146 Table 'akeneo_pim.oro_user' doesn't exist" at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php line 61 {"exception":"[object] (Doctrine\\DBAL\\Exception\\TableNotFoundException(code: 0): An exception occurred while executing 'SELECT t0.id AS id_1, t0.username AS username_2, t0.email AS email_3, t0.name_prefix AS name_prefix_4, t0.first_name AS first_name_5, t0.middle_name AS middle_name_6, t0.last_name AS last_name_7, t0.name_suffix AS name_suffix_8, t0.image AS image_9, t0.enabled AS enabled_10, t0.salt AS salt_11, t0.password AS password_12, t0.confirmation_token AS confirmation_token_13, t0.password_requested AS password_requested_14, t0.last_login AS last_login_15, t0.login_count AS login_count_16, t0.createdAt AS createdAt_17, t0.updatedAt AS updatedAt_18, t0.product_grid_filters AS product_grid_filters_19, t0.emailNotifications AS emailNotifications_20, t0.phone AS phone_21, t0.timezone AS timezone_22, t0.user_type AS user_type_23, t0.properties AS properties_24, t0.consecutive_authentication_failure_counter AS consecutive_authentication_failure_counter_25, t0.authentication_failure_reset_date AS authentication_failure_reset_date_26, t0.profile AS profile_27, t0.file_info_id AS file_info_id_28, t0.catalogLocale_id AS catalogLocale_id_29, t0.ui_locale_id AS ui_locale_id_30, t0.catalogScope_id AS catalogScope_id_31, t0.defaultTree_id AS defaultTree_id_32 FROM oro_user t0 WHERE t0.id = ?' with params [2]:\n\nSQLSTATE[42S02]: Base table or view not found: 1146 Table 'akeneo_pim.oro_user' doesn't exist at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:61, Doctrine\\DBAL\\Driver\\PDO\\Exception(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'akeneo_pim.oro_user' doesn't exist at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDO/Exception.php:18, PDOException(code: 42S02): SQLSTATE[42S02]: Base table or view not found: 1146 Table 'akeneo_pim.oro_user' doesn't exist at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:117)"} []
+[2026-04-23 08:53:43] console.CRITICAL: Error thrown while running command "pim:installer:db". Message: "Installer data directory cannot be found." {"exception":"[object] (RuntimeException(code: 0): Installer data directory cannot be found. at /home/pim/public_html/vendor/akeneo/pim-community-dev/src/Akeneo/Platform/Bundle/InstallerBundle/FixtureLoader/FixturePathProvider.php:39)","command":"pim:installer:db","message":"Installer data directory cannot be found."} []
+[2026-04-23 08:53:50] console.CRITICAL: Error thrown while running command "'pim:locale:list'". Message: "The allow_url_fopen php.ini configuration key must be set to 1" {"exception":"[object] (Imagine\\Exception\\NotSupportedException(code: 0): The allow_url_fopen php.ini configuration key must be set to 1 at /home/pim/public_html/vendor/imagine/imagine/src/Image/Metadata/ExifMetadataReader.php:31)","command":"'pim:locale:list'","message":"The allow_url_fopen php.ini configuration key must be set to 1"} []
+[2026-04-23 08:53:57] console.CRITICAL: Error thrown while running command "list". Message: "The allow_url_fopen php.ini configuration key must be set to 1" {"exception":"[object] (Imagine\\Exception\\NotSupportedException(code: 0): The allow_url_fopen php.ini configuration key must be set to 1 at /home/pim/public_html/vendor/imagine/imagine/src/Image/Metadata/ExifMetadataReader.php:31)","command":"list","message":"The allow_url_fopen php.ini configuration key must be set to 1"} []
+
+7. AKENEO CONSOLE DIAGNOSTICS
+-----------------------------

@@ -1,0 +1,102 @@
+=== COMPREHENSIVE DATA RELATIONSHIP CHECKER ===
+Date: 2026-04-29 19:32:29
+
+✅ Database connected
+
+--- 1. PRODUCT-CATEGORY RELATIONSHIPS ---
+Total Products: 9538
+Products WITH categories: 9538 (100%)
+Products WITHOUT categories (orphans): 0 (0%)
+
+Categories with NO products: 32
+
+--- 2. PRODUCT-FAMILY-ATTRIBUTE RELATIONSHIPS ---
+Products by Family:
+  - products: 9538 products
+  - fournitures_bureau: 0 products
+  - calculatrices: 0 products
+  - scolaire: 0 products
+  - cahier: 0 products
+  - classement: 0 products
+  - informatique: 0 products
+  - default: 0 products
+  - bags_sac: 0 products
+  - beaux_arts: 0 products
+  - techno: 0 products
+  - madeinalgeria: 0 products
+  - papeterie: 0 products
+  - bureautique: 0 products
+  - maglux: 0 products
+  - crayons: 0 products
+  - ecriture: 0 products
+  - tableau: 0 products
+
+Products WITHOUT family: 0
+
+--- 3. ATTRIBUTES PER FAMILY ---
+Attributes assigned to families:
+  - fournitures_bureau: 111 attributes
+  - calculatrices: 111 attributes
+  - products: 111 attributes
+  - scolaire: 111 attributes
+  - cahier: 111 attributes
+  - classement: 111 attributes
+  - informatique: 111 attributes
+  - default: 111 attributes
+  - bags_sac: 111 attributes
+  - beaux_arts: 111 attributes
+  - techno: 111 attributes
+  - madeinalgeria: 111 attributes
+  - papeterie: 111 attributes
+  - bureautique: 111 attributes
+  - maglux: 111 attributes
+  - crayons: 111 attributes
+  - ecriture: 111 attributes
+  - tableau: 111 attributes
+
+--- 4. PRODUCT ATTRIBUTE VALUES ---
+Product value tables found: 0
+
+--- 5. CRITICAL ECOMMERCE ATTRIBUTES COVERAGE ---
+Checking critical attributes:
+  ✅ SKU/Identifier (sku): EXISTS (type: pim_catalog_identifier)
+  ✅ Product Name (name): EXISTS (type: pim_catalog_text)
+  ✅ Description (description): EXISTS (type: pim_catalog_textarea)
+  ✅ Short Description (short_description): EXISTS (type: pim_catalog_textarea)
+  ✅ Price (price): EXISTS (type: pim_catalog_price_collection)
+  ✅ Main Image (image): EXISTS (type: pim_catalog_image)
+  ✅ Thumbnail (thumbnail): EXISTS (type: pim_catalog_image)
+  ✅ Small Image (small_image): EXISTS (type: pim_catalog_image)
+  ✅ EAN/Barcode (ean): EXISTS (type: pim_catalog_text)
+  ✅ Weight (weight): EXISTS (type: pim_catalog_metric)
+  ✅ SEO Meta Title (meta_title): EXISTS (type: pim_catalog_text)
+  ✅ SEO Meta Description (meta_description): EXISTS (type: pim_catalog_textarea)
+
+--- 6. PRODUCT MODEL RELATIONSHIPS ---
+Products WITH product model: 7019
+Standalone products: 2519
+
+Top 10 Product Models by variant count:
+  - pm_cc31b86c758623ca: 705 variants
+  - pm_6287997fe9a01043: 658 variants
+  - pm_a06e32d006424f45: 183 variants
+  - pm_e789597ad58901f3: 141 variants
+  - pm_0c39eb267a16260b: 122 variants
+  - pm_f7523757ac88ef6c: 102 variants
+  - pm_2c73a3eac555ca3d: 100 variants
+  - pm_12ca259280f42d77: 96 variants
+  - pm_d85900ac0edce8d9: 83 variants
+  - pm_988f3fd5b1625770: 69 variants
+
+--- 7. CHANNEL-LOCALE ASSIGNMENTS ---
+Channel locale assignments:
+  - ecommerce: ar_DZ, en_US, fr_FR
+  - jde_edwards: ar_DZ, en_US, fr_FR
+  - cegid_erp: ar_DZ, en_US, fr_FR
+
+=== FIX RECOMMENDATIONS ===
+⚠️  WARNING: 32 empty categories - consider cleanup
+
+✅ Comprehensive check complete!
+
+Log saved to: comprehensive_relationship_check_20260429_193229.log

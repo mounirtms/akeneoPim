@@ -1,0 +1,58 @@
+==========================================
+Akeneo to Magento Export - 20260430_131735
+==========================================
+[1/6] Exporting products from Akeneo...
+Unsuccessful stat on filename containing newline at /var/cpanel/ea4/ea_php_cli.pm line 87.
+Exported 1000 products...
+Exported 2000 products...
+Exported 3000 products...
+Exported 4000 products...
+Exported 5000 products...
+Exported 6000 products...
+Exported 7000 products...
+Exported 8000 products...
+Exported 9000 products...
+✅ Total products exported: 9538
+[2/6] Exporting category assignments...
+Unsuccessful stat on filename containing newline at /var/cpanel/ea4/ea_php_cli.pm line 87.
+✅ Category assignments exported: 9538 products
+[3/6] Creating image export list...
+✅ Found 28200 image files
+[4/6] Generating sync report...
+Akeneo to Magento Export Report
+Generated: 2026-04-30 13:17:35
+
+Files Created:
+- products_export_20260430_131735.csv
+- category_assignments_20260430_131735.csv
+- image_files_20260430_131735.txt
+
+Statistics:
+- Total Products: 9539
+- Category Assignments: 9539
+- Image Files: 28200
+
+Next Steps:
+1. Review exported CSV files
+2. Copy images to Magento server: 
+   rsync -av /home/pim/public_html/public/media/product_images/ user@magento-server:/path/to/magento/pub/media/catalog/product/
+3. Import products to Magento:
+   php bin/magento import:run --behavior=replace /home/pim/public_html/webapp/magento_exports/products_export_20260430_131735.csv
+4. Reindex Magento:
+   php bin/magento indexer:reindex
+5. Clear Magento cache:
+   php bin/magento cache:flush
+
+Magento Frontend: https://beta.technostationery.com
+[5/6] Creating Magento import instructions...
+✅ Magento import instructions created
+[6/6] Export complete!
+
+==========================================
+Export Location: /home/pim/public_html/webapp/magento_exports
+Log File: /home/pim/public_html/webapp/logs/magento_sync.log
+==========================================
+-rw-r--r-- 1 root root 445K Apr 30 13:17 /home/pim/public_html/webapp/magento_exports/category_assignments_20260430_131735.csv
+-rw-r--r-- 1 root root 2.0M Apr 30 13:17 /home/pim/public_html/webapp/magento_exports/image_files_20260430_131735.txt
+-rw-r--r-- 1 root root 5.4M Apr 30 13:17 /home/pim/public_html/webapp/magento_exports/products_export_20260430_131735.csv
+-rw-r--r-- 1 root root  809 Apr 30 13:17 /home/pim/public_html/webapp/magento_exports/sync_report_20260430_131735.txt

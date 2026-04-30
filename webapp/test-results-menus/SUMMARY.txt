@@ -1,16 +1,16 @@
 COMPREHENSIVE MENU & PROGRESS TEST SUMMARY
 =====================================
-Date: 2026-04-30T00:57:07.320Z
+Date: 2026-04-30T12:00:18.660Z
 Cache Buster: 1777510314
 
-MENU ITEMS FOUND: 20
+MENU ITEMS FOUND: 11
 MENU ROUTES TESTED: 11
 ROUTES PASSED: 11
 ROUTES FAILED: 0
 
 ERRORS:
-- Console Errors: 19
-- Page Errors: 45
+- Console Errors: 22
+- Page Errors: 28
 
 SCREENSHOTS: 16
 Location: /home/pim/public_html/webapp/test-results-menus

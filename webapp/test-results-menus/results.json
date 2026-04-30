@@ -1,52 +1,16 @@
 {
-  "timestamp": "2026-04-30T00:57:07.320Z",
+  "timestamp": "2026-04-30T12:00:18.660Z",
   "cache_buster": "1777510314",
   "menu_items": [
-    {
-      "text": "ACTIVITÉ",
-      "href": null
-    },
-    {
-      "text": "TABLEAU DE BORD DES ACTIVITÉS",
-      "href": null
-    },
-    {
-      "text": "pim_menu.tab.activity",
-      "href": "/dashboard"
-    },
-    {
-      "text": "pim_enrich.entity.product.plural_label",
-      "href": "/enrich/product/"
-    },
-    {
-      "text": "pim_menu.tab.connect",
-      "href": "/connect/data-flows"
-    },
-    {
-      "text": "pim_menu.tab.imports",
-      "href": "/collect/import/"
-    },
-    {
-      "text": "pim_menu.tab.exports",
-      "href": "/spread/export/"
-    },
-    {
-      "text": "pim_menu.tab.settings",
-      "href": "/settings"
-    },
-    {
-      "text": "pim_menu.tab.system",
-      "href": "/system"
-    },
     {
       "name": "Dashboard",
       "url": "/",
       "status": "PASS",
-      "title": "Tableau de bord",
-      "content_length": 910,
-      "is_loading": false,
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
       "has_errors": false,
-      "console_errors": 5
+      "console_errors": 6
     },
     {
       "name": "Products",
@@ -56,7 +20,7 @@
       "content_length": 11,
       "is_loading": true,
       "has_errors": false,
-      "console_errors": 5
+      "console_errors": 6
     },
     {
       "name": "Categories",
@@ -66,7 +30,7 @@
       "content_length": 11,
       "is_loading": true,
       "has_errors": false,
-      "console_errors": 5
+      "console_errors": 6
     },
     {
       "name": "Import",
@@ -76,7 +40,7 @@
       "content_length": 11,
       "is_loading": true,
       "has_errors": false,
-      "console_errors": 5
+      "console_errors": 6
     },
     {
       "name": "Export",
@@ -86,17 +50,17 @@
       "content_length": 11,
       "is_loading": true,
       "has_errors": false,
-      "console_errors": 5
+      "console_errors": 6
     },
     {
       "name": "Jobs",
       "url": "/job",
       "status": "PASS",
-      "title": "Tableau de bord",
-      "content_length": 903,
-      "is_loading": false,
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
       "has_errors": false,
-      "console_errors": 5
+      "console_errors": 6
     },
     {
       "name": "Attributes",
@@ -106,7 +70,7 @@
       "content_length": 11,
       "is_loading": true,
       "has_errors": false,
-      "console_errors": 5
+      "console_errors": 6
     },
     {
       "name": "Attribute Groups",
@@ -116,7 +80,7 @@
       "content_length": 11,
       "is_loading": true,
       "has_errors": false,
-      "console_errors": 5
+      "console_errors": 6
     },
     {
       "name": "Families",
@@ -126,7 +90,7 @@
       "content_length": 11,
       "is_loading": true,
       "has_errors": false,
-      "console_errors": 5
+      "console_errors": 6
     },
     {
       "name": "Channels",
@@ -136,7 +100,7 @@
       "content_length": 11,
       "is_loading": true,
       "has_errors": false,
-      "console_errors": 5
+      "console_errors": 6
     },
     {
       "name": "Locales",
@@ -146,7 +110,7 @@
       "content_length": 11,
       "is_loading": true,
       "has_errors": false,
-      "console_errors": 5
+      "console_errors": 6
     }
   ],
   "products": {
@@ -174,60 +138,45 @@
   },
   "errors": [
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
-    "Failed to fetch",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
-    "Failed to fetch",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
-    "Failed to fetch",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
     "module is not defined",
-    "Unexpected token 'export'",
-    "Cannot read properties of undefined (reading 'build')"
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror"
   ],
   "console_errors": [
     "Access to script at 'https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516' from origin 'https://pim.technostationery.com' has been blocked by CORS policy: Request header field cache-control is not allowed by Access-Control-Allow-Headers in preflight response.",
     "Failed to load resource: net::ERR_FAILED",
     "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://pim.technostationery.com/dist/main.min/form-builder.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
     "[PimApp] configure() failed: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
     "❌ Failed to build pim-app: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
     "Access to script at 'https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516' from origin 'https://pim.technostationery.com' has been blocked by CORS policy: Request header field cache-control is not allowed by Access-Control-Allow-Headers in preflight response.",
     "Failed to load resource: net::ERR_FAILED",
     "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://pim.technostationery.com/dist/main.min/form-builder.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
     "[PimApp] configure() failed: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
     "❌ Failed to build pim-app: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
     "Failed to load resource: the server responded with a status of 404 ()",
@@ -236,6 +185,7 @@
     "Access to script at 'https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516' from origin 'https://pim.technostationery.com' has been blocked by CORS policy: Request header field cache-control is not allowed by Access-Control-Allow-Headers in preflight response.",
     "Failed to load resource: net::ERR_FAILED",
     "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://pim.technostationery.com/dist/main.min/form-builder.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
     "[PimApp] configure() failed: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
     "❌ Failed to build pim-app: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
     "Failed to load resource: the server responded with a status of 401 ()"
@@ -244,12 +194,12 @@
     "00-dashboard-fresh.png"
   ],
   "summary": {
-    "total_menu_items": 20,
+    "total_menu_items": 11,
     "menu_routes_tested": 11,
     "menu_routes_passed": 11,
     "menu_routes_failed": 0,
-    "total_console_errors": 19,
-    "total_page_errors": 45,
+    "total_console_errors": 22,
+    "total_page_errors": 28,
     "screenshots_taken": 16
   }
 }
