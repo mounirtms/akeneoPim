@@ -1,0 +1,88 @@
+========================================
+FIXING CRITICAL ISSUES
+Date: Thu Apr 30 23:38:33 CET 2026
+========================================
+
+## Fix 1: Regenerate Frontend Assets
+-------------------------------------
+Installing assets...
+  ✔   FOSJsRoutingBundle                   relative symlink  
+  ✔   OroConfigBundle                      relative symlink  
+  ✔   AkeneoMeasureBundle                  relative symlink  
+  ✔   PimUserBundle                        relative symlink  
+  ✔   AkeneoPimEnrichmentBundle            relative symlink  
+  ✔   AkeneoPimStructureBundle             relative symlink  
+  ✔   PimAnalyticsBundle                   relative symlink  
+  ✔   PimDashboardBundle                   relative symlink  
+  ✔   PimDataGridBundle                    relative symlink  
+  ✔   PimImportExportBundle                relative symlink  
+  ✔   PimNotificationBundle                relative symlink  
+  ✔   PimUIBundle                          relative symlink  
+  ✔   AkeneoConnectivityConnectionBundle   relative symlink  
+  ✔   AkeneoCommunicationChannelBundle     relative symlink  
+  ✔   AkeneoDataQualityInsightsBundle      relative symlink  
+  ✔   AkeneoJobBundle                      relative symlink  
+ --- ------------------------------------ ------------------ 
+
+ [OK] All assets were successfully installed.                                   
+
+
+## Fix 2: Clear and Rebuild Cache
+----------------------------------
+Clearing cache...
+
+ // Clearing the cache for the prod environment with debug                      
+ // false                                                                       
+
+ [OK] Cache for the "prod" environment (debug=false) was successfully cleared.  
+
+
+Warming up cache...
+
+ // Warming up the cache for the prod environment with debug                    
+ // false                                                                       
+
+ [OK] Cache for the "prod" environment (debug=false) was successfully warmed.   
+
+
+## Fix 3: Reindex Products
+--------------------------
+Reindexing products...
+    0/9538 [>---------------------------]   0%
+ 1000/9538 [==>-------------------------]  10%
+ 2000/9538 [=====>----------------------]  20%
+ 3000/9538 [========>-------------------]  31%
+ 4000/9538 [===========>----------------]  41%
+ 5000/9538 [==============>-------------]  52%
+ 6000/9538 [=================>----------]  62%
+ 7000/9538 [====================>-------]  73%
+ 8000/9538 [=======================>----]  83%
+ 9000/9538 [==========================>-]  94%
+ 9538/9538 [============================] 100%
+9538 products indexed
+
+Reindexing product models...
+   0/418 [>---------------------------]   0%
+ 418/418 [============================] 100%418 product models indexed
+
+## Fix 4: Check Frontend Assets
+--------------------------------
+Checking require.min.js:
+ls: cannot access 'public/bundles/pimui/js/require.min.js': No such file or directory
+Still missing - may need webpack rebuild
+
+JavaScript bundles:
+0
+
+CSS files:
+0
+
+## Fix 5: Database Connectivity
+--------------------------------
+Unsuccessful stat on filename containing newline at /var/cpanel/ea4/ea_php_cli.pm line 87.
+❌ Database Error: SQLSTATE[HY000] [1045] Access denied for user 'akeneo_pim'@'localhost' (using password: YES)
+
+========================================
+FIXES COMPLETE
+========================================
+Log: logs/critical_fixes_20260430_233833.log
