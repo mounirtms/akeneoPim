@@ -1,0 +1,1 @@
+window.translations = window.translations || {};

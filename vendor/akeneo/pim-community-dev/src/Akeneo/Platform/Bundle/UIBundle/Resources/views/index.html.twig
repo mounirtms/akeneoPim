@@ -1,0 +1,57 @@
+{% set cache_buster = "1777510314" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Loading...</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" />
+
+        <link rel="stylesheet" href="/css/pim.css?v={{ cache_buster }}"/>
+
+        {{ external_javascript_dependencies() }}
+
+        {# External libraries required by webpack externals config #}
+        <script type="text/javascript" src="/dist/jquery.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/js/jquery-tooltip-shim.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/js/navigation-guard.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/underscore.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/backbone.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/react.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/react-dom.min.js?v={{ cache_buster }}"></script>
+
+        {# FOS Routing - provides fos.Router for route generation #}
+        <script type="text/javascript" src="/bundles/fosjsrouting/js/router.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+        {# RequireJS - needed for AMD module loading #}
+        <script type="text/javascript" src="/dist/require.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/js/require-paths.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/js/require-config.js?v={{ cache_buster }}"></script>
+
+        {# Webpack bundles - rebuilt with esModule:false fix for raw-loader #}
+                {# Process polyfill for Node.js globals used in webpack bundles #}
+        <script type="text/javascript" src="/dist/process-polyfill.js?v={{ cache_buster }}"></script>
+
+        <script type="text/javascript" src="/dist/vendor.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/main.min.js?v={{ cache_buster }}"></script>
+        
+        {# Load PIM UI initialization #}
+        <script type="text/javascript" src="/bundles/pimui/js/index.js?v={{ cache_buster }}"></script>
+    </head>
+    <body>
+        <div class="app">
+            <div class="AknDefault-progressContainer">
+                <h3>
+                    Loading ...
+                </h3>
+                <img src="/bundles/pimui/images/main-loader.gif"/>
+                {% if true == oro_config_value('pim_ui.loading_message_enabled') %}
+                <h4 class="AknDefault-progressContainer--loadingMessages">
+                    {{ random(oro_config_value('pim_ui.loading_messages')|split('\n')) }}
+                </h4>
+                {% endif %}
+            </div>
+        </div>
+        <div class="hash-loading-mask"></div>
+    </body>
+</html>
