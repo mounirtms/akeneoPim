@@ -124,3 +124,12 @@ pim_job_tracker_spa:
     defaults:
         _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
         template: '@PimUI/index.html.twig'
+
+# Translation files - catch-all to prevent 404s
+pim_translation_spa:
+    path: /_translation/{catchall}
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
+        template: '@PimUI/translation.html.twig'
+    requirements:
+        catchall: .+

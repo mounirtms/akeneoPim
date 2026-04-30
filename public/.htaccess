@@ -7,6 +7,11 @@ RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 # Pass PHP_AUTH headers for Basic Auth
 SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 
+# Serve static translation files for any path pattern (must come before catch-all)
+RewriteCond %{REQUEST_URI} ^/.*?/js/translation/([a-z]{2}_[A-Z]{2})\.js$
+RewriteCond %{DOCUMENT_ROOT}/js/translation/%1.js -f
+RewriteRule ^.*?/js/translation/([a-z]{2}_[A-Z]{2})\.js$ /js/translation/%1.js [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [QSA,L]
 
