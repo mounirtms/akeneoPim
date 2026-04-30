@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-04-30T00:46:03.545Z",
+  "total_tests": 8,
+  "products_tested": 0,
+  "categories_found": 0,
+  "total_errors": 15,
+  "total_console_errors": 4,
+  "total_failed_requests": 8,
+  "error_summary": {
+    "not_found_404": 8,
+    "server_errors_500": 0,
+    "auth_errors_401": 0,
+    "js_errors": 0,
+    "network_errors": 4
+  },
+  "dashboard_metrics": {
+    "product_count": null,
+    "image_percentage": null,
+    "enrichment_data": null,
+    "completeness": null,
+    "quality_scores": null
+  },
+  "critical_issues": [],
+  "recommendations": [
+    "Investigate 404 errors - missing resources or routes"
+  ]
+}

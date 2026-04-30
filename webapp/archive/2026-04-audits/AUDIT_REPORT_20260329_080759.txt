@@ -1,0 +1,102 @@
+======================================================================
+AKENEO PIM - COMPREHENSIVE DATA AUDIT REPORT
+Generated: 2026-03-29 08:07:21
+======================================================================
+
+## 1. FAMILIES
+   Total families: 6
+   - arts: 28 attrs, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 7 required attrs
+   - bags: 29 attrs, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 8 required attrs
+   - notebooks: 28 attrs, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 7 required attrs
+   - office: 28 attrs, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 6 required attrs
+   - stationery: 33 attrs, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 6 required attrs
+   - writing: 29 attrs, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 7 required attrs
+
+## 2. ATTRIBUTES
+   Total attributes: 33
+   Without fr_FR label: 0
+   Without ar_DZ label: 0
+   By group:
+     description: 2 attrs
+     dimensions: 6 attrs
+     ecommerce: 7 attrs
+     identification: 4 attrs
+     marketing: 3 attrs
+     pricing: 3 attrs
+     seo: 4 attrs
+     technical: 4 attrs
+
+## 3. CATEGORIES
+   Total categories: 2025
+   Root categories: 1
+   Without fr_FR label: 0
+   Duplicate name groups: 284
+
+## 4. PRODUCTS
+   Total products: 9541
+   By family:
+     stationery: 9541
+
+   Data quality:
+     Missing name: 0
+     Missing price: 3146
+     Missing categories: 243
+     Name too long (>60 chars): 3984
+
+   SEO coverage:
+     meta_title: 7484/9541 (78.4%)
+     meta_description: 7497/9541 (78.6%)
+     meta_keyword: 2964/9541 (31.1%)
+     url_key: 7484/9541 (78.4%)
+     name: 0/9541 (0.0%)
+
+   Locale coverage (name field):
+     en_US_name: 9541/9541 (100.0%)
+     fr_FR_name: 7497/9541 (78.6%)
+     ar_DZ_name: 0/9541 (0.0%)
+
+## 5. ASSOCIATIONS
+   Association types: 6
+     CROSSSELL: Cross-sell Products
+     PACK: Pack
+     RELATED: Related Products
+     SUBSTITUTION: Substitution
+     UPSELL: Up-sell Products
+     X_SELL: Cross sell
+
+## 6. PRODUCT MODELS
+   Total product models: 100
+
+## 7. FAMILY VARIANTS
+   stationery/stationery_capacity: axes=['capacity']
+   stationery/stationery_capacity_dimension: axes=['capacity', 'dimension']
+   stationery/stationery_color: axes=['color']
+   stationery/stationery_color_diameter: axes=['color', 'diameter']
+   stationery/stationery_color_dimension: axes=['color', 'dimension']
+   stationery/stationery_color_pattern: axes=['color', 'pattern']
+   stationery/stationery_color_type_product: axes=['color', 'type_product']
+   stationery/stationery_diameter: axes=['diameter']
+   stationery/stationery_diameter_pattern: axes=['pattern', 'diameter']
+   stationery/stationery_dimension: axes=['dimension']
+   stationery/stationery_pattern: axes=['pattern']
+   stationery/stationery_size: axes=['size']
+   stationery/stationery_thickness: axes=['thickness']
+   stationery/stationery_type_product: axes=['type_product']
+
+## 8. RECOMMENDATIONS
+   Priority 1 (Critical):
+     - Fix 3146 products missing price
+     - Generate 2044 missing meta descriptions
+   Priority 2 (Important):
+     - Add fr_FR names for 2044 products
+     - Add ar_DZ names for 9541 products
+     - Optimize 3984 product names exceeding 60 chars
+     - Resolve 284 duplicate category name groups
+   Priority 3 (Maintenance):
+     - Assign categories to 243 products

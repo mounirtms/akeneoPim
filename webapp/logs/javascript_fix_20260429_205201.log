@@ -1,0 +1,44 @@
+=== AKENEO JAVASCRIPT MODULE ERROR FIXER ===
+Date: 2026-04-29 19:52:01
+
+Step 1: Clearing Akeneo caches...
+Could not open input file: bin/console
+Could not open input file: bin/console
+
+Step 2: Regenerating RequireJS configuration...
+Could not open input file: bin/console
+
+Step 3: Building frontend assets...
+No webpack config found, using built-in asset installer...
+
+Step 4: Fixing permissions...
+chmod: cannot access 'public/js': No such file or directory
+chmod: cannot access 'public/bundles': No such file or directory
+chmod: cannot access 'public/css': No such file or directory
+
+Step 5: Verifying critical JavaScript files...
+  ❌ MISSING: public/js/require.min.js
+  ❌ MISSING: public/js/fos_js_routes.json
+  ❌ MISSING: public/bundles/pimui/js/index.js
+  ❌ MISSING: public/bundles/pimui/js/module-registry.js
+
+Step 6: Checking database configuration...
+  ❌ Database error: SQLSTATE[HY000] [2002] No such file or directory
+
+=== SUMMARY ===
+⚠️  Missing files detected:
+   - public/js/require.min.js
+   - public/js/fos_js_routes.json
+   - public/bundles/pimui/js/index.js
+   - public/bundles/pimui/js/module-registry.js
+
+RECOMMENDATION: Run asset installation:
+   php bin/console pim:installer:assets --symlink --clean --env=prod
+
+NEXT STEPS:
+1. Clear browser cache (Ctrl+Shift+Delete)
+2. Reload Akeneo PIM page
+3. Check browser console for remaining errors
+4. If errors persist, run: php bin/console pim:install --force --env=prod
+
+Fix completed: 2026-04-29 19:52:01

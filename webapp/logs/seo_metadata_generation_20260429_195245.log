@@ -1,0 +1,79 @@
+=========================================
+  SEO METADATA GENERATOR (FIXED)
+=========================================
+Date: 2026-04-29 18:52:45
+
+✓ Database connected
+
+Step 1: Fetching products...
+─────────────────────────────────────────
+✓ Found 9538 products
+
+Step 2: Generating metadata...
+─────────────────────────────────────────
+Progress: 1000/9538 (10.48%) - 1000.0 products/sec - ETA: 8 sec
+Progress: 2000/9538 (20.97%) - 2000.0 products/sec - ETA: 3 sec
+Progress: 3000/9538 (31.45%) - 3000.0 products/sec - ETA: 2 sec
+Progress: 4000/9538 (41.94%) - 4000.0 products/sec - ETA: 1 sec
+Progress: 5000/9538 (52.42%) - 5000.0 products/sec - ETA: 0 sec
+Progress: 6000/9538 (62.91%) - 6000.0 products/sec - ETA: 0 sec
+Progress: 7000/9538 (73.39%) - 7000.0 products/sec - ETA: 0 sec
+Progress: 8000/9538 (83.88%) - 8000.0 products/sec - ETA: 0 sec
+Progress: 9000/9538 (94.36%) - 9000.0 products/sec - ETA: 0 sec
+
+=========================================
+  GENERATION COMPLETE!
+=========================================
+Total products: 9538
+Metadata generated: 9538 products
+Total time: 0 seconds
+Average rate: 9538 products/sec
+
+CSV Export:
+  File: /home/pim/public_html/webapp/metadata_exports/metadata_export_20260429_185245.csv
+  Size: 3521.35 KB
+  Lines: 9539 (including header)
+
+=== SAMPLE METADATA (First 5 Products) ===
+
+Product: /
+  Title: / | TechnoStationery
+  Description: Produits de qualité pour tous vos besoins. Référence /. Livraison rapide en Algérie. Qualité garantie. Prix compétitifs. Stock disponible.
+  Keywords: /, products, papeterie, fourniture, bureau, algerie, technostationery
+
+Product: 001
+  Title: 001 | TechnoStationery
+  Description: Produits de qualité pour tous vos besoins. Référence 001. Livraison rapide en Algérie. Qualité garantie. Prix compétitifs. Stock disponible.
+  Keywords: 001, products, papeterie, fourniture, bureau, algerie, technostationery
+
+Product: 01
+  Title: 01 | TechnoStationery
+  Description: Produits de qualité pour tous vos besoins. Référence 01. Livraison rapide en Algérie. Qualité garantie. Prix compétitifs. Stock disponible.
+  Keywords: 01, products, papeterie, fourniture, bureau, algerie, technostationery
+
+Product: 02
+  Title: 02 | TechnoStationery
+  Description: Produits de qualité pour tous vos besoins. Référence 02. Livraison rapide en Algérie. Qualité garantie. Prix compétitifs. Stock disponible.
+  Keywords: 02, products, papeterie, fourniture, bureau, algerie, technostationery
+
+Product: 03
+  Title: 03 | TechnoStationery
+  Description: Produits de qualité pour tous vos besoins. Référence 03. Livraison rapide en Algérie. Qualité garantie. Prix compétitifs. Stock disponible.
+  Keywords: 03, products, papeterie, fourniture, bureau, algerie, technostationery
+
+=========================================
+✓ SEO metadata generation complete!
+=========================================
+
+NEXT STEPS:
+1. Review CSV file: /home/pim/public_html/webapp/metadata_exports/metadata_export_20260429_185245.csv
+2. Import to Akeneo:
+   - Log into https://pim.technostationery.com
+   - Create import profile: product_seo_metadata_import
+   - Upload CSV file
+   - Map columns to attributes
+   - Run import
+3. Recalculate completeness:
+   cd /home/pim/public_html
+   php bin/console pim:completeness:calculate
+

@@ -1,0 +1,117 @@
+========================================
+MAGENTO SYNC EXECUTION
+Date: Thu Apr 30 23:53:41 CET 2026
+========================================
+
+## Phase 1: Pre-Sync Verification
+-----------------------------------
+Checking export files...
+✓ Products CSV: 5.4M
+✓ Categories CSV: 448K
+✓ Image list: 2.0M
+
+Record counts:
+  Products: 9538 (excluding header)
+  Category assignments: 9538
+  Images: 28200
+
+Testing Magento frontend...
+⚠ Magento frontend returned HTTP 500
+
+## Phase 2: Sync Strategy Selection
+------------------------------------
+
+Two sync methods available:
+
+METHOD A: API Sync (Recommended for initial setup)
+  - Uses Akeneo → Magento API connector
+  - Handles product relationships automatically
+  - Slower but more reliable for first sync
+  - Command: cd /home/pim/public_html && php check_sync_status.php
+
+METHOD B: CSV Import (Faster for bulk updates)
+  - Direct CSV import to Magento database
+  - Faster for large datasets
+  - Requires manual category/attribute mapping
+  - Command: (Run on Magento server)
+    php bin/magento import:run --behavior=replace /home/pim/public_html/webapp/magento_exports/products_export_20260430_131735.csv
+
+## Phase 3: Data Quality Pre-Check
+-----------------------------------
+Analyzing export data quality...
+
+Sample products (first 5 records):
+/,"Colle stick en baton ""techno"" colle stick 36g ""techno"" ref: 5873 colle stick 21g ""techno"" ref: 5872 colle stick 15g ""techno"" ref: 5871 colle stick 8g ""techno"" ref: 5870","Baton de colle en pvp, leur mécanisme de torsion circulaire permet de délivrer autant de colle que nécessaire, séche rapidement
+001,"Parapluie cadeau maped",,,9.99
+01,"Gomme smiling planet fsc recyclee ""maped"" ref:112521fm","Produit éco-responsable, composé à 50% de fibres de bois certifié FSC. Gomme sans PVC ni phtalate, protection assortie. Précision d''effaçage : gomme en plastique dur. Fourreau ergonomique texturé. Display contenant 30 gommes."
+02,"Crayon graphite noir plastique glitter deco hb gomme ""maped"" ref:851805","Grâce à leur mine résistante, n''ayez plus peur de tailler votre crayon et de vous retrouver avec des mines cassantes. Leur corps triangulaire et ergonomique vous offre une prise en main facile et un confort d''écriture optimal. Les graphites extrudés Maped sont constitués de 41 % de matière recyclée. L''embout gomme permet d''effacer Rapidement votre erreur, et la facilité d''effaçage laisse un rendu propre quel que soit le support utilisé. Pot de 72 crayons graphite GLITTER ergonomiques au corps pailleté. 6 couleurs pastel : rose
+03,"Surligneur flex pastel couleurs assorties ""maped"" ref:740310","Grâce au surligneur Maped fluo flex optez pour un confort de surlignage exceptionnel. La pointe souple vous permettra de varier l''épaisseur de vos traits à l''infini et de réaliser différentes calligraphies. Il peut surligner là où les autres ne vont pas, tout en procurant une sensation de glisse inédite, et un confort d''écriture. Adopté par 62% des utilisateurs qui ont testé cette pointe. L''épaisseur du trait varie entre 1
+
+Checking required fields...
+✓ Field present: sku
+✓ Field present: name
+✓ Field present: price
+✓ Field present: categories
+
+✓ All required fields present
+
+## Phase 4: Image Sync Preparation
+-----------------------------------
+Image sync methods:
+
+METHOD 1: rsync (if you have SSH access to Magento server)
+  rsync -avz --progress \
+    /home/pim/public_html/public/media/product_images/ \
+    user@magento-server:/path/to/magento/pub/media/catalog/product/
+
+METHOD 2: FTP/SFTP (if no SSH access)
+  - Use FileZilla or similar FTP client
+  - Upload from: /home/pim/public_html/public/media/product_images/
+  - Upload to: /pub/media/catalog/product/ on Magento server
+
+METHOD 3: Magento media import
+  - Place images in Magento's var/import/images/
+  - Run: php bin/magento catalog:images:resize
+
+## Phase 5: Post-Sync Commands
+-------------------------------
+After sync completes, run these on Magento server:
+
+1. Reindex catalogs:
+   php bin/magento indexer:reindex
+
+2. Clear cache:
+   php bin/magento cache:flush
+   php bin/magento cache:clean
+
+3. Regenerate static content (if needed):
+   php bin/magento setup:static-content:deploy -f
+
+4. Verify product count:
+   php bin/magento catalog:product:count
+
+========================================
+SYNC PREPARATION COMPLETE
+========================================
+
+Summary:
+  ✓ Export files verified: 3 files
+  ✓ Products ready: 9538
+  ✓ Category assignments: 9538
+  ✓ Images ready: 28200 files
+  ✓ Magento frontend: HTTP 500
+
+Next Steps:
+  1. Choose sync method (A or B)
+  2. Execute sync command
+  3. Monitor sync progress
+  4. Run post-sync Magento commands
+  5. Verify products on frontend: https://beta.technostationery.com
+
+Access Information:
+  Magento Admin: https://beta.technostationery.com/admin
+  Username: bot
+  Password: @dM1n$#@2o25B0T
+
+Full log: logs/magento_sync_execution_20260430_235341.log
+========================================

@@ -1,0 +1,106 @@
+======================================================================
+AKENEO PIM - FINAL AUDIT REPORT (Post-Tuning)
+Generated: 2026-03-29 08:42:14
+======================================================================
+
+## 1. FAMILIES
+   Total families: 6
+   - arts: 28 attrs, en_US=yes, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 7 required: color, meta_description, meta_title, name, price...
+   - bags: 29 attrs, en_US=yes, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 8 required: color, meta_description, meta_title, name, price...
+   - notebooks: 28 attrs, en_US=yes, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 7 required: format, meta_description, meta_title, name, price...
+   - office: 28 attrs, en_US=yes, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 6 required: meta_description, meta_title, name, price, sku...
+   - stationery: 33 attrs, en_US=yes, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 6 required: meta_description, meta_title, name, price, sku...
+   - writing: 29 attrs, en_US=yes, fr_FR=yes, ar_DZ=yes
+     Requirements (ecommerce): 7 required: color, meta_description, meta_title, name, price...
+
+## 2. ATTRIBUTES
+   Total attributes: 33
+   Missing fr_FR labels: 0
+   Missing ar_DZ labels: 0
+   By group:
+     description: 2 (description, short_description)
+     dimensions: 6 (diameter, dimension, format, size, thickness, weight)
+     ecommerce: 7 (a_la_une, best_seller, en_promo, gender_product, product_status, trending, visibility)
+     identification: 4 (manufacturer, name, sku, techno_ref)
+     marketing: 3 (brand, country_of_manufacture, mgs_brand)
+     pricing: 3 (cost, price, special_price)
+     seo: 4 (meta_description, meta_keyword, meta_title, url_key)
+     technical: 4 (capacity, color, pattern, type_product)
+
+## 3. CATEGORIES
+   Total categories: 2025
+   Root categories: 1
+   Duplicate name groups: 286
+   Categories without fr_FR label: 0
+
+## 4. PRODUCTS
+   Total products: 9541
+
+   Family distribution:
+     stationery: 9541 (100.0%)
+
+   Data quality:
+     Missing name: 0
+     Missing price: 2303
+     Missing categories: 243
+     Name > 60 chars: 327
+
+   SEO coverage:
+     meta_title: 7497/9541 (78.6%)
+     meta_description: 7497/9541 (78.6%)
+     meta_keyword: 7497/9541 (78.6%)
+     url_key: 7484/9541 (78.4%)
+
+   Locale coverage (name field):
+     en_US: 9541/9541 (100.0%)
+     fr_FR: 7497/9541 (78.6%)
+     ar_DZ: 7497/9541 (78.6%)
+
+## 5. ASSOCIATIONS
+   Association types: 6
+     CROSSSELL: Cross-sell Products
+     PACK: Pack
+     RELATED: Related Products
+     SUBSTITUTION: Substitution
+     UPSELL: Up-sell Products
+     X_SELL: Cross sell
+
+## 6. PRODUCT MODELS
+   Total product models: 100
+
+## 7. FAMILY VARIANTS
+   stationery/stationery_capacity: axes=['capacity']
+   stationery/stationery_capacity_dimension: axes=['capacity', 'dimension']
+   stationery/stationery_color: axes=['color']
+   stationery/stationery_color_diameter: axes=['color', 'diameter']
+   stationery/stationery_color_dimension: axes=['color', 'dimension']
+   stationery/stationery_color_pattern: axes=['color', 'pattern']
+   stationery/stationery_color_type_product: axes=['color', 'type_product']
+   stationery/stationery_diameter: axes=['diameter']
+   stationery/stationery_diameter_pattern: axes=['pattern', 'diameter']
+   stationery/stationery_dimension: axes=['dimension']
+   stationery/stationery_pattern: axes=['pattern']
+   stationery/stationery_size: axes=['size']
+   stationery/stationery_thickness: axes=['thickness']
+   stationery/stationery_type_product: axes=['type_product']
+
+## 8. STATUS SUMMARY
+   Products total: 9541
+   Products with price: 7238 (75.9%)
+   Products with categories: 9298 (97.5%)
+   Meta description coverage: 7497/9541 (78.6%)
+   Meta keyword coverage: 7497/9541 (78.6%)
+   fr_FR name coverage: 7497/9541 (78.6%)
+   ar_DZ name coverage: 7497/9541 (78.6%)
+
+## 9. REMAINING ISSUES
+   [WARN] 2303 products still missing price
+   [INFO] 243 products without categories
+   [INFO] 327 product names still > 60 chars
+   [INFO] 286 duplicate category name groups
+   [INFO] 2044 products missing ar_DZ name

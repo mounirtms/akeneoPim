@@ -1,0 +1,23 @@
+COMPREHENSIVE MENU & PROGRESS TEST SUMMARY
+=====================================
+Date: 2026-04-30T12:00:18.660Z
+Cache Buster: 1777510314
+
+MENU ITEMS FOUND: 11
+MENU ROUTES TESTED: 11
+ROUTES PASSED: 11
+ROUTES FAILED: 0
+
+ERRORS:
+- Console Errors: 22
+- Page Errors: 28
+
+SCREENSHOTS: 16
+Location: /home/pim/public_html/webapp/test-results-menus
+
+PRODUCTS:
+- Grid Data: {"count_text":"Not found","grid_rows":0,"has_images":false,"image_count":1}
+- Models: {"count_text":"Not found","page_loaded":true}
+- Categories: {"tree_items":0,"content_length":11,"has_tree":false}
+
+For full details, see: results.json

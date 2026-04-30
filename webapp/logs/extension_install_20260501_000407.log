@@ -1,0 +1,19 @@
+=== Installing Missing PHP Extensions ===
+Date: Fri May  1 00:04:07 CET 2026
+
+1. Checking PHP configuration...
+PHP 8.3.29 (cli) (built: Dec 18 2025 21:02:59) (NTS)
+Copyright (c) The PHP Group
+Zend Engine v4.3.29, Copyright (c) Zend Technologies
+
+2. Checking APCu package availability...
+⚠ APCu not found in yum, trying PECL...
+Attempting PECL installation...
+./install_missing_extensions.sh: line 27: pecl: command not found
+./install_missing_extensions.sh: line 28: pecl: command not found
+
+3. Verifying installed extensions...
+Redis: NOT FOUND
+APCu: NOT FOUND
+
+4. Installing predis/predis as Redis client...

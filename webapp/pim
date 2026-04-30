@@ -1,0 +1,143 @@
+#!/usr/bin/env bash
+###############################################################################
+# Akeneo PIM - Master CLI Tool
+# Purpose: Unified interface for all PIM management commands
+# Usage:   ./pim [module] [action] [options]
+###############################################################################
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPTS_DIR="${SCRIPT_DIR}/scripts"
+
+# ── Colors ───────────────────────────────────────────────────────────────────
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
+DIM='\033[2m'
+NC='\033[0m'
+
+# ── Version ──────────────────────────────────────────────────────────────────
+VERSION="1.0.0"
+BUILD_DATE="2026-03-28"
+
+usage() {
+    cat <<EOF
+
+${BOLD}${CYAN}╔═══════════════════════════════════════════════════════════╗
+║         Akeneo PIM Management CLI v${VERSION}              ║
+║         pim.technostationery.com                         ║
+╚═══════════════════════════════════════════════════════════╝${NC}
+
+${BOLD}Usage:${NC} $0 <module> <action> [options]
+
+${BOLD}Modules:${NC}
+
+  ${GREEN}cache${NC}          Cache management (clear, warmup, reset, permissions)
+  ${GREEN}es${NC}             Elasticsearch indexing (reindex, reset, status, health)
+  ${GREEN}deploy${NC}         Deployment (full, assets, webpack, quick, validate, rollback)
+  ${GREEN}maintain${NC}       Maintenance (jobs, DQI, versioning, users, system)
+  ${GREEN}cron${NC}           Cron job management (install, uninstall, status, run-all)
+  ${GREEN}health${NC}         Health check & diagnostics
+
+${BOLD}Quick Commands:${NC}
+
+  ${YELLOW}$0 cache full-reset${NC}          Full cache clear + warmup + fix permissions
+  ${YELLOW}$0 es index-all${NC}              Reindex all products and product models
+  ${YELLOW}$0 deploy full${NC}               Full deployment pipeline
+  ${YELLOW}$0 deploy quick${NC}              Quick deploy (cache only)
+  ${YELLOW}$0 deploy validate${NC}           Run post-deployment validation
+  ${YELLOW}$0 maintain list-jobs${NC}        List all batch jobs
+  ${YELLOW}$0 maintain completeness${NC}     Calculate product completeness
+  ${YELLOW}$0 maintain system-info${NC}      Show system information
+  ${YELLOW}$0 cron install${NC}              Install all cron jobs
+  ${YELLOW}$0 cron status${NC}               Show cron job status
+  ${YELLOW}$0 health${NC}                    Run full health check
+  ${YELLOW}$0 health --json${NC}             Health check with JSON output
+
+${BOLD}Module Help:${NC}
+
+  $0 <module> --help           Show module-specific help
+
+${BOLD}Examples:${NC}
+
+  ${DIM}# Full deployment with webpack rebuild${NC}
+  $0 deploy full
+
+  ${DIM}# Quick cache reset after config change${NC}
+  $0 cache full-reset
+
+  ${DIM}# Reindex specific products${NC}
+  $0 es index-products --ids 1,2,3
+
+  ${DIM}# Check system health${NC}
+  $0 health --verbose
+
+  ${DIM}# Install cron jobs${NC}
+  $0 cron install
+
+  ${DIM}# Clean stuck jobs and purge old ones${NC}
+  $0 maintain clean-jobs
+  $0 maintain purge-jobs 30
+
+EOF
+    exit 0
+}
+
+# ── Resolve module to script ────────────────────────────────────────────────
+resolve_script() {
+    local module="$1"
+    case "$module" in
+        cache)      echo "${SCRIPTS_DIR}/cache/cache_manager.sh" ;;
+        es|elasticsearch) echo "${SCRIPTS_DIR}/elasticsearch/es_manager.sh" ;;
+        deploy)     echo "${SCRIPTS_DIR}/deploy/deploy.sh" ;;
+        maintain|maintenance) echo "${SCRIPTS_DIR}/maintenance/maintenance.sh" ;;
+        cron)       echo "${SCRIPTS_DIR}/cron/cron_manager.sh" ;;
+        health)     echo "${SCRIPTS_DIR}/health/health_check.sh" ;;
+        *)          echo "" ;;
+    esac
+}
+
+# ── Main ─────────────────────────────────────────────────────────────────────
+MODULE="${1:-help}"
+shift || true
+
+case "$MODULE" in
+    -h|--help|help)
+        usage
+        ;;
+    -v|--version|version)
+        echo "Akeneo PIM CLI v${VERSION} (${BUILD_DATE})"
+        exit 0
+        ;;
+    health)
+        # Health module can run without subcommand
+        script=$(resolve_script "health")
+        if [[ -x "$script" ]]; then
+            exec bash "$script" "$@"
+        else
+            echo -e "${RED}Error: Health check script not found at ${script}${NC}"
+            exit 1
+        fi
+        ;;
+    *)
+        script=$(resolve_script "$MODULE")
+        if [[ -z "$script" ]]; then
+            echo -e "${RED}Error: Unknown module '${MODULE}'${NC}"
+            echo ""
+            echo "Available modules: cache, es, deploy, maintain, cron, health"
+            echo "Run '$0 --help' for full usage."
+            exit 1
+        fi
+
+        if [[ ! -f "$script" ]]; then
+            echo -e "${RED}Error: Script not found: ${script}${NC}"
+            exit 1
+        fi
+
+        exec bash "$script" "$@"
+        ;;
+esac

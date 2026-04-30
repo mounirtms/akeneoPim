@@ -1,0 +1,48 @@
+[2026-04-30 13:28:05] ========== DATA QUALITY METRICS ==========
+
+📊 PRODUCT DATA QUALITY
+=========================
+
+Total Products: 9538
+
+✅ Products with Images: 8777 (92.02%)
+✅ Products with Descriptions: 9163 (96.07%)
+✅ Products with Prices: 9538 (100%)
+✅ Products with SEO Metadata: 9538 (100%)
+✅ Products with EAN: 0 (0%)
+✅ Products with Weight: 9058 (94.97%)
+
+📁 Category Assignments: 47295 (avg 4.96 per product)
+
+
+📦 PRODUCT MODEL STRUCTURE
+============================
+
+Product Models: 418
+Variant Products: 7019 (73.59%)
+Simple Products: 2519 (26.41%)
+
+
+🏆 TOP 10 CATEGORIES
+=====================
+
+[2026-04-30 13:28:06] ========== COMPLETENESS ANALYSIS ==========
+
+📈 COMPLETENESS STATISTICS
+===========================
+
+[2026-04-30 13:28:06] ========== PERFORMANCE METRICS ==========
+[2026-04-30 13:28:06] Testing Elasticsearch performance...
+  Test 1: 11ms
+  Test 2: 8ms
+  Test 3: 8ms
+  Test 4: 2ms
+  Test 5: 9ms
+[2026-04-30 13:28:06] Testing database performance...
+  Test 1: 48ms
+  Test 2: 52ms
+  Test 3: 50ms
+  Test 4: 52ms
+  Test 5: 47ms
+[2026-04-30 13:28:06] ========== IMAGE ANALYSIS ==========
+[2026-04-30 13:28:38] ========== TESTS COMPLETE ==========

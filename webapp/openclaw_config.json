@@ -1,0 +1,13 @@
+{
+  "cloudflare": {
+    "email": "amine.bo@techno-dz.com",
+    "api_key": "35d8fd4b1a5d27eabbce73c6753978fc350bc",
+    "zone_id": "4919ad3406fcabba381edbd543814a68",
+    "account_id": "cb89f9d4bfa5ff6fe2c8528847dbc5fe"
+  },
+  "domain": "technostationery.com",
+  "cache_purge": {
+    "enabled": true,
+    "patterns": ["*.js", "*.css", "*.html"]
+  }
+}

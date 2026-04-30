@@ -1,0 +1,70 @@
+[0;32m[2026-04-22 21:38:39][0m ==========================================
+[0;32m[2026-04-22 21:38:39][0m Akeneo PIM Email Notification System
+[0;32m[2026-04-22 21:38:39][0m Installation Started
+[0;32m[2026-04-22 21:38:39][0m ==========================================
+[0;32m[2026-04-22 21:38:39][0m Step 1: Verifying PIM installation...
+[0;32m[2026-04-22 21:38:39][0m ✓ PIM root directory verified: /home/pim/public_html
+[0;32m[2026-04-22 21:38:39][0m 
+[0;32m[2026-04-22 21:38:39][0m Step 2: Verifying event subscriber files...
+[0;32m[2026-04-22 21:38:39][0m ✓ All event subscriber files found
+[0;32m[2026-04-22 21:38:39][0m 
+[0;32m[2026-04-22 21:38:39][0m Step 3: Verifying service configuration...
+[0;32m[2026-04-22 21:38:39][0m ✓ Service configuration file found
+[0;32m[2026-04-22 21:38:39][0m 
+[0;32m[2026-04-22 21:38:39][0m Step 4: Checking mailer configuration...
+[0;32m[2026-04-22 21:38:39][0m ✓ Mailer configuration file exists
+[0;32m[2026-04-22 21:38:39][0m ✓ Mailer is enabled
+[0;32m[2026-04-22 21:38:39][0m 
+[0;32m[2026-04-22 21:38:39][0m Step 5: Checking environment configuration...
+[1;33m[2026-04-22 21:38:39] WARNING:[0m MAILER_URL is set to null transport. Emails will not be sent.
+[1;33m[2026-04-22 21:38:39] WARNING:[0m Please configure SMTP settings in .env file
+[0;32m[2026-04-22 21:38:39][0m 
+[0;32m[2026-04-22 21:38:39][0m Step 6: Setting file permissions...
+[0;32m[2026-04-22 21:38:39][0m ✓ File permissions set
+[0;32m[2026-04-22 21:38:39][0m 
+[0;32m[2026-04-22 21:38:39][0m Step 7: Clearing Symfony cache...
+
+ // Clearing the cache for the prod environment with debug                      
+ // false                                                                       
+
+ [OK] Cache for the "prod" environment (debug=false) was successfully cleared.  
+
+[0;32m[2026-04-22 21:38:39][0m ✓ Cache cleared successfully
+[0;32m[2026-04-22 21:38:39][0m 
+[0;32m[2026-04-22 21:38:39][0m Step 8: Warming up cache...
+
+ // Warming up the cache for the prod environment with debug                    
+ // false                                                                       
+
+ [OK] Cache for the "prod" environment (debug=false) was successfully warmed.   
+
+[0;32m[2026-04-22 21:38:46][0m ✓ Cache warmed up
+[0;32m[2026-04-22 21:38:46][0m 
+[0;32m[2026-04-22 21:38:46][0m Step 9: Verifying event subscriber registration...
+[1;33m[2026-04-22 21:38:46] WARNING:[0m SystemErrorEventSubscriber may not be registered properly
+[0;32m[2026-04-22 21:38:46][0m 
+[0;32m[2026-04-22 21:38:46][0m Step 10: Testing email configuration...
+PHP mail function available: YES
+[0;32m[2026-04-22 21:38:46][0m 
+[0;32m[2026-04-22 21:38:46][0m Step 11: Creating notification test script...
+[0;32m[2026-04-22 21:38:46][0m ✓ Test script created: /home/pim/public_html/webapp/test_notifications.sh
+[0;32m[2026-04-22 21:38:47][0m 
+[0;32m[2026-04-22 21:38:47][0m Step 12: Generating installation report...
+[0;32m[2026-04-22 21:38:47][0m ✓ Installation report created: /home/pim/public_html/webapp/EMAIL_NOTIFICATION_INSTALLATION_REPORT.md
+[0;32m[2026-04-22 21:38:47][0m ==========================================
+[0;32m[2026-04-22 21:38:47][0m Installation Summary
+[0;32m[2026-04-22 21:38:47][0m ==========================================
+[0;32m[2026-04-22 21:38:47][0m ✓ Event subscribers installed: 4 files
+[0;32m[2026-04-22 21:38:47][0m ✓ Service configuration updated
+[0;32m[2026-04-22 21:38:47][0m ✓ Cache cleared and warmed up
+[0;32m[2026-04-22 21:38:47][0m ✓ Test script created
+[0;32m[2026-04-22 21:38:47][0m ✓ Installation report generated
+[0;34m[2026-04-22 21:38:47] INFO:[0m Marketing email: marketing@techno-dz.com
+[0;34m[2026-04-22 21:38:47] INFO:[0m Webmaster email: webmaster@techno-dz.com
+[0;34m[2026-04-22 21:38:47] INFO:[0m From email: no-reply@technostationery.com
+[1;33m[2026-04-22 21:38:47] WARNING:[0m IMPORTANT: Configure SMTP in .env file for emails to work
+[0;34m[2026-04-22 21:38:47] INFO:[0m Run test script: /home/pim/public_html/webapp/test_notifications.sh
+[0;34m[2026-04-22 21:38:47] INFO:[0m View report: /home/pim/public_html/webapp/EMAIL_NOTIFICATION_INSTALLATION_REPORT.md
+[0;32m[2026-04-22 21:38:47][0m Installation completed successfully!
+[0;32m[2026-04-22 21:38:47][0m Log file: /home/pim/public_html/webapp/email_notification_install_20260422_213839.log
+[0;32m[2026-04-22 21:38:47][0m ==========================================

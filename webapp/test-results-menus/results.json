@@ -1,0 +1,205 @@
+{
+  "timestamp": "2026-04-30T12:00:18.660Z",
+  "cache_buster": "1777510314",
+  "menu_items": [
+    {
+      "name": "Dashboard",
+      "url": "/",
+      "status": "PASS",
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
+      "has_errors": false,
+      "console_errors": 6
+    },
+    {
+      "name": "Products",
+      "url": "/enrich/product/",
+      "status": "PASS",
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
+      "has_errors": false,
+      "console_errors": 6
+    },
+    {
+      "name": "Categories",
+      "url": "/enrich/product-category-tree/",
+      "status": "PASS",
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
+      "has_errors": false,
+      "console_errors": 6
+    },
+    {
+      "name": "Import",
+      "url": "/collect/import/",
+      "status": "PASS",
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
+      "has_errors": false,
+      "console_errors": 6
+    },
+    {
+      "name": "Export",
+      "url": "/spread/export/",
+      "status": "PASS",
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
+      "has_errors": false,
+      "console_errors": 6
+    },
+    {
+      "name": "Jobs",
+      "url": "/job",
+      "status": "PASS",
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
+      "has_errors": false,
+      "console_errors": 6
+    },
+    {
+      "name": "Attributes",
+      "url": "/configuration/attribute/",
+      "status": "PASS",
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
+      "has_errors": false,
+      "console_errors": 6
+    },
+    {
+      "name": "Attribute Groups",
+      "url": "/configuration/attribute-group/",
+      "status": "PASS",
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
+      "has_errors": false,
+      "console_errors": 6
+    },
+    {
+      "name": "Families",
+      "url": "/configuration/family/",
+      "status": "PASS",
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
+      "has_errors": false,
+      "console_errors": 6
+    },
+    {
+      "name": "Channels",
+      "url": "/configuration/channel/",
+      "status": "PASS",
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
+      "has_errors": false,
+      "console_errors": 6
+    },
+    {
+      "name": "Locales",
+      "url": "/configuration/locale/",
+      "status": "PASS",
+      "title": "Loading...",
+      "content_length": 11,
+      "is_loading": true,
+      "has_errors": false,
+      "console_errors": 6
+    }
+  ],
+  "products": {
+    "count": 0,
+    "models": {
+      "count_text": "Not found",
+      "page_loaded": true
+    },
+    "progress": {},
+    "grid": {
+      "count_text": "Not found",
+      "grid_rows": 0,
+      "has_images": false,
+      "image_count": 1
+    },
+    "categories": {
+      "tree_items": 0,
+      "content_length": 11,
+      "has_tree": false
+    },
+    "api": {
+      "api_accessible": true,
+      "product_count": "N/A"
+    }
+  },
+  "errors": [
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror",
+    "module is not defined",
+    "Script error for \"pim/form-builder\"\nhttps://requirejs.org/docs/errors.html#scripterror"
+  ],
+  "console_errors": [
+    "Access to script at 'https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516' from origin 'https://pim.technostationery.com' has been blocked by CORS policy: Request header field cache-control is not allowed by Access-Control-Allow-Headers in preflight response.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://pim.technostationery.com/dist/main.min/form-builder.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
+    "[PimApp] configure() failed: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
+    "❌ Failed to build pim-app: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
+    "Access to script at 'https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516' from origin 'https://pim.technostationery.com' has been blocked by CORS policy: Request header field cache-control is not allowed by Access-Control-Allow-Headers in preflight response.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://pim.technostationery.com/dist/main.min/form-builder.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
+    "[PimApp] configure() failed: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
+    "❌ Failed to build pim-app: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Access to script at 'https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516' from origin 'https://pim.technostationery.com' has been blocked by CORS policy: Request header field cache-control is not allowed by Access-Control-Allow-Headers in preflight response.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Access to script at 'https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516' from origin 'https://pim.technostationery.com' has been blocked by CORS policy: Request header field cache-control is not allowed by Access-Control-Allow-Headers in preflight response.",
+    "Failed to load resource: net::ERR_FAILED",
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Refused to execute script from 'https://pim.technostationery.com/dist/main.min/form-builder.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
+    "[PimApp] configure() failed: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
+    "❌ Failed to build pim-app: {readyState: 4, getResponseHeader: , getAllResponseHeaders: , setRequestHeader: , overrideMimeType: }",
+    "Failed to load resource: the server responded with a status of 401 ()"
+  ],
+  "screenshots": [
+    "00-dashboard-fresh.png"
+  ],
+  "summary": {
+    "total_menu_items": 11,
+    "menu_routes_tested": 11,
+    "menu_routes_passed": 11,
+    "menu_routes_failed": 0,
+    "total_console_errors": 22,
+    "total_page_errors": 28,
+    "screenshots_taken": 16
+  }
+}

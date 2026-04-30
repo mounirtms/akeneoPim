@@ -1,0 +1,175 @@
+{
+  "timestamp": "2026-04-30T00:46:03.545Z",
+  "tests": [],
+  "errors": [
+    {
+      "message": "module is not defined",
+      "stack": "ReferenceError: module is not defined\n    at https://pim.technostationery.com/js/require-paths.js?v=1745862000:1:1"
+    },
+    {
+      "message": "Unexpected token 'export'",
+      "stack": ""
+    },
+    {
+      "message": "Cannot read properties of undefined (reading 'build')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'build')\n    at https://pim.technostationery.com/bundles/pimui/js/index.js?v=1745862000:17:21\n    at Object.execCb (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1697:33)\n    at Module.check (https://pim.technostationery.com/dist/require.min.js?v=1745862000:884:51)\n    at Module.<anonymous> (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1140:34)\n    at https://pim.technostationery.com/dist/require.min.js?v=1745862000:135:23\n    at https://pim.technostationery.com/dist/require.min.js?v=1745862000:1190:21\n    at each (https://pim.technostationery.com/dist/require.min.js?v=1745862000:60:31)\n    at Module.emit (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1189:17)\n    at Module.check (https://pim.technostationery.com/dist/require.min.js?v=1745862000:939:30)\n    at Module.enable (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1177:22)"
+    },
+    {
+      "message": "module is not defined",
+      "stack": "ReferenceError: module is not defined\n    at https://pim.technostationery.com/js/require-paths.js?v=1745862000:1:1"
+    },
+    {
+      "message": "Unexpected token 'export'",
+      "stack": ""
+    },
+    {
+      "message": "Cannot read properties of undefined (reading 'build')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'build')\n    at https://pim.technostationery.com/bundles/pimui/js/index.js?v=1745862000:17:21\n    at Object.execCb (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1697:33)\n    at Module.check (https://pim.technostationery.com/dist/require.min.js?v=1745862000:884:51)\n    at Module.<anonymous> (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1140:34)\n    at https://pim.technostationery.com/dist/require.min.js?v=1745862000:135:23\n    at https://pim.technostationery.com/dist/require.min.js?v=1745862000:1190:21\n    at each (https://pim.technostationery.com/dist/require.min.js?v=1745862000:60:31)\n    at Module.emit (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1189:17)\n    at Module.check (https://pim.technostationery.com/dist/require.min.js?v=1745862000:939:30)\n    at Module.enable (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1177:22)"
+    },
+    {
+      "message": "module is not defined",
+      "stack": "ReferenceError: module is not defined\n    at https://pim.technostationery.com/js/require-paths.js?v=1745862000:1:1"
+    },
+    {
+      "message": "Unexpected token 'export'",
+      "stack": ""
+    },
+    {
+      "message": "Cannot read properties of undefined (reading 'build')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'build')\n    at https://pim.technostationery.com/bundles/pimui/js/index.js?v=1745862000:17:21\n    at Object.execCb (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1697:33)\n    at Module.check (https://pim.technostationery.com/dist/require.min.js?v=1745862000:884:51)\n    at Module.<anonymous> (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1140:34)\n    at https://pim.technostationery.com/dist/require.min.js?v=1745862000:135:23\n    at https://pim.technostationery.com/dist/require.min.js?v=1745862000:1190:21\n    at each (https://pim.technostationery.com/dist/require.min.js?v=1745862000:60:31)\n    at Module.emit (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1189:17)\n    at Module.check (https://pim.technostationery.com/dist/require.min.js?v=1745862000:939:30)\n    at Module.enable (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1177:22)"
+    },
+    {
+      "message": "module is not defined",
+      "stack": "ReferenceError: module is not defined\n    at https://pim.technostationery.com/js/require-paths.js?v=1745862000:1:1"
+    },
+    {
+      "message": "Unexpected token 'export'",
+      "stack": ""
+    },
+    {
+      "message": "Cannot read properties of undefined (reading 'build')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'build')\n    at https://pim.technostationery.com/bundles/pimui/js/index.js?v=1745862000:17:21\n    at Object.execCb (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1697:33)\n    at Module.check (https://pim.technostationery.com/dist/require.min.js?v=1745862000:884:51)\n    at Module.<anonymous> (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1140:34)\n    at https://pim.technostationery.com/dist/require.min.js?v=1745862000:135:23\n    at https://pim.technostationery.com/dist/require.min.js?v=1745862000:1190:21\n    at each (https://pim.technostationery.com/dist/require.min.js?v=1745862000:60:31)\n    at Module.emit (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1189:17)\n    at Module.check (https://pim.technostationery.com/dist/require.min.js?v=1745862000:939:30)\n    at Module.enable (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1177:22)"
+    },
+    {
+      "message": "module is not defined",
+      "stack": "ReferenceError: module is not defined\n    at https://pim.technostationery.com/js/require-paths.js?v=1745862000:1:1"
+    },
+    {
+      "message": "Unexpected token 'export'",
+      "stack": ""
+    },
+    {
+      "message": "Cannot read properties of undefined (reading 'build')",
+      "stack": "TypeError: Cannot read properties of undefined (reading 'build')\n    at https://pim.technostationery.com/bundles/pimui/js/index.js?v=1745862000:17:21\n    at Object.execCb (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1697:33)\n    at Module.check (https://pim.technostationery.com/dist/require.min.js?v=1745862000:884:51)\n    at Module.<anonymous> (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1140:34)\n    at https://pim.technostationery.com/dist/require.min.js?v=1745862000:135:23\n    at https://pim.technostationery.com/dist/require.min.js?v=1745862000:1190:21\n    at each (https://pim.technostationery.com/dist/require.min.js?v=1745862000:60:31)\n    at Module.emit (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1189:17)\n    at Module.check (https://pim.technostationery.com/dist/require.min.js?v=1745862000:939:30)\n    at Module.enable (https://pim.technostationery.com/dist/require.min.js?v=1745862000:1177:22)"
+    }
+  ],
+  "console_errors": [
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://pim.technostationery.com/function%20()%20%7B%20[native%20code]%20%7D",
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://pim.technostationery.com/import/",
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://pim.technostationery.com/export/",
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 ()",
+      "location": {
+        "url": "https://pim.technostationery.com/function%20()%20%7B%20[native%20code]%20%7D",
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "failed_requests": [
+    {
+      "url": "https://pim.technostationery.com/function%20()%20%7B%20[native%20code]%20%7D",
+      "status": 404,
+      "statusText": ""
+    },
+    {
+      "url": "https://pim.technostationery.com/enrich/product/js/translation/fr_FR.js",
+      "status": 404,
+      "statusText": ""
+    },
+    {
+      "url": "https://pim.technostationery.com/enrich/product-category-tree/js/translation/fr_FR.js",
+      "status": 404,
+      "statusText": ""
+    },
+    {
+      "url": "https://pim.technostationery.com/data-quality-insights/",
+      "status": 404,
+      "statusText": ""
+    },
+    {
+      "url": "https://pim.technostationery.com/function%20()%20%7B%20[native%20code]%20%7D",
+      "status": 404,
+      "statusText": ""
+    },
+    {
+      "url": "https://pim.technostationery.com/import/",
+      "status": 404,
+      "statusText": ""
+    },
+    {
+      "url": "https://pim.technostationery.com/export/",
+      "status": 404,
+      "statusText": ""
+    },
+    {
+      "url": "https://pim.technostationery.com/function%20()%20%7B%20[native%20code]%20%7D",
+      "status": 404,
+      "statusText": ""
+    }
+  ],
+  "products_tested": [],
+  "categories_tested": {
+    "items_found": 0,
+    "categories": [],
+    "console_errors": 3
+  },
+  "data_quality": {
+    "has_scores": false,
+    "has_recommendations": false,
+    "has_progress": false
+  },
+  "configurations": {},
+  "dashboard_metrics": {
+    "product_count": null,
+    "image_percentage": null,
+    "enrichment_data": null,
+    "completeness": null,
+    "quality_scores": null
+  },
+  "config_warnings": [],
+  "products_grid": {
+    "rows": 0,
+    "images": 1,
+    "loading_spinners": 2,
+    "console_errors": 3
+  },
+  "error_summary": {
+    "not_found_404": 8,
+    "server_errors_500": 0,
+    "auth_errors_401": 0,
+    "js_errors": 0,
+    "network_errors": 4
+  }
+}

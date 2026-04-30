@@ -1,0 +1,18 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "main": "spa_builder_test.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "test:debug": "npx playwright test --debug"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@playwright/test": "^1.59.1",
+    "playwright": "^1.52.0"
+  }
+}

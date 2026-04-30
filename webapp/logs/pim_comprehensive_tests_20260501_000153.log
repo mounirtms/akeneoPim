@@ -1,0 +1,148 @@
+========================================
+AKENEO PIM COMPREHENSIVE TESTING
+Date: Fri May  1 00:01:53 CET 2026
+========================================
+
+## PHASE 1: Core Console Commands
+======================================
+
+Test 1: Akeneo Console Accessibility
+Symfony 5.4.48 (env: prod, debug: false)
+✅ PASSED: Console accessible
+
+Test 2: Cache Pools Status
+Cache pools found: 1
+❌ FAILED: Cache configuration issue
+
+Test 3: Product Index Status
+23:01:53 CRITICAL  [console] Error thrown while running command "pim:product:index --all --env=prod". Message: "Cannot find the "redis" extension nor the "predis/predis" package." ["exception" => Symfony\Component\Cache\Exception\CacheException { …},"command" => "pim:product:index --all --env=prod","message" => "Cannot find the "redis" extension nor the "predis/predis" package."]
+❌ FAILED: Product indexing failed
+
+Test 4: Product Model Index Status
+23:01:54 CRITICAL  [console] Error thrown while running command "pim:product-model:index --all --env=prod". Message: "Cannot find the "redis" extension nor the "predis/predis" package." ["exception" => Symfony\Component\Cache\Exception\CacheException { …},"command" => "pim:product-model:index --all --env=prod","message" => "Cannot find the "redis" extension nor the "predis/predis" package."]
+❌ FAILED: Product model indexing failed
+
+Test 5: Completeness Calculation
+23:01:54 CRITICAL  [console] Error thrown while running command "pim:completeness:calculate --env=prod". Message: "Cannot find the "redis" extension nor the "predis/predis" package." ["exception" => Symfony\Component\Cache\Exception\CacheException { …},"command" => "pim:completeness:calculate --env=prod","message" => "Cannot find the "redis" extension nor the "predis/predis" package."]
+❌ FAILED: Completeness calculation failed
+
+
+## PHASE 2: Database Connectivity (via Console)
+===============================================
+
+Test 6: Product Count Query
+Database query successful
+✅ PASSED: Database accessible via console
+
+Test 7: Attribute Configuration
+❌ FAILED: Attribute system issue
+
+Test 8: Product Families
+
+In RedisTrait.php line 105:
+                                                                      
+  Cannot find the "redis" extension nor the "predis/predis" package.  
+                                                                      
+
+✅ PASSED: Family configuration accessible
+
+
+## PHASE 3: Elasticsearch Health
+=================================
+
+Test 9: Elasticsearch Cluster Health
+Elasticsearch status: yellow
+✅ PASSED: Elasticsearch healthy (yellow)
+
+Test 10: Product Index Count
+Products in Elasticsearch: 9956
+✅ PASSED: Products indexed (9956 docs)
+
+Test 11: Index Shard Status
+health status index                                                                     uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   akeneo_pim_product_and_product_model_01092bbe-71f0-43b2-98e3-f8ef7c7bdc44 jHSy8ZzSSUG-GVe3_ENWzw   1   0       9956         7826     18.1mb         18.1mb
+yellow open   akeneo_pim_connection_error_8501ff90-15e2-4408-aef8-a4113db1ef8c          HaiQPH1BSryHn6GXouUxmg   1   1          0            0       227b           227b
+yellow open   akeneo_pim_events_api_debug_6c3ce27d-6901-4dc2-a006-587105e120c8          k7S1HBuOS8KujfqfnefrCw   1   1          0            0       227b           227b
+✅ PASSED: Index details retrieved
+
+
+## PHASE 4: File System & Assets
+=================================
+
+Test 12: Frontend Assets Verification
+Bundle symlinks: 16
+✅ PASSED: Asset bundles present (16 symlinks)
+
+Test 13: Critical JavaScript Files
+  ✓ public/js/fos_js_routes.json (80K)
+  ✓ public/bundles/fosjsrouting/js/router.js (16K)
+  ✓ public/bundles/pimui/js/form/builder.js (4.0K)
+✅ PASSED: All critical JS files present
+
+Test 14: Product Images Directory
+Product images: 28200 files (552M)
+✅ PASSED: Product images present (28200 files)
+
+Test 15: Upload Directory Permissions
+  ✓ public/media (writable)
+  ✓ var/file_storage (writable)
+  ✓ var/cache (writable)
+  ✓ var/logs (writable)
+✅ PASSED: All directories writable
+
+
+## PHASE 5: Application Logs Analysis
+======================================
+
+Test 16: Application Error Logs (last 24h)
+Critical errors (last 10): 10
+Errors (last 20): 20
+Recent critical errors:
+[2026-04-30 23:01:54] app.CRITICAL: Uncaught Exception Symfony\Component\Cache\Exception\CacheException: "Cannot find the "redis" extension nor the "predis/predis" package." at /home/pim/public_html/vendor/symfony/cache/Traits/RedisTrait.php line 105 {"exception":"[object] (Symfony\\Component\\Cache\\Exception\\CacheException(code: 0): Cannot find the \"redis\" extension nor the \"predis/predis\" package. at /home/pim/public_html/vendor/symfony/cache/Traits/RedisTrait.php:105)"} []
+[2026-04-30 23:01:54] console.CRITICAL: Error thrown while running command "akeneo:elasticsearch:reset-indexes --env=prod --no-interaction". Message: "Cannot find the "redis" extension nor the "predis/predis" package." {"exception":"[object] (Symfony\\Component\\Cache\\Exception\\CacheException(code: 0): Cannot find the \"redis\" extension nor the \"predis/predis\" package. at /home/pim/public_html/vendor/symfony/cache/Traits/RedisTrait.php:105)","command":"akeneo:elasticsearch:reset-indexes --env=prod --no-interaction","message":"Cannot find the \"redis\" extension nor the \"predis/predis\" package."} []
+[2026-04-30 23:01:54] app.CRITICAL: Uncaught Exception Symfony\Component\Cache\Exception\CacheException: "Cannot find the "redis" extension nor the "predis/predis" package." at /home/pim/public_html/vendor/symfony/cache/Traits/RedisTrait.php line 105 {"exception":"[object] (Symfony\\Component\\Cache\\Exception\\CacheException(code: 0): Cannot find the \"redis\" extension nor the \"predis/predis\" package. at /home/pim/public_html/vendor/symfony/cache/Traits/RedisTrait.php:105)"} []
+[2026-04-30 23:01:54] console.CRITICAL: Error thrown while running command "'pim:catalog:query-help' --env=prod". Message: "Cannot find the "redis" extension nor the "predis/predis" package." {"exception":"[object] (Symfony\\Component\\Cache\\Exception\\CacheException(code: 0): Cannot find the \"redis\" extension nor the \"predis/predis\" package. at /home/pim/public_html/vendor/symfony/cache/Traits/RedisTrait.php:105)","command":"'pim:catalog:query-help' --env=prod","message":"Cannot find the \"redis\" extension nor the \"predis/predis\" package."} []
+[2026-04-30 23:01:54] console.CRITICAL: Error thrown while running command "'pim:catalog:query-help' --env=prod". Message: "Cannot find the "redis" extension nor the "predis/predis" package." {"exception":"[object] (Symfony\\Component\\Cache\\Exception\\CacheException(code: 0): Cannot find the \"redis\" extension nor the \"predis/predis\" package. at /home/pim/public_html/vendor/symfony/cache/Traits/RedisTrait.php:105)","command":"'pim:catalog:query-help' --env=prod","message":"Cannot find the \"redis\" extension nor the \"predis/predis\" package."} []
+❌ FAILED: 10 critical errors found
+
+Test 17: Web Server Error Logs
+Apache error log not found in var/logs/
+✅ PASSED: Web server logs not in app directory
+
+
+## PHASE 6: API & Routing Tests
+================================
+
+Test 18: Internal API Routing
+❌ FAILED: API routing issue
+
+Test 19: JavaScript Routing Configuration
+JavaScript routes: 8
+✅ PASSED: JS routing configured (8 routes)
+
+
+## PHASE 7: Performance Metrics
+================================
+
+Test 20: Cache Performance
+Cache warmup time: 0s
+✅ PASSED: Cache warmup fast (0s)
+
+Test 21: Product Query Performance
+Product query time: 0s
+✅ PASSED: Product queries fast (0s)
+
+
+========================================
+TEST SUMMARY
+========================================
+
+Total Tests: 21
+Passed: 14
+Failed: 7
+Success Rate: 66%
+
+❌ CRITICAL ISSUES - REQUIRES ATTENTION
+
+Full log: logs/pim_comprehensive_tests_20260501_000153.log
+========================================

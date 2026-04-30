@@ -1,0 +1,151 @@
+
+--------------------------------------------------------------------------------
+1. ATTRIBUTE KEYS AND CODES VALIDATION
+--------------------------------------------------------------------------------
+Total Attributes: 112
+Valid Code Format: 112 (100%)
+Naming Issues: 0
+
+
+✓ No duplicate attribute codes found.
+
+--------------------------------------------------------------------------------
+2. ATTRIBUTE VALUES AUDIT
+--------------------------------------------------------------------------------
+
+Attribute Usage in Families:
+Attribute                           Type                        Required   Families
+-------------------------------------------------------------------------------------
+sku                                 ntifier                          Yes          0 ⚠
+
+Attributes not used in any family: 0
+
+--------------------------------------------------------------------------------
+3. ATTRIBUTE OPTIONS AUDIT
+--------------------------------------------------------------------------------
+
+Top 20 Attributes by Number of Options:
+Attribute                         Options     Unique     Labels Locales             
+------------------------------------------------------------------------------------------
+color                                 631        631        631 fr_FR               
+size                                   17         17         17 fr_FR               
+
+✓ All option codes follow naming conventions.
+
+--------------------------------------------------------------------------------
+4. ATTRIBUTE GROUP ASSIGNMENTS
+--------------------------------------------------------------------------------
+
+Attribute Group Distribution:
+Group Code                     Sort Order Attributes
+-------------------------------------------------------
+general                                 1        100
+technical                               2         11
+marketing                               3          0
+other                                 100          1
+
+⚠ Empty Groups Found: marketing
+
+✓ All attributes are assigned to groups.
+
+--------------------------------------------------------------------------------
+5. LOCALIZATION COMPLETENESS
+--------------------------------------------------------------------------------
+Active Locales: en_US, fr_FR
+
+Localizable Attributes: 33
+Expected Translations per Attribute: 2
+
+Attributes with Missing Translations (top 20):
+  - amasty_preorder_cart_label: 1/2 locales (fr_FR)
+  - amasty_preorder_note: 1/2 locales (fr_FR)
+  - amtoolkit_canonical: 1/2 locales (fr_FR)
+  - category_ids: 1/2 locales (fr_FR)
+  - custom_layout_update: 1/2 locales (fr_FR)
+  - description: 1/2 locales (fr_FR)
+  - en_promo: 1/2 locales (fr_FR)
+  - gallery: 1/2 locales (fr_FR)
+  - has_options: 1/2 locales (fr_FR)
+  - image_label: 1/2 locales (fr_FR)
+  - links_title: 1/2 locales (fr_FR)
+  - media_gallery: 1/2 locales (fr_FR)
+  - meta_description: 1/2 locales (fr_FR)
+  - meta_keyword: 1/2 locales (fr_FR)
+  - meta_keywords: 1/2 locales (fr_FR)
+  - meta_title: 1/2 locales (fr_FR)
+  - mwishlist_sku: 1/2 locales (fr_FR)
+  - name: 1/2 locales (fr_FR)
+  - quickorder_sku: 1/2 locales (fr_FR)
+  - required_options: 1/2 locales (fr_FR)
+
+--------------------------------------------------------------------------------
+6. FAMILY-ATTRIBUTE RELATIONSHIPS
+--------------------------------------------------------------------------------
+Family-Attribute Mapping:
+Family                             Total Attrs        Required
+-----------------------------------------------------------------
+classement                                 111               0
+bureautique                                111               0
+tableau                                    111               0
+papeterie                                  111               0
+informatique                               111               0
+default                                    111               0
+calculatrices                              111               0
+beaux_arts                                 111               0
+scolaire                                   111               0
+maglux                                     111               0
+fournitures_bureau                         111               0
+crayons                                    111               0
+cahier                                     111               0
+bags_sac                                   111               0
+techno                                     111               0
+products                                   111               0
+madeinalgeria                              111               0
+ecriture                                   111               0
+
+✓ All attributes are assigned to at least one family.
+
+--------------------------------------------------------------------------------
+7. VALIDATION RULES VERIFICATION
+--------------------------------------------------------------------------------
+Attributes with Validation Rules: 1
+
+Attribute                 Type                 Rule            Additional          
+-------------------------------------------------------------------------------------
+weight                    pim_catalog_metric   none            metric:Weight       
+
+--------------------------------------------------------------------------------
+8. PRODUCT VALUES INTEGRITY
+--------------------------------------------------------------------------------
+Total Enabled Products: 9538
+Products with Completeness Data: 0
+Average Completeness (ecommerce/en_US): 0%
+Min Completeness: 0%
+Max Completeness: 0%
+
+--------------------------------------------------------------------------------
+9. DATA QUALITY SCORING
+--------------------------------------------------------------------------------
+Overall Data Quality Metrics:
+  ✓ Valid Attribute Codes              : 100.0%
+  ✓ Attributes in Groups               : 100.0%
+  ✓ Attributes in Families             : 100.0%
+  ✗ Product Completeness               :   0.0%
+  ✗ Groups Utilization                 :  75.0%
+
+OVERALL DATA QUALITY SCORE: 75%
+Grade: C or below - NEEDS WORK - Significant Issues Detected
+
+================================================================================
+SUMMARY AND RECOMMENDATIONS
+================================================================================
+
+Action Items:
+1. Remove or merge empty attribute groups: marketing
+2. Add missing translations for 20 localizable attributes
+
+================================================================================
+Audit completed at 2026-04-27 17:51:25
+Full log saved to: /home/pim/public_html/webapp/logs/comprehensive_attribute_audit_20260427_175125.log
+================================================================================
+

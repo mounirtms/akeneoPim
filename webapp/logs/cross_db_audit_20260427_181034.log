@@ -1,0 +1,132 @@
+
+--------------------------------------------------------------------------------
+1. PRODUCT COUNT AND SKU MATCHING
+--------------------------------------------------------------------------------
+Akeneo PIM:
+  Total Products: 9538
+  Enabled: 9538
+  Disabled: 0
+
+Magento Beta:
+  Total Products: 9538
+  Unique SKUs: 9538
+
+✓ Product counts match perfectly!
+
+✓ All Akeneo SKUs exist in Magento
+
+--------------------------------------------------------------------------------
+2. CATEGORY STRUCTURE CONSISTENCY
+--------------------------------------------------------------------------------
+Akeneo Categories: 166
+Magento Categories: 166
+✓ Category counts match (±2 for system categories)
+
+--------------------------------------------------------------------------------
+3. PRODUCT-CATEGORY ASSIGNMENTS
+--------------------------------------------------------------------------------
+Akeneo Product-Category Links: 47295
+Magento Product-Category Links: 46190
+✓ Category assignments are consistent (±5%)
+
+--------------------------------------------------------------------------------
+4. ATTRIBUTE VALUES SYNCHRONIZATION
+--------------------------------------------------------------------------------
+Key Attribute Population in Magento:
+  ✓ name           :  9538 products (100.0%)
+  ✓ price          :  9537 products (100.0%)
+  ✓ description    :  9528 products ( 99.9%)
+
+--------------------------------------------------------------------------------
+5. PRICE DATA INTEGRITY
+--------------------------------------------------------------------------------
+Products with Price: 9537 / 9538 (100%)
+Price Range: 0.00 - 295,000.00
+Average Price: 2,144.25
+✓ Excellent price coverage
+
+--------------------------------------------------------------------------------
+6. STOCK/INVENTORY STATUS
+--------------------------------------------------------------------------------
+Products In Stock: 9538 / 9538 (100%)
+Average Quantity: 8230.87
+✓ Stock status configured
+
+--------------------------------------------------------------------------------
+7. URL REWRITES AND SEO DATA
+--------------------------------------------------------------------------------
+Products with URL Rewrites: 60344 / 9538 (632.7%)
+✓ Excellent URL rewrite coverage
+
+--------------------------------------------------------------------------------
+8. MAGENTO INDEXES STATUS
+--------------------------------------------------------------------------------
+Indexer ID                                         Status          Last Updated        
+------------------------------------------------------------------------------------------
+✓ amasty_amrules_purchase_history_index            valid           2026-04-27 15:27:57 
+✓ amasty_groupcat_product                          valid           2026-04-27 15:27:10 
+✓ amasty_groupcat_rule                             valid           2026-04-27 15:27:10 
+✓ amasty_label                                     valid           2026-04-27 17:05:55 
+✓ amasty_label_main                                valid           2026-04-27 17:05:55 
+✓ amasty_ogrid_attribute_index                     valid           2026-04-27 15:27:56 
+✓ amasty_order_attribute_grid                      valid           2026-04-27 15:27:52 
+✓ amasty_order_attribute_product                   valid           2026-04-27 15:27:52 
+✓ amasty_order_export_attribute_index              valid           2026-04-27 15:27:48 
+✓ amasty_order_export_custom_option_index          valid           2026-04-27 15:27:51 
+✓ amasty_pgrid_qty_sold                            valid           2026-04-27 15:27:57 
+✓ amasty_product_order_attribute                   valid           2026-04-27 15:27:52 
+✓ amasty_reportbuilder_eav_indexer                 valid           2026-04-27 15:27:10 
+✓ amasty_reports_product_rule                      valid           2026-04-27 15:27:57 
+✓ amasty_reports_rule_product                      valid           2026-04-27 15:27:57 
+✓ amasty_store_locator_content_indexer             valid           2026-04-27 15:28:01 
+✓ amasty_store_locator_indexer                     valid           2026-04-27 15:27:59 
+✓ amasty_store_locator_product_indexer             valid           2026-04-27 15:27:59 
+✓ cataloginventory_stock                           valid           2026-04-27 16:58:35 
+✓ catalogrule_product                              valid           2026-04-27 16:58:33 
+✓ catalogrule_rule                                 valid           2026-04-27 16:58:33 
+✓ catalogsearch_fulltext                           valid           2026-04-27 17:05:54 
+✓ catalog_category_flat                            valid           2026-04-27 15:19:43 
+✓ catalog_category_product                         valid           2026-04-27 16:58:32 
+⚠ catalog_product_attribute                        invalid         2026-04-27 16:58:20 
+✓ catalog_product_category                         valid           2026-04-27 16:58:32 
+✓ catalog_product_flat                             valid           2026-04-16 10:48:48 
+✓ catalog_product_price                            valid           2026-04-27 16:58:43 
+✓ customer_grid                                    valid           2026-04-27 15:19:43 
+✓ design_config_grid                               valid           2026-04-27 15:19:41 
+✓ inventory                                        valid           2026-04-27 16:58:39 
+✓ mageworx_ordersgrid_additional_data              valid           2026-04-27 15:28:10 
+
+Valid Indexes: 31 / 32 (96.9%)
+
+================================================================================
+OVERALL SYNC HEALTH SCORE
+================================================================================
+
+Detailed Scores:
+  ✓ Product count            : 100.0%
+  ✓ Categories               : 100.0%
+  ✓ Cat assignments          : 100.0%
+  ✓ Attributes               : 100.0%
+  ✓ Prices                   : 100.0%
+  ✓ Stock                    : 100.0%
+  ✓ Urls                     : 100.0%
+  ✓ Indexes                  :  96.9%
+
+OVERALL SYNC HEALTH: 99.6%
+Grade: A+ - EXCELLENT - Systems perfectly synchronized
+
+================================================================================
+ISSUES AND RECOMMENDATIONS
+================================================================================
+
+WARNINGS:
+1. Index 'catalog_product_attribute' status: invalid
+
+RECOMMENDED ACTIONS:
+4. Reindex Magento: bin/magento indexer:reindex
+
+================================================================================
+Audit completed at 2026-04-27 18:10:37
+Full log saved to: /home/pim/public_html/webapp/logs/cross_db_audit_20260427_181034.log
+================================================================================
+

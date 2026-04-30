@@ -1,0 +1,180 @@
+========================================
+AKENEO PIM COMPREHENSIVE TESTING
+Date: Fri May  1 00:00:46 CET 2026
+========================================
+
+## PHASE 1: Core Console Commands
+======================================
+
+Test 1: Akeneo Console Accessibility
+
+In BaseNode.php line 469:
+                                                                               
+  Invalid configuration for path "framework.cache.pools": "cache.app" and "ca  
+  che.system" are reserved names                                               
+❌ FAILED: Console not accessible
+
+Test 2: Cache Pools Status
+Cache pools found: 2
+❌ FAILED: Cache configuration issue
+
+Test 3: Product Index Status
+                                                                               
+  Invalid configuration for path "framework.cache.pools": "cache.app" and "ca  
+  che.system" are reserved names                                               
+                                                                               
+
+In ExprBuilder.php line 187:
+                                                     
+  "cache.app" and "cache.system" are reserved names  
+                                                     
+
+❌ FAILED: Product indexing failed
+
+Test 4: Product Model Index Status
+                                                                               
+  Invalid configuration for path "framework.cache.pools": "cache.app" and "ca  
+  che.system" are reserved names                                               
+                                                                               
+
+In ExprBuilder.php line 187:
+                                                     
+  "cache.app" and "cache.system" are reserved names  
+                                                     
+
+❌ FAILED: Product model indexing failed
+
+Test 5: Completeness Calculation
+In ExprBuilder.php line 187:
+                                                     
+  "cache.app" and "cache.system" are reserved names  
+                                                     
+
+❌ FAILED: Completeness calculation failed
+
+
+## PHASE 2: Database Connectivity (via Console)
+===============================================
+
+Test 6: Product Count Query
+Database query successful
+✅ PASSED: Database accessible via console
+
+Test 7: Attribute Configuration
+✅ PASSED: Attribute system accessible
+
+Test 8: Product Families
+
+In BaseNode.php line 469:
+                                                                               
+  Invalid configuration for path "framework.cache.pools": "cache.app" and "ca  
+  che.system" are reserved names                                               
+                                                                               
+
+In ExprBuilder.php line 187:
+                                                     
+  "cache.app" and "cache.system" are reserved names  
+                                                     
+
+✅ PASSED: Family configuration accessible
+
+
+## PHASE 3: Elasticsearch Health
+=================================
+
+Test 9: Elasticsearch Cluster Health
+Elasticsearch status: yellow
+✅ PASSED: Elasticsearch healthy (yellow)
+
+Test 10: Product Index Count
+Products in Elasticsearch: 9956
+✅ PASSED: Products indexed (9956 docs)
+
+Test 11: Index Shard Status
+health status index                                                                     uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   akeneo_pim_product_and_product_model_01092bbe-71f0-43b2-98e3-f8ef7c7bdc44 jHSy8ZzSSUG-GVe3_ENWzw   1   0       9956         7826     18.1mb         18.1mb
+yellow open   akeneo_pim_connection_error_8501ff90-15e2-4408-aef8-a4113db1ef8c          HaiQPH1BSryHn6GXouUxmg   1   1          0            0       227b           227b
+yellow open   akeneo_pim_events_api_debug_6c3ce27d-6901-4dc2-a006-587105e120c8          k7S1HBuOS8KujfqfnefrCw   1   1          0            0       227b           227b
+✅ PASSED: Index details retrieved
+
+
+## PHASE 4: File System & Assets
+=================================
+
+Test 12: Frontend Assets Verification
+Bundle symlinks: 16
+✅ PASSED: Asset bundles present (16 symlinks)
+
+Test 13: Critical JavaScript Files
+  ✓ public/js/fos_js_routes.json (80K)
+  ✓ public/bundles/fosjsrouting/js/router.js (16K)
+  ✓ public/bundles/pimui/js/form/builder.js (4.0K)
+✅ PASSED: All critical JS files present
+
+Test 14: Product Images Directory
+Product images: 28200 files (552M)
+✅ PASSED: Product images present (28200 files)
+
+Test 15: Upload Directory Permissions
+  ✓ public/media (writable)
+  ✓ var/file_storage (writable)
+  ✓ var/cache (writable)
+  ✓ var/logs (writable)
+✅ PASSED: All directories writable
+
+
+## PHASE 5: Application Logs Analysis
+======================================
+
+Test 16: Application Error Logs (last 24h)
+Critical errors (last 10): 5
+Errors (last 20): 20
+Recent critical errors:
+[2026-04-30 12:24:56] console.CRITICAL: Error thrown while running command "'pim:attribute:show' meta_title --env=prod". Message: "There are no commands defined in the "pim:attribute" namespace.  Did you mean one of these?     pim     pim:categories     pim:completeness     pim:data-quality-insights     pim:installer     pim:oauth-server     pim:product     pim:product-model     pim:reference-data     pim:system     pim:update     pim:user     pim:versioning     pim:volume     pimee     pimee:data-quality-insights" {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"pim:attribute\" namespace.\n\nDid you mean one of these?\n    pim\n    pim:categories\n    pim:completeness\n    pim:data-quality-insights\n    pim:installer\n    pim:oauth-server\n    pim:product\n    pim:product-model\n    pim:reference-data\n    pim:system\n    pim:update\n    pim:user\n    pim:versioning\n    pim:volume\n    pimee\n    pimee:data-quality-insights at /home/pim/public_html/vendor/symfony/console/Application.php:650)","command":"'pim:attribute:show' meta_title --env=prod","message":"There are no commands defined in the \"pim:attribute\" namespace.\n\nDid you mean one of these?\n    pim\n    pim:categories\n    pim:completeness\n    pim:data-quality-insights\n    pim:installer\n    pim:oauth-server\n    pim:product\n    pim:product-model\n    pim:reference-data\n    pim:system\n    pim:update\n    pim:user\n    pim:versioning\n    pim:volume\n    pimee\n    pimee:data-quality-insights"} []
+[2026-04-30 17:10:46] console.CRITICAL: Error thrown while running command "messenger:consume -vv --limit=10". Message: "An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params ["9999-12-31 23:59:59"]:  SQLSTATE[HY000]: General error: 2006 MySQL server has gone away" {"exception":"[object] (Symfony\\Component\\Messenger\\Exception\\TransportException(code: 0): An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params [\"9999-12-31 23:59:59\"]:\n\nSQLSTATE[HY000]: General error: 2006 MySQL server has gone away at /home/pim/public_html/vendor/symfony/doctrine-messenger/Transport/DoctrineReceiver.php:61, Doctrine\\DBAL\\Exception\\ConnectionLost(code: 0): An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params [\"9999-12-31 23:59:59\"]:\n\nSQLSTATE[HY000]: General error: 2006 MySQL server has gone away at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:115, Doctrine\\DBAL\\Driver\\PDO\\Exception(code: HY000): SQLSTATE[HY000]: General error: 2006 MySQL server has gone away at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDO/Exception.php:18, PDOException(code: HY000): SQLSTATE[HY000]: General error: 2006 MySQL server has gone away at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:117)","command":"messenger:consume -vv --limit=10","message":"An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params [\"9999-12-31 23:59:59\"]:\n\nSQLSTATE[HY000]: General error: 2006 MySQL server has gone away"} []
+[2026-04-30 17:10:46] app.CRITICAL: Uncaught Exception Symfony\Component\Messenger\Exception\TransportException: "An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params ["9999-12-31 23:59:59"]:  SQLSTATE[HY000]: General error: 2006 MySQL server has gone away" at /home/pim/public_html/vendor/symfony/doctrine-messenger/Transport/DoctrineReceiver.php line 61 {"exception":"[object] (Symfony\\Component\\Messenger\\Exception\\TransportException(code: 0): An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params [\"9999-12-31 23:59:59\"]:\n\nSQLSTATE[HY000]: General error: 2006 MySQL server has gone away at /home/pim/public_html/vendor/symfony/doctrine-messenger/Transport/DoctrineReceiver.php:61, Doctrine\\DBAL\\Exception\\ConnectionLost(code: 0): An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params [\"9999-12-31 23:59:59\"]:\n\nSQLSTATE[HY000]: General error: 2006 MySQL server has gone away at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:115, Doctrine\\DBAL\\Driver\\PDO\\Exception(code: HY000): SQLSTATE[HY000]: General error: 2006 MySQL server has gone away at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDO/Exception.php:18, PDOException(code: HY000): SQLSTATE[HY000]: General error: 2006 MySQL server has gone away at /home/pim/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOStatement.php:117)"} []
+[2026-04-30 22:40:37] console.CRITICAL: Error thrown while running command "debug:container --parameter=database_host --env=prod". Message: "You have requested a non-existent parameter "database_host"." {"exception":"[object] (Symfony\\Component\\DependencyInjection\\Exception\\ParameterNotFoundException(code: 0): You have requested a non-existent parameter \"database_host\". at /home/pim/public_html/vendor/symfony/dependency-injection/ParameterBag/ParameterBag.php:93)","command":"debug:container --parameter=database_host --env=prod","message":"You have requested a non-existent parameter \"database_host\"."} []
+[2026-04-30 22:40:37] app.CRITICAL: Uncaught Exception Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException: "You have requested a non-existent parameter "database_host"." at /home/pim/public_html/vendor/symfony/dependency-injection/ParameterBag/ParameterBag.php line 93 {"exception":"[object] (Symfony\\Component\\DependencyInjection\\Exception\\ParameterNotFoundException(code: 0): You have requested a non-existent parameter \"database_host\". at /home/pim/public_html/vendor/symfony/dependency-injection/ParameterBag/ParameterBag.php:93)"} []
+❌ FAILED: 5 critical errors found
+
+Test 17: Web Server Error Logs
+Apache error log not found in var/logs/
+✅ PASSED: Web server logs not in app directory
+
+
+## PHASE 6: API & Routing Tests
+================================
+
+Test 18: Internal API Routing
+❌ FAILED: API routing issue
+
+Test 19: JavaScript Routing Configuration
+JavaScript routes: 8
+✅ PASSED: JS routing configured (8 routes)
+
+
+## PHASE 7: Performance Metrics
+================================
+
+Test 20: Cache Performance
+Cache warmup time: 0s
+✅ PASSED: Cache warmup fast (0s)
+
+Test 21: Product Query Performance
+Product query time: 0s
+✅ PASSED: Product queries fast (0s)
+
+
+========================================
+TEST SUMMARY
+========================================
+
+Total Tests: 21
+Passed: 14
+Failed: 7
+Success Rate: 66%
+
+❌ CRITICAL ISSUES - REQUIRES ATTENTION
+
+Full log: logs/pim_comprehensive_tests_20260501_000046.log
+========================================

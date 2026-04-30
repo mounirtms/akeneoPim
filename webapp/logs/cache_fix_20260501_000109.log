@@ -1,0 +1,68 @@
+========================================
+FIXING AKENEO CACHE CONFIGURATION
+Date: Fri May  1 00:01:09 CET 2026
+========================================
+
+Step 1: Backup current configuration
+
+Step 2: Identify problematic cache pools
+No explicit cache.app or cache.system found
+
+Step 3: Clear all cache
+✓ Removed prod cache
+
+Step 4: Rebuild cache
+                                                                               
+  Invalid configuration for path "framework.cache.pools": "cache.app" and "ca  
+  che.system" are reserved names                                               
+                                                                               
+
+In ExprBuilder.php line 187:
+                                                     
+  "cache.app" and "cache.system" are reserved names  
+                                                     
+
+                                                                               
+  Invalid configuration for path "framework.cache.pools": "cache.app" and "ca  
+  che.system" are reserved names                                               
+                                                                               
+
+In ExprBuilder.php line 187:
+                                                     
+  "cache.app" and "cache.system" are reserved names  
+                                                     
+
+
+Step 5: Verify console accessibility
+
+In BaseNode.php line 469:
+                                                                               
+  Invalid configuration for path "framework.cache.pools": "cache.app" and "ca  
+  che.system" are reserved names                                               
+                                                                               
+
+In ExprBuilder.php line 187:
+                                                     
+  "cache.app" and "cache.system" are reserved names  
+                                                     
+
+✗ Console still has issues
+
+Step 6: Test product indexing
+
+In BaseNode.php line 469:
+                                                                               
+  Invalid configuration for path "framework.cache.pools": "cache.app" and "ca  
+  che.system" are reserved names                                               
+                                                                               
+
+In ExprBuilder.php line 187:
+                                                     
+  "cache.app" and "cache.system" are reserved names  
+                                                     
+
+
+========================================
+CACHE FIX COMPLETE
+========================================
+Log: logs/cache_fix_20260501_000109.log

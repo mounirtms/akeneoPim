@@ -1,0 +1,357 @@
+#!/usr/bin/env bash
+###############################################################################
+# Akeneo PIM - Cron Job Definitions & Scheduler
+# Purpose: Install and manage cron jobs for Akeneo PIM
+# Usage:   ./cron_manager.sh [action]
+# Actions: install | uninstall | status | run-all | list
+###############################################################################
+
+set -euo pipefail
+
+# ── Configuration ────────────────────────────────────────────────────────────
+PIM_ROOT="/home/pim/public_html"
+WEBAPP_ROOT="${PIM_ROOT}/webapp"
+PHP_BIN="php"
+ENV="prod"
+LOG_DIR="${PIM_ROOT}/var/logs"
+CRON_LOG_DIR="${LOG_DIR}"
+CRON_TAG="# AKENEO_PIM_CRON"
+
+# ── Colors ───────────────────────────────────────────────────────────────────
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
+NC='\033[0m'
+
+# ── Helper functions ─────────────────────────────────────────────────────────
+timestamp() { date '+%Y-%m-%d %H:%M:%S'; }
+info()      { echo -e "${BLUE}[INFO]${NC} $1"; }
+success()   { echo -e "${GREEN}[OK]${NC} $1"; }
+warn()      { echo -e "${YELLOW}[WARN]${NC} $1"; }
+error()     { echo -e "${RED}[ERROR]${NC} $1"; }
+separator() { echo -e "${CYAN}────────────────────────────────────────────────────────────${NC}"; }
+
+usage() {
+    cat <<EOF
+${CYAN}Akeneo PIM Cron Manager${NC}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Usage: $0 <action> [options]
+
+Actions:
+  install        Install Akeneo PIM cron jobs
+  uninstall      Remove Akeneo PIM cron jobs
+  status         Show current cron job status
+  list           List the cron entries that would be installed
+  run-all        Run all scheduled tasks manually (once)
+  generate       Generate crontab entries to stdout (for review)
+
+Options:
+  -h, --help     Show this help
+
+Cron Schedule Overview:
+  ┌─────────────────────────────────────────────────────────┐
+  │ Frequency    │ Task                                     │
+  ├──────────────┼──────────────────────────────────────────┤
+  │ Every 5 min  │ Messenger consumer (job queue)           │
+  │ Daily 1:00   │ Clean stuck jobs                         │
+  │ Daily 1:15   │ Purge messenger queue                    │
+  │ Daily 1:30   │ Purge old versions (>90 days)            │
+  │ Daily 1:45   │ Purge job executions (>90 days)          │
+  │ Daily 2:00   │ DQI evaluations pipeline                 │
+  │ Daily 1:30   │ Purge old versions (>90 days)            │
+  │ Daily 2:00   │ DQI evaluations pipeline                 │
+  │ Daily 2:30   │ Purge outdated DQI data                  │
+  │ Daily 3:00   │ Connectivity audit update                │
+  │ Daily 3:30   │ Audit error purge                        │
+  │ Daily 3:45   │ Connection error purge                   │
+  │ Daily 4:15   │ Purge events API logs                    │
+  │ Daily 4:00   │ Clean expired OAuth tokens               │
+  │ Daily 4:30   │ Volume metrics aggregation               │
+  │ Daily 5:00   │ Health check                             │
+  │ Weekly Sun   │ Product completeness recalculation       │
+  │ Weekly Sun   │ Full ES reindex                          │
+  │ Weekly Sun   │ Version refresh                          │
+  └─────────────────────────────────────────────────────────┘
+EOF
+    exit 0
+}
+
+# ── Build cron entries ───────────────────────────────────────────────────────
+generate_cron_entries() {
+    local console="${PHP_BIN} ${PIM_ROOT}/bin/console"
+    local env_flag="--env=${ENV}"
+
+    cat <<CRON
+${CRON_TAG} - BEGIN (DO NOT EDIT BETWEEN MARKERS)
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Akeneo PIM Cron Jobs - pim.technostationery.com
+# Generated: $(date '+%Y-%m-%d %H:%M:%S')
+# PIM Root: ${PIM_ROOT}
+# Environment: ${ENV}
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ── Messenger Consumer (Job Queue Worker) ────────────────────────────────
+# Runs every 5 minutes. Consumes up to 10 messages per run with 300s timeout.
+# The --time-limit ensures the process exits cleanly to prevent memory leaks.
+*/5 * * * * cd ${PIM_ROOT} && ${console} messenger:consume ui_job import_export_job data_maintenance_job ${env_flag} --time-limit=300 --limit=10 >> ${CRON_LOG_DIR}/cron_messenger.log 2>&1
+
+# ── Data Quality Insights - Periodic Tasks ───────────────────────────────
+# Schedules DQI evaluations daily at 2:15 AM
+15 2 * * * cd ${PIM_ROOT} && ${console} pim:data-quality-insights:schedule-periodic-tasks ${env_flag} >> ${CRON_LOG_DIR}/cron_dqi.log 2>&1
+
+# ── Connectivity Audit Update ────────────────────────────────────────────
+# Updates connectivity audit metrics daily at 3:00 AM
+0 3 * * * cd ${PIM_ROOT} && ${console} akeneo:connectivity-audit:update-data ${env_flag} >> ${CRON_LOG_DIR}/cron_audit.log 2>&1
+
+# ── Clean Stuck Job Executions ───────────────────────────────────────────
+# Marks STARTED/STOPPING jobs as failed (daily at 1:00 AM)
+# Note: This command requires job codes; we pass all known codes
+0 1 * * * cd ${PIM_ROOT} && JOB_CODES=\$(${console} akeneo:batch:list-jobs ${env_flag} 2>/dev/null | grep '|' | grep -v type | grep -v '^+' | awk -F'|' '{print \$3}' | sed 's/ //g' | grep -v '^$' | paste -sd ',' -) && ${console} akeneo:batch:clean-job-executions "\${JOB_CODES}" ${env_flag} >> ${CRON_LOG_DIR}/cron_clean_jobs.log 2>&1
+
+# ── Purge Messenger Queue ────────────────────────────────────────────────
+# Purges old messages from messenger transport table (daily at 1:15 AM)
+# Requires: table-name queue-name --retention-time=N
+15 1 * * * cd ${PIM_ROOT} && for q in default ui_job import_export_job data_maintenance_job; do ${console} akeneo:messenger:doctrine:purge-messages messenger_messages $q --retention-time=7200 ${env_flag} >> ${CRON_LOG_DIR}/cron_messenger_purge.log 2>&1; done
+
+# ── Purge Old Job Executions ────────────────────────────────────────────
+# Daily at 1:45 AM - purge job executions older than 90 days
+45 1 * * * cd ${PIM_ROOT} && ${console} akeneo:batch:purge-job-execution --days=90 ${env_flag} >> ${CRON_LOG_DIR}/cron_purge_jobs.log 2>&1
+
+# ── Purge Old Versions ──────────────────────────────────────────────────
+# Daily at 1:30 AM - purge versions older than 90 days (keeps first & last)
+30 1 * * * cd ${PIM_ROOT} && ${console} pim:versioning:purge --more-than-days 90 --force ${env_flag} >> ${CRON_LOG_DIR}/cron_versioning.log 2>&1
+
+# ── Data Quality Insights - Full Evaluation Pipeline ─────────────────────
+# Daily at 2:00 AM - run prepare + evaluate + consolidate
+0 2 * * * cd ${PIM_ROOT} && ${console} pim:data-quality-insights:prepare-evaluations ${env_flag} >> ${CRON_LOG_DIR}/cron_dqi.log 2>&1 && ${console} pim:data-quality-insights:evaluations ${env_flag} >> ${CRON_LOG_DIR}/cron_dqi.log 2>&1 && ${console} pim:data-quality-insights:consolidate-dashboard-rates ${env_flag} >> ${CRON_LOG_DIR}/cron_dqi.log 2>&1
+
+# ── Purge Outdated DQI Data ──────────────────────────────────────────────
+# Daily at 2:30 AM
+30 2 * * * cd ${PIM_ROOT} && ${console} pim:data-quality-insights:purge-outdated-data ${env_flag} >> ${CRON_LOG_DIR}/cron_dqi.log 2>&1
+
+# ── Connectivity Audit Error Purge ───────────────────────────────────────
+# Daily at 3:30 AM
+30 3 * * * cd ${PIM_ROOT} && ${console} akeneo:connectivity-audit:purge-error-count ${env_flag} >> ${CRON_LOG_DIR}/cron_audit.log 2>&1
+
+# ── Purge Connection Errors ──────────────────────────────────────────────
+# Daily at 3:45 AM
+45 3 * * * cd ${PIM_ROOT} && ${console} akeneo:connectivity-connection:purge-error ${env_flag} >> ${CRON_LOG_DIR}/cron_audit.log 2>&1
+
+# ── Purge Events API Logs ───────────────────────────────────────────────
+# Daily at 4:15 AM
+15 4 * * * cd ${PIM_ROOT} && ${console} akeneo:connectivity-connection:purge-events-api-logs ${env_flag} >> ${CRON_LOG_DIR}/cron_audit.log 2>&1
+
+# ── Clean Expired OAuth Tokens ───────────────────────────────────────────
+# Daily at 4:00 AM
+0 4 * * * cd ${PIM_ROOT} && ${console} fos:oauth-server:clean ${env_flag} >> ${CRON_LOG_DIR}/cron_oauth.log 2>&1
+
+# ── Volume Metrics Aggregation ───────────────────────────────────────────
+# Daily at 4:30 AM
+30 4 * * * cd ${PIM_ROOT} && ${console} pim:volume:aggregate ${env_flag} >> ${CRON_LOG_DIR}/cron_volume.log 2>&1
+
+# ── Health Check ─────────────────────────────────────────────────────────
+# Daily at 5:00 AM - runs health diagnostic
+0 5 * * * cd ${PIM_ROOT}/webapp && bash scripts/health/health_check.sh --quiet >> ${CRON_LOG_DIR}/cron_health.log 2>&1
+
+# ── Weekly: Product Completeness Recalculation ───────────────────────────
+# Sunday at 1:00 AM
+0 1 * * 0 cd ${PIM_ROOT} && ${console} pim:completeness:calculate ${env_flag} >> ${CRON_LOG_DIR}/cron_completeness.log 2>&1
+
+# ── Weekly: Full Elasticsearch Reindex ───────────────────────────────────
+# Sunday at 2:00 AM
+0 2 * * 0 cd ${PIM_ROOT} && ${console} pim:product:index --all ${env_flag} >> ${CRON_LOG_DIR}/cron_reindex.log 2>&1 && ${console} pim:product-model:index --all ${env_flag} >> ${CRON_LOG_DIR}/cron_reindex.log 2>&1
+
+# ── Weekly: Version Refresh ──────────────────────────────────────────────
+# Sunday at 3:00 AM
+0 3 * * 0 cd ${PIM_ROOT} && ${console} pim:versioning:refresh ${env_flag} >> ${CRON_LOG_DIR}/cron_versioning.log 2>&1
+
+# ── Log Rotation ─────────────────────────────────────────────────────────
+# Daily at 0:00 AM - rotate logs larger than 50MB
+0 0 * * * find ${CRON_LOG_DIR} -name "cron_*.log" -size +50M -exec sh -c 'mv "\$1" "\$1.$(date +\%Y\%m\%d)" && touch "\$1"' _ {} \; 2>/dev/null
+
+${CRON_TAG} - END
+CRON
+}
+
+# ── Action: Install ──────────────────────────────────────────────────────────
+do_install() {
+    separator
+    info "Installing Akeneo PIM cron jobs..."
+
+    # Create log directory
+    mkdir -p "$CRON_LOG_DIR"
+
+    # Get current crontab (excluding our entries)
+    local temp_cron
+    temp_cron=$(mktemp)
+    crontab -l 2>/dev/null | sed "/${CRON_TAG} - BEGIN/,/${CRON_TAG} - END/d" > "$temp_cron" || true
+
+    # Append our entries
+    generate_cron_entries >> "$temp_cron"
+
+    # Install
+    crontab "$temp_cron"
+    rm -f "$temp_cron"
+
+    success "Akeneo PIM cron jobs installed successfully!"
+    echo ""
+    info "Installed cron schedule:"
+    do_status
+}
+
+# ── Action: Uninstall ────────────────────────────────────────────────────────
+do_uninstall() {
+    separator
+    info "Removing Akeneo PIM cron jobs..."
+
+    local temp_cron
+    temp_cron=$(mktemp)
+    crontab -l 2>/dev/null | sed "/${CRON_TAG} - BEGIN/,/${CRON_TAG} - END/d" > "$temp_cron" || true
+
+    crontab "$temp_cron"
+    rm -f "$temp_cron"
+
+    success "Akeneo PIM cron jobs removed."
+}
+
+# ── Action: Status ───────────────────────────────────────────────────────────
+do_status() {
+    separator
+    info "Current Akeneo PIM cron entries:"
+    echo ""
+
+    local entries
+    entries=$(crontab -l 2>/dev/null | sed -n "/${CRON_TAG} - BEGIN/,/${CRON_TAG} - END/p")
+
+    if [[ -z "$entries" ]]; then
+        warn "No Akeneo PIM cron jobs installed."
+        echo ""
+        info "Run '$0 install' to install cron jobs."
+        return
+    fi
+
+    # Show active entries (skip comments and empty lines)
+    echo "$entries" | grep -v "^#" | grep -v "^$" | grep -v "^SHELL" | grep -v "^PATH" | grep -v "^${CRON_TAG}" | while IFS= read -r line; do
+        echo -e "  ${GREEN}●${NC} ${line}"
+    done
+
+    echo ""
+
+    # Check recent log activity
+    info "Recent cron log activity:"
+    for logfile in "${CRON_LOG_DIR}"/cron_*.log; do
+        if [[ -f "$logfile" ]]; then
+            local name
+            name=$(basename "$logfile")
+            local size
+            size=$(ls -lh "$logfile" | awk '{print $5}')
+            local last_mod
+            last_mod=$(stat -c %y "$logfile" 2>/dev/null | cut -d. -f1 || echo "unknown")
+            echo -e "  ${CYAN}${name}${NC}: ${size} (last modified: ${last_mod})"
+        fi
+    done
+
+    separator
+}
+
+# ── Action: List ─────────────────────────────────────────────────────────────
+do_list() {
+    separator
+    info "Cron entries to be installed:"
+    echo ""
+    generate_cron_entries | grep -v "^$" | while IFS= read -r line; do
+        if [[ "$line" =~ ^# ]]; then
+            echo -e "  ${CYAN}${line}${NC}"
+        elif [[ "$line" =~ ^[0-9\*] ]]; then
+            echo -e "  ${GREEN}${line}${NC}"
+        else
+            echo -e "  ${line}"
+        fi
+    done
+}
+
+# ── Action: Generate ─────────────────────────────────────────────────────────
+do_generate() {
+    generate_cron_entries
+}
+
+# ── Action: Run All ──────────────────────────────────────────────────────────
+do_run_all() {
+    separator
+    info "Running all scheduled tasks manually..."
+    local start_time
+    start_time=$(date +%s)
+    local console="${PHP_BIN} ${PIM_ROOT}/bin/console"
+    local env_flag="--env=${ENV}"
+
+    # Each task
+    local tasks=(
+        "akeneo:batch:clean-job-executions|Clean stuck jobs"
+        "akeneo:messenger:doctrine:purge-messages messenger_messages default --retention-time=7200|Purge messenger queue"
+        "pim:data-quality-insights:schedule-periodic-tasks|DQI schedule"
+        "pim:data-quality-insights:prepare-evaluations|DQI prepare"
+        "pim:data-quality-insights:evaluations|DQI evaluate"
+        "pim:data-quality-insights:consolidate-dashboard-rates|DQI consolidate"
+        "akeneo:connectivity-audit:update-data|Audit update"
+        "akeneo:connectivity-audit:purge-error-count|Audit purge errors"
+        "akeneo:connectivity-connection:purge-error|Connection purge errors"
+        "akeneo:connectivity-connection:purge-events-api-logs|Events API purge"
+        "fos:oauth-server:clean|OAuth token cleanup"
+        "pim:volume:aggregate|Volume aggregation"
+    )
+
+    local total=${#tasks[@]}
+    local current=0
+    local failed=0
+
+    for task_entry in "${tasks[@]}"; do
+        ((current++)) || true
+        local cmd="${task_entry%%|*}"
+        local desc="${task_entry##*|}"
+
+        echo -en "  [${current}/${total}] ${desc}... "
+        if cd "$PIM_ROOT" && ${console} ${cmd} ${env_flag} >> "${CRON_LOG_DIR}/cron_manual_run.log" 2>&1; then
+            echo -e "${GREEN}OK${NC}"
+        else
+            echo -e "${RED}FAILED${NC}"
+            ((failed++)) || true
+        fi
+    done
+
+    local end_time
+    end_time=$(date +%s)
+    local duration=$((end_time - start_time))
+
+    echo ""
+    if [[ $failed -eq 0 ]]; then
+        success "All ${total} tasks completed in ${duration}s."
+    else
+        warn "${failed}/${total} tasks failed. Check ${CRON_LOG_DIR}/cron_manual_run.log for details."
+    fi
+}
+
+# ── Dispatch ─────────────────────────────────────────────────────────────────
+ACTION="${1:-help}"
+
+case "$ACTION" in
+    install)    do_install ;;
+    uninstall)  do_uninstall ;;
+    status)     do_status ;;
+    list)       do_list ;;
+    generate)   do_generate ;;
+    run-all)    do_run_all ;;
+    help|-h|--help) usage ;;
+    *)
+        error "Unknown action: ${ACTION}"
+        usage
+        ;;
+esac
+
+exit 0

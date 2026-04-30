@@ -1,0 +1,16 @@
+framework:
+    cache:
+        # Filesystem cache - stable configuration
+        # Redis integration requires PHP Redis extension
+        app: cache.adapter.filesystem
+        system: cache.adapter.filesystem
+        pools:
+            # Doctrine result cache - 2 hours TTL
+            doctrine.result_cache_pool:
+                adapter: cache.adapter.filesystem
+                default_lifetime: 7200
+            
+            # Doctrine system cache - 1 hour TTL
+            doctrine.system_cache_pool:
+                adapter: cache.adapter.filesystem
+                default_lifetime: 3600

@@ -1,0 +1,37 @@
+========================================
+Akeneo PIM UI Monkey Tests
+Date: Fri May  1 00:08:01 CET 2026
+========================================
+
+=== Test 1: Homepage Access ===
+HTTP Response: 302
+✓ PASS: Homepage accessible (HTTP 302)
+
+=== Test 2: Login Page ===
+✓ PASS: Login page renders
+Found elements: login
+login
+username
+
+=== Test 3: JavaScript Assets ===
+✓ PASS: JS asset valid: public/js/fos_js_routes.json (80483 bytes)
+✓ PASS: JS asset valid: public/js/module-registry.js (102853 bytes)
+✓ PASS: JS asset valid: public/bundles/pimui/js/router.js (6527 bytes)
+
+=== Test 4: CSS Assets ===
+CSS files found: 0
+✗ FAIL: Insufficient CSS assets (0 files)
+
+=== Test 5: Product Images ===
+Product images: 28200 files, Total size: 552M
+✓ PASS: Product images present (28200 files)
+
+=== Test 6: Image Size Variants ===
+large: 9400 files
+✓ PASS: Image variant present: large (9400 files)
+medium: 9400 files
+✓ PASS: Image variant present: medium (9400 files)
+thumbnail: 9400 files
+✓ PASS: Image variant present: thumbnail (9400 files)
+
+=== Test 7: Database Product Count ===
