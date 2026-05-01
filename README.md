@@ -22,7 +22,7 @@ Role: Administrator
 Status: ✅ Verified Working (2026-05-01)
 ```
 
-**Note**: For additional credentials, see `/tmp/credentials_vault.txt`
+**Note**: For additional credentials, see `config/credentials.vault.txt` (secure vault)
 
 ## 📋 Table of Contents
 
@@ -126,37 +126,101 @@ node vendor/akeneo/pim-community-dev/frontend/build/update-extensions.js
 
 ## 🛠️ Utility Scripts
 
-All utility scripts are located in `scripts/utilities/`:
+Scripts are organized by function in the `scripts/` directory:
 
-### Build Script
+### Testing Scripts (`scripts/testing/`)
+
+#### Comprehensive Stability Test
+Full system validation with detailed reporting.
+
+```bash
+./scripts/testing/stability-test.sh
+```
+
+Features:
+- System resource monitoring
+- Service status checks
+- Database connectivity tests
+- Cache validation
+- Elasticsearch health
+- Static asset verification
+- Login page testing
+- Detailed success rate reporting
+
+#### Quick Health Check
+Fast diagnostic tool for rapid status verification.
+
+```bash
+./scripts/testing/health-check.sh
+```
+
+Output: ✓/✗ indicators for:
+- Web interface
+- Database
+- Cache
+- Redis
+- Nginx
+- Disk space
+
+### Maintenance Scripts (`scripts/maintenance/`)
+
+#### Cache Manager
+Unified cache management utility.
+
+```bash
+# Clear cache
+./scripts/maintenance/cache-manager.sh clear [prod|dev]
+
+# Warmup cache
+./scripts/maintenance/cache-manager.sh warmup [prod|dev]
+
+# Full rebuild
+./scripts/maintenance/cache-manager.sh rebuild [prod|dev]
+
+# Clear Redis
+./scripts/maintenance/cache-manager.sh redis
+
+# Reset OPcache
+./scripts/maintenance/cache-manager.sh opcache
+
+# Clear all caches
+./scripts/maintenance/cache-manager.sh full
+
+# Show statistics
+./scripts/maintenance/cache-manager.sh stats
+```
+
+### Core Utilities (`scripts/utilities/`)
+
+#### Build Script
 Complete build process including cache clear, asset compilation, and indexing.
 
 ```bash
 ./scripts/utilities/build.sh [prod|dev]
 ```
 
-### Warmup Script
+#### Warmup Script
 Quick cache warmup and RequireJS path regeneration.
 
 ```bash
 ./scripts/utilities/warmup.sh [prod|dev]
 ```
 
-### Permissions Script
+#### Permissions Script
 Fix file and directory permissions.
 
 ```bash
 ./scripts/utilities/permissions.sh
 ```
 
-### Quick Fix Script
+#### Quick Fix Script
 Fast troubleshooting for common issues.
 
 ```bash
 ./scripts/utilities/quick-fix.sh
 ```
 
-### Branch Compare Script
+#### Branch Compare Script
 Compare branches and analyze differences.
 
 ```bash
