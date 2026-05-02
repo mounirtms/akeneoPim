@@ -1,13 +1,4 @@
 {
-  "extensions": [],
-  "routes": {
-    "pim_dashboard_index": "/dashboard",
-    "pim_enrich_product_index": "/enrich/product",
-    "pim_enrich_category_tree_index": "/enrich/category-tree",
-    "pim_structure_family_index": "/structure/family",
-    "pim_importexport_export_execution_index": "/configuration/export",
-    "pim_importexport_import_execution_index": "/configuration/import",
-    "pim_user_user_index": "/configuration/user",
-    "pim_job_process_tracker_index": "/configuration/process-tracker"
-  }
+  "attribute_fields": {},
+  "extensions": []
 }

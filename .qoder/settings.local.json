@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(ls -la /home/pim/public_html/webapp/ 2>&1)",
+      "Bash(ls -la /home/pim/public_html/webapp/tests/ 2>&1 | head -20)",
+      "Bash(cd /home/pim/public_html && npx playwright test --project=chromium --reporter=html)"
+    ]
+  }
+}

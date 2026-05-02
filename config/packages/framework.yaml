@@ -1,0 +1,13 @@
+framework:
+    secret: "%env(APP_SECRET)%"
+    session:
+        handler_id: null
+        cookie_secure: false
+        cookie_samesite: lax
+        cookie_httponly: true
+    assets: null
+    error_handler:
+        log: true
+        throw: true
+    csrf_protection:
+        enabled: true
