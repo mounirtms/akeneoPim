@@ -6,9 +6,7 @@ const fs = require('fs');
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
-    const context = await browser.newContext({
-        ignoreHTTPSErrors: true
-    });
+    const context = await browser.newContext();
     const page = await context.newPage();
     
     const report = [];
@@ -17,212 +15,123 @@ const fs = require('fs');
         report.push(msg);
     };
     
-    log('=== COMPREHENSIVE AKENEO PIM LOGIN TEST ===\n');
+    log('=== COMPREHENSIVE LOGIN TEST (Session 3) ===\n');
     
-    // Capture console messages
-    const consoleMessages = [];
+    // Capture errors
+    const errors = [];
     page.on('console', msg => {
-        consoleMessages.push(`[${msg.type()}] ${msg.text()}`);
-    });
-    
-    // Capture network errors
-    const networkErrors = [];
-    page.on('response', response => {
-        if (response.status() >= 400) {
-            networkErrors.push(`${response.status()} - ${response.url()}`);
+        if (msg.type() === 'error') {
+            errors.push(msg.text());
         }
     });
     
-    // Test URLs in order of likelihood
-    const urls = [
-        'https://ded701.inmotionhosting.com/index.php',
-        'https://ded701.inmotionhosting.com/',
-        'http://ded701.inmotionhosting.com/index.php',
-        'http://ded701.inmotionhosting.com/'
-    ];
+    const testUrl = 'http://205.134.249.177:8000/index.php';
     
-    let workingUrl = null;
-    let loginPageFound = false;
-    
-    for (const url of urls) {
-        try {
-            log(`\nTesting URL: ${url}`);
-            const response = await page.goto(url, { 
-                waitUntil: 'domcontentloaded', 
-                timeout: 30000 
-            });
-            
-            const statusCode = response.status();
-            const title = await page.title();
-            const bodyText = await page.textContent('body').catch(() => '');
-            
-            log(`  Status: ${statusCode}`);
-            log(`  Title: ${title}`);
-            
-            // Check if this is the Akeneo login page
-            const hasLoginForm = await page.locator('input[name="_username"], input[type="text"][autocomplete="username"]').count() > 0;
-            const hasPasswordField = await page.locator('input[name="_password"], input[type="password"]').count() > 0;
-            const isAkeneo = bodyText.includes('Akeneo') || title.includes('Akeneo') || title.includes('PIM');
-            
-            log(`  Has login form: ${hasLoginForm}`);
-            log(`  Has password field: ${hasPasswordField}`);
-            log(`  Is Akeneo: ${isAkeneo}`);
-            
-            if (statusCode === 200 && (hasLoginForm || isAkeneo)) {
-                workingUrl = url;
-                loginPageFound = hasLoginForm && hasPasswordField;
-                log(`  ✓✓✓ THIS IS THE AKENEO LOGIN PAGE! ✓✓✓\n`);
-                await page.screenshot({ path: '/home/pim/public_html/webapp/login_page_found.png', fullPage: true });
-                break;
-            } else if (statusCode === 200) {
-                log(`  ⚠ Page loads but no login form detected`);
-            } else {
-                log(`  ✗ Not working (status: ${statusCode})\n`);
-            }
-        } catch (error) {
-            log(`  ✗ Error: ${error.message}\n`);
-        }
-    }
-    
-    if (!workingUrl) {
-        log('\n❌ FATAL: Could not find a working Akeneo PIM URL');
-        log('\nPlease check:');
-        log('1. Web server is running');
-        log('2. PHP is configured correctly');
-        log('3. Akeneo is properly deployed');
+    try {
+        log('Step 1: Loading login page...');
+        await page.goto(testUrl, { waitUntil: 'networkidle', timeout: 30000 });
+        log('✓ Page loaded\n');
         
-        fs.writeFileSync('/home/pim/public_html/webapp/LOGIN_TEST_REPORT.txt', report.join('\n'));
+        log('Step 2: Checking page content...');
+        const title = await page.title();
+        const hasUsername = await page.locator('input[name="_username"]').count();
+        const hasPassword = await page.locator('input[name="_password"]').count();
+        
+        log(`  Title: ${title}`);
+        log(`  Username field: ${hasUsername > 0 ? 'Found' : 'NOT FOUND'}`);
+        log(`  Password field: ${hasPassword > 0 ? 'Found' : 'NOT FOUND'}`);
+        
+        if (hasUsername === 0 || hasPassword === 0) {
+            log('\n✗ Login form not found! Cannot proceed.');
+            await browser.close();
+            process.exit(1);
+        }
+        
+        log('\nStep 3: Filling credentials...');
+        await page.fill('input[name="_username"]', 'admin');
+        await page.fill('input[name="_password"]', 'admin');
+        log('✓ Credentials filled: admin/admin\n');
+        
+        await page.screenshot({ path: '/home/pim/public_html/webapp/final_before_login.png' });
+        
+        log('Step 4: Submitting login form...');
+        await page.click('button[type="submit"]');
+        log('✓ Form submitted\n');
+        
+        log('Step 5: Waiting for response (10 seconds)...');
+        await page.waitForTimeout(10000);
+        
+        const finalUrl = page.url();
+        const finalTitle = await page.title();
+        
+        log('Step 6: Analyzing result...');
+        log(`  Final URL: ${finalUrl}`);
+        log(`  Final Title: ${finalTitle}`);
+        
+        // Check page content
+        const bodyText = await page.textContent('body').catch(() => '');
+        const hasErrorMsg = bodyText.toLowerCase().includes('invalid') || 
+                           bodyText.toLowerCase().includes('incorrect');
+        
+        log(`  Has error message: ${hasErrorMsg ? 'YES' : 'NO'}`);
+        
+        // Check for Akeneo dashboard elements
+        const aknHeader = await page.locator('.AknHeader').count();
+        const navigation = await page.locator('.oro-navigation, nav').count();
+        const container = await page.locator('#container').count();
+        
+        log(`  Akeneo header: ${aknHeader}`);
+        log(`  Navigation: ${navigation}`);
+        log(`  Container: ${container}`);
+        
+        await page.screenshot({ 
+            path: '/home/pim/public_html/webapp/final_after_login.png', 
+            fullPage: true 
+        });
+        
+        // Check if we're still on login page
+        const stillOnLogin = finalUrl.includes('login');
+        const urlChanged = finalUrl !== testUrl;
+        const hasDashboardElements = aknHeader > 0 || navigation > 0 || container > 0;
+        
+        log(`\n  Still on login URL: ${stillOnLogin}`);
+        log(`  URL changed: ${urlChanged}`);
+        log(`  Has dashboard elements: ${hasDashboardElements}`);
+        
+        // Determine success
+        const isLoggedIn = !stillOnLogin && (urlChanged || hasDashboardElements);
+        
+        log('\n=== RESULT ===');
+        if (isLoggedIn) {
+            log('✓✓✓ LOGIN SUCCESSFUL! ✓✓✓');
+            log('User has been authenticated and dashboard is accessible!');
+        } else {
+            log('✗ Login failed - still on login page');
+            
+            // Check for specific error
+            if (hasErrorMsg) {
+                log('Reason: Invalid credentials error message displayed');
+            } else {
+                log('Reason: Unknown - form submits but returns to login');
+            }
+        }
+        
+        if (errors.length > 0) {
+            log('\nBrowser Console Errors:');
+            errors.forEach(err => log(`  - ${err}`));
+        }
+        
+        // Save report
+        fs.writeFileSync('/home/pim/public_html/webapp/FINAL_LOGIN_TEST.txt', report.join('\n'));
+        
+        await browser.close();
+        process.exit(isLoggedIn ? 0 : 1);
+        
+    } catch (error) {
+        log(`\n✗ Fatal error: ${error.message}`);
+        await page.screenshot({ path: '/home/pim/public_html/webapp/error_final.png' });
+        fs.writeFileSync('/home/pim/public_html/webapp/FINAL_LOGIN_TEST.txt', report.join('\n'));
         await browser.close();
         process.exit(1);
     }
-    
-    if (!loginPageFound) {
-        log('\n⚠ Working URL found but login form not detected');
-        log(`URL: ${workingUrl}`);
-        log('Taking diagnostic screenshot...');
-        await page.screenshot({ path: '/home/pim/public_html/webapp/page_content.png', fullPage: true });
-    }
-    
-    log(`\n=== ATTEMPTING LOGIN ===`);
-    log(`URL: ${workingUrl}\n`);
-    
-    // Define credentials to try
-    const credentials = [
-        { username: 'admin', password: 'admin', name: 'Default Admin' },
-        { username: 'finaladmin', password: 'Admin@2024!', name: 'Final Admin' }
-    ];
-    
-    let loginSuccess = false;
-    
-    for (const cred of credentials) {
-        try {
-            log(`\n--- Trying: ${cred.name} (${cred.username}) ---`);
-            
-            // Wait for and find username field
-            await page.waitForSelector('input[name="_username"], input[type="text"]', { timeout: 5000 });
-            
-            // Clear and fill username
-            const usernameField = page.locator('input[name="_username"], input[type="text"]').first();
-            await usernameField.clear();
-            await usernameField.fill(cred.username);
-            log(`✓ Username entered: ${cred.username}`);
-            
-            // Clear and fill password
-            const passwordField = page.locator('input[name="_password"], input[type="password"]').first();
-            await passwordField.clear();
-            await passwordField.fill(cred.password);
-            log('✓ Password entered');
-            
-            // Take screenshot before submitting
-            await page.screenshot({ path: `/home/pim/public_html/webapp/before_login_${cred.username}.png` });
-            log(`✓ Screenshot saved: before_login_${cred.username}.png`);
-            
-            // Find and click submit button
-            const submitButton = page.locator('button[type="submit"], input[type="submit"], .btn-primary').first();
-            await submitButton.click();
-            log('✓ Login button clicked');
-            
-            // Wait for navigation or error
-            await Promise.race([
-                page.waitForURL(url => url !== workingUrl, { timeout: 10000 }),
-                page.waitForSelector('.alert-error, .error, .alert-danger', { timeout: 10000 }).catch(() => null)
-            ]);
-            
-            await page.waitForTimeout(2000);
-            
-            const currentUrl = page.url();
-            const currentTitle = await page.title();
-            
-            log(`Current URL: ${currentUrl}`);
-            log(`Current Title: ${currentTitle}`);
-            
-            // Take screenshot after login attempt
-            await page.screenshot({ path: `/home/pim/public_html/webapp/after_login_${cred.username}.png`, fullPage: true });
-            log(`✓ Screenshot saved: after_login_${cred.username}.png`);
-            
-            // Check for error messages
-            const errorMsg = await page.locator('.alert-error, .error, .alert-danger, .form-error').textContent().catch(() => null);
-            if (errorMsg) {
-                log(`✗ Error message: ${errorMsg}`);
-                continue;
-            }
-            
-            // Check if login was successful
-            if (currentUrl !== workingUrl || 
-                currentTitle.toLowerCase().includes('dashboard') ||
-                currentTitle.toLowerCase().includes('home') ||
-                await page.locator('.AknHeader, .navigation, .oro-navigation').count() > 0) {
-                
-                log(`\n✓✓✓ LOGIN SUCCESSFUL! ✓✓✓`);
-                log(`Logged in as: ${cred.username}`);
-                log(`Current page: ${currentTitle}`);
-                loginSuccess = true;
-                
-                // Wait a bit and capture any console errors
-                await page.waitForTimeout(3000);
-                
-                // Take final screenshot of dashboard
-                await page.screenshot({ path: '/home/pim/public_html/webapp/dashboard_view.png', fullPage: true });
-                log('✓ Dashboard screenshot saved: dashboard_view.png');
-                
-                break;
-            } else {
-                log(`✗ Login failed - still on login page`);
-            }
-            
-        } catch (error) {
-            log(`✗ Login attempt error: ${error.message}`);
-        }
-        
-        // Reload page for next attempt
-        if (!loginSuccess) {
-            await page.goto(workingUrl, { waitUntil: 'domcontentloaded' });
-        }
-    }
-    
-    // Report results
-    log('\n=== TEST SUMMARY ===');
-    log(`Working URL: ${workingUrl || 'NOT FOUND'}`);
-    log(`Login Form Found: ${loginPageFound ? 'YES' : 'NO'}`);
-    log(`Login Success: ${loginSuccess ? 'YES ✓' : 'NO ✗'}`);
-    
-    if (consoleMessages.length > 0) {
-        log('\n=== BROWSER CONSOLE MESSAGES ===');
-        consoleMessages.slice(0, 10).forEach(msg => log(msg));
-    }
-    
-    if (networkErrors.length > 0) {
-        log('\n=== NETWORK ERRORS (HTTP 4xx/5xx) ===');
-        networkErrors.slice(0, 10).forEach(err => log(err));
-    }
-    
-    log('\n=== TEST COMPLETE ===');
-    
-    // Save report
-    fs.writeFileSync('/home/pim/public_html/webapp/LOGIN_TEST_REPORT.txt', report.join('\n'));
-    log('\nFull report saved to: LOGIN_TEST_REPORT.txt');
-    
-    await browser.close();
-    
-    process.exit(loginSuccess ? 0 : 1);
 })();

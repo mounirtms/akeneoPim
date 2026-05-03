@@ -1,0 +1,118 @@
+<!DOCTYPE html><html><head>
+            <title>Connexion</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel="shortcut icon" href="/favicon.ico">
+            <link rel="stylesheet" href="/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df">
+                
+</head>
+<body class="AknLogin">
+    <div id="page">
+        <div id="top-page">
+                        <div class="AuthenticationWrapper">
+                <div class="LeftWrapper">
+                    <div class="FormWrapper">
+                                                <div class="Logo AknLogin-title"><img src="/bundles/pimui/images/illustrations/login/Logo.svg" alt="Akeneo PIM" width="250" height="60"></div>
+                        <div class="ContainerForm">
+                            <div class="Messages">
+                                                                                                        
+                                </div>
+                                <script type="text/javascript" nonce="">
+      sessionStorage.clear();
+      document.title = 'Connexion';
+    </script>
+
+        <form action="/index.php/user/login-check" method="post" class="Form form-signin">
+        <div class="InputGroup">
+            <div class="InputBlock">
+                <label class="InputLabel" for="username_input">Nom d'utilisateur ou Email</label>
+                <div class="InputContainer">
+                    <input class="InputText" type="text" id="username_input" autofocus="autofocus" name="_username" value="" required="required" size="1" style="">
+                </div>
+            </div>
+            <div class="InputBlock">
+                <label class="InputLabel" for="password_input">Mot de passe</label>
+                <div class="InputContainer">
+                    <input class="InputText" type="password" id="password_input" name="_password" required="required" autocomplete="off" size="1" style="">
+                </div>
+            </div>
+
+            <div class="PasswordReset">
+                <a href="/index.php/user/reset-request">
+                    Mot de passe oublié ?
+                </a>
+            </div>
+
+            <div class="RememberMe">
+                <label>
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" style=""> Mémoriser mes informations sur cet ordinateur
+                </label>
+            </div>
+        </div>
+        <button class="AknButton AknButton--apply AknButton--disabled" type="submit" id="_submit" name="_submit" disabled="true">Connexion</button>
+
+        <input type="hidden" name="_target_path" value="" style="">
+        <input type="hidden" name="_csrf_token" value="758031e39671e5b62679f71.9t13sLvvqoqHJ5oLAVCavDmWuOZdaMcgtKhXK9N_LbQ.kYIx9d-44-7GV6hbdCX40Wbk1oEHLrdFwdA-RYMxSuWZuQX1g4Hu3cVA2w" style="">
+            </form>
+                        </div>
+                    </div>
+                    <a class="Footer" href="https://www.akeneo.com/" target="_blank">
+                        <div class="Powered">
+                            Powered by
+                            <img class="PoweredImage" src="/bundles/pimui/images/logo_login.svg" alt="logo Akeneo">
+                        </div>
+                        <div class="BaseLine">Unlocking Growth Through Product Experiences</div>
+                    </a>
+                </div>
+                <div class="RightWrapper">
+                    <div class="IllustrationLogin"></div>
+                </div>
+            </div>
+
+                    </div>
+    </div>
+                <script type="text/javascript" nonce="">
+            const initPimLoginForm = function(fields, submit, form) {
+              if (!Array.isArray(fields) || !submit || !form) {
+                return;
+              }
+
+              const validate = function (fields) {
+                return fields.reduce(function (isValid, field) {
+                  return (isValid && field.value.length > 0);
+                }, true);
+              };
+
+              const changeHandler = function () {
+                if (validate(fields) ) {
+                  submit.removeAttribute('disabled');
+                  submit.classList.remove('AknButton--disabled');
+                } else {
+                  submit.setAttribute('disabled', 'true');
+                  submit.classList.add('AknButton--disabled');
+                }
+              };
+
+              fields.forEach(function (field) {
+                field.addEventListener('input', changeHandler);
+                field.dispatchEvent(new Event('input'));
+              });
+
+              form.addEventListener('submit', function() {
+                return validate(fields);
+              });
+            }
+        </script>
+    
+    <script type="text/javascript" nonce="">
+      (function () {
+        const username = document.getElementById('username_input');
+        const password = document.getElementById('password_input');
+        const submit = document.getElementById('_submit');
+        const form = document.querySelector('form.Form');
+
+        initPimLoginForm([username, password], submit, form);
+      })();
+    </script>
+
+
+</body></html>

@@ -1,166 +1,155 @@
 #!/bin/bash
-set -e
+echo "=== Creating Minimal Working CSS ==="
+echo "Date: $(date)"
+echo ""
 
-echo "======================================"
-echo "Creating Minimal Working CSS"
-echo "======================================"
+# Step 1: Create a minimal CSS that includes login page styles
+cat > public/css/pim.css << 'CSS'
+/* Akeneo PIM - Minimal CSS for Login Page */
 
-# Create a minimal but functional pim.css that will allow the UI to load
-cat > public/css/pim.css << 'EOFCSS'
-/* Akeneo PIM - Minimal CSS for UI Loading */
-/* Generated during recovery process */
+/* Reset and Base Styles */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #11324d;
     background-color: #f5f5f5;
 }
 
-.AknLoadingPlaceHolder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #fff;
-}
-
-.AknLoadingPlaceHolder-text {
-    font-size: 18px;
-    color: #5e5e5e;
-}
-
-/* Login page styles */
+/* Login Page Styles */
 .login-page {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .login-form {
-    background: white;
+    background: #ffffff;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
     max-width: 400px;
     width: 100%;
 }
 
 .login-form h1 {
-    margin: 0 0 30px 0;
-    color: #333;
-    font-size: 24px;
     text-align: center;
+    margin-bottom: 30px;
+    color: #11324d;
+    font-size: 24px;
+    font-weight: 300;
 }
 
-.form-group {
+.login-form .form-group {
     margin-bottom: 20px;
 }
 
-.form-group label {
+.login-form label {
     display: block;
-    margin-bottom: 8px;
-    color: #555;
+    margin-bottom: 5px;
+    color: #67768a;
     font-weight: 500;
 }
 
-.form-group input {
+.login-form input[type="text"],
+.login-form input[type="password"] {
     width: 100%;
-    padding: 12px;
+    padding: 12px 15px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
-    box-sizing: border-box;
+    transition: border-color 0.3s;
 }
 
-.form-group input:focus {
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #5e63b6;
+    box-shadow: 0 0 0 3px rgba(94, 99, 182, 0.1);
 }
 
-button[type="submit"], .btn-primary {
+.login-form button[type="submit"],
+.login-form .btn-primary {
     width: 100%;
     padding: 12px;
-    background: #667eea;
-    color: white;
+    background: #5e63b6;
     border: none;
     border-radius: 4px;
+    color: #ffffff;
     font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background-color 0.3s;
 }
 
-button[type="submit"]:hover, .btn-primary:hover {
-    background: #5568d3;
+.login-form button[type="submit"]:hover,
+.login-form .btn-primary:hover {
+    background: #4a4f93;
 }
 
-/* Basic grid and layout */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.row {
+/* Dashboard Styles - Basic */
+.AknHeader {
+    background: #11324d;
+    color: #ffffff;
+    padding: 15px 20px;
     display: flex;
-    flex-wrap: wrap;
-    margin: 0 -15px;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.col {
-    flex: 1;
-    padding: 0 15px;
+.AknHeader-logo {
+    height: 30px;
 }
 
-/* Header and navigation */
-header {
-    background: #333;
-    color: white;
-    padding: 15px 0;
+.oro-navigation,
+.navigation {
+    background: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 10px 20px;
 }
 
-nav ul {
+.oro-navigation ul,
+.navigation ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
+    gap: 20px;
 }
 
-nav li {
-    margin-right: 20px;
-}
-
-nav a {
-    color: white;
+.oro-navigation a,
+.navigation a {
+    color: #11324d;
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
-/* Tables */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    margin: 20px 0;
+.oro-navigation a:hover,
+.navigation a:hover {
+    color: #5e63b6;
 }
 
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+#container {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-th {
-    background: #f5f5f5;
-    font-weight: 600;
-}
-
-/* Alerts and notifications */
+/* Alerts and Messages */
 .alert {
     padding: 15px;
-    margin: 15px 0;
+    margin-bottom: 20px;
     border-radius: 4px;
+}
+
+.alert-error,
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 
 .alert-success {
@@ -169,32 +158,22 @@ th {
     border: 1px solid #c3e6cb;
 }
 
-.alert-error, .alert-danger {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+/* Loading Animation */
+.AknLoadingPlaceHolder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
 }
 
-.alert-warning {
-    background: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeaa7;
-}
-
-/* Loading indicator */
-.loading {
-    text-align: center;
-    padding: 40px;
-}
-
-.spinner {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #667eea;
-    border-radius: 50%;
+.AknLoadingPlaceHolder:after {
+    content: "";
     width: 40px;
     height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #5e63b6;
+    border-radius: 50%;
     animation: spin 1s linear infinite;
-    margin: 0 auto;
 }
 
 @keyframes spin {
@@ -202,97 +181,28 @@ th {
     100% { transform: rotate(360deg); }
 }
 
-/* Basic button styles */
-.btn {
-    padding: 10px 20px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.3s;
-}
-
-.btn-secondary {
-    background: #6c757d;
-    color: white;
-}
-
-.btn-secondary:hover {
-    background: #5a6268;
-}
-
-/* Form controls */
-input[type="text"],
-input[type="password"],
-input[type="email"],
-select,
-textarea {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    border-color: #667eea;
-}
-
-/* Utility classes */
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-.mt-2 { margin-top: 20px; }
-.mb-2 { margin-bottom: 20px; }
-.p-2 { padding: 20px; }
+/* Utility Classes */
 .hidden { display: none; }
+.text-center { text-align: center; }
+.mt-10 { margin-top: 10px; }
+.mb-10 { margin-bottom: 10px; }
+CSS
 
-/* PIM specific minimal styles */
-.AknDefault-mainContent {
-    padding: 20px;
-}
+echo "✅ Minimal CSS created"
+ls -lh public/css/pim.css
+SIZE=$(stat -c%s public/css/pim.css)
+echo "Size: $SIZE bytes ($(($SIZE / 1024)) KB)"
+echo "CSS Rules: $(grep -o '{' public/css/pim.css | wc -l)"
 
-.AknTitleContainer {
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.AknTitleContainer-title {
-    font-size: 24px;
-    color: #333;
-    margin: 0;
-}
-
-/* End of minimal CSS */
-EOFCSS
-
+# Set permissions
+chown pim:pim public/css/pim.css
 chmod 644 public/css/pim.css
-SIZE=$(du -h public/css/pim.css | cut -f1)
-echo "✓ Created minimal pim.css ($SIZE)"
+
+# Clear cache
+echo ""
+echo "Clearing cache..."
+rm -rf var/cache/prod/*
+php bin/console cache:clear --env=prod --no-warmup 2>&1 | tail -2
 
 echo ""
-echo "======================================"
-echo "Final Asset Verification"
-echo "======================================"
-
-CRITICAL_FILES=(
-    "public/js/require-paths.js"
-    "public/js/extensions.json"
-    "public/css/pim.css"
-    "public/bundles/pimui/js/index.js"
-)
-
-for file in "${CRITICAL_FILES[@]}"; do
-    if [ -f "$file" ]; then
-        SIZE=$(du -h "$file" | cut -f1)
-        echo "✓ $file ($SIZE)"
-    else
-        echo "✗ $file MISSING"
-    fi
-done
-
-echo "======================================"
+echo "=== CSS Ready for Testing ==="
