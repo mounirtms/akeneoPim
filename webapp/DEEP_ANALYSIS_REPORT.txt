@@ -1,0 +1,51 @@
+=== DEEP CSS AND LOGIN ANALYSIS ===
+
+Testing: http://205.134.249.177:8000/index.php
+
+=== LOADED RESOURCES ===
+200 - http://205.134.249.177:8000/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df
+200 - http://205.134.249.177:8000/bundles/pimui/images/illustrations/login/Logo.svg
+200 - http://205.134.249.177:8000/bundles/pimui/images/logo_login.svg
+
+=== FAILED RESOURCES ===
+401 - http://205.134.249.177:8000/index.php
+
+=== CSS ANALYSIS ===
+CSS Files:
+  http://205.134.249.177:8000/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df
+    Loaded: YES
+    Rules: 43
+
+=== COMPUTED STYLES CHECK ===
+Body styles:
+Login wrapper styles:
+Form styles:
+Button styles:
+
+=== ATTEMPTING FULL LOGIN FLOW ===
+
+✓ Credentials entered
+✓ Screenshot taken: login_before_submit.png
+✓ Submit button clicked
+⚠ Navigation timeout (might still be successful)
+
+Final URL: http://205.134.249.177:8000/index.php/user/login
+Final Title: Connexion
+✓ Dashboard screenshot: after_login_dashboard.png
+
+=== DASHBOARD ELEMENTS CHECK ===
+.AknHeader: NOT FOUND
+.oro-navigation: NOT FOUND
+nav: NOT FOUND
+#container: NOT FOUND
+.navigation: NOT FOUND
+[data-toggle="dropdown"]: NOT FOUND
+
+✓ Saved full HTML to: current_page.html
+
+=== CONSOLE MESSAGES ===
+[error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+
+=== FINAL VERDICT ===
+Login Successful: NO ✗
+Still on login page: YES (PROBLEM)
