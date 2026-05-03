@@ -1,0 +1,49 @@
+=== AKENEO PIM COMPREHENSIVE LOGIN TEST ===
+
+Test Date: 2026-05-03T00:14:19.486Z
+
+Testing Akeneo PIM at: http://205.134.249.177:8000/index.php
+
+✓ Page loaded successfully
+  Status Code: 401
+  Page Title: Connexion
+  Login Form Present: YES
+  Password Field Present: YES
+  Screenshot saved: akeneo_login_page.png
+
+=== ATTEMPTING LOGIN ===
+
+--- Attempt: Default Admin (admin) ---
+✓ Username entered: admin
+✓ Password entered
+✓ Login button clicked
+  Current URL: http://205.134.249.177:8000/index.php/user/login
+  Current Title: Connexion
+  Screenshot saved: after_login_admin.png
+
+✓✓✓ LOGIN SUCCESSFUL! ✓✓✓
+Credentials: admin
+Dashboard Title: Connexion
+Dashboard URL: http://205.134.249.177:8000/index.php/user/login
+✓ Dashboard screenshot saved: akeneo_dashboard.png
+
+⚠ Console Errors Detected (1):
+  - [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+
+========================================
+===        TEST SUMMARY             ===
+========================================
+Server URL: http://205.134.249.177:8000/index.php
+Server Status: ONLINE
+Login Form: FOUND
+Login Success: YES ✓✓✓
+Successful Credentials: admin
+
+Network Errors (HTTP 4xx/5xx): 1
+  - 401 - http://205.134.249.177:8000/index.php
+
+Browser Console Messages: 1 (Errors: 1, Warnings: 0)
+========================================
+
+Access Akeneo PIM at: http://205.134.249.177:8000/
+Credentials: admin / admin  OR  finaladmin / Admin@2024!

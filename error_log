@@ -2027,3 +2027,4 @@ Stack trace:
 [02-May-2026 23:39:50 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
 [02-May-2026 23:39:50 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
 [02-May-2026 23:39:50 UTC] PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+[03-May-2026 00:12:42 UTC] PHP Deprecated:  ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
