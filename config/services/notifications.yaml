@@ -1,36 +1,4 @@
-# Email Notification Services Configuration
-# Comprehensive event-driven notification system for Akeneo PIM
-
-services:
-    # Product Event Subscriber
-    App\EventSubscriber\ProductEventSubscriber:
-        arguments:
-            $mailer: '@mailer.mailer'
-            $logger: '@monolog.logger'
-        tags:
-            - { name: kernel.event_subscriber }
-
-    # Category Event Subscriber
-    App\EventSubscriber\CategoryEventSubscriber:
-        arguments:
-            $mailer: '@mailer.mailer'
-            $logger: '@monolog.logger'
-        tags:
-            - { name: kernel.event_subscriber }
-
-    # Product Model Event Subscriber
-    App\EventSubscriber\ProductModelEventSubscriber:
-        arguments:
-            $mailer: '@mailer.mailer'
-            $logger: '@monolog.logger'
-        tags:
-            - { name: kernel.event_subscriber }
-
-    # System Error Event Subscriber
-    App\EventSubscriber\SystemErrorEventSubscriber:
-        arguments:
-            $mailer: '@mailer.mailer'
-            $logger: '@monolog.logger'
-            $environment: '%kernel.environment%'
-        tags:
-            - { name: kernel.event_subscriber }
+# Email notification event subscribers
+# These are auto-wired and auto-configured via config/services.yaml (App\ namespace)
+# No explicit service definitions needed - Symfony autoconfigure registers them automatically
+services: {}

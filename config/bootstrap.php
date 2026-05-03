@@ -8,8 +8,12 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 // Run "composer dump-env prod" to create it (requires symfony/flex >=1.2)
 if (is_array($env = @include dirname(__DIR__).'/.env.local.php')) {
     foreach ($env as $k => $v) {
-        $_ENV[$k] = $_ENV[$k] ?? (isset($_SERVER[$k]) && 0 !== strpos($k, 'HTTP_') ? $_SERVER[$k] : $v);
+        if (!isset($_ENV[$k]) && !(isset($_SERVER[$k]) && 0 !== strpos($k, 'HTTP_'))) {
+            $_ENV[$k] = $v;
+            putenv("$k=$v");
+        }
     }
+    $_SERVER += $_ENV;
 } elseif (!class_exists(Dotenv::class)) {
     throw new RuntimeException('Please run "composer require symfony/dotenv" to load the ".env" files configuring the application.');
 } else {
@@ -20,8 +24,6 @@ if (is_array($env = @include dirname(__DIR__).'/.env.local.php')) {
     if (method_exists($dotenv, 'loadEnv')) {
         $dotenv->loadEnv($path);
     } else {
-        // fallback code in case your Dotenv component is not 4.2 or higher (when loadEnv() was added)
-
         if (file_exists($path) || !file_exists($p = "$path.dist")) {
             $dotenv->load($path);
         } else {
@@ -45,6 +47,5 @@ if (is_array($env = @include dirname(__DIR__).'/.env.local.php')) {
             $dotenv->load($p);
         }
     }
+    $_SERVER += $_ENV;
 }
-
-$_SERVER += $_ENV;

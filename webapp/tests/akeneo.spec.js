@@ -3,8 +3,8 @@ const { test, expect } = require('@playwright/test');
 // Test configuration
 const BASE_URL = 'https://pim.technostationery.com';
 const TEST_USER = {
-  username: 'testadmin',
-  password: 'testpass'
+  username: 'admin',
+  password: 'admin'
 };
 
 test.describe('Akeneo PIM - Authentication Tests', () => {

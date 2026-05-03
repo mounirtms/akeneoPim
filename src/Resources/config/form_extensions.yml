@@ -1,6 +1,4 @@
-extensions:
-    pim-my-custom-form:
-        module: pimui/js/form/common/simple-view # Base module to extend
-        parent: pim-main-form # Parent form to extend
-        targetZone: container # Where to inject this form
-        position: 100 # Position in target zone
+# Custom form extensions for Akeneo PIM
+# Add your form extension overrides here following Akeneo documentation:
+# https://docs.akeneo.com/master/design_pim/guides/create_a_form_extension.html
+extensions: {}

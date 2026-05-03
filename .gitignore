@@ -93,3 +93,22 @@ front-packages/akeneo-design-system/lib
 /logs/.git-credentials
 .git-credentials
 error_log
+
+# Session and temp files
+*.tgz
+CLEAN_*.md
+CLEAN_*.log
+REBUILD_*.log
+SESSION_*.md
+FINAL_*.md
+COMPLETE_*.md
+RECOVERY_*.md
+PRODUCTION_*.md
+BACKLASTCHANGES_*.md
+COMPREHENSIVE_*.md
+BROWSER_TEST_*.txt
+browser_test_results.log
+*.audit.log
+pim_audit_*.log
+less_compilation.log
+recovery_*.log

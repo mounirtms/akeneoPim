@@ -2,19 +2,15 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Routing\Annotation\Route;
 
-class DashboardController extends Controller
+class DashboardController extends AbstractController
 {
-    /**
-     * @Route("/", name="dashboard")
-     * @Template("AppBundle:Dashboard:dashboard.html.twig")
-     */
-    public function dashboardAction()
+    #[Route('/app-dashboard', name: 'app_dashboard')]
+    public function dashboard(): Response
     {
-        return [];
+        return $this->render('AppBundle:Dashboard:dashboard.html.twig');
     }
 }
