@@ -1,0 +1,21 @@
+=== Attempting to install PHP extensions for ea-php81 at Mon May  4 00:09:50 UTC 2026 ===
+Detected package manager: yum
+Running sudo yum -y install ea-php81-php-pecl-apcu ea-php81-php-pecl-amqp ea-php81-php-sodium ea-php81-php-sodium ea-php81-php-pecl-sodium
+Last metadata expiration check: 2:52:59 ago on Sun 03 May 2026 10:16:52 PM CET.
+No match for argument: ea-php81-php-pecl-apcu
+No match for argument: ea-php81-php-pecl-amqp
+No match for argument: ea-php81-php-pecl-sodium
+Error: Unable to find a match: ea-php81-php-pecl-apcu ea-php81-php-pecl-amqp ea-php81-php-pecl-sodium
+Some packages failed; attempting pecl via ea-php81's pecl if available
+Using /opt/cpanel/ea-php81/root/usr/bin/pecl to install apcu and amqp
+WARNING: channel "pecl.php.net" has updated its protocols, use "pecl channel-update pecl.php.net" to update
+downloading apcu-5.1.28.tgz ...
+Starting to download apcu-5.1.28.tgz (94,004 bytes)
+.....................done: 94,004 bytes
+44 source files, building
+running: phpize
+Configuring for:
+PHP Api Version:         20210902
+Zend Module Api No:      20210902
+Zend Extension Api No:   420210902
+Enable internal debugging in APCu [no] : 

@@ -1,0 +1,18 @@
+### TIMESTAMP: 2026-05-04T01:05:24Z
+Compiling new VCL
+Message from VCC-compiler:
+Expected ';' got '205.134'
+(program line 371), at
+('/tmp/default.vcl.new.20260504_020524' Line 61 Pos 15)
+    .host = ""205.134.249.177"";
+--------------#######-----------
+
+
+In backend specification starting at:
+('/tmp/default.vcl.new.20260504_020524' Line 60 Pos 1)
+backend pim {
+#######------
+
+Running VCC-compiler failed, exited with 2
+VCL compilation failed
+VCL compile failed, aborting

@@ -1,0 +1,186 @@
+=== Continuing extension install logs at Mon May  4 00:23:39 UTC 2026 ===
+INSTALLED PACKAGES, CHANNEL PECL.PHP.NET:
+=========================================
+PACKAGE VERSION STATE
+amqp    2.1.2   stable
+apcu    5.1.27  stable
+imagick 3.8.0   stable
+redis   6.2.0   stable
+[PHP Modules]
+amqp
+apcu
+bcmath
+bz2
+calendar
+Core
+ctype
+curl
+date
+dba
+dom
+enchant
+exif
+fileinfo
+filter
+ftp
+gd
+gettext
+gmp
+hash
+iconv
+imagick
+imap
+intl
+ionCube Loader
+json
+ldap
+libxml
+mbstring
+mysqli
+mysqlnd
+openssl
+pcntl
+pcre
+PDO
+pdo_mysql
+pdo_pgsql
+pdo_sqlite
+pgsql
+Phar
+posix
+pspell
+readline
+redis
+Reflection
+session
+shmop
+SimpleXML
+snmp
+soap
+sockets
+SPL
+sqlite3
+standard
+sysvmsg
+sysvsem
+sysvshm
+tokenizer
+xml
+xmlreader
+xmlwriter
+xsl
+Zend OPcache
+zip
+zlib
+
+[Zend Modules]
+Zend OPcache
+the ionCube PHP Loader
+
+Checking for /opt/cpanel/ea-php81/root/etc/php.d/20-apcu.ini
+-rw-r--r-- 1 root root 34 Oct 19  2025 /opt/cpanel/ea-php81/root/etc/php.d/20-apcu.ini
+==> maintenance_logs/install_exts_20260504_010950.log <==
+=== Attempting to install PHP extensions for ea-php81 at Mon May  4 00:09:50 UTC 2026 ===
+Detected package manager: yum
+Running sudo yum -y install ea-php81-php-pecl-apcu ea-php81-php-pecl-amqp ea-php81-php-sodium ea-php81-php-sodium ea-php81-php-pecl-sodium
+Last metadata expiration check: 2:52:59 ago on Sun 03 May 2026 10:16:52 PM CET.
+No match for argument: ea-php81-php-pecl-apcu
+No match for argument: ea-php81-php-pecl-amqp
+No match for argument: ea-php81-php-pecl-sodium
+Error: Unable to find a match: ea-php81-php-pecl-apcu ea-php81-php-pecl-amqp ea-php81-php-pecl-sodium
+Some packages failed; attempting pecl via ea-php81's pecl if available
+Using /opt/cpanel/ea-php81/root/usr/bin/pecl to install apcu and amqp
+WARNING: channel "pecl.php.net" has updated its protocols, use "pecl channel-update pecl.php.net" to update
+downloading apcu-5.1.28.tgz ...
+Starting to download apcu-5.1.28.tgz (94,004 bytes)
+.....................done: 94,004 bytes
+44 source files, building
+running: phpize
+Configuring for:
+PHP Api Version:         20210902
+Zend Module Api No:      20210902
+Zend Extension Api No:   420210902
+Enable internal debugging in APCu [no] : 
+==> maintenance_logs/install_exts_after_pecl_20260504_012339.log <==
+=== Continuing extension install logs at Mon May  4 00:23:39 UTC 2026 ===
+INSTALLED PACKAGES, CHANNEL PECL.PHP.NET:
+=========================================
+PACKAGE VERSION STATE
+amqp    2.1.2   stable
+apcu    5.1.27  stable
+imagick 3.8.0   stable
+redis   6.2.0   stable
+[PHP Modules]
+amqp
+apcu
+bcmath
+bz2
+calendar
+Core
+ctype
+curl
+date
+dba
+dom
+enchant
+exif
+fileinfo
+filter
+ftp
+gd
+gettext
+gmp
+hash
+iconv
+imagick
+imap
+intl
+ionCube Loader
+json
+ldap
+libxml
+mbstring
+mysqli
+mysqlnd
+openssl
+pcntl
+pcre
+PDO
+pdo_mysql
+pdo_pgsql
+pdo_sqlite
+pgsql
+Phar
+posix
+pspell
+readline
+redis
+Reflection
+session
+shmop
+SimpleXML
+snmp
+soap
+sockets
+SPL
+sqlite3
+standard
+sysvmsg
+sysvsem
+sysvshm
+tokenizer
+xml
+xmlreader
+xmlwriter
+xsl
+Zend OPcache
+zip
+zlib
+
+[Zend Modules]
+Zend OPcache
+the ionCube PHP Loader
+
+Checking for /opt/cpanel/ea-php81/root/etc/php.d/20-apcu.ini
+-rw-r--r-- 1 root root 34 Oct 19  2025 /opt/cpanel/ea-php81/root/etc/php.d/20-apcu.ini
+=== Completed at Mon May  4 00:23:39 UTC 2026 ===

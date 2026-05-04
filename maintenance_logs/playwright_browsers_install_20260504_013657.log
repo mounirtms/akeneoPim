@@ -1,0 +1,26 @@
+
+
+#
+# Fatal error in , line 0
+# Check failed: reservation_.SetPermissions(unprotect_start, unprotect_size, PageAllocator::kReadWrite).
+#
+#
+#
+#FailureMessage Object: 0x7fff18eec3a0
+ 1: 0xaa8641  [npm]
+ 2: 0x1a48174 V8_Fatal(char const*, ...) [npm]
+ 3: 0xdd379b  [npm]
+ 4: 0xdf9908 v8::internal::PagedSpace::SetReadAndWritable() [npm]
+ 5: 0xd13f01 v8::internal::CodeSpaceMemoryModificationScope::CodeSpaceMemoryModificationScope(v8::internal::Heap*) [npm]
+ 6: 0xd8447d v8::internal::Heap::MarkCompact() [npm]
+ 7: 0xd85fe8 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [npm]
+ 8: 0xd8803e v8::internal::Heap::CollectAllAvailableGarbage(v8::internal::GarbageCollectionReason) [npm]
+ 9: 0xbdbf21 v8::Isolate::LowMemoryNotification() [npm]
+10: 0x990a57 node::NodeArrayBufferAllocator::Allocate(unsigned long) [npm]
+11: 0xd88fa9 v8::internal::Heap::AllocateExternalBackingStore(std::function<void* (unsigned long)> const&, unsigned long) [npm]
+12: 0xe9cf32 v8::internal::BackingStore::Allocate(v8::internal::Isolate*, unsigned long, v8::internal::SharedFlag, v8::internal::InitializedFlag) [npm]
+13: 0xc32ec2  [npm]
+14: 0xc332bd  [npm]
+15: 0xc33696 v8::internal::Builtin_ArrayBufferConstructor(int, unsigned long*, v8::internal::Isolate*) [npm]
+16: 0x1449459  [npm]
+command not found: playwright

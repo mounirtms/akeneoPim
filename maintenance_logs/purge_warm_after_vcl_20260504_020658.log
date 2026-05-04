@@ -1,0 +1,55 @@
+### TIMESTAMP: 2026-05-04T01:06:58Z
+Purging Cloudflare (purge_everything)
+{"result":null,"success":false,"errors":[{"code":10000,"message":"Authentication error"}],"messages":[]}
+\nFetching via varnish: http://127.0.0.1/
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: Content-Type, Authorization
+Cache-Control: no-cache, no-store, must-revalidate
+Content-Type: text/html;charset=ISO-8859-1
+\nFetching via varnish: http://127.0.0.1/user/login
+HTTP/1.1 404 Not Found
+Content-Type: text/html; charset=iso-8859-1
+\nFetching via varnish: http://127.0.0.1/css/pim.css
+HTTP/1.1 404 Not Found
+Content-Type: text/html; charset=iso-8859-1
+\nFetching via varnish: http://127.0.0.1/akeneo_main.css
+HTTP/1.1 404 Not Found
+Content-Type: text/html; charset=iso-8859-1
+\nFetching backend: http://205.134.249.177/
+HTTP/1.1 302 Found
+Cache-Control: no-store, no-cache, must-revalidate, max-age=0, must-revalidate, private
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With
+X-Content-Type-Options: nosniff
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+Location: https://pim.technostationery.com/user/login
+Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+Content-Type: text/html; charset=utf-8
+\nFetching backend: http://205.134.249.177/user/login
+HTTP/1.1 200 OK
+Cache-Control: no-store, no-cache, must-revalidate, max-age=0, must-revalidate, private
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With
+X-Content-Type-Options: nosniff
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+Cache-Control: no-store, no-cache, must-revalidate, max-age=0
+Content-Type: text/html; charset=UTF-8
+\nFetching backend: http://205.134.249.177/css/pim.css
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With
+X-Content-Type-Options: nosniff
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+Cache-Control: public, max-age=31536000
+Content-Type: text/css
+\nFetching backend: http://205.134.249.177/akeneo_main.css
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With
+X-Content-Type-Options: nosniff
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+Cache-Control: public, max-age=31536000
+Content-Type: text/css
+MAIN.cache_hit                         0         0.00 Cache hits
+MAIN.cache_hit_grace                   0         0.00 Cache grace hits
+MAIN.cache_hitpass                     0         0.00 Cache hits for pass.
+MAIN.cache_hitmiss                     0         0.00 Cache hits for miss.
+MAIN.cache_miss                       25         0.00 Cache misses
+MAIN.fetch_failed                     32         0.00 Fetch failed (all causes)
+SMA.s0.g_bytes                                0          .   Bytes outstanding

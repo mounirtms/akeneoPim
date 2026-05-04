@@ -1,0 +1,8 @@
+Message from VCC-compiler:
+Symbol not found: 'bereq.backend.name'
+At: ('/tmp/default.vcl.vbf.20260504_021038' Line 230 Pos 9)
+    if (bereq.backend.name == "pim") {
+--------##################------------
+
+Running VCC-compiler failed, exited with 2
+VCL compilation failed

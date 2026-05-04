@@ -1,0 +1,425 @@
+=== Fix run started at Sun May  3 23:45:32 UTC 2026 ===
+--- Composer install ---
+Composer plugins have been disabled for safety in this non-interactive session.
+Set COMPOSER_ALLOW_SUPERUSER=1 if you want to allow plugins to run as root/super user.
+Do not run Composer as root/super user! See https://getcomposer.org/root for details
+Installing dependencies from lock file (including require-dev)
+Verifying lock file contents can be installed on current platform.
+Your lock file does not contain a compatible set of packages. Please run composer update.
+
+  Problem 1
+    - akeneo/pim-community-dev is locked to version v6.0.113 and an update of this package was not requested.
+    - akeneo/pim-community-dev v6.0.113 requires ext-apcu * -> it is missing from your system. Install or enable PHP's apcu extension.
+  Problem 2
+    - symfony/amqp-messenger is locked to version v6.0.19 and an update of this package was not requested.
+    - symfony/amqp-messenger v6.0.19 requires ext-amqp * -> it is missing from your system. Install or enable PHP's amqp extension.
+  Problem 3
+    - symfony/messenger is locked to version v5.4.45 and an update of this package was not requested.
+    - symfony/amqp-messenger v6.0.19 requires ext-amqp * -> it is missing from your system. Install or enable PHP's amqp extension.
+    - symfony/messenger v5.4.45 requires symfony/amqp-messenger ^5.1|^6.0 -> satisfiable by symfony/amqp-messenger[v6.0.19].
+
+To enable extensions, verify that they are enabled in your .ini files:
+    - /opt/cpanel/ea-php82/root/etc/php.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/01-ioncube.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/10-opcache.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-bcmath.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-bz2.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-calendar.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-ctype.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-curl.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-dba.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-dom.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-enchant.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-exif.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-fileinfo.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-ftp.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-gd.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-gettext.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-gmp.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-iconv.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-imap.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-intl.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-ldap.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-mbstring.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-mysqlnd.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-pdo.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-pgsql.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-phar.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-posix.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-pspell.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-shmop.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-simplexml.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-snmp.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-soap.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-sockets.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-sodium.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-sqlite3.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-sysvmsg.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-sysvsem.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-sysvshm.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-tokenizer.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-xml.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-xmlwriter.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-xsl.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/20-zip.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/30-mysqli.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/30-pdo_mysql.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/30-pdo_pgsql.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/30-pdo_sqlite.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/30-xmlreader.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/50-redis.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/imagick.ini
+    - /opt/cpanel/ea-php82/root/etc/php.d/zzzzzzz-pecl.ini
+You can also run `php --ini` in a terminal to see which files are used by PHP in CLI mode.
+Alternatively, you can run Composer with `--ignore-platform-req=ext-apcu --ignore-platform-req=ext-amqp` to temporarily ignore these required extensions.
+--- Running install-required-files.sh ---
+src/ directory already exists. Not preparing the directory content.
+--- Clearing & warming cache (dev) ---
+--- npm ci ---
+warning Pattern ["@akeneo-pim-community/shared@link:vendor/akeneo/pim-community-dev/front-packages/shared"] is trying to unpack in the same destination "/usr/local/share/.cache/yarn/v6/npm-@akeneo-pim-community-shared-1.0.0/node_modules/@akeneo-pim-community/shared" as pattern ["@akeneo-pim-community/shared@1.0.0","@akeneo-pim-community/shared@1.0.0"]. This could result in non-deterministic behavior, skipping.
+warning " > akeneo-design-system@4.0.7" has incorrect peer dependency "@types/react@^17.0.2||^18.0.0".
+warning " > akeneo-design-system@4.0.7" has incorrect peer dependency "@types/react-dom@^17.0.2||^18.0.0".
+warning " > akeneo-design-system@4.0.7" has incorrect peer dependency "react@^17.0.2||^18.0.0".
+warning " > akeneo-design-system@4.0.7" has incorrect peer dependency "react-dom@^17.0.2||^18.0.0".
+warning " > akeneo-design-system@4.0.7" has unmet peer dependency "styled-components@^5.3.3||^6.1.11".
+warning " > @akeneo-pim-community/process-tracker@0.1.0" has incorrect peer dependency "babel-loader@8.1.0".
+warning " > @akeneo-pim-community/process-tracker@0.1.0" has unmet peer dependency "eslint@^7.11.0".
+warning " > @akeneo-pim-community/process-tracker@0.1.0" has incorrect peer dependency "react@^17.0.2".
+warning " > @akeneo-pim-community/process-tracker@0.1.0" has incorrect peer dependency "react-dom@^17.0.2".
+warning " > @akeneo-pim-community/process-tracker@0.1.0" has unmet peer dependency "styled-components@^5.1.1".
+warning " > @akeneo-pim-community/shared@1.0.0" has incorrect peer dependency "akeneo-design-system@link:vendor/akeneo/pim-community-dev/front-packages/akeneo-design-system".
+warning " > @akeneo-pim-community/measurement@0.1.0" has incorrect peer dependency "babel-loader@8.1.0".
+warning " > @akeneo-pim-community/measurement@0.1.0" has unmet peer dependency "eslint@^7.11.0".
+warning " > @akeneo-pim-community/measurement@0.1.0" has unmet peer dependency "styled-components@^5.1.1".
+warning " > @akeneo-pim-community/catalog-volume-monitoring@0.1.0" has incorrect peer dependency "babel-loader@8.1.0".
+warning " > @akeneo-pim-community/catalog-volume-monitoring@0.1.0" has unmet peer dependency "eslint@^7.11.0".
+warning " > @akeneo-pim-community/catalog-volume-monitoring@0.1.0" has incorrect peer dependency "react@^17.0.2".
+warning " > @akeneo-pim-community/catalog-volume-monitoring@0.1.0" has incorrect peer dependency "react-dom@^17.0.2".
+warning " > @akeneo-pim-community/catalog-volume-monitoring@0.1.0" has unmet peer dependency "styled-components@^5.1.1".
+warning "workspace-aggregator-ab62ad5b-c0a1-452f-98a2-f8c5f44dbe5b > pim-community-dev > styled-components@5.3.11" has unmet peer dependency "react-is@>= 16.8.0".
+warning "workspace-aggregator-ab62ad5b-c0a1-452f-98a2-f8c5f44dbe5b > pim-community-dev > @testing-library/user-event@12.8.3" has unmet peer dependency "@testing-library/dom@>=7.21.4".
+warning "workspace-aggregator-ab62ad5b-c0a1-452f-98a2-f8c5f44dbe5b > pim-community-dev > eslint-config-react-app@6.0.0" has incorrect peer dependency "eslint@^7.5.0".
+warning "workspace-aggregator-ab62ad5b-c0a1-452f-98a2-f8c5f44dbe5b > pim-community-dev > eslint-config-react-app@6.0.0" has incorrect peer dependency "eslint-plugin-react-hooks@^4.0.8".
+warning "workspace-aggregator-ab62ad5b-c0a1-452f-98a2-f8c5f44dbe5b > pim-community-dev > eslint-plugin-flowtype@5.10.0" has incorrect peer dependency "eslint@^7.1.0".
+warning "workspace-aggregator-ab62ad5b-c0a1-452f-98a2-f8c5f44dbe5b > @akeneo-pim-community/catalog-volume-monitoring > @akeneo-pim-community/shared@1.0.0" has incorrect peer dependency "akeneo-design-system@link:vendor/akeneo/pim-community-dev/front-packages/akeneo-design-system".
+warning "workspace-aggregator-ab62ad5b-c0a1-452f-98a2-f8c5f44dbe5b > pim-community-dev > akeneo-design-system > react-draft-wysiwyg > draftjs-utils@0.10.2" has incorrect peer dependency "draft-js@^0.11.x".
+--- npm run dev (if exists) ---
+--- Last lines of logs ---
+--- var/log/consumer_import_export.log ---
+nohup: ignoring input
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "import_export_job".                    
+
+ // The worker will automatically exit once it has processed 100 messages or    
+ // received a stop signal via the messenger:stop-workers command.              
+
+ // Quit the worker with CONTROL-C.                                             
+
+01:55:30 CRITICAL  [console] Error thrown while running command "messenger:consume import_export_job -vv --limit=100". Message: "An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params ["9999-12-31 23:59:59"]:
+
+SQLSTATE[HY000]: General error: 2006 MySQL server has gone away" ["exception" => Symfony\Component\Messenger\Exception\TransportException { …},"command" => "messenger:consume import_export_job -vv --limit=100","message" => """  An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params ["9999-12-31 23:59:59"]:\n  \n  SQLSTATE[HY000]: General error: 2006 MySQL server has gone away  """]
+--- var/log/consumer_ui_job.log ---
+--- var/log/consumer_webhook.log ---
+
+ [OK] Consuming messages from transport "webhook".                              
+
+ // The worker will automatically exit once it has processed 100 messages or    
+ // received a stop signal via the messenger:stop-workers command.              
+
+ // Quit the worker with CONTROL-C.                                             
+
+01:55:30 CRITICAL  [console] Error thrown while running command "messenger:consume webhook -vv --limit=100". Message: "An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params ["9999-12-31 23:59:59"]:
+
+SQLSTATE[HY000]: General error: 2006 MySQL server has gone away" ["exception" => Symfony\Component\Messenger\Exception\TransportException { …},"command" => "messenger:consume webhook -vv --limit=100","message" => """  An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params ["9999-12-31 23:59:59"]:\n  \n  SQLSTATE[HY000]: General error: 2006 MySQL server has gone away  """]
+--- var/log/supervisor_import_export.log ---
+APP_DEBUG=0
+PHP Deprecated:  ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+
+Deprecated: ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "import_export_job".                    
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Stopping worker. ["transport_names" => ["import_export_job"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 WARNING   [app] E_WARNING: require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory ["code" => 2,"message" => "require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory","file" => "/home/pim/public_html/var/cache/prod/Container3ejPMgU/KernelProdDebugContainer.php","line" => 599]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "import_export_job".                    
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Stopping worker. ["transport_names" => ["import_export_job"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "import_export_job".                    
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+--- var/log/supervisor_ui_job.log ---
+APP_DEBUG=0
+PHP Deprecated:  ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+
+Deprecated: ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "ui_job".                               
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Stopping worker. ["transport_names" => ["ui_job"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 WARNING   [app] E_WARNING: require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory ["code" => 2,"message" => "require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory","file" => "/home/pim/public_html/var/cache/prod/Container3ejPMgU/KernelProdDebugContainer.php","line" => 599]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "ui_job".                               
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Stopping worker. ["transport_names" => ["ui_job"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "ui_job".                               
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+--- var/log/supervisor_webhook.log ---
+APP_DEBUG=0
+PHP Deprecated:  ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+
+Deprecated: ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+
+ [OK] Consuming messages from transport "webhook".                              
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Stopping worker. ["transport_names" => ["webhook"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 WARNING   [app] E_WARNING: require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory ["code" => 2,"message" => "require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory","file" => "/home/pim/public_html/var/cache/prod/Container3ejPMgU/KernelProdDebugContainer.php","line" => 599]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+
+ [OK] Consuming messages from transport "webhook".                              
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Stopping worker. ["transport_names" => ["webhook"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+
+ [OK] Consuming messages from transport "webhook".                              
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+--- Searching for trusted proxy / cloudflare settings ---
+--- Varnish status ---
+varnish running (pgrep)
+varnish    52339  0.0  0.0  21496  2756 ?        SNLs May03   0:00 /usr/sbin/varnishd -a 0.0.0.0:6081 -f /etc/varnish/default.vcl -T 127.0.0.1:6082 -s malloc,6G -p thread_pool_min=20 -p thread_pool_max=400 -p thread_pool_timeout=120 -p thread_pools=2 -p workspace_backend=512k -p workspace_client=512k -p http_resp_hdr_len=128k -p http_resp_size=128k -p timeout_idle=30 -p timeout_linger=100 -p feature=+esi_ignore_https -p vcc_allow_inline_c=on
+varnish    52392  0.0  0.0 1040404 12128 ?       SNLl May03   0:01 /usr/sbin/varnishd -a 0.0.0.0:6081 -f /etc/varnish/default.vcl -T 127.0.0.1:6082 -s malloc,6G -p thread_pool_min=20 -p thread_pool_max=400 -p thread_pool_timeout=120 -p thread_pools=2 -p workspace_backend=512k -p workspace_client=512k -p http_resp_hdr_len=128k -p http_resp_size=128k -p timeout_idle=30 -p timeout_linger=100 -p feature=+esi_ignore_https -p vcc_allow_inline_c=on
+root       99472  0.2  0.0  98976   180 ?        SNs  May03   0:21 /usr/bin/varnishncsa -a -w /var/log/varnish/varnishncsa.log -D
+--- HTTP headers from localhost:80 (if accessible) ---
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+HTTP/1.1 200 OK
+Date: Sun, 03 May 2026 23:47:43 GMT
+Server: Apache
+Access-Control-Allow-Origin: https://techno-webapp.web.app
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Allow-Headers: Content-Type, Authorization
+Cache-Control: no-cache, no-store, must-revalidate
+Pragma: no-cache
+Expires: 0
+Content-Type: text/html;charset=ISO-8859-1
+
+=== Fix run completed at Sun May  3 23:47:43 UTC 2026 ===

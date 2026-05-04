@@ -1,0 +1,33 @@
+
+
+#
+# Fatal error in , line 0
+# Check failed: reservation_.SetPermissions(unprotect_start, unprotect_size, PageAllocator::kReadWrite).
+#
+#
+#
+#FailureMessage Object: 0x7ffdfd9c11f0
+ 1: 0xaa8641  [npm]
+ 2: 0x1a48174 V8_Fatal(char const*, ...) [npm]
+ 3: 0xdd379b  [npm]
+ 4: 0xdf9908 v8::internal::PagedSpace::SetReadAndWritable() [npm]
+ 5: 0xd13f01 v8::internal::CodeSpaceMemoryModificationScope::CodeSpaceMemoryModificationScope(v8::internal::Heap*) [npm]
+ 6: 0xd8447d v8::internal::Heap::MarkCompact() [npm]
+ 7: 0xd85fe8 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [npm]
+ 8: 0xd8942c v8::internal::Heap::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [npm]
+ 9: 0xd5258e v8::internal::Factory::NewMap(v8::internal::InstanceType, int, v8::internal::ElementsKind, int) [npm]
+10: 0xf5e85b v8::internal::Map::RawCopy(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Map>, int, int) [npm]
+11: 0xf5efab v8::internal::Map::CopyDropDescriptors(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Map>) [npm]
+12: 0xf5f596 v8::internal::Map::ShareDescriptor(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::DescriptorArray>, v8::internal::Descriptor*) [npm]
+13: 0xf5fbd1 v8::internal::Map::CopyAddDescriptor(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Map>, v8::internal::Descriptor*, v8::internal::TransitionFlag) [npm]
+14: 0xf5fcb8 v8::internal::Map::CopyWithField(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::FieldType>, v8::internal::PropertyAttributes, v8::internal::PropertyConstness, v8::internal::Representation, v8::internal::TransitionFlag) [npm]
+15: 0xf61bb0 v8::internal::Map::TransitionToDataProperty(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::PropertyConstness, v8::internal::StoreOrigin) [npm]
+16: 0xf522af v8::internal::LookupIterator::PrepareTransitionToDataProperty(v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::StoreOrigin) [npm]
+17: 0xf867b4 v8::internal::Object::AddDataProperty(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::Maybe<v8::internal::ShouldThrow>, v8::internal::StoreOrigin) [npm]
+18: 0xf2c1e9 v8::internal::JSObject::DefineOwnPropertyIgnoreAttributes(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::JSObject::AccessorInfoHandling) [npm]
+19: 0xe6c08a v8::internal::JsonParser<unsigned char>::BuildJsonObject(v8::internal::JsonParser<unsigned char>::JsonContinuation const&, std::vector<v8::internal::JsonProperty, std::allocator<v8::internal::JsonProperty> > const&, v8::internal::Handle<v8::internal::Map>) [npm]
+20: 0xe6d5a9 v8::internal::JsonParser<unsigned char>::ParseJsonValue() [npm]
+21: 0xe6e3ef v8::internal::JsonParser<unsigned char>::ParseJson() [npm]
+22: 0xc667f8  [npm]
+23: 0xc66da6 v8::internal::Builtin_JsonParse(int, unsigned long*, v8::internal::Isolate*) [npm]
+24: 0x1449459  [npm]

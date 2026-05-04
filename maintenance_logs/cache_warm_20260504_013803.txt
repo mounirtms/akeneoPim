@@ -1,0 +1,67 @@
+\n>>> Fetching / (5x)
+--- Attempt 1 ---
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, must-revalidate
+--- Attempt 2 ---
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, must-revalidate
+--- Attempt 3 ---
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, must-revalidate
+--- Attempt 4 ---
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, must-revalidate
+--- Attempt 5 ---
+HTTP/1.1 200 OK
+Cache-Control: no-cache, no-store, must-revalidate
+\n>>> Fetching /pim/ (5x)
+--- Attempt 1 ---
+HTTP/1.1 404 Not Found
+--- Attempt 2 ---
+HTTP/1.1 404 Not Found
+--- Attempt 3 ---
+HTTP/1.1 404 Not Found
+--- Attempt 4 ---
+HTTP/1.1 404 Not Found
+--- Attempt 5 ---
+HTTP/1.1 404 Not Found
+\n>>> Fetching /css/pim.css (5x)
+--- Attempt 1 ---
+HTTP/1.1 404 Not Found
+--- Attempt 2 ---
+HTTP/1.1 404 Not Found
+--- Attempt 3 ---
+HTTP/1.1 404 Not Found
+--- Attempt 4 ---
+HTTP/1.1 404 Not Found
+--- Attempt 5 ---
+HTTP/1.1 404 Not Found
+\n>>> Fetching /akeneo_main.css (5x)
+--- Attempt 1 ---
+HTTP/1.1 404 Not Found
+--- Attempt 2 ---
+HTTP/1.1 404 Not Found
+--- Attempt 3 ---
+HTTP/1.1 404 Not Found
+--- Attempt 4 ---
+HTTP/1.1 404 Not Found
+--- Attempt 5 ---
+HTTP/1.1 404 Not Found
+\n>>> Fetching /bundles/pimui/lib/font-awesome/css/font-awesome.css (5x)
+--- Attempt 1 ---
+HTTP/1.1 404 Not Found
+--- Attempt 2 ---
+HTTP/1.1 404 Not Found
+--- Attempt 3 ---
+HTTP/1.1 404 Not Found
+--- Attempt 4 ---
+HTTP/1.1 404 Not Found
+--- Attempt 5 ---
+HTTP/1.1 404 Not Found
+MAIN.cache_hit                         0         0.00 Cache hits
+MAIN.cache_hit_grace                   0         0.00 Cache grace hits
+MAIN.cache_hitpass                     0         0.00 Cache hits for pass.
+MAIN.cache_hitmiss                     0         0.00 Cache hits for miss.
+MAIN.cache_miss                       25         0.00 Cache misses
+MAIN.fetch_failed                     32         0.00 Fetch failed (all causes)
+SMA.s0.g_bytes                                0          .   Bytes outstanding

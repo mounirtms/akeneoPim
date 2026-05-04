@@ -1,0 +1,8 @@
+Message from VCC-compiler:
+Symbol not found.
+('/tmp/default.vcl.debug.20260504_021407' Line 278 Pos 1)
+sub vcl_deliver {
+###--------------
+
+Running VCC-compiler failed, exited with 2
+VCL compilation failed

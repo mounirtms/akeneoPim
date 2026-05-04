@@ -1,0 +1,809 @@
+=== Using ea-php81 build run at Mon May  4 00:07:11 UTC 2026 ===
+Using PHP binary: /opt/cpanel/ea-php81/root/usr/bin/php
+Using composer: /usr/local/bin/composer
+--- Composer install (php81) ---
+Installing dependencies from lock file (including require-dev)
+Verifying lock file contents can be installed on current platform.
+Your lock file does not contain a compatible set of packages. Please run composer update.
+
+  Problem 1
+    - lcobucci/jwt is locked to version 4.1.5 and an update of this package was not requested.
+    - lcobucci/jwt 4.1.5 requires ext-sodium * -> it is missing from your system. Install or enable PHP's sodium extension.
+  Problem 2
+    - akeneo/pim-community-dev is locked to version v6.0.113 and an update of this package was not requested.
+    - akeneo/pim-community-dev v6.0.113 requires lcobucci/jwt ~4.1.5 -> satisfiable by lcobucci/jwt[4.1.5].
+    - lcobucci/jwt 4.1.5 requires ext-sodium * -> it is missing from your system. Install or enable PHP's sodium extension.
+
+To enable extensions, verify that they are enabled in your .ini files:
+    - /opt/cpanel/ea-php81/root/etc/php.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/01-ioncube.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/10-opcache.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-apcu.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-bcmath.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-bz2.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-calendar.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-ctype.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-curl.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-dba.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-dom.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-enchant.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-exif.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-fileinfo.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-ftp.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-gd.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-gettext.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-gmp.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-iconv.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-imagine.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-imap.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-intl.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-ldap.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-mbstring.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-mysqlnd.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-pdo.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-pgsql.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-phar.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-posix.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-pspell.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-shmop.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-simplexml.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-snmp.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-soap.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-sockets.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-sqlite3.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-sysvmsg.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-sysvsem.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-sysvshm.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-tokenizer.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-xml.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-xmlwriter.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-xsl.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/20-zip.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/30-mysqli.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/30-pdo_mysql.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/30-pdo_pgsql.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/30-pdo_sqlite.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/30-xmlreader.ini
+    - /opt/cpanel/ea-php81/root/etc/php.d/zzzzzzz-pecl.ini
+You can also run `php --ini` in a terminal to see which files are used by PHP in CLI mode.
+Alternatively, you can run Composer with `--ignore-platform-req=ext-sodium` to temporarily ignore these required extensions.
+Composer failed; retrying with --ignore-platform-reqs
+Installing dependencies from lock file (including require-dev)
+Verifying lock file contents can be installed on current platform.
+Nothing to install, update or remove
+Package behat/transliterator is abandoned, you should avoid using it. No replacement was suggested.
+Package box/spout is abandoned, you should avoid using it. No replacement was suggested.
+Package doctrine/annotations is abandoned, you should avoid using it. No replacement was suggested.
+Package doctrine/cache is abandoned, you should avoid using it. No replacement was suggested.
+Package sensio/framework-extra-bundle is abandoned, you should avoid using it. Use Symfony instead.
+Package swiftmailer/swiftmailer is abandoned, you should avoid using it. Use symfony/mailer instead.
+Package symfony/swiftmailer-bundle is abandoned, you should avoid using it. Use symfony/mailer instead.
+Generating optimized autoload files
+Warning: Ambiguous class resolution, "Pim\Upgrade\SchemaHelper" was found in both "/home/pim/public_html/upgrades/SchemaHelper.php" and "/home/pim/public_html/vendor/akeneo/pim-community-dev/upgrades/SchemaHelper.php", the first will be used.
+Warning: Ambiguous class resolution, "Pim\Upgrade\test_schema\Version_6_0_20210505180000_add_updated_to_category_Integration" was found in both "/home/pim/public_html/upgrades/test_schema/Version_6_0_20210505180000_add_updated_to_category_Integration.php" and "/home/pim/public_html/vendor/akeneo/pim-community-dev/upgrades/test_schema/Version_6_0_20210505180000_add_updated_to_category_Integration.php", the first will be used.
+Warning: Ambiguous class resolution, "Pim\Upgrade\test_schema\Version_6_0_20210415130338_mark_job_execution_as_failed_when_interrupted_Integration" was found in both "/home/pim/public_html/upgrades/test_schema/Version_6_0_20210415130338_mark_job_execution_as_failed_when_interrupted_Integration.php" and "/home/pim/public_html/vendor/akeneo/pim-community-dev/upgrades/test_schema/Version_6_0_20210415130338_mark_job_execution_as_failed_when_interrupted_Integration.php", the first will be used.
+Warning: Ambiguous class resolution, "Pim\Upgrade\test_schema\Version_6_0_20220518134914_set_not_null_fields_for_job_and_step_execution_tables_Integration" was found in both "/home/pim/public_html/upgrades/test_schema/Version_6_0_20220518134914_set_not_null_fields_for_job_and_step_execution_tables_Integration.php" and "/home/pim/public_html/vendor/akeneo/pim-community-dev/upgrades/test_schema/Version_6_0_20220518134914_set_not_null_fields_for_job_and_step_execution_tables_Integration.php", the first will be used.
+To resolve ambiguity in classes not under your control you can ignore them by path using exclude-from-classmap
+Class Pim\Upgrade\Schema\Version_5_0_20200313130000_create_audit_product_table_Integration located in ./upgrades/test_schema/Version_5_0_20200313130000_create_audit_product_table_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_4_1_20200127171059_unauthorized_view_all_jobs_permission_Integration located in ./upgrades/test_schema/Version_4_1_20200127171059_unauthorized_view_all_jobs_permission_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20220830143500_fix_volume_flow_conversion_integration located in ./upgrades/test_schema/Version_5_0_20220830143500_fix_volume_flow_conversion_integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20210615084255_add_entity_updated_in_product_mapping_Integration located in ./upgrades/test_schema/Version_6_0_20210615084255_add_entity_updated_in_product_mapping_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201127102539_fix_pressure_operations_Integration located in ./upgrades/test_schema/Version_5_0_20201127102539_fix_pressure_operations_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20201207171120_create_connection_events_api_request_count_table_Integration located in ./upgrades/test_schema/Version_5_0_20201207171120_create_connection_events_api_request_count_table_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20200812135750_DQI_tables_in_CE_Integration located in ./upgrades/test_schema/Version_5_0_20200812135750_DQI_tables_in_CE_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20210222120000_create_events_api_debug_index_Integration located in ./upgrades/test_schema/Version_6_0_20210222120000_create_events_api_debug_index_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200313140000_regenerate_missing_data_for_the_connection_audit_Integration located in ./upgrades/test_schema/Version_5_0_20200313140000_regenerate_missing_data_for_the_connection_audit_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200504084844_add_quantified_column_on_association_type_Integration located in ./upgrades/test_schema/Version_5_0_20200504084844_add_quantified_column_on_association_type_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20210527144217_dqi_init_recompute_products_scores_Integration located in ./upgrades/test_schema/Version_6_0_20210527144217_dqi_init_recompute_products_scores_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20200427144538_create_connection_error_index_Integration located in ./upgrades/test_schema/Version_5_0_20200427144538_create_connection_error_index_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20200827072510_dqi_split_evaluation_job_Integration located in ./upgrades/test_schema/Version_5_0_20200827072510_dqi_split_evaluation_job_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211124154203_add_is_visible_in_job_execution_Integration located in ./upgrades/test_schema/Version_6_0_20211124154203_add_is_visible_in_job_execution_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20220518130906_drop_table_akeneo_batch_job_execution_queue_Integration located in ./upgrades/test_schema/Version_6_0_20220518130906_drop_table_akeneo_batch_job_execution_queue_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20210330143635_sanitize_users_and_channels_having_link_to_subcategory_Integration located in ./upgrades/test_schema/Version_6_0_20210330143635_sanitize_users_and_channels_having_link_to_subcategory_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210510102539_fix_micro_operations_Integration located in ./upgrades/test_schema/Version_6_0_20210510102539_fix_micro_operations_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20200921153252_dqi_create_table_attribute_group_activation_Integration located in ./upgrades/test_schema/Version_5_0_20200921153252_dqi_create_table_attribute_group_activation_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211119154203_add_is_stoppable_in_job_execution_Integration located in ./upgrades/test_schema/Version_6_0_20211119154203_add_is_stoppable_in_job_execution_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20201118133701_migrate_dashboard_rates_projection_to_unique_score_projection_Integration located in ./upgrades/test_schema/Version_5_0_20201118133701_migrate_dashboard_rates_projection_to_unique_score_projection_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211025161901_set_default_role_type_Integration located in ./upgrades/test_schema/Version_6_0_20211025161901_set_default_role_type_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20211018134301_migrate_longtext_to_json_Integration located in ./upgrades/test_schema/Version_5_0_20211018134301_migrate_longtext_to_json_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20210816123500_add_index_migration_table_Integration located in ./upgrades/test_schema/Version_6_0_20210816123500_add_index_migration_table_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211124163100_add_index_to_improve_search_on_job_execution_Integration located in ./upgrades/test_schema/Version_6_0_20211124163100_add_index_to_improve_search_on_job_execution_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20201118133700_migrate_product_axis_rate_to_unique_score_Integration located in ./upgrades/test_schema/Version_5_0_20201118133700_migrate_product_axis_rate_to_unique_score_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\ExecuteMigrationTrait located in ./upgrades/test_schema/ExecuteMigrationTrait.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211129163800_add_index_on_is_visible_in_job_execution_Integration located in ./upgrades/test_schema/Version_6_0_20211129163800_add_index_on_is_visible_in_job_execution_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20210524121906_add_profile_to_user_Integration located in ./upgrades/test_schema/Version_6_0_20210524121906_add_profile_to_user_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20200901102010_add_connection_webhook_columns_Integration located in ./upgrades/test_schema/Version_5_0_20200901102010_add_connection_webhook_columns_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20210427163307_add_user_account_locking_after_too_many_attempts_Integration located in ./upgrades/test_schema/Version_6_0_20210427163307_add_user_account_locking_after_too_many_attempts_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20220201155016_add_user_account_locking_after_too_many_attempts_Integration located in ./upgrades/test_schema/Version_5_0_20220201155016_add_user_account_locking_after_too_many_attempts_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20201123112748_add_attribute_blacklist_table_Integration located in ./upgrades/test_schema/Version_5_0_20201123112748_add_attribute_blacklist_table_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_4_0_20200117145507_remove_compute_model_descendant_jobs_Integration located in ./upgrades/test_schema/Version_4_0_20200117145507_remove_compute_model_descendant_jobs_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211115143942_add_user_group_type_column_Integration located in ./upgrades/test_schema/Version_6_0_20211115143942_add_user_group_type_column_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211213191300_add_index_to_improve_process_tracker_count_query_Integration located in ./upgrades/test_schema/Version_6_0_20211213191300_add_index_to_improve_process_tracker_count_query_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200429094251_add_quantified_associations_Integration located in ./upgrades/test_schema/Version_5_0_20200429094251_add_quantified_associations_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20210507154610_update_pim_catalog_completeness_id_Integration located in ./upgrades/test_schema/Version_5_0_20210507154610_update_pim_catalog_completeness_id_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211217145100_use_the_new_process_tracker_route_Integration located in ./upgrades/test_schema/Version_6_0_20211217145100_use_the_new_process_tracker_route_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20230912120502_add_remove_non_existing_values_job_Integration located in ./upgrades/test_schema/Version_6_0_20230912120502_add_remove_non_existing_values_job_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_4_0_20200116122239_remove_product_empty_raw_values_Integration located in ./upgrades/test_schema/Version_4_0_20200116122239_remove_product_empty_raw_values_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200324104437_migrate_measurement_table_Integration located in ./upgrades/test_schema/Version_5_0_20200324104437_migrate_measurement_table_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211028125410_add_type_to_connection_Integration located in ./upgrades/test_schema/Version_6_0_20211028125410_add_type_to_connection_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20230912120752_migrate_longtext_to_json_Integration located in ./upgrades/test_schema/Version_6_0_20230912120752_migrate_longtext_to_json_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_4_0_20200728092625_add_remove_non_existing_values_job_Integration located in ./upgrades/test_schema/Version_4_0_20200728092625_add_remove_non_existing_values_job_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211221170000_modify_metric_family_and_default_metric_unit_Integration located in ./upgrades/test_schema/Version_6_0_20211221170000_modify_metric_family_and_default_metric_unit_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20201117133700_add_dqi_unique_score_tables_Integration located in ./upgrades/test_schema/Version_5_0_20201117133700_add_dqi_unique_score_tables_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20201013070505_add_convert_to_simple_products_job_Integration located in ./upgrades/test_schema/Version_5_0_20201013070505_add_convert_to_simple_products_job_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20210908142400_add_product_web_api_acl_Integration located in ./upgrades/test_schema/Version_6_0_20210908142400_add_product_web_api_acl_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20220520114800_add_start_time_index_on_job_execution_Integration located in ./upgrades/test_schema/Version_6_0_20220520114800_add_start_time_index_on_job_execution_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_4_0_20200117080512_remove_product_model_empty_raw_values_Integration located in ./upgrades/test_schema/Version_4_0_20200117080512_remove_product_model_empty_raw_values_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211130113100_add_index_to_improve_search_on_job_instance_Integration located in ./upgrades/test_schema/Version_6_0_20211130113100_add_index_to_improve_search_on_job_instance_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210531152335_dqi_launch_recompute_products_scores_Integration located in ./upgrades/test_schema/Version_6_0_20210531152335_dqi_launch_recompute_products_scores_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200217155537_add_measurement_table_Integration located in ./upgrades/test_schema/Version_5_0_20200217155537_add_measurement_table_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20201211081205_fix_duration_conversion_Integration located in ./upgrades/test_schema/Version_5_0_20201211081205_fix_duration_conversion_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211108160902_fix_oauth_code_fk_Integration located in ./upgrades/test_schema/Version_6_0_20211108160902_fix_oauth_code_fk_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20230912120410_update_pim_catalog_completeness_id_Integration located in ./upgrades/test_schema/Version_6_0_20230912120410_update_pim_catalog_completeness_id_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211207154203_add_is_trackable_in_step_execution_Integration located in ./upgrades/test_schema/Version_6_0_20211207154203_add_is_trackable_in_step_execution_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20220509143200_use_the_new_process_tracker_route_Integration located in ./upgrades/test_schema/Version_6_0_20220509143200_use_the_new_process_tracker_route_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20200506131741_create_connection_error_table_Integration located in ./upgrades/test_schema/Version_5_0_20200506131741_create_connection_error_table_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200320095430_add_is_two_way_col_to_associations_Integration located in ./upgrades/test_schema/Version_5_0_20200320095430_add_is_two_way_col_to_associations_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_4_0_20191031124707_update_from_clients_to_connections_Integration located in ./upgrades/test_schema/Version_4_0_20191031124707_update_from_clients_to_connections_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211122154203_add_step_count_in_job_execution_Integration located in ./upgrades/test_schema/Version_6_0_20211122154203_add_step_count_in_job_execution_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20201201092625_add_clean_removed_attribute_job_Integration located in ./upgrades/test_schema/Version_5_0_20201201092625_add_clean_removed_attribute_job_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20200826153300_add_primary_key_connection_integration located in ./upgrades/test_schema/Version_5_0_20200826153300_add_primary_key_connection_integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20220524145600_add_updated_index_on_category_Integration located in ./upgrades/test_schema/Version_6_0_20220524145600_add_updated_index_on_category_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_6_0_20211214000000_add_openid_keys_into_pim_configuration_Integration located in ./upgrades/test_schema/Version_6_0_20211214000000_add_openid_keys_into_pim_configuration_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Tests\Version_5_0_20220801160000_modify_metric_family_and_default_metric_unit_Integration located in ./upgrades/test_schema/Version_5_0_20220801160000_modify_metric_family_and_default_metric_unit_Integration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200504084844_add_quantified_column_on_association_type located in ./upgrades/schema/Version_5_0_20200504084844_add_quantified_column_on_association_type.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211124163100_add_index_to_improve_search_on_job_execution located in ./upgrades/schema/Version_6_0_20211124163100_add_index_to_improve_search_on_job_execution.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210819080024_add_warning_count_in_step_execution located in ./upgrades/schema/Version_6_0_20210819080024_add_warning_count_in_step_execution.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20200117145507_remove_compute_model_descendant_jobs located in ./upgrades/schema/Version_4_0_20200117145507_remove_compute_model_descendant_jobs.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201208134018_dqi_drop_deprecated_tables located in ./upgrades/schema/Version_5_0_20201208134018_dqi_drop_deprecated_tables.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211130113100_add_index_to_improve_search_on_job_instance located in ./upgrades/schema/Version_6_0_20211130113100_add_index_to_improve_search_on_job_instance.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210818084017_add_marketplace_public_app_id located in ./upgrades/schema/Version_6_0_20210818084017_add_marketplace_public_app_id.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201211081205_fix_duration_conversion located in ./upgrades/schema/Version_5_0_20201211081205_fix_duration_conversion.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210415130338_mark_job_execution_as_failed_when_interrupted located in ./upgrades/schema/Version_6_0_20210415130338_mark_job_execution_as_failed_when_interrupted.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201112083948_add_lock_table located in ./upgrades/schema/Version_5_0_20201112083948_add_lock_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20200117080512_remove_product_model_empty_raw_values located in ./upgrades/schema/Version_4_0_20200117080512_remove_product_model_empty_raw_values.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201013150950_add_tracking_information located in ./upgrades/schema/Version_5_0_20201013150950_add_tracking_information.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200427144538_create_connection_error_index located in ./upgrades/schema/Version_5_0_20200427144538_create_connection_error_index.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200309165300_remove_product_foreign_key_pim_catalog_completeness located in ./upgrades/schema/Version_5_0_20200309165300_remove_product_foreign_key_pim_catalog_completeness.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210715082931_add_product_web_api_acl located in ./upgrades/schema/Version_6_0_20210715082931_add_product_web_api_acl.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201127102539_fix_pressure_operations located in ./upgrades/schema/Version_5_0_20201127102539_fix_pressure_operations.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200506131741_create_connection_error_table located in ./upgrades/schema/Version_5_0_20200506131741_create_connection_error_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210330143635_sanitize_users_and_channels_having_link_to_subcategory located in ./upgrades/schema/Version_6_0_20210330143635_sanitize_users_and_channels_having_link_to_subcategory.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210727080505_add_client_id_and_user_id located in ./upgrades/schema/Version_6_0_20210727080505_add_client_id_and_user_id.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20220830143500_fix_volume_flow_conversion located in ./upgrades/schema/Version_5_0_20220830143500_fix_volume_flow_conversion.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210817135301_add_role_type_column located in ./upgrades/schema/Version_6_0_20210817135301_add_role_type_column.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210331105730_remove_datagrid_view_unique_label_constraint located in ./upgrades/schema/Version_6_0_20210331105730_remove_datagrid_view_unique_label_constraint.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20220524122443_oro_user_field_consecutive_authentication_failure_counter_is_not_nullable located in ./upgrades/schema/Version_6_0_20220524122443_oro_user_field_consecutive_authentication_failure_counter_is_not_nullable.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210510102539_fix_micro_operations located in ./upgrades/schema/Version_6_0_20210510102539_fix_micro_operations.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210917103700_add_user_group_default_permissions located in ./upgrades/schema/Version_6_0_20210917103700_add_user_group_default_permissions.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20200728092625_add_remove_non_existing_values_job located in ./upgrades/schema/Version_4_0_20200728092625_add_remove_non_existing_values_job.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210615084255_add_entity_updated_in_product_mapping located in ./upgrades/schema/Version_6_0_20210615084255_add_entity_updated_in_product_mapping.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20191202144736_create_app_audit_table located in ./upgrades/schema/Version_4_0_20191202144736_create_app_audit_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20191014111427_create_connection_table located in ./upgrades/schema/Version_4_0_20191014111427_create_connection_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20211018134301_migrate_longtext_to_json located in ./upgrades/schema/Version_5_0_20211018134301_migrate_longtext_to_json.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201118133700_migrate_product_axis_rate_to_unique_score located in ./upgrades/schema/Version_5_0_20201118133700_migrate_product_axis_rate_to_unique_score.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200702232424_create_communication_channel_viewed_announcement_index located in ./upgrades/schema/Version_5_0_20200702232424_create_communication_channel_viewed_announcement_index.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20230912120502_add_remove_non_existing_values_job located in ./upgrades/schema/Version_6_0_20230912120502_add_remove_non_existing_values_job.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200429094251_add_quantified_associations located in ./upgrades/schema/Version_5_0_20200429094251_add_quantified_associations.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200313130000_create_audit_product_table located in ./upgrades/schema/Version_5_0_20200313130000_create_audit_product_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20190822090606_update_empty_raw_values located in ./upgrades/schema/Version_4_0_20190822090606_update_empty_raw_values.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200320095430_add_is_two_way_col_to_associations located in ./upgrades/schema/Version_5_0_20200320095430_add_is_two_way_col_to_associations.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210531152335_dqi_launch_recompute_products_scores located in ./upgrades/schema/Version_6_0_20210531152335_dqi_launch_recompute_products_scores.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20190801083247_remove_indexes located in ./upgrades/schema/Version_4_0_20190801083247_remove_indexes.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200217155537_add_measurement_table located in ./upgrades/schema/Version_5_0_20200217155537_add_measurement_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_1_20200127171059_unauthorized_view_all_jobs_permission located in ./upgrades/schema/Version_4_1_20200127171059_unauthorized_view_all_jobs_permission.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200313140000_regenerate_missing_data_for_the_connection_audit located in ./upgrades/schema/Version_5_0_20200313140000_regenerate_missing_data_for_the_connection_audit.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20220518134914_set_not_null_fields_for_job_and_step_execution_tables located in ./upgrades/schema/Version_6_0_20220518134914_set_not_null_fields_for_job_and_step_execution_tables.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211115143942_add_user_group_type_column located in ./upgrades/schema/Version_6_0_20211115143942_add_user_group_type_column.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210901133833_create_connection_app_table located in ./upgrades/schema/Version_6_0_20210901133833_create_connection_app_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210211141311_add_attribute_guidelines located in ./upgrades/schema/Version_6_0_20210211141311_add_attribute_guidelines.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20200113145800_fix_versioning_indexes located in ./upgrades/schema/Version_4_0_20200113145800_fix_versioning_indexes.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211108160902_fix_oauth_code_fk located in ./upgrades/schema/Version_6_0_20211108160902_fix_oauth_code_fk.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200826153300_add_primary_key_connection located in ./upgrades/schema/Version_5_0_20200826153300_add_primary_key_connection.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200630044018_create_communication_channel_viewed_announcements_table located in ./upgrades/schema/Version_5_0_20200630044018_create_communication_channel_viewed_announcements_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200214132042_create_wrong_credentials_combination located in ./upgrades/schema/Version_5_0_20200214132042_create_wrong_credentials_combination.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211217145100_use_the_new_process_tracker_route located in ./upgrades/schema/Version_6_0_20211217145100_use_the_new_process_tracker_route.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201117133700_add_dqi_unique_score_tables located in ./upgrades/schema/Version_5_0_20201117133700_add_dqi_unique_score_tables.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20191031124707_update_from_clients_to_connections located in ./upgrades/schema/Version_4_0_20191031124707_update_from_clients_to_connections.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211207154203_add_is_trackable_in_step_execution located in ./upgrades/schema/Version_6_0_20211207154203_add_is_trackable_in_step_execution.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20220201155016_add_user_account_locking_after_too_many_attempts located in ./upgrades/schema/Version_5_0_20220201155016_add_user_account_locking_after_too_many_attempts.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20220509143200_use_the_new_process_tracker_route located in ./upgrades/schema/Version_6_0_20220509143200_use_the_new_process_tracker_route.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201116133700_dqi_put_elasticsearch_mapping located in ./upgrades/schema/Version_5_0_20201116133700_dqi_put_elasticsearch_mapping.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200220092617_create_read_product located in ./upgrades/schema/Version_5_0_20200220092617_create_read_product.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211028125410_add_type_to_connection located in ./upgrades/schema/Version_6_0_20211028125410_add_type_to_connection.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201123112748_add_attribute_blacklist_table located in ./upgrades/schema/Version_5_0_20201123112748_add_attribute_blacklist_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20220520114800_add_start_time_index_on_job_execution located in ./upgrades/schema/Version_6_0_20220520114800_add_start_time_index_on_job_execution.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20190801084247_remove_native_json_type located in ./upgrades/schema/Version_4_0_20190801084247_remove_native_json_type.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200221154552_connection_is_auditable located in ./upgrades/schema/Version_5_0_20200221154552_connection_is_auditable.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20191223132437_data_quality_insights_add_dynamic_template located in ./upgrades/schema/Version_4_0_20191223132437_data_quality_insights_add_dynamic_template.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200316172600_remove_read_product located in ./upgrades/schema/Version_5_0_20200316172600_remove_read_product.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200827093636_increase_attribute_max_characters located in ./upgrades/schema/Version_5_0_20200827093636_increase_attribute_max_characters.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20220518130906_drop_table_akeneo_batch_job_execution_queue located in ./upgrades/schema/Version_6_0_20220518130906_drop_table_akeneo_batch_job_execution_queue.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210524121906_add_profile_to_user located in ./upgrades/schema/Version_6_0_20210524121906_add_profile_to_user.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201013070505_add_convert_to_simple_products_job located in ./upgrades/schema/Version_5_0_20201013070505_add_convert_to_simple_products_job.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210908142400_add_product_web_api_acl located in ./upgrades/schema/Version_6_0_20210908142400_add_product_web_api_acl.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200304140000_remove_nested_set_columns_product_model located in ./upgrades/schema/Version_5_0_20200304140000_remove_nested_set_columns_product_model.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20210507154610_update_pim_catalog_completeness_id located in ./upgrades/schema/Version_5_0_20210507154610_update_pim_catalog_completeness_id.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211221170000_modify_metric_family_and_default_metric_unit located in ./upgrades/schema/Version_6_0_20211221170000_modify_metric_family_and_default_metric_unit.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20200311140000_create_audit_product_table located in ./upgrades/schema/Version_4_0_20200311140000_create_audit_product_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20230912120752_migrate_longtext_to_json located in ./upgrades/schema/Version_6_0_20230912120752_migrate_longtext_to_json.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210505180000_add_updated_to_category located in ./upgrades/schema/Version_6_0_20210505180000_add_updated_to_category.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200827072510_dqi_split_evaluation_job located in ./upgrades/schema/Version_5_0_20200827072510_dqi_split_evaluation_job.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20220524145600_add_updated_index_on_category located in ./upgrades/schema/Version_6_0_20220524145600_add_updated_index_on_category.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211213191300_add_index_to_improve_process_tracker_count_query located in ./upgrades/schema/Version_6_0_20211213191300_add_index_to_improve_process_tracker_count_query.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200901102010_add_connection_webhook_columns located in ./upgrades/schema/Version_5_0_20200901102010_add_connection_webhook_columns.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201207171120_create_connection_events_api_request_count_table located in ./upgrades/schema/Version_5_0_20201207171120_create_connection_events_api_request_count_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20220801160000_modify_metric_family_and_default_metric_unit located in ./upgrades/schema/Version_5_0_20220801160000_modify_metric_family_and_default_metric_unit.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210222120000_create_events_api_debug_index located in ./upgrades/schema/Version_6_0_20210222120000_create_events_api_debug_index.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211119154203_add_is_stoppable_in_job_execution located in ./upgrades/schema/Version_6_0_20211119154203_add_is_stoppable_in_job_execution.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200812135750_DQI_tables_in_CE located in ./upgrades/schema/Version_5_0_20200812135750_DQI_tables_in_CE.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211214000000_add_openid_keys_into_pim_configuration located in ./upgrades/schema/Version_6_0_20211214000000_add_openid_keys_into_pim_configuration.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20191013162543_update_user_table located in ./upgrades/schema/Version_4_0_20191013162543_update_user_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20200415194400_remove_product_foreign_key_pim_catalog_completeness located in ./upgrades/schema/Version_4_0_20200415194400_remove_product_foreign_key_pim_catalog_completeness.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200324104437_migrate_measurement_table located in ./upgrades/schema/Version_5_0_20200324104437_migrate_measurement_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210527144217_dqi_init_recompute_products_scores located in ./upgrades/schema/Version_6_0_20210527144217_dqi_init_recompute_products_scores.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20190813091149_remove_missing_attributes_and_ratio_from_completeness located in ./upgrades/schema/Version_4_0_20190813091149_remove_missing_attributes_and_ratio_from_completeness.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210816123500_add_index_migration_table located in ./upgrades/schema/Version_6_0_20210816123500_add_index_migration_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211129163800_add_index_on_is_visible_in_job_execution located in ./upgrades/schema/Version_6_0_20211129163800_add_index_on_is_visible_in_job_execution.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20200116122239_remove_product_empty_raw_values located in ./upgrades/schema/Version_4_0_20200116122239_remove_product_empty_raw_values.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20210427163307_add_user_account_locking_after_too_many_attempts located in ./upgrades/schema/Version_6_0_20210427163307_add_user_account_locking_after_too_many_attempts.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211122154203_add_step_count_in_job_execution located in ./upgrades/schema/Version_6_0_20211122154203_add_step_count_in_job_execution.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211124154203_add_is_visible_in_job_execution located in ./upgrades/schema/Version_6_0_20211124154203_add_is_visible_in_job_execution.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201118133701_migrate_dashboard_rates_projection_to_unique_score_projection located in ./upgrades/schema/Version_5_0_20201118133701_migrate_dashboard_rates_projection_to_unique_score_projection.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201201092625_add_clean_removed_attribute_job located in ./upgrades/schema/Version_5_0_20201201092625_add_clean_removed_attribute_job.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20230912120410_update_pim_catalog_completeness_id located in ./upgrades/schema/Version_6_0_20230912120410_update_pim_catalog_completeness_id.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211025161901_set_default_role_type located in ./upgrades/schema/Version_6_0_20211025161901_set_default_role_type.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_4_0_20191031000000_modify_session_lifetime_type located in ./upgrades/schema/Version_4_0_20191031000000_modify_session_lifetime_type.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201117164000_add_messenger_table located in ./upgrades/schema/Version_5_0_20201117164000_add_messenger_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20200921153252_dqi_create_table_attribute_group_activation located in ./upgrades/schema/Version_5_0_20200921153252_dqi_create_table_attribute_group_activation.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_6_0_20211209000000_add_akeneo_connectivity_user_consent_table located in ./upgrades/schema/Version_6_0_20211209000000_add_akeneo_connectivity_user_consent_table.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class Pim\Upgrade\Schema\Version_5_0_20201201095420_dqi_rework_evaluations_storage located in ./upgrades/schema/Version_5_0_20201201095420_dqi_rework_evaluations_storage.php does not comply with psr-4 autoloading standard (rule: Pim\Upgrade\ => ./upgrades). Skipping.
+Class App\EventSubscriber\CategoryEventSubscriber located in ./src/EventSubscriber/CategoryEventSubscriber.php does not comply with psr-0 autoloading standard (rule:  => ./src). Skipping.
+Class App\EventSubscriber\ProductEventSubscriber located in ./src/EventSubscriber/ProductEventSubscriber.php does not comply with psr-0 autoloading standard (rule:  => ./src). Skipping.
+Class App\EventSubscriber\ProductModelEventSubscriber located in ./src/EventSubscriber/ProductModelEventSubscriber.php does not comply with psr-0 autoloading standard (rule:  => ./src). Skipping.
+Class App\EventSubscriber\SystemErrorEventSubscriber located in ./src/EventSubscriber/SystemErrorEventSubscriber.php does not comply with psr-0 autoloading standard (rule:  => ./src). Skipping.
+Class App\EventSubscriber\CatalogNotificationSubscriber located in ./src/EventSubscriber/CatalogNotificationSubscriber.php does not comply with psr-0 autoloading standard (rule:  => ./src). Skipping.
+104 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+
+> vendor/akeneo/pim-community-dev/std-build/install-required-files.sh
+cp: cannot create regular file './/upgrades/schema/.gitkeep': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20190801083247_remove_indexes.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20190801084247_remove_native_json_type.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20190813091149_remove_missing_attributes_and_ratio_from_completeness.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20190822090606_update_empty_raw_values.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20191013162543_update_user_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20191014111427_create_connection_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20191031000000_modify_session_lifetime_type.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20191031124707_update_from_clients_to_connections.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20191202144736_create_app_audit_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20191223132437_data_quality_insights_add_dynamic_template.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20200113145800_fix_versioning_indexes.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20200116122239_remove_product_empty_raw_values.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20200117080512_remove_product_model_empty_raw_values.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20200117145507_remove_compute_model_descendant_jobs.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20200311140000_create_audit_product_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20200415194400_remove_product_foreign_key_pim_catalog_completeness.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_0_20200728092625_add_remove_non_existing_values_job.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_4_1_20200127171059_unauthorized_view_all_jobs_permission.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200214132042_create_wrong_credentials_combination.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200217155537_add_measurement_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200220092617_create_read_product.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200221154552_connection_is_auditable.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200304140000_remove_nested_set_columns_product_model.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200309165300_remove_product_foreign_key_pim_catalog_completeness.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200313130000_create_audit_product_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200313140000_regenerate_missing_data_for_the_connection_audit.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200316172600_remove_read_product.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200320095430_add_is_two_way_col_to_associations.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200324104437_migrate_measurement_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200427144538_create_connection_error_index.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200429094251_add_quantified_associations.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200504084844_add_quantified_column_on_association_type.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200506131741_create_connection_error_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200630044018_create_communication_channel_viewed_announcements_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200702232424_create_communication_channel_viewed_announcement_index.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200812135750_DQI_tables_in_CE.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200826153300_add_primary_key_connection.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200827072510_dqi_split_evaluation_job.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200827093636_increase_attribute_max_characters.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200901102010_add_connection_webhook_columns.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20200921153252_dqi_create_table_attribute_group_activation.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201013070505_add_convert_to_simple_products_job.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201013150950_add_tracking_information.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201112083948_add_lock_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201116133700_dqi_put_elasticsearch_mapping.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201117133700_add_dqi_unique_score_tables.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201117164000_add_messenger_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201118133700_migrate_product_axis_rate_to_unique_score.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201118133701_migrate_dashboard_rates_projection_to_unique_score_projection.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201123112748_add_attribute_blacklist_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201127102539_fix_pressure_operations.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201201092625_add_clean_removed_attribute_job.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201201095420_dqi_rework_evaluations_storage.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201207171120_create_connection_events_api_request_count_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201208134018_dqi_drop_deprecated_tables.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20201211081205_fix_duration_conversion.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20210507154610_update_pim_catalog_completeness_id.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20211018134301_migrate_longtext_to_json.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20220201155016_add_user_account_locking_after_too_many_attempts.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20220801160000_modify_metric_family_and_default_metric_unit.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_5_0_20220830143500_fix_volume_flow_conversion.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210211141311_add_attribute_guidelines.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210222120000_create_events_api_debug_index.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210330143635_sanitize_users_and_channels_having_link_to_subcategory.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210331105730_remove_datagrid_view_unique_label_constraint.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210415130338_mark_job_execution_as_failed_when_interrupted.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210427163307_add_user_account_locking_after_too_many_attempts.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210505180000_add_updated_to_category.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210510102539_fix_micro_operations.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210524121906_add_profile_to_user.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210527144217_dqi_init_recompute_products_scores.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210531152335_dqi_launch_recompute_products_scores.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210615084255_add_entity_updated_in_product_mapping.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210715082931_add_product_web_api_acl.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210727080505_add_client_id_and_user_id.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210816123500_add_index_migration_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210817135301_add_role_type_column.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210818084017_add_marketplace_public_app_id.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210819080024_add_warning_count_in_step_execution.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210901133833_create_connection_app_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210908142400_add_product_web_api_acl.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20210917103700_add_user_group_default_permissions.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211025161901_set_default_role_type.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211028125410_add_type_to_connection.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211108160902_fix_oauth_code_fk.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211115143942_add_user_group_type_column.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211119154203_add_is_stoppable_in_job_execution.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211122154203_add_step_count_in_job_execution.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211124154203_add_is_visible_in_job_execution.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211124163100_add_index_to_improve_search_on_job_execution.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211129163800_add_index_on_is_visible_in_job_execution.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211130113100_add_index_to_improve_search_on_job_instance.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211207154203_add_is_trackable_in_step_execution.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211209000000_add_akeneo_connectivity_user_consent_table.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211213191300_add_index_to_improve_process_tracker_count_query.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211214000000_add_openid_keys_into_pim_configuration.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211217145100_use_the_new_process_tracker_route.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20211221170000_modify_metric_family_and_default_metric_unit.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20220509143200_use_the_new_process_tracker_route.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20220518130906_drop_table_akeneo_batch_job_execution_queue.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20220518134914_set_not_null_fields_for_job_and_step_execution_tables.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20220520114800_add_start_time_index_on_job_execution.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20220524122443_oro_user_field_consecutive_authentication_failure_counter_is_not_nullable.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20220524145600_add_updated_index_on_category.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20230912120410_update_pim_catalog_completeness_id.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20230912120502_add_remove_non_existing_values_job.php': Permission denied
+cp: cannot create regular file './/upgrades/schema/Version_6_0_20230912120752_migrate_longtext_to_json.php': Permission denied
+cp: cannot create regular file './/upgrades/SchemaHelper.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/.gitkeep': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/ExecuteMigrationTrait.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_4_0_20191031124707_update_from_clients_to_connections_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_4_0_20200116122239_remove_product_empty_raw_values_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_4_0_20200117080512_remove_product_model_empty_raw_values_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_4_0_20200117145507_remove_compute_model_descendant_jobs_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_4_0_20200728092625_add_remove_non_existing_values_job_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_4_1_20200127171059_unauthorized_view_all_jobs_permission_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200217155537_add_measurement_table_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200313130000_create_audit_product_table_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200313140000_regenerate_missing_data_for_the_connection_audit_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200320095430_add_is_two_way_col_to_associations_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200324104437_migrate_measurement_table_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200427144538_create_connection_error_index_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200429094251_add_quantified_associations_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200504084844_add_quantified_column_on_association_type_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200506131741_create_connection_error_table_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200812135750_DQI_tables_in_CE_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200826153300_add_primary_key_connection_integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200827072510_dqi_split_evaluation_job_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200901102010_add_connection_webhook_columns_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20200921153252_dqi_create_table_attribute_group_activation_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20201013070505_add_convert_to_simple_products_job_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20201117133700_add_dqi_unique_score_tables_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20201118133700_migrate_product_axis_rate_to_unique_score_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20201118133701_migrate_dashboard_rates_projection_to_unique_score_projection_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20201123112748_add_attribute_blacklist_table_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20201127102539_fix_pressure_operations_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20201201092625_add_clean_removed_attribute_job_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20201207171120_create_connection_events_api_request_count_table_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20201211081205_fix_duration_conversion_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20210507154610_update_pim_catalog_completeness_id_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20211018134301_migrate_longtext_to_json_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20220201155016_add_user_account_locking_after_too_many_attempts_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20220801160000_modify_metric_family_and_default_metric_unit_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_5_0_20220830143500_fix_volume_flow_conversion_integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210222120000_create_events_api_debug_index_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210330143635_sanitize_users_and_channels_having_link_to_subcategory_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210415130338_mark_job_execution_as_failed_when_interrupted_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210427163307_add_user_account_locking_after_too_many_attempts_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210505180000_add_updated_to_category_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210510102539_fix_micro_operations_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210524121906_add_profile_to_user_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210527144217_dqi_init_recompute_products_scores_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210531152335_dqi_launch_recompute_products_scores_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210615084255_add_entity_updated_in_product_mapping_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210816123500_add_index_migration_table_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20210908142400_add_product_web_api_acl_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211025161901_set_default_role_type_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211028125410_add_type_to_connection_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211108160902_fix_oauth_code_fk_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211115143942_add_user_group_type_column_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211119154203_add_is_stoppable_in_job_execution_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211122154203_add_step_count_in_job_execution_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211124154203_add_is_visible_in_job_execution_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211124163100_add_index_to_improve_search_on_job_execution_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211129163800_add_index_on_is_visible_in_job_execution_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211130113100_add_index_to_improve_search_on_job_instance_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211207154203_add_is_trackable_in_step_execution_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211213191300_add_index_to_improve_process_tracker_count_query_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211214000000_add_openid_keys_into_pim_configuration_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211217145100_use_the_new_process_tracker_route_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20211221170000_modify_metric_family_and_default_metric_unit_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20220509143200_use_the_new_process_tracker_route_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20220518130906_drop_table_akeneo_batch_job_execution_queue_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20220518134914_set_not_null_fields_for_job_and_step_execution_tables_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20220520114800_add_start_time_index_on_job_execution_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20220524145600_add_updated_index_on_category_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20230912120410_update_pim_catalog_completeness_id_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20230912120502_add_remove_non_existing_values_job_Integration.php': Permission denied
+cp: cannot create regular file './/upgrades/test_schema/Version_6_0_20230912120752_migrate_longtext_to_json_Integration.php': Permission denied
+Script vendor/akeneo/pim-community-dev/std-build/install-required-files.sh handling the post-install-cmd event returned with error code 1
+--- Clearing & warming cache (prod) with php81 ---
+
+ // Clearing the cache for the prod environment with debug false                                                        
+
+ [OK] Cache for the "prod" environment (debug=false) was successfully cleared.                                          
+
+PHP Deprecated:  Akeneo\UserManagement\Component\Model\User implements the Serializable interface, which is deprecated. Implement __serialize() and __unserialize() instead (or in addition, if support for old PHP versions is necessary) in /home/pim/public_html/vendor/akeneo/pim-community-dev/src/Akeneo/UserManagement/Component/Model/User.php on line 23
+PHP Deprecated:  Optional parameter $isEditMode declared before required parameter $requestStack is implicitly treated as a required parameter in /home/pim/public_html/vendor/akeneo/pim-community-dev/src/Oro/Bundle/PimDataGridBundle/EventListener/AddParametersToProductGridListener.php on line 37
+PHP Deprecated:  Return type of Akeneo\Tool\Component\Batch\Job\JobParameters::getIterator() should either be compatible with IteratorAggregate::getIterator(): Traversable, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/pim/public_html/vendor/akeneo/pim-community-dev/src/Akeneo/Tool/Component/Batch/Job/JobParameters.php on line 83
+PHP Deprecated:  Return type of Akeneo\Tool\Component\Batch\Job\JobParameters::count() should either be compatible with Countable::count(): int, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/pim/public_html/vendor/akeneo/pim-community-dev/src/Akeneo/Tool/Component/Batch/Job/JobParameters.php on line 91
+PHP Deprecated:  Return type of Akeneo\Pim\Enrichment\Component\Product\Model\WriteValueCollection::count() should either be compatible with Countable::count(): int, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/pim/public_html/vendor/akeneo/pim-community-dev/src/Akeneo/Pim/Enrichment/Component/Product/Model/WriteValueCollection.php on line 225
+PHP Deprecated:  Return type of Akeneo\Pim\Enrichment\Component\Product\Model\WriteValueCollection::getIterator() should either be compatible with IteratorAggregate::getIterator(): Traversable, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/pim/public_html/vendor/akeneo/pim-community-dev/src/Akeneo/Pim/Enrichment/Component/Product/Model/WriteValueCollection.php on line 264
+
+ // Warming up the cache for the prod environment with debug false                                                      
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+ [OK] Cache for the "prod" environment (debug=false) was successfully warmed.                                           
+
+--- Building JS assets as pim ---
+error pim-community-standard@: The engine "node" is incompatible with this module. Expected version "14.17.0". Got "22.22.2"
+error Found incompatible module.
+yarn run v1.22.22
+error Command "encore" not found.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+--- Running Playwright tests as pim ---
+╔════════════════════════════════════════════════════════════════════════════╗
+║     AKENEO PIM COMPREHENSIVE TEST SUITE                              ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+browserType.launch: Executable doesn't exist at /home/pim/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     npx playwright install                                 ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+    at /home/pim/public_html/webapp/test_suite.js:8:36
+    at Object.<anonymous> (/home/pim/public_html/webapp/test_suite.js:130:3) {
+  name: 'Error'
+}
+
+Node.js v22.22.2
+--- var/log/consumer_import_export.log ---
+nohup: ignoring input
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+17:28:44 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "import_export_job".                    
+
+ // The worker will automatically exit once it has processed 100 messages or    
+ // received a stop signal via the messenger:stop-workers command.              
+
+ // Quit the worker with CONTROL-C.                                             
+
+01:55:30 CRITICAL  [console] Error thrown while running command "messenger:consume import_export_job -vv --limit=100". Message: "An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params ["9999-12-31 23:59:59"]:
+
+SQLSTATE[HY000]: General error: 2006 MySQL server has gone away" ["exception" => Symfony\Component\Messenger\Exception\TransportException { …},"command" => "messenger:consume import_export_job -vv --limit=100","message" => """  An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params ["9999-12-31 23:59:59"]:\n  \n  SQLSTATE[HY000]: General error: 2006 MySQL server has gone away  """]
+--- var/log/consumer_ui_job.log ---
+--- var/log/consumer_webhook.log ---
+
+ [OK] Consuming messages from transport "webhook".                              
+
+ // The worker will automatically exit once it has processed 100 messages or    
+ // received a stop signal via the messenger:stop-workers command.              
+
+ // Quit the worker with CONTROL-C.                                             
+
+01:55:30 CRITICAL  [console] Error thrown while running command "messenger:consume webhook -vv --limit=100". Message: "An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params ["9999-12-31 23:59:59"]:
+
+SQLSTATE[HY000]: General error: 2006 MySQL server has gone away" ["exception" => Symfony\Component\Messenger\Exception\TransportException { …},"command" => "messenger:consume webhook -vv --limit=100","message" => """  An exception occurred while executing 'DELETE FROM messenger_messages WHERE delivered_at = ?' with params ["9999-12-31 23:59:59"]:\n  \n  SQLSTATE[HY000]: General error: 2006 MySQL server has gone away  """]
+--- var/log/supervisor_import_export.log ---
+APP_DEBUG=0
+PHP Deprecated:  ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+
+Deprecated: ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "import_export_job".                    
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Stopping worker. ["transport_names" => ["import_export_job"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 WARNING   [app] E_WARNING: require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory ["code" => 2,"message" => "require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory","file" => "/home/pim/public_html/var/cache/prod/Container3ejPMgU/KernelProdDebugContainer.php","line" => 599]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "import_export_job".                    
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Stopping worker. ["transport_names" => ["import_export_job"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "import_export_job".                    
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+--- var/log/supervisor_ui_job.log ---
+APP_DEBUG=0
+PHP Deprecated:  ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+
+Deprecated: ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+21:18:35 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "ui_job".                               
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Stopping worker. ["transport_names" => ["ui_job"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 WARNING   [app] E_WARNING: require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory ["code" => 2,"message" => "require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory","file" => "/home/pim/public_html/var/cache/prod/Container3ejPMgU/KernelProdDebugContainer.php","line" => 599]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "ui_job".                               
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Stopping worker. ["transport_names" => ["ui_job"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:38 NOTICE    [app] E_DEPRECATED: Use of "static" in callables is deprecated ["code" => 8192,"message" => "Use of "static" in callables is deprecated","file" => "/home/pim/public_html/vendor/webmozart/assert/src/Assert.php","line" => 1955]
+
+ [OK] Consuming messages from transport "ui_job".                               
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+--- var/log/supervisor_webhook.log ---
+APP_DEBUG=0
+PHP Deprecated:  ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+
+Deprecated: ini_set(): assert.warning INI setting is deprecated in /home/pim/public_html/vendor/symfony/error-handler/Debug.php on line 34
+
+ [OK] Consuming messages from transport "webhook".                              
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Stopping worker. ["transport_names" => ["webhook"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:35 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+22:18:35 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 WARNING   [app] E_WARNING: require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory ["code" => 2,"message" => "require(/home/pim/public_html/var/cache/prod/Container3ejPMgU/getSwiftmailer_EmailSender_ListenerService.php): Failed to open stream: No such file or directory","file" => "/home/pim/public_html/var/cache/prod/Container3ejPMgU/KernelProdDebugContainer.php","line" => 599]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+
+Deprecated: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+22:18:36 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+
+ [OK] Consuming messages from transport "webhook".                              
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Stopping worker. ["transport_names" => ["webhook"]]
+PHP Deprecated:  DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated in /home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php on line 324
+23:18:37 NOTICE    [app] E_DEPRECATED: DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated ["code" => 8192,"message" => "DateTime::__construct(): Passing null to parameter #1 ($datetime) of type string is deprecated","file" => "/home/pim/public_html/vendor/monolog/monolog/src/Monolog/Logger.php","line" => 324]
+23:18:37 INFO      [messenger] Worker stopped due to time limit of 3600s exceeded ["timeLimit" => 3600]
+
+ [OK] Consuming messages from transport "webhook".                              
+
+ // The worker will automatically exit once it has processed 300 messages, been 
+ // running for 3600s or received a stop signal via the messenger:stop-workers  
+ // command.                                                                    
+
+ // Quit the worker with CONTROL-C.                                             
+
+=== ea-php81 build run completed at Mon May  4 00:07:25 UTC 2026 ===

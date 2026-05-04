@@ -1,0 +1,17 @@
+### TIMESTAMP: 2026-05-04T00:44:08Z
+Creating symlink /home/pim/public_html/css -> /home/pim/public_html/public/css
+\n>>> Test fetching /css/pim.css (3x) with X-Forwarded-Proto: https
+--- Attempt 1 ---
+HTTP/1.1 404 Not Found
+--- Attempt 2 ---
+HTTP/1.1 404 Not Found
+--- Attempt 3 ---
+HTTP/1.1 404 Not Found
+\n### Varnish stats (selected)
+MAIN.cache_hit                         0         0.00 Cache hits
+MAIN.cache_hit_grace                   0         0.00 Cache grace hits
+MAIN.cache_hitpass                     0         0.00 Cache hits for pass.
+MAIN.cache_hitmiss                     0         0.00 Cache hits for miss.
+MAIN.cache_miss                       25         0.00 Cache misses
+MAIN.fetch_failed                     32         0.00 Fetch failed (all causes)
+SMA.s0.g_bytes                                0          .   Bytes outstanding

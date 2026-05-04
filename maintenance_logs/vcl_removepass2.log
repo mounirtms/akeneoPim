@@ -1,0 +1,4062 @@
+/* VCC_INFO VMOD /usr/lib64/varnish/vmods/libvmod_std.so ./vmod_cache/_vmod_std.88f100a21e9ee24324d65a05874113e0f61313686f806e945c76330f24831d61 */
+/* ---===### include/vdef.h ###===--- */
+
+/*-
+ * Copyright (c) 2006 Verdens Gang AS
+ * Copyright (c) 2012 Fastly Inc
+ * Copyright (c) 2006-2015 Varnish Software AS
+ * All rights reserved.
+ *
+ * Author: Poul-Henning Kamp <phk@phk.freebsd.dk>
+ * Author: Rogier 'DocWilco' Mulhuijzen <rogier@fastly.com>
+ *
+ * Inspired by FreeBSD's <sys/cdefs.h>
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL AUTHOR OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ * Names of the form "v_[a-z_]*_" is reserved for this file.
+ *
+ * This file should always be the first non <...> include in a .c file.
+ */
+
+#ifdef VDEF_H_INCLUDED
+#  error "vdef.h included multiple times"
+#endif
+#define VDEF_H_INCLUDED
+
+/* Safe printf into a fixed-size buffer */
+#define bprintf(buf, fmt, ...)						\
+	do {								\
+		int ibprintf;						\
+		ibprintf = snprintf(buf, sizeof buf, fmt, __VA_ARGS__);	\
+		assert(ibprintf >= 0 && ibprintf < (int)sizeof buf);	\
+	} while (0)
+
+/* Safe printf into a fixed-size buffer */
+#define vbprintf(buf, fmt, ap)						\
+	do {								\
+		int ivbprintf;						\
+		ivbprintf = vsnprintf(buf, sizeof buf, fmt, ap);	\
+		assert(ivbprintf >= 0 && ivbprintf < (int)sizeof buf);	\
+	} while (0)
+
+/* Close and discard filedescriptor */
+#define closefd(fdp)				\
+	do {					\
+		assert(*(fdp) >= 0);		\
+		AZ(close(*(fdp)));		\
+		*(fdp) = -1;			\
+	} while (0)
+
+#if !defined(__has_feature)
+#  define __has_feature(x)	0
+#endif
+
+#ifndef __GNUC_PREREQ__
+# if defined __GNUC__ && defined __GNUC_MINOR__
+#  define __GNUC_PREREQ__(maj, min) \
+	(__GNUC__ > (maj) || (__GNUC__ == (maj) && __GNUC_MINOR__ >= (min)))
+# else
+#  define __GNUC_PREREQ__(maj, min) 0
+# endif
+#endif
+
+#ifdef __printflike
+#  define v_printflike_(f,a) __printflike(f,a)
+#elif __GNUC_PREREQ__(2, 95) || defined(__INTEL_COMPILER)
+#  define v_printflike_(f,a) __attribute__((format(printf, f, a)))
+#else
+#  define v_printflike_(f,a)
+#endif
+
+#define v_noreturn_ __attribute__((__noreturn__))
+
+#ifdef __GNUC__
+#  define v_deprecated_ __attribute__((deprecated))
+#else
+#  define v_deprecated_
+#endif
+
+/*********************************************************************
+ * Pointer alignment magic
+ */
+
+#if defined(__sparc__)
+/* NB: Overbroad test for 32bit userland on 64bit SPARC cpus. */
+#  define PALGN	    (sizeof(double) - 1)	/* size of alignment */
+#else
+#  define PALGN	    (sizeof(void *) - 1)	/* size of alignment */
+#endif
+#define PAOK(p)	    (((uintptr_t)(p) & PALGN) == 0)	/* is aligned */
+#define PRNDDN(p)   ((uintptr_t)(p) & ~PALGN)		/* Round down */
+#define PRNDUP(p)   (((uintptr_t)(p) + PALGN) & ~PALGN)	/* Round up */
+
+/*********************************************************************
+ * To be used as little as possible to wash off const/volatile etc.
+ */
+#define TRUST_ME(ptr)	((void*)(uintptr_t)(ptr))
+
+/**********************************************************************
+ * Generic power-2 rounding macros
+ */
+
+#define PWR2(x)     ((((x)-1UL)&(x))==0)		/* Is a power of two */
+#define RDN2(x, y)  ((x)&(~((uintptr_t)(y)-1UL)))	/* PWR2(y) true */
+#define RUP2(x, y)  (((x)+((y)-1))&(~((uintptr_t)(y)-1UL))) /* PWR2(y) true */
+
+/**********************************************************************
+ * Find the minimum or maximum values.
+ * Only evaluate the expression once and perform type checking.
+ */
+
+/* ref: https://stackoverflow.com/a/17624752 */
+
+#define VINDIRECT(a, b, c)	a ## b ## c
+#define VCOMBINE(a, b, c)	VINDIRECT(a, b, c)
+
+#if defined(__COUNTER__)
+#	define VUNIQ_NAME(base)	VCOMBINE(base, __LINE__, __COUNTER__)
+#else
+#	define VUNIQ_NAME(base)	VCOMBINE(base, __LINE__, 0)
+#endif
+
+/* ref: https://gcc.gnu.org/onlinedocs/gcc/Typeof.html */
+
+#define _vmin(a, b, _va, _vb)						\
+({									\
+	typeof (a) _va = (a);						\
+	typeof (b) _vb = (b);						\
+	(void)(&_va == &_vb);						\
+	_va < _vb ? _va : _vb;						\
+})
+
+#define _vmax(a, b, _va, _vb)						\
+({									\
+	typeof (a) _va = (a);						\
+	typeof (b) _vb = (b);						\
+	(void)(&_va == &_vb);						\
+	_va > _vb ? _va : _vb;						\
+})
+
+#define vmin(a, b)		_vmin((a), (b), VUNIQ_NAME(_vmina),	\
+    VUNIQ_NAME(_vminb))
+#define vmax(a, b)		_vmax((a), (b), VUNIQ_NAME(_vmaxa),	\
+    VUNIQ_NAME(_vmaxb))
+
+#define vmin_t(type, a, b)	vmin((type)(a), (type)(b))
+#define vmax_t(type, a, b)	vmax((type)(a), (type)(b))
+
+/**********************************************************************
+ * Clamp the value between two limits.
+ */
+
+#define vlimit(a, l, u)		vmax((l), vmin((a), (u)))
+#define vlimit_t(type, a, l, u)	vmax_t(type, (l), vmin_t(type, (a), (u)))
+
+/**********************************************************************
+ * FlexeLint and compiler shutuppery
+ */
+
+/*
+ * In OO-light situations, functions have to match their prototype
+ * even if that means not const'ing a const'able argument.
+ * The typedef should be specified as argument to the macro.
+ */
+#define v_matchproto_(xxx)		/*lint --e{818} */
+
+/*
+ * State variables may change value before we have considered the
+ * previous value
+ */
+#define v_statevariable_(varname)	varname /*lint -esym(838,varname) */
+
+#ifdef __SUNPRO_C
+#define NEEDLESS(s)		{}
+#else
+#define NEEDLESS(s)		s
+#endif
+
+#if __GNUC_PREREQ__(2, 7)
+#  define v_unused_ __attribute__((__unused__))
+#else
+#  define v_unused_
+#endif
+
+/*
+ * Most of this nightmare is stolen from FreeBSD's <cdefs.h>
+ */
+#ifndef __has_extension
+#  define __has_extension(x)	0
+#endif
+
+#if defined(_Static_assert)
+    /* Nothing, somebody already did this for us */
+#elif __has_extension(c_static_assert)
+    /* Nothing, we should be fine */
+#elif (defined(__cplusplus) && __cplusplus >= 201103L) || \
+       __has_extension(cxx_static_assert)
+#   define _Static_assert(x, y)	static_assert(x, y)
+#elif __GNUC_PREREQ__(4,6) && !defined(__cplusplus)
+    /* Nothing, gcc 4.6 and higher has _Static_assert built-in */
+#else
+#   if defined(__COUNTER__)
+#	define _Static_assert(x, y)	__Static_assert(x, __COUNTER__)
+#   else
+#	define _Static_assert(x, y)	__Static_assert(x, __LINE__)
+#   endif
+#   define __Static_assert(x, y)	___Static_assert(x, y)
+#   define ___Static_assert(x, y) \
+		typedef char __assert_## y[(x) ? 1 : -1] v_unused_
+#endif
+
+/* VTIM API overhaul WIP */
+typedef double vtim_mono;
+typedef double vtim_real;
+typedef double vtim_dur;
+
+/* ---===### include/vrt.h ###===--- */
+
+/*-
+ * Copyright (c) 2006 Verdens Gang AS
+ * Copyright (c) 2006-2015 Varnish Software AS
+ * All rights reserved.
+ *
+ * Author: Poul-Henning Kamp <phk@phk.freebsd.dk>
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL AUTHOR OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ * Runtime support for compiled VCL programs and VMODs.
+ *
+ * NB: When this file is changed, lib/libvcc/generate.py *MUST* be rerun.
+ */
+
+#ifdef CACHE_H_INCLUDED
+#  error "vrt.h included after cache.h - they are inclusive"
+#endif
+
+#ifdef VRT_H_INCLUDED
+#  error "vrt.h included multiple times"
+#endif
+#define VRT_H_INCLUDED
+
+#ifndef VDEF_H_INCLUDED
+#  error "include vdef.h before vrt.h"
+#endif
+
+/***********************************************************************
+ * Major and minor VRT API versions.
+ *
+ * Whenever something is added, increment MINOR version
+ * Whenever something is deleted or changed in a way which is not
+ * binary/load-time compatible, increment MAJOR version
+ *
+ *
+ * 7.1 (unreleased)
+ *	VRT_Strands() added
+ *	VRT_StrandsWS() added
+ *	VRT_CollectStrands() added
+ *	VRT_STRANDS_string() removed from vrt.h (never implemented)
+ * 7.0 (2018-03-15)
+ *	lots of stuff moved from cache.h to cache_varnishd.h
+ *	   (ie: from "$Abi vrt" to "$Abi strict")
+ *	VCL_INT and VCL_BYTES are always 64 bits.
+ *	path field added to struct vrt_backend
+ *	VRT_Healthy() added
+ *	VRT_VSC_Alloc() added
+ *	VRT_VSC_Destroy() added
+ *	VRT_VSC_Hide() added
+ *	VRT_VSC_Reveal() added
+ *	VRT_VSC_Overhead() added
+ *	struct director.event added
+ *	struct director.destroy added
+ *	VRT_r_beresp_storage_hint() VCL <= 4.0  #2509
+ *	VRT_l_beresp_storage_hint() VCL <= 4.0  #2509
+ *	VRT_blob() added
+ *	VCL_STRANDS added
+ * 6.1 (2017-09-15 aka 5.2)
+ *	http_CollectHdrSep added
+ *	VRT_purge modified (may fail a transaction, signature changed)
+ *	VRT_r_req_hash() added
+ *	VRT_r_bereq_hash() added
+ * 6.0 (2017-03-15):
+ *	VRT_hit_for_pass added
+ *	VRT_ipcmp added
+ *	VRT_Vmod_Init signature changed
+ *	VRT_vcl_lookup removed
+ *	VRT_vcl_get added
+ *	VRT_vcl_rel added
+ *	VRT_fail added
+ *	WS_Reset and WS_Snapshot signatures changed
+ *	WS_Front added
+ *	WS_ReserveLumps added
+ *	WS_Inside added
+ *	WS_Assert_Allocated added
+ * 5.0:
+ *	Varnish 5.0 release "better safe than sorry" bump
+ * 4.0:
+ *	VCL_BYTES changed to long long
+ *	VRT_CacheReqBody changed signature
+ * 3.2:
+ *	vrt_backend grew .proxy_header field
+ *	vrt_ctx grew .sp field.
+ *	vrt_acl type added
+ */
+
+#define VRT_MAJOR_VERSION	7U
+
+#define VRT_MINOR_VERSION	1U
+
+/***********************************************************************/
+
+#include <stddef.h>		// NULL, size_t
+#include <stdint.h>		// [u]int%d_t
+
+struct VCL_conf;
+struct busyobj;
+struct director;
+struct http;
+struct req;
+struct stevedore;
+struct suckaddr;
+struct vcl;
+struct vmod;
+struct vmod_priv;
+struct vrt_acl;
+struct vsb;
+struct vsc_seg;
+struct vsmw_cluster;
+struct vsl_log;
+struct ws;
+struct VSC_main;
+
+struct strands {
+	int		n;
+	const char	**p;
+};
+
+/***********************************************************************
+ * This is the central definition of the mapping from VCL types to
+ * C-types.  The python scripts read these from here.
+ * (alphabetic order)
+ */
+
+typedef const struct vrt_acl *			VCL_ACL;
+typedef const struct director *			VCL_BACKEND;
+typedef const struct vmod_priv *		VCL_BLOB;
+typedef const char *				VCL_BODY;
+typedef unsigned				VCL_BOOL;
+typedef int64_t					VCL_BYTES;
+typedef vtim_dur				VCL_DURATION;
+typedef const char *				VCL_ENUM;
+typedef const struct gethdr_s *			VCL_HEADER;
+typedef struct http *				VCL_HTTP;
+typedef void					VCL_INSTANCE;
+typedef int64_t					VCL_INT;
+typedef const struct suckaddr *			VCL_IP;
+typedef const struct vrt_backend_probe *	VCL_PROBE;
+typedef double					VCL_REAL;
+typedef const struct stevedore *		VCL_STEVEDORE;
+typedef const struct strands *			VCL_STRANDS;
+typedef const char *				VCL_STRING;
+typedef vtim_real				VCL_TIME;
+typedef struct vcl *				VCL_VCL;
+typedef void					VCL_VOID;
+
+struct vrt_type {
+	unsigned			magic;
+#define VRT_TYPE_MAGIC			0xa943bc32
+	const char			*lname;
+	const char			*uname;
+	const char			*ctype;
+	size_t				szof;
+};
+
+/***********************************************************************
+ * This is the composite argument we pass to compiled VCL and VRT
+ * functions.
+ */
+
+struct vrt_ctx {
+	unsigned			magic;
+#define VRT_CTX_MAGIC			0x6bb8f0db
+
+	unsigned			syntax;
+	unsigned			method;
+	unsigned			*handling;	// not in director context
+	unsigned			vclver;
+
+	struct vsb			*msg;	// Only in ...init()
+	struct vsl_log			*vsl;
+	struct vcl			*vcl;
+	struct ws			*ws;
+
+	struct sess			*sp;
+
+	struct req			*req;
+	struct http			*http_req;
+	struct http			*http_req_top;
+	struct http			*http_resp;
+
+	struct busyobj			*bo;
+	struct http			*http_bereq;
+	struct http			*http_beresp;
+
+	vtim_real			now;
+
+	/*
+	 * method specific argument:
+	 *    hash:		struct VSHA256Context
+	 *    synth+error:	struct vsb *
+	 */
+	void				*specific;
+};
+
+#define VRT_CTX		const struct vrt_ctx *ctx
+
+/***********************************************************************
+ * This is the interface structure to a compiled VMOD
+ */
+
+struct vmod_data {
+	/* The version/id fields must be first, they protect the rest */
+	unsigned			vrt_major;
+	unsigned			vrt_minor;
+	const char			*file_id;
+
+	const char			*name;
+	const void			*func;
+	int				func_len;
+	const char			*proto;
+	const char			*json;
+	const char			*abi;
+};
+
+/***********************************************************************
+ * Enum for events sent to compiled VCL and from there to Vmods
+ */
+
+enum vcl_event_e {
+	VCL_EVENT_LOAD,
+	VCL_EVENT_WARM,
+	VCL_EVENT_COLD,
+	VCL_EVENT_DISCARD,
+};
+
+/***********************************************************************/
+
+extern const void * const vrt_magic_string_end;
+extern const void * const vrt_magic_string_unset;
+
+/***********************************************************************
+ * We want the VCC to spit this structs out as const, but when VMODs
+ * come up with them we want to clone them into malloc'ed space which
+ * we can free again.
+ * We collect all the knowledge here by macroizing the fields and make
+ * a macro for handling them all.
+ * See also:  cache_backend.h & cache_backend_cfg.c
+ * One of those things...
+ */
+
+#define VRT_BACKEND_FIELDS(rigid)				\
+	rigid char			*vcl_name;		\
+	rigid char			*ipv4_addr;		\
+	rigid char			*ipv6_addr;		\
+	rigid char			*port;			\
+	rigid char			*path;			\
+	rigid char			*hosthdr;		\
+	vtim_dur			connect_timeout;	\
+	vtim_dur			first_byte_timeout;	\
+	vtim_dur			between_bytes_timeout;	\
+	unsigned			max_connections;	\
+	unsigned			proxy_header;
+
+#define VRT_BACKEND_HANDLE()			\
+	do {					\
+		DA(vcl_name);			\
+		DA(ipv4_addr);			\
+		DA(ipv6_addr);			\
+		DA(port);			\
+		DA(path);			\
+		DA(hosthdr);			\
+		DN(connect_timeout);		\
+		DN(first_byte_timeout);		\
+		DN(between_bytes_timeout);	\
+		DN(max_connections);		\
+		DN(proxy_header);		\
+	} while(0)
+
+struct vrt_backend {
+	unsigned			magic;
+#define VRT_BACKEND_MAGIC		0x4799ce6b
+	VRT_BACKEND_FIELDS(const)
+	const struct suckaddr		*ipv4_suckaddr;
+	const struct suckaddr		*ipv6_suckaddr;
+	const struct vrt_backend_probe	*probe;
+};
+
+#define VRT_BACKEND_PROBE_FIELDS(rigid)				\
+	vtim_dur			timeout;		\
+	vtim_dur			interval;		\
+	unsigned			exp_status;		\
+	unsigned			window;			\
+	unsigned			threshold;		\
+	unsigned			initial;
+
+#define VRT_BACKEND_PROBE_HANDLE()		\
+	do {					\
+		DN(timeout);			\
+		DN(interval);			\
+		DN(exp_status);			\
+		DN(window);			\
+		DN(threshold);			\
+		DN(initial);			\
+	} while (0)
+
+struct vrt_backend_probe {
+	unsigned			magic;
+#define VRT_BACKEND_PROBE_MAGIC		0x84998490
+	const char			*url;
+	const char			*request;
+	VRT_BACKEND_PROBE_FIELDS(const)
+};
+
+/***********************************************************************
+ * VRT_count() refers to this structure for coordinates into the VCL source.
+ */
+
+struct vrt_ref {
+	unsigned	source;
+	unsigned	offset;
+	unsigned	line;
+	unsigned	pos;
+	const char	*token;
+};
+
+void VRT_count(VRT_CTX, unsigned);
+
+/***********************************************************************
+ * Implementation details of ACLs
+ */
+
+typedef int acl_match_f(VRT_CTX, const VCL_IP);
+
+struct vrt_acl {
+	unsigned	magic;
+#define VRT_ACL_MAGIC	0x78329d96
+	acl_match_f	*match;
+};
+
+void VRT_acl_log(VRT_CTX, const char *);
+int VRT_acl_match(VRT_CTX, VCL_ACL, VCL_IP);
+
+/***********************************************************************
+ * Compile time regexp
+ */
+
+void VRT_re_init(void **, const char *);
+void VRT_re_fini(void *);
+int VRT_re_match(VRT_CTX, const char *, void *);
+
+/***********************************************************************
+ * Getting hold of the various struct http
+ */
+
+enum gethdr_e {
+	HDR_REQ,
+	HDR_REQ_TOP,
+	HDR_RESP,
+	HDR_OBJ,
+	HDR_BEREQ,
+	HDR_BERESP
+};
+
+struct gethdr_s {
+	enum gethdr_e	where;
+	const char	*what;
+};
+
+VCL_HTTP VRT_selecthttp(VRT_CTX, enum gethdr_e);
+VCL_STRING VRT_GetHdr(VRT_CTX, const struct gethdr_s *);
+
+/***********************************************************************
+ * req related
+ */
+
+VCL_BYTES VRT_CacheReqBody(VRT_CTX, VCL_BYTES maxsize);
+
+/* Regexp related */
+
+const char *VRT_regsub(VRT_CTX, int all, const char *, void *, const char *);
+VCL_VOID VRT_ban_string(VRT_CTX, VCL_STRING);
+VCL_INT VRT_purge(VRT_CTX, VCL_DURATION, VCL_DURATION, VCL_DURATION);
+VCL_VOID VRT_synth(VRT_CTX, VCL_INT, VCL_STRING);
+VCL_VOID VRT_hit_for_pass(VRT_CTX, VCL_DURATION);
+
+VCL_VOID VRT_SetHdr(VRT_CTX, const struct gethdr_s *, const char *, ...);
+VCL_VOID VRT_handling(VRT_CTX, unsigned hand);
+VCL_VOID VRT_fail(VRT_CTX, const char *fmt, ...) v_printflike_(2,3);
+VCL_VOID VRT_hashdata(VRT_CTX, const char *str, ...);
+
+/* Simple stuff */
+int VRT_strcmp(const char *s1, const char *s2);
+void VRT_memmove(void *dst, const void *src, unsigned len);
+VCL_BOOL VRT_ipcmp(VCL_IP, VCL_IP);
+VCL_BLOB VRT_blob(VRT_CTX, const char *, const void *, size_t);
+
+VCL_VOID VRT_Rollback(VRT_CTX, VCL_HTTP);
+
+/* Synthetic pages */
+VCL_VOID VRT_synth_page(VRT_CTX, const char *, ...);
+
+/* Backend related */
+struct director *VRT_new_backend(VRT_CTX, const struct vrt_backend *);
+struct director *VRT_new_backend_clustered(VRT_CTX,
+    struct vsmw_cluster *, const struct vrt_backend *);
+size_t VRT_backend_vsm_need(VRT_CTX);
+void VRT_delete_backend(VRT_CTX, struct director **);
+int VRT_backend_healthy(VRT_CTX, struct director *);
+
+/* VSM related */
+struct vsmw_cluster *VRT_VSM_Cluster_New(VRT_CTX, size_t);
+void VRT_VSM_Cluster_Destroy(VRT_CTX, struct vsmw_cluster **);
+
+/* cache_director.c */
+int VRT_Healthy(VRT_CTX, VCL_BACKEND);
+
+/* Suckaddr related */
+int VRT_VSA_GetPtr(const struct suckaddr *sua, const unsigned char ** dst);
+
+/* VMOD/Modules related */
+int VRT_Vmod_Init(VRT_CTX, struct vmod **hdl, unsigned nbr, void *ptr, int len,
+    const char *nm, const char *path, const char *file_id, const char *backup);
+void VRT_Vmod_Unload(VRT_CTX, struct vmod **hdl);
+
+/* VCL program related */
+VCL_VCL VRT_vcl_get(VRT_CTX, const char *);
+void VRT_vcl_rel(VRT_CTX, VCL_VCL);
+void VRT_vcl_select(VRT_CTX, VCL_VCL);
+
+typedef int vmod_event_f(VRT_CTX, struct vmod_priv *, enum vcl_event_e);
+
+typedef void vmod_priv_free_f(void *);
+struct vmod_priv {
+	void			*priv;
+	int			len;
+	vmod_priv_free_f	*free;
+};
+
+struct vclref;
+struct vclref * VRT_ref_vcl(VRT_CTX, const char *);
+void VRT_rel_vcl(VRT_CTX, struct vclref **);
+
+void VRT_priv_fini(const struct vmod_priv *p);
+struct vmod_priv *VRT_priv_task(VRT_CTX, const void *vmod_id);
+struct vmod_priv *VRT_priv_top(VRT_CTX, const void *vmod_id);
+
+/* Stevedore related functions */
+int VRT_Stv(const char *nm);
+VCL_STEVEDORE VRT_stevedore(const char *nm);
+
+/* Convert things to string */
+
+VCL_STRANDS VRT_BundleStrands(int, struct strands *, char const **,
+    const char *f, ...);
+int VRT_CompareStrands(VCL_STRANDS a, VCL_STRANDS b);
+char *VRT_Strands(char *, size_t, VCL_STRANDS);
+VCL_STRING VRT_StrandsWS(struct ws *, const char *, VCL_STRANDS);
+VCL_STRING VRT_CollectStrands(VRT_CTX, VCL_STRANDS);
+
+VCL_STRING VRT_BACKEND_string(VCL_BACKEND);
+VCL_STRING VRT_BOOL_string(VCL_BOOL);
+VCL_STRING VRT_CollectString(VRT_CTX, const char *p, ...);
+VCL_STRING VRT_INT_string(VRT_CTX, VCL_INT);
+VCL_STRING VRT_IP_string(VRT_CTX, VCL_IP);
+VCL_STRING VRT_REAL_string(VRT_CTX, VCL_REAL);
+VCL_STRING VRT_STEVEDORE_string(VCL_STEVEDORE);
+VCL_STRING VRT_TIME_string(VRT_CTX, VCL_TIME);
+
+#ifdef va_start	// XXX: hackish
+void *VRT_VSC_Alloc(struct vsmw_cluster *, struct vsc_seg **,
+    const char *, size_t, const unsigned char *, size_t, const char *, va_list);
+#endif
+void VRT_VSC_Destroy(const char *, struct vsc_seg *);
+void VRT_VSC_Hide(const struct vsc_seg *);
+void VRT_VSC_Reveal(const struct vsc_seg *);
+size_t VRT_VSC_Overhead(size_t);
+
+/* ---===### include/vcl.h ###===--- */
+
+/*
+ * NB:  This file is machine generated, DO NOT EDIT!
+ *
+ * Edit and run lib/libvcc/generate.py instead.
+ */
+
+
+#ifdef VCL_H_INCLUDED
+#  error "vcl.h included multiple times"
+#endif
+#define VCL_H_INCLUDED
+
+#ifndef VRT_H_INCLUDED
+#  error "include vrt.h before vcl.h"
+#endif
+
+/* VCL Methods */
+#define VCL_MET_RECV			(1U << 1)
+#define VCL_MET_PIPE			(1U << 2)
+#define VCL_MET_PASS			(1U << 3)
+#define VCL_MET_HASH			(1U << 4)
+#define VCL_MET_PURGE			(1U << 5)
+#define VCL_MET_MISS			(1U << 6)
+#define VCL_MET_HIT			(1U << 7)
+#define VCL_MET_DELIVER			(1U << 8)
+#define VCL_MET_SYNTH			(1U << 9)
+#define VCL_MET_BACKEND_FETCH		(1U << 10)
+#define VCL_MET_BACKEND_RESPONSE	(1U << 11)
+#define VCL_MET_BACKEND_ERROR		(1U << 12)
+#define VCL_MET_INIT			(1U << 13)
+#define VCL_MET_FINI			(1U << 14)
+
+#define VCL_MET_MAX			15
+
+#define VCL_MET_MASK			0x7fff
+
+#define VCL_MET_TASK_B			( VCL_MET_BACKEND_FETCH | \
+					  VCL_MET_BACKEND_RESPONSE | \
+					  VCL_MET_BACKEND_ERROR )
+#define VCL_MET_TASK_C			( VCL_MET_RECV | \
+					  VCL_MET_PIPE | \
+					  VCL_MET_PASS | \
+					  VCL_MET_HASH | \
+					  VCL_MET_PURGE | \
+					  VCL_MET_MISS | \
+					  VCL_MET_HIT | \
+					  VCL_MET_DELIVER | \
+					  VCL_MET_SYNTH )
+#define VCL_MET_TASK_H			( VCL_MET_INIT | \
+					  VCL_MET_FINI )
+
+/* VCL Returns */
+#define VCL_RET_ABANDON			1
+#define VCL_RET_DELIVER			2
+#define VCL_RET_ERROR			3
+#define VCL_RET_FAIL			4
+#define VCL_RET_FETCH			5
+#define VCL_RET_HASH			6
+#define VCL_RET_LOOKUP			7
+#define VCL_RET_MISS			8
+#define VCL_RET_OK			9
+#define VCL_RET_PASS			10
+#define VCL_RET_PIPE			11
+#define VCL_RET_PURGE			12
+#define VCL_RET_RESTART			13
+#define VCL_RET_RETRY			14
+#define VCL_RET_SYNTH			15
+#define VCL_RET_VCL			16
+
+#define VCL_RET_MAX			17
+
+/* VCL Types */
+extern const struct vrt_type VCL_TYPE_ACL[1];
+extern const struct vrt_type VCL_TYPE_BACKEND[1];
+extern const struct vrt_type VCL_TYPE_BLOB[1];
+extern const struct vrt_type VCL_TYPE_BODY[1];
+extern const struct vrt_type VCL_TYPE_BOOL[1];
+extern const struct vrt_type VCL_TYPE_BYTES[1];
+extern const struct vrt_type VCL_TYPE_DURATION[1];
+extern const struct vrt_type VCL_TYPE_ENUM[1];
+extern const struct vrt_type VCL_TYPE_HEADER[1];
+extern const struct vrt_type VCL_TYPE_HTTP[1];
+extern const struct vrt_type VCL_TYPE_INSTANCE[1];
+extern const struct vrt_type VCL_TYPE_INT[1];
+extern const struct vrt_type VCL_TYPE_IP[1];
+extern const struct vrt_type VCL_TYPE_PROBE[1];
+extern const struct vrt_type VCL_TYPE_REAL[1];
+extern const struct vrt_type VCL_TYPE_STEVEDORE[1];
+extern const struct vrt_type VCL_TYPE_STRANDS[1];
+extern const struct vrt_type VCL_TYPE_STRING[1];
+extern const struct vrt_type VCL_TYPE_STRINGS[1];
+extern const struct vrt_type VCL_TYPE_STRING_LIST[1];
+extern const struct vrt_type VCL_TYPE_SUB[1];
+extern const struct vrt_type VCL_TYPE_TIME[1];
+extern const struct vrt_type VCL_TYPE_VCL[1];
+extern const struct vrt_type VCL_TYPE_VOID[1];
+
+/* Compiled VCL Interface */
+typedef int vcl_event_f(VRT_CTX, enum vcl_event_e);
+typedef int vcl_init_f(VRT_CTX);
+typedef void vcl_fini_f(VRT_CTX);
+typedef void vcl_func_f(VRT_CTX);
+
+struct VCL_conf {
+    unsigned            magic;
+#define VCL_CONF_MAGIC          0x7406c509      /* from /dev/random */
+
+    unsigned            syntax;
+    struct director         **default_director;
+    const struct vrt_backend_probe  *default_probe;
+    unsigned            nref;
+    const struct vrt_ref        *ref;
+
+    unsigned            nsrc;
+    const char              **srcname;
+    const char              **srcbody;
+
+    unsigned            nvmod;
+
+    vcl_event_f             *event_vcl;
+	vcl_func_f			*recv_func;
+	vcl_func_f			*pipe_func;
+	vcl_func_f			*pass_func;
+	vcl_func_f			*hash_func;
+	vcl_func_f			*purge_func;
+	vcl_func_f			*miss_func;
+	vcl_func_f			*hit_func;
+	vcl_func_f			*deliver_func;
+	vcl_func_f			*synth_func;
+	vcl_func_f			*backend_fetch_func;
+	vcl_func_f			*backend_response_func;
+	vcl_func_f			*backend_error_func;
+	vcl_func_f			*init_func;
+	vcl_func_f			*fini_func;
+
+};
+
+/* ---===### include/vrt_obj.h ###===--- */
+
+/*
+ * NB:  This file is machine generated, DO NOT EDIT!
+ *
+ * Edit and run lib/libvcc/generate.py instead.
+ */
+
+
+VCL_IP VRT_r_local_ip(VRT_CTX);
+
+VCL_STRING VRT_r_local_endpoint(VRT_CTX);
+
+VCL_STRING VRT_r_local_socket(VRT_CTX);
+
+VCL_IP VRT_r_remote_ip(VRT_CTX);
+
+VCL_IP VRT_r_client_ip(VRT_CTX);
+
+VCL_STRING VRT_r_client_identity(VRT_CTX);
+void VRT_l_client_identity(VRT_CTX, const char *, ...);
+
+VCL_IP VRT_r_server_ip(VRT_CTX);
+
+VCL_STRING VRT_r_server_hostname(VRT_CTX);
+
+VCL_STRING VRT_r_server_identity(VRT_CTX);
+
+VCL_HTTP VRT_r_req(VRT_CTX);
+
+VCL_STRING VRT_r_req_method(VRT_CTX);
+void VRT_l_req_method(VRT_CTX, const char *, ...);
+
+VCL_BLOB VRT_r_req_hash(VRT_CTX);
+
+VCL_STRING VRT_r_req_url(VRT_CTX);
+void VRT_l_req_url(VRT_CTX, const char *, ...);
+
+VCL_STRING VRT_r_req_proto(VRT_CTX);
+void VRT_l_req_proto(VRT_CTX, const char *, ...);
+
+
+void VRT_u_req_http_(VRT_CTX);
+
+VCL_INT VRT_r_req_restarts(VRT_CTX);
+
+VCL_STEVEDORE VRT_r_req_storage(VRT_CTX);
+void VRT_l_req_storage(VRT_CTX, VCL_STEVEDORE);
+
+VCL_INT VRT_r_req_esi_level(VRT_CTX);
+
+VCL_DURATION VRT_r_req_ttl(VRT_CTX);
+void VRT_l_req_ttl(VRT_CTX, VCL_DURATION);
+
+VCL_DURATION VRT_r_req_grace(VRT_CTX);
+void VRT_l_req_grace(VRT_CTX, VCL_DURATION);
+
+VCL_STRING VRT_r_req_xid(VRT_CTX);
+
+VCL_BOOL VRT_r_req_esi(VRT_CTX);
+void VRT_l_req_esi(VRT_CTX, VCL_BOOL);
+
+VCL_BOOL VRT_r_req_can_gzip(VRT_CTX);
+
+VCL_BACKEND VRT_r_req_backend_hint(VRT_CTX);
+void VRT_l_req_backend_hint(VRT_CTX, VCL_BACKEND);
+
+VCL_BOOL VRT_r_req_hash_ignore_busy(VRT_CTX);
+void VRT_l_req_hash_ignore_busy(VRT_CTX, VCL_BOOL);
+
+VCL_BOOL VRT_r_req_hash_always_miss(VRT_CTX);
+void VRT_l_req_hash_always_miss(VRT_CTX, VCL_BOOL);
+
+VCL_BOOL VRT_r_req_is_hitmiss(VRT_CTX);
+
+VCL_BOOL VRT_r_req_is_hitpass(VRT_CTX);
+
+VCL_STRING VRT_r_req_top_method(VRT_CTX);
+
+VCL_STRING VRT_r_req_top_url(VRT_CTX);
+
+
+VCL_STRING VRT_r_req_top_proto(VRT_CTX);
+
+VCL_HTTP VRT_r_bereq(VRT_CTX);
+
+VCL_STRING VRT_r_bereq_xid(VRT_CTX);
+
+VCL_INT VRT_r_bereq_retries(VRT_CTX);
+
+VCL_BACKEND VRT_r_bereq_backend(VRT_CTX);
+void VRT_l_bereq_backend(VRT_CTX, VCL_BACKEND);
+
+void VRT_u_bereq_body(VRT_CTX);
+
+VCL_BLOB VRT_r_bereq_hash(VRT_CTX);
+
+VCL_STRING VRT_r_bereq_method(VRT_CTX);
+void VRT_l_bereq_method(VRT_CTX, const char *, ...);
+
+VCL_STRING VRT_r_bereq_url(VRT_CTX);
+void VRT_l_bereq_url(VRT_CTX, const char *, ...);
+
+VCL_STRING VRT_r_bereq_proto(VRT_CTX);
+void VRT_l_bereq_proto(VRT_CTX, const char *, ...);
+
+
+void VRT_u_bereq_http_(VRT_CTX);
+
+VCL_BOOL VRT_r_bereq_uncacheable(VRT_CTX);
+
+VCL_DURATION VRT_r_bereq_connect_timeout(VRT_CTX);
+void VRT_l_bereq_connect_timeout(VRT_CTX, VCL_DURATION);
+
+VCL_DURATION VRT_r_bereq_first_byte_timeout(VRT_CTX);
+void VRT_l_bereq_first_byte_timeout(VRT_CTX, VCL_DURATION);
+
+VCL_DURATION VRT_r_bereq_between_bytes_timeout(VRT_CTX);
+void VRT_l_bereq_between_bytes_timeout(VRT_CTX, VCL_DURATION);
+
+VCL_BOOL VRT_r_bereq_is_bgfetch(VRT_CTX);
+
+VCL_HTTP VRT_r_beresp(VRT_CTX);
+
+void VRT_l_beresp_body(VRT_CTX, const char *, ...);
+
+VCL_STRING VRT_r_beresp_proto(VRT_CTX);
+void VRT_l_beresp_proto(VRT_CTX, const char *, ...);
+
+
+VCL_INT VRT_r_beresp_status(VRT_CTX);
+void VRT_l_beresp_status(VRT_CTX, VCL_INT);
+
+VCL_STRING VRT_r_beresp_reason(VRT_CTX);
+void VRT_l_beresp_reason(VRT_CTX, const char *, ...);
+
+void VRT_u_beresp_http_(VRT_CTX);
+
+VCL_BOOL VRT_r_beresp_do_esi(VRT_CTX);
+void VRT_l_beresp_do_esi(VRT_CTX, VCL_BOOL);
+
+VCL_BOOL VRT_r_beresp_do_stream(VRT_CTX);
+void VRT_l_beresp_do_stream(VRT_CTX, VCL_BOOL);
+
+VCL_BOOL VRT_r_beresp_do_gzip(VRT_CTX);
+void VRT_l_beresp_do_gzip(VRT_CTX, VCL_BOOL);
+
+VCL_BOOL VRT_r_beresp_do_gunzip(VRT_CTX);
+void VRT_l_beresp_do_gunzip(VRT_CTX, VCL_BOOL);
+
+VCL_BOOL VRT_r_beresp_was_304(VRT_CTX);
+
+VCL_BOOL VRT_r_beresp_uncacheable(VRT_CTX);
+void VRT_l_beresp_uncacheable(VRT_CTX, VCL_BOOL);
+
+VCL_DURATION VRT_r_beresp_ttl(VRT_CTX);
+void VRT_l_beresp_ttl(VRT_CTX, VCL_DURATION);
+
+VCL_DURATION VRT_r_beresp_age(VRT_CTX);
+
+VCL_DURATION VRT_r_beresp_grace(VRT_CTX);
+void VRT_l_beresp_grace(VRT_CTX, VCL_DURATION);
+
+VCL_DURATION VRT_r_beresp_keep(VRT_CTX);
+void VRT_l_beresp_keep(VRT_CTX, VCL_DURATION);
+
+VCL_BACKEND VRT_r_beresp_backend(VRT_CTX);
+
+VCL_STRING VRT_r_beresp_backend_name(VRT_CTX);
+
+VCL_IP VRT_r_beresp_backend_ip(VRT_CTX);
+
+VCL_STEVEDORE VRT_r_beresp_storage(VRT_CTX);
+void VRT_l_beresp_storage(VRT_CTX, VCL_STEVEDORE);
+
+VCL_STRING VRT_r_beresp_storage_hint(VRT_CTX);
+void VRT_l_beresp_storage_hint(VRT_CTX, const char *, ...);
+
+VCL_STRING VRT_r_obj_proto(VRT_CTX);
+
+VCL_INT VRT_r_obj_status(VRT_CTX);
+
+VCL_STRING VRT_r_obj_reason(VRT_CTX);
+
+VCL_INT VRT_r_obj_hits(VRT_CTX);
+
+
+VCL_DURATION VRT_r_obj_ttl(VRT_CTX);
+
+VCL_DURATION VRT_r_obj_age(VRT_CTX);
+
+VCL_DURATION VRT_r_obj_grace(VRT_CTX);
+
+VCL_DURATION VRT_r_obj_keep(VRT_CTX);
+
+VCL_BOOL VRT_r_obj_uncacheable(VRT_CTX);
+
+VCL_STEVEDORE VRT_r_obj_storage(VRT_CTX);
+
+VCL_HTTP VRT_r_resp(VRT_CTX);
+
+void VRT_l_resp_body(VRT_CTX, const char *, ...);
+
+VCL_STRING VRT_r_resp_proto(VRT_CTX);
+void VRT_l_resp_proto(VRT_CTX, const char *, ...);
+
+
+VCL_INT VRT_r_resp_status(VRT_CTX);
+void VRT_l_resp_status(VRT_CTX, VCL_INT);
+
+VCL_STRING VRT_r_resp_reason(VRT_CTX);
+void VRT_l_resp_reason(VRT_CTX, const char *, ...);
+
+void VRT_u_resp_http_(VRT_CTX);
+
+VCL_BOOL VRT_r_resp_do_esi(VRT_CTX);
+void VRT_l_resp_do_esi(VRT_CTX, VCL_BOOL);
+
+VCL_BOOL VRT_r_resp_is_streaming(VRT_CTX);
+
+VCL_TIME VRT_r_now(VRT_CTX);
+
+VCL_DURATION VRT_r_sess_timeout_idle(VRT_CTX);
+void VRT_l_sess_timeout_idle(VRT_CTX, VCL_DURATION);
+
+VCL_STRING VRT_r_sess_xid(VRT_CTX);
+int64_t VRT_Stv_free_space(const char *);
+int64_t VRT_Stv_used_space(const char *);
+unsigned VRT_Stv_happy(const char *);
+
+/* ---===### Source Code ###===---*/
+
+#define VGC_NSRCS 2
+
+static const char *srcname[VGC_NSRCS] = {
+	"/tmp/default.vcl.removepass2",
+	"Builtin",
+};
+
+static const char *srcbody[2] = {
+    /* "/tmp/default.vcl.removepass2" */
+	"vcl 4.1;\n"
+	"\n"
+	"import std;\n"
+	"\n"
+	"# ============================================================================\n"
+	"# BACKEND CONFIGURATION - Multi-Website Setup\n"
+	"# Using public IP 205.134.249.177 for Apache vhosts\n"
+	"# ============================================================================\n"
+	"\n"
+	"backend prod {\n"
+	"    .host = \"205.134.249.177\";\n"
+	"    .port = \"80\";\n"
+	"    .connect_timeout = 5s;\n"
+	"    .first_byte_timeout = 120s;\n"
+	"    .between_bytes_timeout = 60s;\n"
+	"    .max_connections = 300;\n"
+	"    .probe = {\n"
+	"        .url = \"/.well-known/acme-challenge/health\";\n"
+	"        .timeout = 3s;\n"
+	"        .interval = 10s;\n"
+	"        .window = 5;\n"
+	"        .threshold = 3;\n"
+	"    }\n"
+	"}\n"
+	"\n"
+	"backend beta {\n"
+	"    .host = \"205.134.249.177\";\n"
+	"    .port = \"80\";\n"
+	"    .connect_timeout = 5s;\n"
+	"    .first_byte_timeout = 180s;\n"
+	"    .between_bytes_timeout = 90s;\n"
+	"    .max_connections = 150;\n"
+	"    .probe = {\n"
+	"        .url = \"/.well-known/acme-challenge/health\";\n"
+	"        .timeout = 3s;\n"
+	"        .interval = 10s;\n"
+	"        .window = 5;\n"
+	"        .threshold = 3;\n"
+	"    }\n"
+	"}\n"
+	"\n"
+	"backend dashboard {\n"
+	"    .host = \"127.0.0.1\";\n"
+	"    .port = \"80\";\n"
+	"    .connect_timeout = 3s;\n"
+	"    .first_byte_timeout = 60s;\n"
+	"    .between_bytes_timeout = 30s;\n"
+	"    .max_connections = 50;\n"
+	"}\n"
+	"\n"
+	"backend lms {\n"
+	"    .host = \"205.134.249.177\";\n"
+	"    .port = \"80\";\n"
+	"    .connect_timeout = 5s;\n"
+	"    .first_byte_timeout = 120s;\n"
+	"    .between_bytes_timeout = 60s;\n"
+	"    .max_connections = 100;\n"
+	"}\n"
+	"\n"
+	"backend pim {\n"
+	"    .host = \"205.134.249.177\";\n"
+	"    .port = \"80\";\n"
+	"    .connect_timeout = 10s;\n"
+	"    .first_byte_timeout = 300s;\n"
+	"    .between_bytes_timeout = 120s;\n"
+	"    .max_connections = 50;\n"
+	"}\n"
+	"\n"
+	"# ============================================================================\n"
+	"# ACL - ACCESS CONTROL\n"
+	"# ============================================================================\n"
+	"\n"
+	"acl purge {\n"
+	"    \"localhost\";\n"
+	"    \"127.0.0.1\";\n"
+	"    \"::1\";\n"
+	"    \"205.134.249.177\";\n"
+	"}\n"
+	"\n"
+	"acl cloudflare {\n"
+	"    \"173.245.48.0\"/20;\n"
+	"    \"103.21.244.0\"/22;\n"
+	"    \"103.22.200.0\"/22;\n"
+	"    \"103.31.4.0\"/22;\n"
+	"    \"141.101.64.0\"/18;\n"
+	"    \"108.162.192.0\"/18;\n"
+	"    \"190.93.240.0\"/20;\n"
+	"    \"188.114.96.0\"/20;\n"
+	"    \"197.234.240.0\"/22;\n"
+	"    \"198.41.128.0\"/17;\n"
+	"    \"162.158.0.0\"/15;\n"
+	"    \"104.16.0.0\"/13;\n"
+	"    \"104.24.0.0\"/14;\n"
+	"    \"172.64.0.0\"/13;\n"
+	"    \"131.0.72.0\"/22;\n"
+	"    \"2400:cb00::\"/32;\n"
+	"    \"2606:4700::\"/32;\n"
+	"    \"2803:f800::\"/32;\n"
+	"    \"2405:b500::\"/32;\n"
+	"    \"2405:8100::\"/32;\n"
+	"    \"2a06:98c0::\"/29;\n"
+	"    \"2c0f:f248::\"/32;\n"
+	"}\n"
+	"\n"
+	"# ============================================================================\n"
+	"# VCL_RECV - REQUEST PROCESSING\n"
+	"# ============================================================================\n"
+	"\n"
+	"sub vcl_recv {\n"
+	"    # Trust Cloudflare real IP\n"
+	"    if (client.ip ~ cloudflare) {\n"
+	"        if (req.http.CF-Connecting-IP) {\n"
+	"            set req.http.X-Forwarded-For = req.http.CF-Connecting-IP;\n"
+	"        }\n"
+	"    }\n"
+	"\n"
+	"    # Always assume HTTPS from Cloudflare or if X-Forwarded-Proto is set\n"
+	"    if (req.http.X-Forwarded-Proto !~ \"(\?i)https\" && (client.ip ~ cloudflare || req.http.CF-Visitor ~ \"https\")) {\n"
+	"        set req.http.X-Forwarded-Proto = \"https\";\n"
+	"    }\n"
+	"\n"
+	"    # Route to correct backend\n"
+	"    if (req.http.host ~ \"^(www\\.)\?technostationery\\.com(\\.dz)\?$\") {\n"
+	"        set req.backend_hint = prod;\n"
+	"    } elsif (req.http.host ~ \"^beta\\.technostationery\\.com$\") {\n"
+	"        set req.backend_hint = beta;\n"
+	"    } elsif (req.http.host ~ \"^dashboard\\.technostationery\\.com$\") {\n"
+	"        set req.backend_hint = dashboard;\n"
+	"        return (pass); # Dashboard always pass\n"
+	"    } elsif (req.http.host ~ \"^lms\\.technostationery\\.com$\") {\n"
+	"        set req.backend_hint = lms;\n"
+	"    } elsif (req.http.host ~ \"^pim\\.technostationery\\.com$\") {\n"
+	"        set req.backend_hint = pim;\n"
+	"    } else {\n"
+	"        set req.backend_hint = prod;\n"
+	"    }\n"
+	"\n"
+	"    # Improved Device Detection (Tablet first to avoid mobile mis-detection)\n"
+	"    if (req.http.User-Agent ~ \"(\?i)(ipad|android 3|sch-i800|playbook|tablet|kindle|silk)\") {\n"
+	"        set req.http.X-Device = \"tablet\";\n"
+	"    } elsif (req.http.User-Agent ~ \"(\?i)(mobile|android|iphone|ipod|blackberry|webos|opera mini|windows phone)\") {\n"
+	"        set req.http.X-Device = \"mobile\";\n"
+	"    } else {\n"
+	"        set req.http.X-Device = \"desktop\";\n"
+	"    }\n"
+	"\n"
+	"    # PURGE Support\n"
+	"    if (req.method == \"PURGE\") {\n"
+	"        if (!client.ip ~ purge && !client.ip ~ cloudflare) {\n"
+	"            return(synth(405, \"Not allowed\"));\n"
+	"        }\n"
+	"        return(purge);\n"
+	"    }\n"
+	"\n"
+	"    # BAN Support\n"
+	"    if (req.method == \"BAN\") {\n"
+	"        if (!client.ip ~ purge) {\n"
+	"            return(synth(405, \"Not allowed\"));\n"
+	"        }\n"
+	"        ban(\"obj.http.X-Varnish-Host == \" + req.http.host + \" && obj.http.x-url ~ \" + req.url);\n"
+	"        return(synth(200, \"Banned\"));\n"
+	"    }\n"
+	"\n"
+	"    # Only GET/HEAD are cacheable\n"
+	"    if (req.method != \"GET\" && req.method != \"HEAD\") {\n"
+	"        return (pass);\n"
+	"    }\n"
+	"\n"
+	"    # Never cache dynamic routes\n"
+	"    if (req.url ~ \"^/(pub/)\?(admin|customer|checkout|sales|rest|graphql|api|contact|login|logout|cart)\") {\n"
+	"        return (pass);\n"
+	"    }\n"
+	"\n"
+	"    # Static assets - aggressive cache\n"
+	"    if (req.url ~ \"\\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot|otf|webp|bmp|tiff|mp4|webm|mp3|pdf|zip|tar|gz)(\\\?.*)\?$\") {\n"
+	"        set req.url = regsub(req.url, \"\\\?.*$\", \"\");\n"
+	"        unset req.http.Cookie;\n"
+	"        return (hash);\n"
+	"    }\n"
+	"\n"
+	"    # Tracking parameters removal\n"
+	"    if (req.url ~ \"(\\\?|&)(utm_source|utm_medium|utm_campaign|utm_content|utm_term|gclid|fbclid|_ga|_gid)=\") {\n"
+	"        set req.url = regsuball(req.url, \"&(utm_source|utm_medium|utm_campaign|utm_content|utm_term|gclid|fbclid|_ga|_gid)=([A-z0-9_\\-\\.%25]+)\", \"\");\n"
+	"        set req.url = regsuball(req.url, \"\\\?(utm_source|utm_medium|utm_campaign|utm_content|utm_term|gclid|fbclid|_ga|_gid)=([A-z0-9_\\-\\.%25]+)\", \"\?\");\n"
+	"        set req.url = regsub(req.url, \"\\\?&\", \"\?\");\n"
+	"        set req.url = regsub(req.url, \"\\\?$\", \"\");\n"
+	"    }\n"
+	"\n"
+	"    # Cookie cleaning\n"
+	"    if (req.http.Cookie) {\n"
+	"        set req.http.Cookie = regsuball(req.http.Cookie, \"(^|;\\s*)(_ga|_gid|_gat|__utm[a-z]|__gads|__qc|__atuv|_fbp|fr)=[^;]*\", \"\");\n"
+	"        set req.http.Cookie = regsuball(req.http.Cookie, \"^;\\s*\", \"\");\n"
+	"        if (req.http.Cookie == \"\") {\n"
+	"            unset req.http.Cookie;\n"
+	"        }\n"
+	"    }\n"
+	"\n"
+	"    # Pass Magento session cookies\n"
+	"    if (req.http.Cookie ~ \"frontend=|adminhtml=|form_key|private_content_version|X-Magento-Vary\") {\n"
+	"        return (pass);\n"
+	"    }\n"
+	"\n"
+	"    return (hash);\n"
+	"}\n"
+	"\n"
+	"sub vcl_hash {\n"
+	"    hash_data(req.url);\n"
+	"    if (req.http.host) {\n"
+	"        hash_data(req.http.host);\n"
+	"    } else {\n"
+	"        hash_data(server.ip);\n"
+	"    }\n"
+	"\n"
+	"    # Device-specific variance\n"
+	"    if (req.http.X-Device) {\n"
+	"        hash_data(req.http.X-Device);\n"
+	"    }\n"
+	"\n"
+	"    # Proto variance\n"
+	"    if (req.http.X-Forwarded-Proto) {\n"
+	"        hash_data(req.http.X-Forwarded-Proto);\n"
+	"    }\n"
+	"\n"
+	"    return (lookup);\n"
+	"}\n"
+	"\n"
+	"sub vcl_backend_response {\n"
+	"    set beresp.http.x-url = bereq.url;\n"
+	"    set beresp.http.X-Varnish-Host = bereq.http.host;\n"
+	"\n"
+	"    # Static files - 1 year TTL\n"
+	"    if (bereq.url ~ \"\\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot|otf|webp|bmp)$\") {\n"
+	"        set beresp.ttl = 365d;\n"
+	"        set beresp.http.Cache-Control = \"public, max-age=31536000\";\n"
+	"        unset beresp.http.Set-Cookie;\n"
+	"        return (deliver);\n"
+	"    }\n"
+	"\n"
+	"    # HTML pages\n"
+	"    if (beresp.http.content-type ~ \"text/html\") {\n"
+	"        # Never cache if Magento session cookie is set in response\n"
+	"        if (beresp.http.Set-Cookie ~ \"frontend=|adminhtml=|form_key\") {\n"
+	"            set beresp.ttl = 0s;\n"
+	"            set beresp.uncacheable = true;\n"
+	"            return (deliver);\n"
+	"        }\n"
+	"\n"
+	"        # Force cache if not specified otherwise (Magento 2 Varnish mode fallback)\n"
+	"        if (beresp.ttl <= 0s && beresp.http.Cache-Control !~ \"private|no-cache|no-store\") {\n"
+	"             set beresp.ttl = 2h;\n"
+	"        }\n"
+	"\n"
+	"        # Set Vary for device\n"
+	"        if (beresp.http.Vary) {\n"
+	"            set beresp.http.Vary = beresp.http.Vary + \", X-Device\";\n"
+	"        } else {\n"
+	"            set beresp.http.Vary = \"X-Device\";\n"
+	"        }\n"
+	"    }\n"
+	"\n"
+	"    # Grace and keep\n"
+	"    set beresp.grace = 24h;\n"
+	"    set beresp.keep = 8h;\n"
+	"\n"
+	"    return (deliver);\n"
+	"}\n"
+	"\n"
+	"sub vcl_deliver {\n"
+	"    if (obj.hits > 0) {\n"
+	"        set resp.http.X-Cache = \"HIT\";\n"
+	"        set resp.http.X-Cache-Hits = obj.hits;\n"
+	"    } else {\n"
+	"        set resp.http.X-Cache = \"MISS\";\n"
+	"    }\n"
+	"\n"
+	"    if (req.http.X-Device) {\n"
+	"        set resp.http.X-Device = req.http.X-Device;\n"
+	"    }\n"
+	"\n"
+	"    # Security & Cleanup\n"
+	"    unset resp.http.x-url;\n"
+	"    unset resp.http.X-Varnish-Host;\n"
+	"    unset resp.http.Via;\n"
+	"    unset resp.http.X-Varnish;\n"
+	"    unset resp.http.X-Powered-By;\n"
+	"    \n"
+	"    set resp.http.X-Cache-Age = resp.http.Age;\n"
+	"    \n"
+	"    return (deliver);\n"
+	"}\n"
+	"",
+    /* "Builtin" */
+	"/*-\n"
+	" * Copyright (c) 2006 Verdens Gang AS\n"
+	" * Copyright (c) 2006-2015 Varnish Software AS\n"
+	" * All rights reserved.\n"
+	" *\n"
+	" * Author: Poul-Henning Kamp <phk@phk.freebsd.dk>\n"
+	" *\n"
+	" * Redistribution and use in source and binary forms, with or without\n"
+	" * modification, are permitted provided that the following conditions\n"
+	" * are met:\n"
+	" * 1. Redistributions of source code must retain the above copyright\n"
+	" *    notice, this list of conditions and the following disclaimer.\n"
+	" * 2. Redistributions in binary form must reproduce the above copyright\n"
+	" *    notice, this list of conditions and the following disclaimer in the\n"
+	" *    documentation and/or other materials provided with the distribution.\n"
+	" *\n"
+	" * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND\n"
+	" * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n"
+	" * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\n"
+	" * ARE DISCLAIMED.  IN NO EVENT SHALL AUTHOR OR CONTRIBUTORS BE LIABLE\n"
+	" * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n"
+	" * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS\n"
+	" * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\n"
+	" * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n"
+	" * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY\n"
+	" * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF\n"
+	" * SUCH DAMAGE.\n"
+	" *\n"
+	" * This is the builtin VCL code\n"
+	" */\n"
+	"\n"
+	"vcl 4.0;\n"
+	"\n"
+	"#######################################################################\n"
+	"# Client side\n"
+	"\n"
+	"sub vcl_recv {\n"
+	"    if (req.method == \"PRI\") {\n"
+	"        /* This will never happen in properly formed traffic (see: RFC7540) */\n"
+	"        return (synth(405));\n"
+	"    }\n"
+	"    if (!req.http.host &&\n"
+	"      req.esi_level == 0 &&\n"
+	"      req.proto ~ \"^(\?i)HTTP/1.1\") {\n"
+	"        /* In HTTP/1.1, Host is required. */\n"
+	"        return (synth(400));\n"
+	"    }\n"
+	"    if (req.method != \"GET\" &&\n"
+	"      req.method != \"HEAD\" &&\n"
+	"      req.method != \"PUT\" &&\n"
+	"      req.method != \"POST\" &&\n"
+	"      req.method != \"TRACE\" &&\n"
+	"      req.method != \"OPTIONS\" &&\n"
+	"      req.method != \"DELETE\" &&\n"
+	"      req.method != \"PATCH\") {\n"
+	"        /* Non-RFC2616 or CONNECT which is weird. */\n"
+	"        return (pipe);\n"
+	"    }\n"
+	"\n"
+	"    if (req.method != \"GET\" && req.method != \"HEAD\") {\n"
+	"        /* We only deal with GET and HEAD by default */\n"
+	"        return (pass);\n"
+	"    }\n"
+	"    if (req.http.Authorization || req.http.Cookie) {\n"
+	"        /* Not cacheable by default */\n"
+	"        return (pass);\n"
+	"    }\n"
+	"    return (hash);\n"
+	"}\n"
+	"\n"
+	"sub vcl_pipe {\n"
+	"    # By default Connection: close is set on all piped requests, to stop\n"
+	"    # connection reuse from sending future requests directly to the\n"
+	"    # (potentially) wrong backend. If you do want this to happen, you can undo\n"
+	"    # it here.\n"
+	"    # unset bereq.http.connection;\n"
+	"    return (pipe);\n"
+	"}\n"
+	"\n"
+	"sub vcl_pass {\n"
+	"    return (fetch);\n"
+	"}\n"
+	"\n"
+	"sub vcl_hash {\n"
+	"    hash_data(req.url);\n"
+	"    if (req.http.host) {\n"
+	"        hash_data(req.http.host);\n"
+	"    } else {\n"
+	"        hash_data(server.ip);\n"
+	"    }\n"
+	"    return (lookup);\n"
+	"}\n"
+	"\n"
+	"sub vcl_purge {\n"
+	"    return (synth(200, \"Purged\"));\n"
+	"}\n"
+	"\n"
+	"sub vcl_hit {\n"
+	"    if (obj.ttl >= 0s) {\n"
+	"        // A pure unadulterated hit, deliver it\n"
+	"        return (deliver);\n"
+	"    }\n"
+	"    if (obj.ttl + obj.grace > 0s) {\n"
+	"        // Object is in grace, deliver it\n"
+	"        // Automatically triggers a background fetch\n"
+	"        return (deliver);\n"
+	"    }\n"
+	"    // fetch & deliver once we get the result\n"
+	"    return (miss);\n"
+	"}\n"
+	"\n"
+	"sub vcl_miss {\n"
+	"    return (fetch);\n"
+	"}\n"
+	"\n"
+	"sub vcl_deliver {\n"
+	"    return (deliver);\n"
+	"}\n"
+	"\n"
+	"/*\n"
+	" * We can come here \"invisibly\" with the following errors: 500 & 503\n"
+	" */\n"
+	"sub vcl_synth {\n"
+	"    set resp.http.Content-Type = \"text/html; charset=utf-8\";\n"
+	"    set resp.http.Retry-After = \"5\";\n"
+	"    set resp.body = {\"<!DOCTYPE html>\n"
+	"<html>\n"
+	"  <head>\n"
+	"    <title>\"} + resp.status + \" \" + resp.reason + {\"</title>\n"
+	"  </head>\n"
+	"  <body>\n"
+	"    <h1>Error \"} + resp.status + \" \" + resp.reason + {\"</h1>\n"
+	"    <p>\"} + resp.reason + {\"</p>\n"
+	"    <h3>Guru Meditation:</h3>\n"
+	"    <p>XID: \"} + req.xid + {\"</p>\n"
+	"    <hr>\n"
+	"    <p>Varnish cache server</p>\n"
+	"  </body>\n"
+	"</html>\n"
+	"\"};\n"
+	"    return (deliver);\n"
+	"}\n"
+	"\n"
+	"#######################################################################\n"
+	"# Backend Fetch\n"
+	"\n"
+	"sub vcl_backend_fetch {\n"
+	"    if (bereq.method == \"GET\") {\n"
+	"        unset bereq.body;\n"
+	"    }\n"
+	"    return (fetch);\n"
+	"}\n"
+	"\n"
+	"sub vcl_backend_response {\n"
+	"    if (bereq.uncacheable) {\n"
+	"        return (deliver);\n"
+	"    } else if (beresp.ttl <= 0s ||\n"
+	"      beresp.http.Set-Cookie ||\n"
+	"      beresp.http.Surrogate-control ~ \"(\?i)no-store\" ||\n"
+	"      (!beresp.http.Surrogate-Control &&\n"
+	"        beresp.http.Cache-Control ~ \"(\?i:no-cache|no-store|private)\") ||\n"
+	"      beresp.http.Vary == \"*\") {\n"
+	"        # Mark as \"Hit-For-Miss\" for the next 2 minutes\n"
+	"        set beresp.ttl = 120s;\n"
+	"        set beresp.uncacheable = true;\n"
+	"    }\n"
+	"    return (deliver);\n"
+	"}\n"
+	"\n"
+	"sub vcl_backend_error {\n"
+	"    set beresp.http.Content-Type = \"text/html; charset=utf-8\";\n"
+	"    set beresp.http.Retry-After = \"5\";\n"
+	"    set beresp.body = {\"<!DOCTYPE html>\n"
+	"<html>\n"
+	"  <head>\n"
+	"    <title>\"} + beresp.status + \" \" + beresp.reason + {\"</title>\n"
+	"  </head>\n"
+	"  <body>\n"
+	"    <h1>Error \"} + beresp.status + \" \" + beresp.reason + {\"</h1>\n"
+	"    <p>\"} + beresp.reason + {\"</p>\n"
+	"    <h3>Guru Meditation:</h3>\n"
+	"    <p>XID: \"} + bereq.xid + {\"</p>\n"
+	"    <hr>\n"
+	"    <p>Varnish cache server</p>\n"
+	"  </body>\n"
+	"</html>\n"
+	"\"};\n"
+	"    return (deliver);\n"
+	"}\n"
+	"\n"
+	"#######################################################################\n"
+	"# Housekeeping\n"
+	"\n"
+	"sub vcl_init {\n"
+	"    return (ok);\n"
+	"}\n"
+	"\n"
+	"sub vcl_fini {\n"
+	"    return (ok);\n"
+	"}\n"
+	"",
+};
+
+/* ---===### Location Counters ###===---*/
+
+#define VGC_NREFS 97
+
+static const struct vrt_ref VGC_ref[VGC_NREFS] = {
+  [  1] = { 0,     2566,  111,   5,  "if" },
+  [  2] = { 0,     2604,  112,   9,  "if" },
+  [  3] = { 0,     2649,  113,  13,  "set" },
+  [  4] = { 0,     2721,  115,   5,  "}" },
+  [  5] = { 0,     2801,  118,   5,  "if" },
+  [  6] = { 0,     2919,  119,   9,  "set" },
+  [  7] = { 0,     3003,  123,   5,  "if" },
+  [  8] = { 0,     3075,  124,   9,  "set" },
+  [  9] = { 0,     3176,  126,   9,  "set" },
+  [ 10] = { 0,     3282,  128,   9,  "set" },
+  [ 11] = { 0,     3434,  131,   9,  "set" },
+  [ 12] = { 0,     3533,  133,   9,  "set" },
+  [ 13] = { 0,     3582,  135,   9,  "set" },
+  [ 14] = { 0,     3796,  140,   9,  "set" },
+  [ 15] = { 0,     3953,  142,   9,  "set" },
+  [ 16] = { 0,     4008,  144,   9,  "set" },
+  [ 17] = { 0,     4111,  149,   9,  "if" },
+  [ 18] = { 0,     4176,  150,  13,  "return" },
+  [ 19] = { 0,     4229,  152,   9,  "return" },
+  [ 20] = { 0,     4273,  156,   5,  "if" },
+  [ 21] = { 0,     4308,  157,   9,  "if" },
+  [ 22] = { 0,     4346,  158,  13,  "return" },
+  [ 23] = { 0,     4399,  160,   9,  "ban" },
+  [ 24] = { 0,     4570,  165,   5,  "if" },
+  [ 25] = { 0,     4629,  166,   9,  "return" },
+  [ 26] = { 0,     4688,  170,   5,  "if" },
+  [ 27] = { 0,     4799,  171,   9,  "return" },
+  [ 28] = { 0,     4864,  175,   5,  "if" },
+  [ 29] = { 0,     5000,  176,   9,  "set" },
+  [ 30] = { 0,     5143,  182,   5,  "if" },
+  [ 31] = { 0,     5257,  183,   9,  "set" },
+  [ 32] = { 0,     5685,  190,   5,  "if" },
+  [ 33] = { 0,     5716,  191,   9,  "set" },
+  [ 34] = { 0,     5961,  194,  13,  "unset" },
+  [ 35] = { 0,     5998,  196,   5,  "}" },
+  [ 36] = { 0,     6040,  199,   5,  "if" },
+  [ 37] = { 0,     6144,  200,   9,  "return" },
+  [ 38] = { 0,     6170,  203,   5,  "return" },
+  [ 39] = { 0,     6207,  207,   5,  "hash_data" },
+  [ 40] = { 0,     6260,  209,   9,  "hash_data" },
+  [ 41] = { 0,     6307,  211,   9,  "hash_data" },
+  [ 42] = { 0,     6404,  216,   9,  "hash_data" },
+  [ 43] = { 0,     6466,  220,   5,  "if" },
+  [ 44] = { 0,     6508,  221,   9,  "hash_data" },
+  [ 45] = { 0,     6558,  224,   5,  "return" },
+  [ 46] = { 0,     6609,  228,   5,  "set" },
+  [ 47] = { 0,     6833,  233,   9,  "set" },
+  [ 48] = { 0,     7016,  240,   5,  "if" },
+  [ 49] = { 0,     7137,  242,   9,  "if" },
+  [ 50] = { 0,     7213,  243,  13,  "set" },
+  [ 51] = { 0,     7409,  249,   9,  "if" },
+  [ 52] = { 0,     7506,  250,  14,  "set" },
+  [ 53] = { 0,     7576,  254,   9,  "if" },
+  [ 54] = { 0,     7612,  255,  13,  "set" },
+  [ 55] = { 0,     7697,  257,  13,  "set" },
+  [ 56] = { 0,     7774,  262,   5,  "set" },
+  [ 57] = { 0,     7872,  269,   5,  "if" },
+  [ 58] = { 0,     7900,  270,   9,  "set" },
+  [ 59] = { 0,     7999,  273,   9,  "set" },
+  [ 60] = { 0,     8075,  277,   9,  "set" },
+  [ 61] = { 0,     8155,  281,   5,  "unset" },
+  [ 62] = { 1,     1605,   38,   5,  "if" },
+  [ 63] = { 1,     1719,   40,   9,  "return" },
+  [ 64] = { 1,     1750,   42,   5,  "if" },
+  [ 65] = { 1,     1890,   46,   9,  "return" },
+  [ 66] = { 1,     1921,   48,   5,  "if" },
+  [ 67] = { 1,     2225,   57,   9,  "return" },
+  [ 68] = { 1,     2251,   60,   5,  "if" },
+  [ 69] = { 1,     2366,   62,   9,  "return" },
+  [ 70] = { 1,     2391,   64,   5,  "if" },
+  [ 71] = { 1,     2487,   66,   9,  "return" },
+  [ 72] = { 1,     2512,   68,   5,  "return" },
+  [ 73] = { 1,     2819,   77,   5,  "return" },
+  [ 74] = { 1,     2856,   81,   5,  "return" },
+  [ 75] = { 1,     2894,   85,   5,  "hash_data" },
+  [ 76] = { 1,     2947,   87,   9,  "hash_data" },
+  [ 77] = { 1,     2994,   89,   9,  "hash_data" },
+  [ 78] = { 1,     3066,   95,   5,  "return" },
+  [ 79] = { 1,     3118,   99,   5,  "if" },
+  [ 80] = { 1,     3195,  101,   9,  "return" },
+  [ 81] = { 1,     3223,  103,   5,  "if" },
+  [ 82] = { 1,     3358,  106,   9,  "return" },
+  [ 83] = { 1,     3432,  109,   5,  "return" },
+  [ 84] = { 1,     3469,  113,   5,  "return" },
+  [ 85] = { 1,     3510,  117,   5,  "return" },
+  [ 86] = { 1,     3627,  124,   5,  "set" },
+  [ 87] = { 1,     4218,  148,   5,  "if" },
+  [ 88] = { 1,     4255,  149,   9,  "unset" },
+  [ 89] = { 1,     4283,  151,   5,  "return" },
+  [ 90] = { 1,     4333,  155,   5,  "if" },
+  [ 91] = { 1,     4366,  156,   9,  "return" },
+  [ 92] = { 1,     4718,  164,   9,  "set" },
+  [ 93] = { 1,     4790,  167,   5,  "return" },
+  [ 94] = { 1,     4839,  171,   5,  "set" },
+  [ 95] = { 1,     5438,  195,   5,  "return" },
+  [ 96] = { 1,     5473,  199,   5,  "return" },
+};
+
+/* ---===### VCC generated .h code ###===---*/
+
+static struct vsmw_cluster *vsc_cluster;
+
+extern const struct VCL_conf VCL_conf;
+
+/* --- BEGIN VMOD std --- */
+
+static struct vmod *VGC_vmod_std;
+static struct vmod_priv vmod_priv_std;
+
+/* Functions */
+typedef VCL_STRING td_std_toupper(VRT_CTX, const char *, ...);
+typedef VCL_STRING td_std_tolower(VRT_CTX, const char *, ...);
+typedef VCL_VOID td_std_set_ip_tos(VRT_CTX, VCL_INT);
+typedef VCL_REAL td_std_random(VRT_CTX, VCL_REAL, VCL_REAL);
+typedef VCL_VOID td_std_log(VRT_CTX, const char *, ...);
+typedef VCL_VOID td_std_syslog(VRT_CTX, VCL_INT, const char *,
+    ...);
+typedef VCL_STRING td_std_fileread(VRT_CTX, struct vmod_priv *,
+    VCL_STRING);
+typedef VCL_BOOL td_std_file_exists(VRT_CTX, VCL_STRING);
+typedef VCL_VOID td_std_collect(VRT_CTX, VCL_HEADER,
+    VCL_STRING);
+typedef VCL_DURATION td_std_duration(VRT_CTX, VCL_STRING,
+    VCL_DURATION);
+typedef VCL_INT td_std_integer(VRT_CTX, VCL_STRING, VCL_INT);
+typedef VCL_IP td_std_ip(VRT_CTX, VCL_STRING, VCL_IP, VCL_BOOL,
+    VCL_STRING);
+typedef VCL_REAL td_std_real(VRT_CTX, VCL_STRING, VCL_REAL);
+typedef VCL_INT td_std_real2integer(VRT_CTX, VCL_REAL, VCL_INT);
+typedef VCL_TIME td_std_real2time(VRT_CTX, VCL_REAL, VCL_TIME);
+typedef VCL_INT td_std_time2integer(VRT_CTX, VCL_TIME, VCL_INT);
+typedef VCL_REAL td_std_time2real(VRT_CTX, VCL_TIME, VCL_REAL);
+typedef VCL_BOOL td_std_healthy(VRT_CTX, VCL_BACKEND);
+typedef VCL_INT td_std_port(VRT_CTX, VCL_IP);
+typedef VCL_VOID td_std_rollback(VRT_CTX, VCL_HTTP);
+typedef VCL_VOID td_std_timestamp(VRT_CTX, VCL_STRING);
+typedef VCL_STRING td_std_querysort(VRT_CTX, VCL_STRING);
+typedef VCL_BOOL td_std_cache_req_body(VRT_CTX, VCL_BYTES);
+typedef VCL_STRING td_std_strstr(VRT_CTX, VCL_STRING,
+    VCL_STRING);
+typedef VCL_TIME td_std_time(VRT_CTX, VCL_STRING, VCL_TIME);
+typedef VCL_STRING td_std_getenv(VRT_CTX, VCL_STRING);
+typedef VCL_VOID td_std_late_100_continue(VRT_CTX, VCL_BOOL);
+typedef VCL_BOOL td_std_syntax(VRT_CTX, VCL_REAL);
+typedef VCL_BOOL td_std_fnmatch(VRT_CTX, VCL_STRING, VCL_STRING,
+    VCL_BOOL, VCL_BOOL, VCL_BOOL);
+
+struct Vmod_std_Func {
+	td_std_toupper			*toupper;
+	td_std_tolower			*tolower;
+	td_std_set_ip_tos		*set_ip_tos;
+	td_std_random			*random;
+	td_std_log			*log;
+	td_std_syslog			*syslog;
+	td_std_fileread			*fileread;
+	td_std_file_exists		*file_exists;
+	td_std_collect			*collect;
+	td_std_duration			*duration;
+	td_std_integer			*integer;
+	td_std_ip			*ip;
+	td_std_real			*real;
+	td_std_real2integer		*real2integer;
+	td_std_real2time		*real2time;
+	td_std_time2integer		*time2integer;
+	td_std_time2real		*time2real;
+	td_std_healthy			*healthy;
+	td_std_port			*port;
+	td_std_rollback			*rollback;
+	td_std_timestamp		*timestamp;
+	td_std_querysort		*querysort;
+	td_std_cache_req_body		*cache_req_body;
+	td_std_strstr			*strstr;
+	td_std_time			*time;
+	td_std_getenv			*getenv;
+	td_std_late_100_continue	*late_100_continue;
+	td_std_syntax			*syntax;
+	td_std_fnmatch			*fnmatch;
+};
+static struct Vmod_std_Func Vmod_std_Func;
+
+/* --- END VMOD std --- */
+
+
+static struct director *vgc_backend_prod;
+static const struct vrt_backend_probe vgc_probe__0[] = {{
+	.magic = VRT_BACKEND_PROBE_MAGIC,
+	.url = "/.well-known/acme-challenge/health",
+	.timeout = 3,
+	.interval = 10,
+	.window = 5,
+	.threshold = 3,
+	.initial = ~0U,
+}};
+
+/* "205.134.249.177 80" -> 205.134.249.177 */
+static const unsigned long long suckaddr_0[4] = {
+    0x500000024b1e9335ULL,
+    0x00000000b1f986cdULL,
+    0x0000000000000000ULL,
+    0x0000000000000000ULL
+};
+
+static const struct vrt_backend vgc_dir_priv_vgc_backend_prod = {
+	.magic = VRT_BACKEND_MAGIC,
+	.vcl_name = "prod",
+	.connect_timeout = 5,
+	.first_byte_timeout = 120,
+	.between_bytes_timeout = 60,
+	.max_connections = 300,
+	.probe = vgc_probe__0,
+	.ipv4_suckaddr = (const struct suckaddr *)(const void*)suckaddr_0,
+	.ipv4_addr = "205.134.249.177",
+	.port = "80",
+	.path = (void *) 0,
+	.hosthdr = "205.134.249.177",
+};
+
+static struct director *vgc_backend_beta;
+static const struct vrt_backend_probe vgc_probe__1[] = {{
+	.magic = VRT_BACKEND_PROBE_MAGIC,
+	.url = "/.well-known/acme-challenge/health",
+	.timeout = 3,
+	.interval = 10,
+	.window = 5,
+	.threshold = 3,
+	.initial = ~0U,
+}};
+
+/* "205.134.249.177 80" -> 205.134.249.177 */
+static const unsigned long long suckaddr_1[4] = {
+    0x500000024b1e9335ULL,
+    0x00000000b1f986cdULL,
+    0x0000000000000000ULL,
+    0x0000000000000000ULL
+};
+
+static const struct vrt_backend vgc_dir_priv_vgc_backend_beta = {
+	.magic = VRT_BACKEND_MAGIC,
+	.vcl_name = "beta",
+	.connect_timeout = 5,
+	.first_byte_timeout = 180,
+	.between_bytes_timeout = 90,
+	.max_connections = 150,
+	.probe = vgc_probe__1,
+	.ipv4_suckaddr = (const struct suckaddr *)(const void*)suckaddr_1,
+	.ipv4_addr = "205.134.249.177",
+	.port = "80",
+	.path = (void *) 0,
+	.hosthdr = "205.134.249.177",
+};
+
+static struct director *vgc_backend_dashboard;
+
+/* "127.0.0.1 80" -> 127.0.0.1 */
+static const unsigned long long suckaddr_2[4] = {
+    0x500000024b1e9335ULL,
+    0x000000000100007fULL,
+    0x0000000000000000ULL,
+    0x0000000000000000ULL
+};
+
+static const struct vrt_backend vgc_dir_priv_vgc_backend_dashboard = {
+	.magic = VRT_BACKEND_MAGIC,
+	.vcl_name = "dashboard",
+	.connect_timeout = 3,
+	.first_byte_timeout = 60,
+	.between_bytes_timeout = 30,
+	.max_connections = 50,
+	.ipv4_suckaddr = (const struct suckaddr *)(const void*)suckaddr_2,
+	.ipv4_addr = "127.0.0.1",
+	.port = "80",
+	.path = (void *) 0,
+	.hosthdr = "127.0.0.1",
+};
+
+static struct director *vgc_backend_lms;
+
+/* "205.134.249.177 80" -> 205.134.249.177 */
+static const unsigned long long suckaddr_3[4] = {
+    0x500000024b1e9335ULL,
+    0x00000000b1f986cdULL,
+    0x0000000000000000ULL,
+    0x0000000000000000ULL
+};
+
+static const struct vrt_backend vgc_dir_priv_vgc_backend_lms = {
+	.magic = VRT_BACKEND_MAGIC,
+	.vcl_name = "lms",
+	.connect_timeout = 5,
+	.first_byte_timeout = 120,
+	.between_bytes_timeout = 60,
+	.max_connections = 100,
+	.ipv4_suckaddr = (const struct suckaddr *)(const void*)suckaddr_3,
+	.ipv4_addr = "205.134.249.177",
+	.port = "80",
+	.path = (void *) 0,
+	.hosthdr = "205.134.249.177",
+};
+
+static struct director *vgc_backend_pim;
+
+/* "205.134.249.177 80" -> 205.134.249.177 */
+static const unsigned long long suckaddr_4[4] = {
+    0x500000024b1e9335ULL,
+    0x00000000b1f986cdULL,
+    0x0000000000000000ULL,
+    0x0000000000000000ULL
+};
+
+static const struct vrt_backend vgc_dir_priv_vgc_backend_pim = {
+	.magic = VRT_BACKEND_MAGIC,
+	.vcl_name = "pim",
+	.connect_timeout = 10,
+	.first_byte_timeout = 300,
+	.between_bytes_timeout = 120,
+	.max_connections = 50,
+	.ipv4_suckaddr = (const struct suckaddr *)(const void*)suckaddr_4,
+	.ipv4_addr = "205.134.249.177",
+	.port = "80",
+	.path = (void *) 0,
+	.hosthdr = "205.134.249.177",
+};
+
+static int v_matchproto_(acl_match_f)
+match_acl_named_purge(VRT_CTX, const VCL_IP p)
+{
+	const unsigned char *a;
+	int fam;
+
+	fam = VRT_VSA_GetPtr(p, &a);
+	if (fam < 0) {
+		VRT_acl_log(ctx, "NO_FAM purge");
+		return(0);
+	}
+
+	if (fam == 2) {
+	 if (a[0] == 127) {
+	  if (a[1] == 0) {
+	   if (a[2] == 0) {
+	    if (a[3] == 1) {
+	     VRT_acl_log(ctx, "MATCH purge "  "\"" "localhost" "\"" );
+	     return (1);
+	    }
+	   }
+	  }
+	 }
+	 if (a[0] == 205) {
+	  if (a[1] == 134) {
+	   if (a[2] == 249) {
+	    if (a[3] == 177) {
+	     VRT_acl_log(ctx, "MATCH purge "  "\"" "205.134.249.177" "\"" );
+	     return (1);
+	    }
+	   }
+	  }
+	 }
+	}
+	if (fam == 10) {
+	 if (a[0] == 0) {
+	  if (a[1] == 0) {
+	   if (a[2] == 0) {
+	    if (a[3] == 0) {
+	     if (a[4] == 0) {
+	      if (a[5] == 0) {
+	       if (a[6] == 0) {
+	        if (a[7] == 0) {
+	         if (a[8] == 0) {
+	          if (a[9] == 0) {
+	           if (a[10] == 0) {
+	            if (a[11] == 0) {
+	             if (a[12] == 0) {
+	              if (a[13] == 0) {
+	               if (a[14] == 0) {
+	                if (a[15] == 1) {
+	                 VRT_acl_log(ctx, "MATCH purge "  "\"" "localhost" "\"" );
+	                 return (1);
+	                }
+	               }
+	              }
+	             }
+	            }
+	           }
+	          }
+	         }
+	        }
+	       }
+	      }
+	     }
+	    }
+	   }
+	  }
+	 }
+	}
+	VRT_acl_log(ctx, "NO_MATCH purge");
+	return (0);
+}
+
+const struct vrt_acl vrt_acl_named_purge[] = {{
+	.magic = VRT_ACL_MAGIC,
+	.match = &match_acl_named_purge,
+}};
+
+
+static int v_matchproto_(acl_match_f)
+match_acl_named_cloudflare(VRT_CTX, const VCL_IP p)
+{
+	const unsigned char *a;
+	int fam;
+
+	fam = VRT_VSA_GetPtr(p, &a);
+	if (fam < 0) {
+		VRT_acl_log(ctx, "NO_FAM cloudflare");
+		return(0);
+	}
+
+	if (fam == 2) {
+	 if (a[0] == 103) {
+	  if (a[1] == 21) {
+	   if ((a[2] & 0xfc) == 244) {
+	    VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "103.21.244.0" "\""  "/" "22");
+	    return (1);
+	   }
+	  }
+	  if (a[1] == 22) {
+	   if ((a[2] & 0xfc) == 200) {
+	    VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "103.22.200.0" "\""  "/" "22");
+	    return (1);
+	   }
+	  }
+	  if (a[1] == 31) {
+	   if ((a[2] & 0xfc) == 4) {
+	    VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "103.31.4.0" "\""  "/" "22");
+	    return (1);
+	   }
+	  }
+	 }
+	 if (a[0] == 104) {
+	  if ((a[1] & 0xf8) == 16) {
+	   VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "104.16.0.0" "\""  "/" "13");
+	   return (1);
+	  }
+	  if ((a[1] & 0xfc) == 24) {
+	   VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "104.24.0.0" "\""  "/" "14");
+	   return (1);
+	  }
+	 }
+	 if (a[0] == 108) {
+	  if (a[1] == 162) {
+	   if ((a[2] & 0xc0) == 192) {
+	    VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "108.162.192.0" "\""  "/" "18");
+	    return (1);
+	   }
+	  }
+	 }
+	 if (a[0] == 131) {
+	  if (a[1] == 0) {
+	   if ((a[2] & 0xfc) == 72) {
+	    VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "131.0.72.0" "\""  "/" "22");
+	    return (1);
+	   }
+	  }
+	 }
+	 if (a[0] == 141) {
+	  if (a[1] == 101) {
+	   if ((a[2] & 0xc0) == 64) {
+	    VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "141.101.64.0" "\""  "/" "18");
+	    return (1);
+	   }
+	  }
+	 }
+	 if (a[0] == 162) {
+	  if ((a[1] & 0xfe) == 158) {
+	   VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "162.158.0.0" "\""  "/" "15");
+	   return (1);
+	  }
+	 }
+	 if (a[0] == 172) {
+	  if ((a[1] & 0xf8) == 64) {
+	   VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "172.64.0.0" "\""  "/" "13");
+	   return (1);
+	  }
+	 }
+	 if (a[0] == 173) {
+	  if (a[1] == 245) {
+	   if ((a[2] & 0xf0) == 48) {
+	    VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "173.245.48.0" "\""  "/" "20");
+	    return (1);
+	   }
+	  }
+	 }
+	 if (a[0] == 188) {
+	  if (a[1] == 114) {
+	   if ((a[2] & 0xf0) == 96) {
+	    VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "188.114.96.0" "\""  "/" "20");
+	    return (1);
+	   }
+	  }
+	 }
+	 if (a[0] == 190) {
+	  if (a[1] == 93) {
+	   if ((a[2] & 0xf0) == 240) {
+	    VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "190.93.240.0" "\""  "/" "20");
+	    return (1);
+	   }
+	  }
+	 }
+	 if (a[0] == 197) {
+	  if (a[1] == 234) {
+	   if ((a[2] & 0xfc) == 240) {
+	    VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "197.234.240.0" "\""  "/" "22");
+	    return (1);
+	   }
+	  }
+	 }
+	 if (a[0] == 198) {
+	  if (a[1] == 41) {
+	   if ((a[2] & 0x80) == 128) {
+	    VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "198.41.128.0" "\""  "/" "17");
+	    return (1);
+	   }
+	  }
+	 }
+	}
+	if (fam == 10) {
+	 if (a[0] == 36) {
+	  if (a[1] == 0) {
+	   if (a[2] == 203) {
+	    if (a[3] == 0) {
+	     VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "2400:cb00::" "\""  "/" "32");
+	     return (1);
+	    }
+	   }
+	  }
+	  if (a[1] == 5) {
+	   if (a[2] == 129) {
+	    if (a[3] == 0) {
+	     VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "2405:8100::" "\""  "/" "32");
+	     return (1);
+	    }
+	   }
+	   if (a[2] == 181) {
+	    if (a[3] == 0) {
+	     VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "2405:b500::" "\""  "/" "32");
+	     return (1);
+	    }
+	   }
+	  }
+	 }
+	 if (a[0] == 38) {
+	  if (a[1] == 6) {
+	   if (a[2] == 71) {
+	    if (a[3] == 0) {
+	     VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "2606:4700::" "\""  "/" "32");
+	     return (1);
+	    }
+	   }
+	  }
+	 }
+	 if (a[0] == 40) {
+	  if (a[1] == 3) {
+	   if (a[2] == 248) {
+	    if (a[3] == 0) {
+	     VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "2803:f800::" "\""  "/" "32");
+	     return (1);
+	    }
+	   }
+	  }
+	 }
+	 if (a[0] == 42) {
+	  if (a[1] == 6) {
+	   if (a[2] == 152) {
+	    if ((a[3] & 0xf8) == 192) {
+	     VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "2a06:98c0::" "\""  "/" "29");
+	     return (1);
+	    }
+	   }
+	  }
+	 }
+	 if (a[0] == 44) {
+	  if (a[1] == 15) {
+	   if (a[2] == 242) {
+	    if (a[3] == 72) {
+	     VRT_acl_log(ctx, "MATCH cloudflare "  "\"" "2c0f:f248::" "\""  "/" "32");
+	     return (1);
+	    }
+	   }
+	  }
+	 }
+	}
+	VRT_acl_log(ctx, "NO_MATCH cloudflare");
+	return (0);
+}
+
+const struct vrt_acl vrt_acl_named_cloudflare[] = {{
+	.magic = VRT_ACL_MAGIC,
+	.match = &match_acl_named_cloudflare,
+}};
+
+static const struct gethdr_s VGC_HDR_REQ_CF_2d_Connecting_2d_IP =
+    { HDR_REQ, "\021CF-Connecting-IP:"};
+static const struct gethdr_s VGC_HDR_REQ_X_2d_Forwarded_2d_For =
+    { HDR_REQ, "\020X-Forwarded-For:"};
+static const struct gethdr_s VGC_HDR_REQ_X_2d_Forwarded_2d_Proto =
+    { HDR_REQ, "\022X-Forwarded-Proto:"};
+static void *VGC_re_5;
+static const struct gethdr_s VGC_HDR_REQ_CF_2d_Visitor =
+    { HDR_REQ, "\013CF-Visitor:"};
+static void *VGC_re_6;
+static const struct gethdr_s VGC_HDR_REQ_host =
+    { HDR_REQ, "\005host:"};
+static void *VGC_re_7;
+static void *VGC_re_8;
+static void *VGC_re_9;
+static void *VGC_re_10;
+static void *VGC_re_11;
+static const struct gethdr_s VGC_HDR_REQ_User_2d_Agent =
+    { HDR_REQ, "\013User-Agent:"};
+static void *VGC_re_12;
+static const struct gethdr_s VGC_HDR_REQ_X_2d_Device =
+    { HDR_REQ, "\011X-Device:"};
+static void *VGC_re_13;
+static void *VGC_re_14;
+static void *VGC_re_15;
+static void *VGC_re_16;
+static const struct gethdr_s VGC_HDR_REQ_Cookie =
+    { HDR_REQ, "\007Cookie:"};
+static void *VGC_re_17;
+static void *VGC_re_18;
+static void *VGC_re_19;
+static void *VGC_re_20;
+static void *VGC_re_21;
+static void *VGC_re_22;
+static void *VGC_re_23;
+static void *VGC_re_24;
+static const struct gethdr_s VGC_HDR_BERESP_x_2d_url =
+    { HDR_BERESP, "\006x-url:"};
+static const struct gethdr_s VGC_HDR_BERESP_X_2d_Varnish_2d_Host =
+    { HDR_BERESP, "\017X-Varnish-Host:"};
+static const struct gethdr_s VGC_HDR_BEREQ_host =
+    { HDR_BEREQ, "\005host:"};
+static void *VGC_re_25;
+static const struct gethdr_s VGC_HDR_BERESP_Cache_2d_Control =
+    { HDR_BERESP, "\016Cache-Control:"};
+static const struct gethdr_s VGC_HDR_BERESP_Set_2d_Cookie =
+    { HDR_BERESP, "\013Set-Cookie:"};
+static const struct gethdr_s VGC_HDR_BERESP_content_2d_type =
+    { HDR_BERESP, "\015content-type:"};
+static void *VGC_re_26;
+static void *VGC_re_27;
+static void *VGC_re_28;
+static const struct gethdr_s VGC_HDR_BERESP_Vary =
+    { HDR_BERESP, "\005Vary:"};
+static const struct gethdr_s VGC_HDR_RESP_X_2d_Cache =
+    { HDR_RESP, "\010X-Cache:"};
+static const struct gethdr_s VGC_HDR_RESP_X_2d_Cache_2d_Hits =
+    { HDR_RESP, "\015X-Cache-Hits:"};
+static const struct gethdr_s VGC_HDR_RESP_X_2d_Device =
+    { HDR_RESP, "\011X-Device:"};
+static const struct gethdr_s VGC_HDR_RESP_x_2d_url =
+    { HDR_RESP, "\006x-url:"};
+static const struct gethdr_s VGC_HDR_RESP_X_2d_Varnish_2d_Host =
+    { HDR_RESP, "\017X-Varnish-Host:"};
+static const struct gethdr_s VGC_HDR_RESP_Via =
+    { HDR_RESP, "\004Via:"};
+static const struct gethdr_s VGC_HDR_RESP_X_2d_Varnish =
+    { HDR_RESP, "\012X-Varnish:"};
+static const struct gethdr_s VGC_HDR_RESP_X_2d_Powered_2d_By =
+    { HDR_RESP, "\015X-Powered-By:"};
+static const struct gethdr_s VGC_HDR_RESP_X_2d_Cache_2d_Age =
+    { HDR_RESP, "\014X-Cache-Age:"};
+static const struct gethdr_s VGC_HDR_RESP_Age =
+    { HDR_RESP, "\004Age:"};
+static void *VGC_re_29;
+static const struct gethdr_s VGC_HDR_REQ_Authorization =
+    { HDR_REQ, "\016Authorization:"};
+static const struct gethdr_s VGC_HDR_RESP_Content_2d_Type =
+    { HDR_RESP, "\015Content-Type:"};
+static const struct gethdr_s VGC_HDR_RESP_Retry_2d_After =
+    { HDR_RESP, "\014Retry-After:"};
+static const struct gethdr_s VGC_HDR_BERESP_Surrogate_2d_control =
+    { HDR_BERESP, "\022Surrogate-control:"};
+static void *VGC_re_30;
+static void *VGC_re_31;
+static const struct gethdr_s VGC_HDR_BERESP_Retry_2d_After =
+    { HDR_BERESP, "\014Retry-After:"};
+
+vcl_func_f VGC_function_vcl_backend_error;
+vcl_func_f VGC_function_vcl_backend_fetch;
+vcl_func_f VGC_function_vcl_backend_response;
+vcl_func_f VGC_function_vcl_deliver;
+vcl_func_f VGC_function_vcl_fini;
+vcl_func_f VGC_function_vcl_hash;
+vcl_func_f VGC_function_vcl_hit;
+vcl_func_f VGC_function_vcl_init;
+vcl_func_f VGC_function_vcl_miss;
+vcl_func_f VGC_function_vcl_pass;
+vcl_func_f VGC_function_vcl_pipe;
+vcl_func_f VGC_function_vcl_purge;
+vcl_func_f VGC_function_vcl_recv;
+vcl_func_f VGC_function_vcl_synth;
+
+static unsigned vgc_inistep;
+static unsigned vgc_warmupstep;
+
+/* ---===### VCC generated .c code ###===---*/
+
+#define END_ if (*ctx->handling) return
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_backend_error(VRT_CTX)
+{
+
+  /* ... from ('Builtin' Line 170 Pos 23) */
+  {
+    {
+      VRT_count(ctx, 94);
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_BERESP_content_2d_type,
+        "text/html; charset=utf-8",
+        vrt_magic_string_end
+      );
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_BERESP_Retry_2d_After,
+        "5",
+        vrt_magic_string_end
+      );
+      END_;
+      VRT_l_beresp_body(ctx, 
+        "<!DOCTYPE html>\n"
+        "<html>\n"
+        "  <head>\n"
+        "    <title>",
+        VRT_INT_string(ctx, VRT_r_beresp_status(ctx)),
+        " ",
+        VRT_r_beresp_reason(ctx),
+        "</title>\n"
+        "  </head>\n"
+        "  <body>\n"
+        "    <h1>Error ",
+        VRT_INT_string(ctx, VRT_r_beresp_status(ctx)),
+        " ",
+        VRT_r_beresp_reason(ctx),
+        "</h1>\n"
+        "    <p>",
+        VRT_r_beresp_reason(ctx),
+        "</p>\n"
+        "    <h3>Guru Meditation:</h3>\n"
+        "    <p>XID: ",
+        VRT_r_bereq_xid(ctx),
+        "</p>\n"
+        "    <hr>\n"
+        "    <p>Varnish cache server</p>\n"
+        "  </body>\n"
+        "</html>\n"
+        "",
+        vrt_magic_string_end
+      );
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_DELIVER);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_backend_fetch(VRT_CTX)
+{
+
+  /* ... from ('Builtin' Line 147 Pos 23) */
+  {
+    {
+      VRT_count(ctx, 87);
+      END_;
+      if (
+        (0 == VRT_strcmp(VRT_r_bereq_method(ctx), "GET"))
+      )
+        {
+          VRT_count(ctx, 88);
+          END_;
+          VRT_u_bereq_body(ctx);
+          END_;
+        }
+      VRT_count(ctx, 89);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_FETCH);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_backend_response(VRT_CTX)
+{
+
+  /* ... from ('/tmp/default.vcl.removepass2' Line 227 Pos 26) */
+  {
+    {
+      VRT_count(ctx, 46);
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_BERESP_x_2d_url,
+        VRT_r_bereq_url(ctx),
+        vrt_magic_string_end
+      );
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_BERESP_X_2d_Varnish_2d_Host,
+        VRT_GetHdr(ctx, &VGC_HDR_BEREQ_host),
+        vrt_magic_string_end
+      );
+      END_;
+      if (
+        VRT_re_match(ctx, VRT_r_bereq_url(ctx), VGC_re_25)
+      )
+        {
+          VRT_count(ctx, 47);
+          END_;
+          VRT_l_beresp_ttl(ctx, 
+            (365) * 86400
+          );
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_BERESP_Cache_2d_Control,
+            "public, max-age=31536000",
+            vrt_magic_string_end
+          );
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_BERESP_Set_2d_Cookie, vrt_magic_string_unset);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_DELIVER);
+          END_;
+        }
+      VRT_count(ctx, 48);
+      END_;
+      if (
+        VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_BERESP_content_2d_type), VGC_re_26)
+      )
+        {
+          VRT_count(ctx, 49);
+          END_;
+          if (
+            VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_BERESP_Set_2d_Cookie), VGC_re_27)
+          )
+            {
+              VRT_count(ctx, 50);
+              END_;
+              VRT_l_beresp_ttl(ctx, 
+                (0) * 1
+              );
+              END_;
+              VRT_l_beresp_uncacheable(ctx, 
+                (0==0)
+              );
+              END_;
+              END_;
+              VRT_handling(ctx, VCL_RET_DELIVER);
+              END_;
+            }
+          VRT_count(ctx, 51);
+          END_;
+          if (
+            (
+              (VRT_r_beresp_ttl(ctx) <= (0) * 1)
+            &&
+              !VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_BERESP_Cache_2d_Control), VGC_re_28)
+            )
+          )
+            {
+              VRT_count(ctx, 52);
+              END_;
+              VRT_l_beresp_ttl(ctx, 
+                (2) * 3600
+              );
+              END_;
+            }
+          VRT_count(ctx, 53);
+          END_;
+          if (
+            (VRT_GetHdr(ctx, &VGC_HDR_BERESP_Vary) != 0)
+          )
+            {
+              VRT_count(ctx, 54);
+              END_;
+              VRT_SetHdr(ctx, &VGC_HDR_BERESP_Vary,
+                VRT_GetHdr(ctx, &VGC_HDR_BERESP_Vary),
+                ", X-Device",
+                vrt_magic_string_end
+              );
+              END_;
+            }
+          else
+            {
+              VRT_count(ctx, 55);
+              END_;
+              VRT_SetHdr(ctx, &VGC_HDR_BERESP_Vary,
+                "X-Device",
+                vrt_magic_string_end
+              );
+              END_;
+            }
+          END_;
+        }
+      VRT_count(ctx, 56);
+      END_;
+      VRT_l_beresp_grace(ctx, 
+        (24) * 3600
+      );
+      END_;
+      VRT_l_beresp_keep(ctx, 
+        (8) * 3600
+      );
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_DELIVER);
+      END_;
+    }
+  }
+  /* ... from ('Builtin' Line 154 Pos 26) */
+  {
+    {
+      VRT_count(ctx, 90);
+      END_;
+      if (
+        VRT_r_bereq_uncacheable(ctx)
+      )
+        {
+          VRT_count(ctx, 91);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_DELIVER);
+          END_;
+        }
+      else if (
+        (
+          (VRT_r_beresp_ttl(ctx) <= (0) * 1)
+        ||
+          (VRT_GetHdr(ctx, &VGC_HDR_BERESP_Set_2d_Cookie) != 0)
+        ||
+          VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_BERESP_Surrogate_2d_control), VGC_re_30)
+        ||
+          ((
+            !((VRT_GetHdr(ctx, &VGC_HDR_BERESP_Surrogate_2d_control) != 0))
+          &&
+            VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_BERESP_Cache_2d_Control), VGC_re_31)
+          ))
+        ||
+          (0 == VRT_strcmp(VRT_GetHdr(ctx, &VGC_HDR_BERESP_Vary), "*"))
+        )
+      )
+        {
+          VRT_count(ctx, 92);
+          END_;
+          VRT_l_beresp_ttl(ctx, 
+            (120) * 1
+          );
+          END_;
+          VRT_l_beresp_uncacheable(ctx, 
+            (0==0)
+          );
+          END_;
+        }
+      VRT_count(ctx, 93);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_DELIVER);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_deliver(VRT_CTX)
+{
+
+  /* ... from ('/tmp/default.vcl.removepass2' Line 268 Pos 17) */
+  {
+    {
+      VRT_count(ctx, 57);
+      END_;
+      if (
+        (VRT_r_obj_hits(ctx) > 0)
+      )
+        {
+          VRT_count(ctx, 58);
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_RESP_X_2d_Cache,
+            "HIT",
+            vrt_magic_string_end
+          );
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_RESP_X_2d_Cache_2d_Hits,
+            VRT_INT_string(ctx, VRT_r_obj_hits(ctx)),
+            vrt_magic_string_end
+          );
+          END_;
+        }
+      else
+        {
+          VRT_count(ctx, 59);
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_RESP_X_2d_Cache,
+            "MISS",
+            vrt_magic_string_end
+          );
+          END_;
+        }
+      END_;
+      if (
+        (VRT_GetHdr(ctx, &VGC_HDR_REQ_X_2d_Device) != 0)
+      )
+        {
+          VRT_count(ctx, 60);
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_RESP_X_2d_Device,
+            VRT_GetHdr(ctx, &VGC_HDR_REQ_X_2d_Device),
+            vrt_magic_string_end
+          );
+          END_;
+        }
+      VRT_count(ctx, 61);
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_RESP_x_2d_url, vrt_magic_string_unset);
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_RESP_X_2d_Varnish_2d_Host, vrt_magic_string_unset);
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_RESP_Via, vrt_magic_string_unset);
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_RESP_X_2d_Varnish, vrt_magic_string_unset);
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_RESP_X_2d_Powered_2d_By, vrt_magic_string_unset);
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_RESP_X_2d_Cache_2d_Age,
+        VRT_GetHdr(ctx, &VGC_HDR_RESP_Age),
+        vrt_magic_string_end
+      );
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_DELIVER);
+      END_;
+    }
+  }
+  /* ... from ('Builtin' Line 116 Pos 17) */
+  {
+    {
+      VRT_count(ctx, 85);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_DELIVER);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_fini(VRT_CTX)
+{
+
+  /* ... from ('Builtin' Line 198 Pos 14) */
+  {
+    {
+      VRT_count(ctx, 96);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_OK);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_hash(VRT_CTX)
+{
+
+  /* ... from ('/tmp/default.vcl.removepass2' Line 206 Pos 14) */
+  {
+    {
+      VRT_count(ctx, 39);
+      END_;
+      VRT_hashdata(ctx,
+        VRT_r_req_url(ctx),
+      vrt_magic_string_end
+      );
+      END_;
+      if (
+        (VRT_GetHdr(ctx, &VGC_HDR_REQ_host) != 0)
+      )
+        {
+          VRT_count(ctx, 40);
+          END_;
+          VRT_hashdata(ctx,
+            VRT_GetHdr(ctx, &VGC_HDR_REQ_host),
+          vrt_magic_string_end
+          );
+          END_;
+        }
+      else
+        {
+          VRT_count(ctx, 41);
+          END_;
+          VRT_hashdata(ctx,
+            VRT_IP_string(ctx, VRT_r_server_ip(ctx)),
+          vrt_magic_string_end
+          );
+          END_;
+        }
+      END_;
+      if (
+        (VRT_GetHdr(ctx, &VGC_HDR_REQ_X_2d_Device) != 0)
+      )
+        {
+          VRT_count(ctx, 42);
+          END_;
+          VRT_hashdata(ctx,
+            VRT_GetHdr(ctx, &VGC_HDR_REQ_X_2d_Device),
+          vrt_magic_string_end
+          );
+          END_;
+        }
+      VRT_count(ctx, 43);
+      END_;
+      if (
+        (VRT_GetHdr(ctx, &VGC_HDR_REQ_X_2d_Forwarded_2d_Proto) != 0)
+      )
+        {
+          VRT_count(ctx, 44);
+          END_;
+          VRT_hashdata(ctx,
+            VRT_GetHdr(ctx, &VGC_HDR_REQ_X_2d_Forwarded_2d_Proto),
+          vrt_magic_string_end
+          );
+          END_;
+        }
+      VRT_count(ctx, 45);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_LOOKUP);
+      END_;
+    }
+  }
+  /* ... from ('Builtin' Line 84 Pos 14) */
+  {
+    {
+      VRT_count(ctx, 75);
+      END_;
+      VRT_hashdata(ctx,
+        VRT_r_req_url(ctx),
+      vrt_magic_string_end
+      );
+      END_;
+      if (
+        (VRT_GetHdr(ctx, &VGC_HDR_REQ_host) != 0)
+      )
+        {
+          VRT_count(ctx, 76);
+          END_;
+          VRT_hashdata(ctx,
+            VRT_GetHdr(ctx, &VGC_HDR_REQ_host),
+          vrt_magic_string_end
+          );
+          END_;
+        }
+      else
+        {
+          VRT_count(ctx, 77);
+          END_;
+          VRT_hashdata(ctx,
+            VRT_IP_string(ctx, VRT_r_server_ip(ctx)),
+          vrt_magic_string_end
+          );
+          END_;
+        }
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_LOOKUP);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_hit(VRT_CTX)
+{
+
+  /* ... from ('Builtin' Line 98 Pos 13) */
+  {
+    {
+      VRT_count(ctx, 79);
+      END_;
+      if (
+        (VRT_r_obj_ttl(ctx) >= (0) * 1)
+      )
+        {
+          VRT_count(ctx, 80);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_DELIVER);
+          END_;
+        }
+      VRT_count(ctx, 81);
+      END_;
+      if (
+        ((VRT_r_obj_ttl(ctx) + VRT_r_obj_grace(ctx)) > (0) * 1)
+      )
+        {
+          VRT_count(ctx, 82);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_DELIVER);
+          END_;
+        }
+      VRT_count(ctx, 83);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_MISS);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_init(VRT_CTX)
+{
+
+  /* ... from ('Builtin' Line 194 Pos 14) */
+  {
+    {
+      VRT_count(ctx, 95);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_OK);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_miss(VRT_CTX)
+{
+
+  /* ... from ('Builtin' Line 112 Pos 14) */
+  {
+    {
+      VRT_count(ctx, 84);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_FETCH);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_pass(VRT_CTX)
+{
+
+  /* ... from ('Builtin' Line 80 Pos 14) */
+  {
+    {
+      VRT_count(ctx, 74);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_FETCH);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_pipe(VRT_CTX)
+{
+
+  /* ... from ('Builtin' Line 71 Pos 14) */
+  {
+    {
+      VRT_count(ctx, 73);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_PIPE);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_purge(VRT_CTX)
+{
+
+  /* ... from ('Builtin' Line 94 Pos 15) */
+  {
+    {
+      VRT_count(ctx, 78);
+      END_;
+      VRT_synth(ctx,
+        200
+        ,
+        "Purged"
+      );
+      END_;
+      VRT_handling(ctx, VCL_RET_SYNTH);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_recv(VRT_CTX)
+{
+
+  /* ... from ('/tmp/default.vcl.removepass2' Line 109 Pos 14) */
+  {
+    {
+      VRT_count(ctx, 1);
+      END_;
+      if (
+        VRT_acl_match(ctx, vrt_acl_named_cloudflare, VRT_r_client_ip(ctx))
+      )
+        {
+          VRT_count(ctx, 2);
+          END_;
+          if (
+            (VRT_GetHdr(ctx, &VGC_HDR_REQ_CF_2d_Connecting_2d_IP) != 0)
+          )
+            {
+              VRT_count(ctx, 3);
+              END_;
+              VRT_SetHdr(ctx, &VGC_HDR_REQ_X_2d_Forwarded_2d_For,
+                VRT_GetHdr(ctx, &VGC_HDR_REQ_CF_2d_Connecting_2d_IP),
+                vrt_magic_string_end
+              );
+              END_;
+            }
+          VRT_count(ctx, 4);
+          END_;
+        }
+      VRT_count(ctx, 5);
+      END_;
+      if (
+        (
+          !VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_REQ_X_2d_Forwarded_2d_Proto), VGC_re_5)
+        &&
+          ((
+            VRT_acl_match(ctx, vrt_acl_named_cloudflare, VRT_r_client_ip(ctx))
+          ||
+            VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_REQ_CF_2d_Visitor), VGC_re_6)
+          ))
+        )
+      )
+        {
+          VRT_count(ctx, 6);
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_REQ_X_2d_Forwarded_2d_Proto,
+            "https",
+            vrt_magic_string_end
+          );
+          END_;
+        }
+      VRT_count(ctx, 7);
+      END_;
+      if (
+        VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_REQ_host), VGC_re_7)
+      )
+        {
+          VRT_count(ctx, 8);
+          END_;
+          VRT_l_req_backend_hint(ctx, 
+            vgc_backend_prod
+          );
+          END_;
+        }
+      else if (
+        VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_REQ_host), VGC_re_8)
+      )
+        {
+          VRT_count(ctx, 9);
+          END_;
+          VRT_l_req_backend_hint(ctx, 
+            vgc_backend_beta
+          );
+          END_;
+        }
+      else if (
+        VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_REQ_host), VGC_re_9)
+      )
+        {
+          VRT_count(ctx, 10);
+          END_;
+          VRT_l_req_backend_hint(ctx, 
+            vgc_backend_dashboard
+          );
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_PASS);
+          END_;
+        }
+      else if (
+        VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_REQ_host), VGC_re_10)
+      )
+        {
+          VRT_count(ctx, 11);
+          END_;
+          VRT_l_req_backend_hint(ctx, 
+            vgc_backend_lms
+          );
+          END_;
+        }
+      else if (
+        VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_REQ_host), VGC_re_11)
+      )
+        {
+          VRT_count(ctx, 12);
+          END_;
+          VRT_l_req_backend_hint(ctx, 
+            vgc_backend_pim
+          );
+          END_;
+        }
+      else
+        {
+          VRT_count(ctx, 13);
+          END_;
+          VRT_l_req_backend_hint(ctx, 
+            vgc_backend_prod
+          );
+          END_;
+        }
+      END_;
+      if (
+        VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_REQ_User_2d_Agent), VGC_re_12)
+      )
+        {
+          VRT_count(ctx, 14);
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_REQ_X_2d_Device,
+            "tablet",
+            vrt_magic_string_end
+          );
+          END_;
+        }
+      else if (
+        VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_REQ_User_2d_Agent), VGC_re_13)
+      )
+        {
+          VRT_count(ctx, 15);
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_REQ_X_2d_Device,
+            "mobile",
+            vrt_magic_string_end
+          );
+          END_;
+        }
+      else
+        {
+          VRT_count(ctx, 16);
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_REQ_X_2d_Device,
+            "desktop",
+            vrt_magic_string_end
+          );
+          END_;
+        }
+      END_;
+      if (
+        (0 == VRT_strcmp(VRT_r_req_method(ctx), "PURGE"))
+      )
+        {
+          VRT_count(ctx, 17);
+          END_;
+          if (
+            (
+              !(VRT_acl_match(ctx, vrt_acl_named_purge, VRT_r_client_ip(ctx)))
+            &&
+              !(VRT_acl_match(ctx, vrt_acl_named_cloudflare, VRT_r_client_ip(ctx)))
+            )
+          )
+            {
+              VRT_count(ctx, 18);
+              END_;
+              VRT_synth(ctx,
+                405
+                ,
+                "Not allowed"
+              );
+              END_;
+              VRT_handling(ctx, VCL_RET_SYNTH);
+              END_;
+            }
+          VRT_count(ctx, 19);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_PURGE);
+          END_;
+        }
+      VRT_count(ctx, 20);
+      END_;
+      if (
+        (0 == VRT_strcmp(VRT_r_req_method(ctx), "BAN"))
+      )
+        {
+          VRT_count(ctx, 21);
+          END_;
+          if (
+            !(VRT_acl_match(ctx, vrt_acl_named_purge, VRT_r_client_ip(ctx)))
+          )
+            {
+              VRT_count(ctx, 22);
+              END_;
+              VRT_synth(ctx,
+                405
+                ,
+                "Not allowed"
+              );
+              END_;
+              VRT_handling(ctx, VCL_RET_SYNTH);
+              END_;
+            }
+          VRT_count(ctx, 23);
+          END_;
+          VRT_ban_string(ctx, 
+            
+            VRT_CollectString(ctx,
+              "obj.http.X-Varnish-Host == ",
+              VRT_GetHdr(ctx, &VGC_HDR_REQ_host),
+              " && obj.http.x-url ~ ",
+              VRT_r_req_url(ctx),
+              vrt_magic_string_end)
+
+          );
+          END_;
+          VRT_synth(ctx,
+            200
+            ,
+            "Banned"
+          );
+          END_;
+          VRT_handling(ctx, VCL_RET_SYNTH);
+          END_;
+        }
+      VRT_count(ctx, 24);
+      END_;
+      if (
+        (
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "GET"))
+        &&
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "HEAD"))
+        )
+      )
+        {
+          VRT_count(ctx, 25);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_PASS);
+          END_;
+        }
+      VRT_count(ctx, 26);
+      END_;
+      if (
+        VRT_re_match(ctx, VRT_r_req_url(ctx), VGC_re_14)
+      )
+        {
+          VRT_count(ctx, 27);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_PASS);
+          END_;
+        }
+      VRT_count(ctx, 28);
+      END_;
+      if (
+        VRT_re_match(ctx, VRT_r_req_url(ctx), VGC_re_15)
+      )
+        {
+          VRT_count(ctx, 29);
+          END_;
+          VRT_l_req_url(ctx, 
+            VRT_regsub(ctx, 0,
+              VRT_r_req_url(ctx),
+              VGC_re_16,
+              ""),
+            vrt_magic_string_end
+          );
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_REQ_Cookie, vrt_magic_string_unset);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_HASH);
+          END_;
+        }
+      VRT_count(ctx, 30);
+      END_;
+      if (
+        VRT_re_match(ctx, VRT_r_req_url(ctx), VGC_re_17)
+      )
+        {
+          VRT_count(ctx, 31);
+          END_;
+          VRT_l_req_url(ctx, 
+            VRT_regsub(ctx, 1,
+              VRT_r_req_url(ctx),
+              VGC_re_18,
+              ""),
+            vrt_magic_string_end
+          );
+          END_;
+          VRT_l_req_url(ctx, 
+            VRT_regsub(ctx, 1,
+              VRT_r_req_url(ctx),
+              VGC_re_19,
+              "\?"),
+            vrt_magic_string_end
+          );
+          END_;
+          VRT_l_req_url(ctx, 
+            VRT_regsub(ctx, 0,
+              VRT_r_req_url(ctx),
+              VGC_re_20,
+              "\?"),
+            vrt_magic_string_end
+          );
+          END_;
+          VRT_l_req_url(ctx, 
+            VRT_regsub(ctx, 0,
+              VRT_r_req_url(ctx),
+              VGC_re_21,
+              ""),
+            vrt_magic_string_end
+          );
+          END_;
+        }
+      VRT_count(ctx, 32);
+      END_;
+      if (
+        (VRT_GetHdr(ctx, &VGC_HDR_REQ_Cookie) != 0)
+      )
+        {
+          VRT_count(ctx, 33);
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_REQ_Cookie,
+            VRT_regsub(ctx, 1,
+              VRT_GetHdr(ctx, &VGC_HDR_REQ_Cookie),
+              VGC_re_22,
+              ""),
+            vrt_magic_string_end
+          );
+          END_;
+          VRT_SetHdr(ctx, &VGC_HDR_REQ_Cookie,
+            VRT_regsub(ctx, 1,
+              VRT_GetHdr(ctx, &VGC_HDR_REQ_Cookie),
+              VGC_re_23,
+              ""),
+            vrt_magic_string_end
+          );
+          END_;
+          if (
+            (0 == VRT_strcmp(VRT_GetHdr(ctx, &VGC_HDR_REQ_Cookie), ""))
+          )
+            {
+              VRT_count(ctx, 34);
+              END_;
+              VRT_SetHdr(ctx, &VGC_HDR_REQ_Cookie, vrt_magic_string_unset);
+              END_;
+            }
+          VRT_count(ctx, 35);
+          END_;
+        }
+      VRT_count(ctx, 36);
+      END_;
+      if (
+        VRT_re_match(ctx, VRT_GetHdr(ctx, &VGC_HDR_REQ_Cookie), VGC_re_24)
+      )
+        {
+          VRT_count(ctx, 37);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_PASS);
+          END_;
+        }
+      VRT_count(ctx, 38);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_HASH);
+      END_;
+    }
+  }
+  /* ... from ('Builtin' Line 37 Pos 14) */
+  {
+    {
+      VRT_count(ctx, 62);
+      END_;
+      if (
+        (0 == VRT_strcmp(VRT_r_req_method(ctx), "PRI"))
+      )
+        {
+          VRT_count(ctx, 63);
+          END_;
+          VRT_synth(ctx,
+            405
+            ,
+            (const char*)0
+          );
+          END_;
+          VRT_handling(ctx, VCL_RET_SYNTH);
+          END_;
+        }
+      VRT_count(ctx, 64);
+      END_;
+      if (
+        (
+          !((VRT_GetHdr(ctx, &VGC_HDR_REQ_host) != 0))
+        &&
+          (VRT_r_req_esi_level(ctx) == 0)
+        &&
+          VRT_re_match(ctx, VRT_r_req_proto(ctx), VGC_re_29)
+        )
+      )
+        {
+          VRT_count(ctx, 65);
+          END_;
+          VRT_synth(ctx,
+            400
+            ,
+            (const char*)0
+          );
+          END_;
+          VRT_handling(ctx, VCL_RET_SYNTH);
+          END_;
+        }
+      VRT_count(ctx, 66);
+      END_;
+      if (
+        (
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "GET"))
+        &&
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "HEAD"))
+        &&
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "PUT"))
+        &&
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "POST"))
+        &&
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "TRACE"))
+        &&
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "OPTIONS"))
+        &&
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "DELETE"))
+        &&
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "PATCH"))
+        )
+      )
+        {
+          VRT_count(ctx, 67);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_PIPE);
+          END_;
+        }
+      VRT_count(ctx, 68);
+      END_;
+      if (
+        (
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "GET"))
+        &&
+          (0 != VRT_strcmp(VRT_r_req_method(ctx), "HEAD"))
+        )
+      )
+        {
+          VRT_count(ctx, 69);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_PASS);
+          END_;
+        }
+      VRT_count(ctx, 70);
+      END_;
+      if (
+        (
+          (VRT_GetHdr(ctx, &VGC_HDR_REQ_Authorization) != 0)
+        ||
+          (VRT_GetHdr(ctx, &VGC_HDR_REQ_Cookie) != 0)
+        )
+      )
+        {
+          VRT_count(ctx, 71);
+          END_;
+          END_;
+          VRT_handling(ctx, VCL_RET_PASS);
+          END_;
+        }
+      VRT_count(ctx, 72);
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_HASH);
+      END_;
+    }
+  }
+}
+
+void v_matchproto_(vcl_func_f)
+VGC_function_vcl_synth(VRT_CTX)
+{
+
+  /* ... from ('Builtin' Line 123 Pos 15) */
+  {
+    {
+      VRT_count(ctx, 86);
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_RESP_Content_2d_Type,
+        "text/html; charset=utf-8",
+        vrt_magic_string_end
+      );
+      END_;
+      VRT_SetHdr(ctx, &VGC_HDR_RESP_Retry_2d_After,
+        "5",
+        vrt_magic_string_end
+      );
+      END_;
+      VRT_l_resp_body(ctx, 
+        "<!DOCTYPE html>\n"
+        "<html>\n"
+        "  <head>\n"
+        "    <title>",
+        VRT_INT_string(ctx, VRT_r_resp_status(ctx)),
+        " ",
+        VRT_r_resp_reason(ctx),
+        "</title>\n"
+        "  </head>\n"
+        "  <body>\n"
+        "    <h1>Error ",
+        VRT_INT_string(ctx, VRT_r_resp_status(ctx)),
+        " ",
+        VRT_r_resp_reason(ctx),
+        "</h1>\n"
+        "    <p>",
+        VRT_r_resp_reason(ctx),
+        "</p>\n"
+        "    <h3>Guru Meditation:</h3>\n"
+        "    <p>XID: ",
+        VRT_r_req_xid(ctx),
+        "</p>\n"
+        "    <hr>\n"
+        "    <p>Varnish cache server</p>\n"
+        "  </body>\n"
+        "</html>\n"
+        "",
+        vrt_magic_string_end
+      );
+      END_;
+      END_;
+      VRT_handling(ctx, VCL_RET_DELIVER);
+      END_;
+    }
+  }
+}
+
+static int
+VGC_Load(VRT_CTX)
+{
+
+	vgc_inistep = 0;
+	size_t ndirector = 5UL;
+
+	/* 1 */
+	vsc_cluster = VRT_VSM_Cluster_New(ctx,
+	    ndirector * VRT_backend_vsm_need(ctx));
+	if (vsc_cluster == 0)
+		return(1);
+	vgc_inistep = 1;
+
+	/* 2 */
+	if (VRT_Vmod_Init(ctx,
+	    &VGC_vmod_std,
+	    0,
+	    &Vmod_std_Func,
+	    sizeof(Vmod_std_Func),
+	    "std",
+	    "/usr/lib64/varnish/vmods/libvmod_std.so",
+	    "88f100a21e9ee24324d65a05874113e0f61313686f806e945c76330f24831d61",
+	    "./vmod_cache/_vmod_std.88f100a21e9ee24324d65a05874113e0f61313686f806e945c76330f24831d61"
+	    ))
+		return(1);
+	vgc_inistep = 2;
+
+	/* 3 */
+	vgc_backend_prod =
+	    VRT_new_backend_clustered(ctx, vsc_cluster,
+		&vgc_dir_priv_vgc_backend_prod);
+	vgc_inistep = 3;
+
+	/* 4 */
+	vgc_backend_beta =
+	    VRT_new_backend_clustered(ctx, vsc_cluster,
+		&vgc_dir_priv_vgc_backend_beta);
+	vgc_inistep = 4;
+
+	/* 5 */
+	vgc_backend_dashboard =
+	    VRT_new_backend_clustered(ctx, vsc_cluster,
+		&vgc_dir_priv_vgc_backend_dashboard);
+	vgc_inistep = 5;
+
+	/* 6 */
+	vgc_backend_lms =
+	    VRT_new_backend_clustered(ctx, vsc_cluster,
+		&vgc_dir_priv_vgc_backend_lms);
+	vgc_inistep = 6;
+
+	/* 7 */
+	vgc_backend_pim =
+	    VRT_new_backend_clustered(ctx, vsc_cluster,
+		&vgc_dir_priv_vgc_backend_pim);
+	vgc_inistep = 7;
+
+	/* 8 */
+	VRT_re_init(&VGC_re_5, "(\?i)https");
+	vgc_inistep = 8;
+
+	/* 9 */
+	VRT_re_init(&VGC_re_6, "https");
+	vgc_inistep = 9;
+
+	/* 10 */
+	VRT_re_init(&VGC_re_7, "^(www\\.)\?technostationery\\.com(\\.dz)\?$");
+	vgc_inistep = 10;
+
+	/* 11 */
+	VRT_re_init(&VGC_re_8, "^beta\\.technostationery\\.com$");
+	vgc_inistep = 11;
+
+	/* 12 */
+	VRT_re_init(&VGC_re_9, "^dashboard\\.technostationery\\.com$");
+	vgc_inistep = 12;
+
+	/* 13 */
+	VRT_re_init(&VGC_re_10, "^lms\\.technostationery\\.com$");
+	vgc_inistep = 13;
+
+	/* 14 */
+	VRT_re_init(&VGC_re_11, "^pim\\.technostationery\\.com$");
+	vgc_inistep = 14;
+
+	/* 15 */
+	VRT_re_init(&VGC_re_12, "(\?i)(ipad|android 3|sch-i800|playbook|tablet|kindle|silk)");
+	vgc_inistep = 15;
+
+	/* 16 */
+	VRT_re_init(&VGC_re_13, "(\?i)(mobile|android|iphone|ipod|blackberry|webos|opera mini|windows phone)");
+	vgc_inistep = 16;
+
+	/* 17 */
+	VRT_re_init(&VGC_re_14, "^/(pub/)\?(admin|customer|checkout|sales|rest|graphql|api|contact|login|logout|cart)");
+	vgc_inistep = 17;
+
+	/* 18 */
+	VRT_re_init(&VGC_re_15, "\\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot|otf|webp|bmp|tiff|mp4|webm|mp3|pdf|zip|tar|gz)(\\\?.*)\?$");
+	vgc_inistep = 18;
+
+	/* 19 */
+	VRT_re_init(&VGC_re_16, "\\\?.*$");
+	vgc_inistep = 19;
+
+	/* 20 */
+	VRT_re_init(&VGC_re_17, "(\\\?|&)(utm_source|utm_medium|utm_campaign|utm_content|utm_term|gclid|fbclid|_ga|_gid)=");
+	vgc_inistep = 20;
+
+	/* 21 */
+	VRT_re_init(&VGC_re_18, "&(utm_source|utm_medium|utm_campaign|utm_content|utm_term|gclid|fbclid|_ga|_gid)=([A-z0-9_\\-\\.%25]+)");
+	vgc_inistep = 21;
+
+	/* 22 */
+	VRT_re_init(&VGC_re_19, "\\\?(utm_source|utm_medium|utm_campaign|utm_content|utm_term|gclid|fbclid|_ga|_gid)=([A-z0-9_\\-\\.%25]+)");
+	vgc_inistep = 22;
+
+	/* 23 */
+	VRT_re_init(&VGC_re_20, "\\\?&");
+	vgc_inistep = 23;
+
+	/* 24 */
+	VRT_re_init(&VGC_re_21, "\\\?$");
+	vgc_inistep = 24;
+
+	/* 25 */
+	VRT_re_init(&VGC_re_22, "(^|;\\s*)(_ga|_gid|_gat|__utm[a-z]|__gads|__qc|__atuv|_fbp|fr)=[^;]*");
+	vgc_inistep = 25;
+
+	/* 26 */
+	VRT_re_init(&VGC_re_23, "^;\\s*");
+	vgc_inistep = 26;
+
+	/* 27 */
+	VRT_re_init(&VGC_re_24, "frontend=|adminhtml=|form_key|private_content_version|X-Magento-Vary");
+	vgc_inistep = 27;
+
+	/* 28 */
+	VRT_re_init(&VGC_re_25, "\\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot|otf|webp|bmp)$");
+	vgc_inistep = 28;
+
+	/* 29 */
+	VRT_re_init(&VGC_re_26, "text/html");
+	vgc_inistep = 29;
+
+	/* 30 */
+	VRT_re_init(&VGC_re_27, "frontend=|adminhtml=|form_key");
+	vgc_inistep = 30;
+
+	/* 31 */
+	VRT_re_init(&VGC_re_28, "private|no-cache|no-store");
+	vgc_inistep = 31;
+
+	/* 32 */
+	VRT_re_init(&VGC_re_29, "^(\?i)HTTP/1.1");
+	vgc_inistep = 32;
+
+	/* 33 */
+	VRT_re_init(&VGC_re_30, "(\?i)no-store");
+	vgc_inistep = 33;
+
+	/* 34 */
+	VRT_re_init(&VGC_re_31, "(\?i:no-cache|no-store|private)");
+	vgc_inistep = 34;
+
+	/* 35 */
+	VGC_function_vcl_init(ctx);
+	vgc_inistep = 35;
+
+	return(0);
+}
+
+static int
+VGC_Discard(VRT_CTX)
+{
+
+	switch (vgc_inistep) {
+		case 35:
+			VGC_function_vcl_fini(ctx);
+			/* FALLTHROUGH */
+		case 34:
+			VRT_re_fini(VGC_re_31);
+			/* FALLTHROUGH */
+		case 33:
+			VRT_re_fini(VGC_re_30);
+			/* FALLTHROUGH */
+		case 32:
+			VRT_re_fini(VGC_re_29);
+			/* FALLTHROUGH */
+		case 31:
+			VRT_re_fini(VGC_re_28);
+			/* FALLTHROUGH */
+		case 30:
+			VRT_re_fini(VGC_re_27);
+			/* FALLTHROUGH */
+		case 29:
+			VRT_re_fini(VGC_re_26);
+			/* FALLTHROUGH */
+		case 28:
+			VRT_re_fini(VGC_re_25);
+			/* FALLTHROUGH */
+		case 27:
+			VRT_re_fini(VGC_re_24);
+			/* FALLTHROUGH */
+		case 26:
+			VRT_re_fini(VGC_re_23);
+			/* FALLTHROUGH */
+		case 25:
+			VRT_re_fini(VGC_re_22);
+			/* FALLTHROUGH */
+		case 24:
+			VRT_re_fini(VGC_re_21);
+			/* FALLTHROUGH */
+		case 23:
+			VRT_re_fini(VGC_re_20);
+			/* FALLTHROUGH */
+		case 22:
+			VRT_re_fini(VGC_re_19);
+			/* FALLTHROUGH */
+		case 21:
+			VRT_re_fini(VGC_re_18);
+			/* FALLTHROUGH */
+		case 20:
+			VRT_re_fini(VGC_re_17);
+			/* FALLTHROUGH */
+		case 19:
+			VRT_re_fini(VGC_re_16);
+			/* FALLTHROUGH */
+		case 18:
+			VRT_re_fini(VGC_re_15);
+			/* FALLTHROUGH */
+		case 17:
+			VRT_re_fini(VGC_re_14);
+			/* FALLTHROUGH */
+		case 16:
+			VRT_re_fini(VGC_re_13);
+			/* FALLTHROUGH */
+		case 15:
+			VRT_re_fini(VGC_re_12);
+			/* FALLTHROUGH */
+		case 14:
+			VRT_re_fini(VGC_re_11);
+			/* FALLTHROUGH */
+		case 13:
+			VRT_re_fini(VGC_re_10);
+			/* FALLTHROUGH */
+		case 12:
+			VRT_re_fini(VGC_re_9);
+			/* FALLTHROUGH */
+		case 11:
+			VRT_re_fini(VGC_re_8);
+			/* FALLTHROUGH */
+		case 10:
+			VRT_re_fini(VGC_re_7);
+			/* FALLTHROUGH */
+		case 9:
+			VRT_re_fini(VGC_re_6);
+			/* FALLTHROUGH */
+		case 8:
+			VRT_re_fini(VGC_re_5);
+			/* FALLTHROUGH */
+		case 7:
+			VRT_delete_backend(ctx, &vgc_backend_pim);
+			/* FALLTHROUGH */
+		case 6:
+			VRT_delete_backend(ctx, &vgc_backend_lms);
+			/* FALLTHROUGH */
+		case 5:
+			VRT_delete_backend(ctx, &vgc_backend_dashboard);
+			/* FALLTHROUGH */
+		case 4:
+			VRT_delete_backend(ctx, &vgc_backend_beta);
+			/* FALLTHROUGH */
+		case 3:
+			VRT_delete_backend(ctx, &vgc_backend_prod);
+			/* FALLTHROUGH */
+		case 2:
+			VRT_priv_fini(&vmod_priv_std);
+			/* FALLTHROUGH */
+		case 1:
+			VRT_VSM_Cluster_Destroy(ctx, &vsc_cluster);
+			/* FALLTHROUGH */
+		default:
+			break;
+	}
+
+	switch (vgc_inistep) {
+		case 35:
+			/* FALLTHROUGH */
+		case 34:
+			/* FALLTHROUGH */
+		case 33:
+			/* FALLTHROUGH */
+		case 32:
+			/* FALLTHROUGH */
+		case 31:
+			/* FALLTHROUGH */
+		case 30:
+			/* FALLTHROUGH */
+		case 29:
+			/* FALLTHROUGH */
+		case 28:
+			/* FALLTHROUGH */
+		case 27:
+			/* FALLTHROUGH */
+		case 26:
+			/* FALLTHROUGH */
+		case 25:
+			/* FALLTHROUGH */
+		case 24:
+			/* FALLTHROUGH */
+		case 23:
+			/* FALLTHROUGH */
+		case 22:
+			/* FALLTHROUGH */
+		case 21:
+			/* FALLTHROUGH */
+		case 20:
+			/* FALLTHROUGH */
+		case 19:
+			/* FALLTHROUGH */
+		case 18:
+			/* FALLTHROUGH */
+		case 17:
+			/* FALLTHROUGH */
+		case 16:
+			/* FALLTHROUGH */
+		case 15:
+			/* FALLTHROUGH */
+		case 14:
+			/* FALLTHROUGH */
+		case 13:
+			/* FALLTHROUGH */
+		case 12:
+			/* FALLTHROUGH */
+		case 11:
+			/* FALLTHROUGH */
+		case 10:
+			/* FALLTHROUGH */
+		case 9:
+			/* FALLTHROUGH */
+		case 8:
+			/* FALLTHROUGH */
+		case 7:
+			/* FALLTHROUGH */
+		case 6:
+			/* FALLTHROUGH */
+		case 5:
+			/* FALLTHROUGH */
+		case 4:
+			/* FALLTHROUGH */
+		case 3:
+			/* FALLTHROUGH */
+		case 2:
+			VRT_Vmod_Unload(ctx, &VGC_vmod_std);
+			/* FALLTHROUGH */
+		case 1:
+			/* FALLTHROUGH */
+		default:
+			break;
+	}
+
+	return (0);
+}
+
+static int
+VGC_Event(VRT_CTX, enum vcl_event_e ev)
+{
+	if (ev == VCL_EVENT_LOAD)
+		return (VGC_Load(ctx));
+	if (ev == VCL_EVENT_DISCARD)
+		return (VGC_Discard(ctx));
+
+	(void)vgc_warmupstep;
+	return (0);
+}
+
+const struct VCL_conf VCL_conf = {
+	.magic = VCL_CONF_MAGIC,
+	.syntax = 41,
+	.event_vcl = VGC_Event,
+	.default_director = &vgc_backend_prod,
+	.ref = VGC_ref,
+	.nref = VGC_NREFS,
+	.nsrc = VGC_NSRCS,
+	.srcname = srcname,
+	.srcbody = srcbody,
+	.nvmod = 1,
+	.backend_error_func = VGC_function_vcl_backend_error,
+	.backend_fetch_func = VGC_function_vcl_backend_fetch,
+	.backend_response_func = VGC_function_vcl_backend_response,
+	.deliver_func = VGC_function_vcl_deliver,
+	.fini_func = VGC_function_vcl_fini,
+	.hash_func = VGC_function_vcl_hash,
+	.hit_func = VGC_function_vcl_hit,
+	.init_func = VGC_function_vcl_init,
+	.miss_func = VGC_function_vcl_miss,
+	.pass_func = VGC_function_vcl_pass,
+	.pipe_func = VGC_function_vcl_pipe,
+	.purge_func = VGC_function_vcl_purge,
+	.recv_func = VGC_function_vcl_recv,
+	.synth_func = VGC_function_vcl_synth,
+};
+
+/*
+ * Symbol Table
+ *
+ * none      VOID       41 41 acl
+ * none      VOID       41 41 backend
+ * action    VOID       40 41 ban
+ * var       HTTP        0 99 bereq
+ * var       BACKEND     0 99 bereq.backend
+ * var       DURATION    0 99 bereq.between_bytes_timeout
+ * var       BODY        0 99 bereq.body
+ * var       DURATION    0 99 bereq.connect_timeout
+ * var       DURATION    0 99 bereq.first_byte_timeout
+ * var       BLOB        0 99 bereq.hash
+ * none      HEADER      0 99 bereq.http*
+ * var       HEADER     41 41 bereq.http.host
+ * var       BOOL        0 99 bereq.is_bgfetch
+ * var       STRING      0 99 bereq.method
+ * var       STRING      0 40 bereq.proto
+ * var       STRING     41 99 bereq.proto
+ * var       INT         0 99 bereq.retries
+ * var       BOOL        0 99 bereq.uncacheable
+ * var       STRING      0 99 bereq.url
+ * var       STRING      0 99 bereq.xid
+ * var       HTTP        0 99 beresp
+ * var       DURATION    0 99 beresp.age
+ * var       BACKEND     0 99 beresp.backend
+ * var       IP          0 40 beresp.backend.ip
+ * var       STRING      0 99 beresp.backend.name
+ * var       BODY        0 99 beresp.body
+ * var       BOOL        0 99 beresp.do_esi
+ * var       BOOL        0 99 beresp.do_gunzip
+ * var       BOOL        0 99 beresp.do_gzip
+ * var       BOOL        0 99 beresp.do_stream
+ * var       DURATION    0 99 beresp.grace
+ * none      HEADER      0 99 beresp.http*
+ * var       HEADER     41 41 beresp.http.Cache-Control
+ * var       HEADER     41 41 beresp.http.content-type
+ * var       HEADER     41 41 beresp.http.Retry-After
+ * var       HEADER     41 41 beresp.http.Set-Cookie
+ * var       HEADER     41 41 beresp.http.Surrogate-control
+ * var       HEADER     41 41 beresp.http.Vary
+ * var       HEADER     41 41 beresp.http.x-url
+ * var       HEADER     41 41 beresp.http.X-Varnish-Host
+ * var       DURATION    0 99 beresp.keep
+ * var       STRING      0 40 beresp.proto
+ * var       STRING     41 99 beresp.proto
+ * var       STRING      0 99 beresp.reason
+ * var       INT         0 99 beresp.status
+ * var       STEVEDORE   0 99 beresp.storage
+ * var       STRING      0 40 beresp.storage_hint
+ * var       DURATION    0 99 beresp.ttl
+ * var       BOOL        0 99 beresp.uncacheable
+ * var       BOOL        0 99 beresp.was_304
+ * backend   BACKEND    41 41 beta
+ * action    VOID       40 41 call
+ * none      VOID        0 99 client
+ * var       STRING      0 99 client.identity
+ * var       IP          0 99 client.ip
+ * acl       ACL        41 41 cloudflare
+ * backend   BACKEND    41 41 dashboard
+ * none      VOID       41 41 default
+ * func      BOOL       40 41 false
+ * action    VOID       40 41 hash_data
+ * action    VOID       40 41 if
+ * none      VOID       41 41 import
+ * backend   BACKEND    41 41 lms
+ * none      VOID        0 99 local
+ * var       STRING     41 99 local.endpoint
+ * var       IP          0 99 local.ip
+ * var       STRING     41 99 local.socket
+ * action    VOID       40 41 new
+ * var       TIME        0 99 now
+ * none      VOID        0 99 obj
+ * var       DURATION    0 99 obj.age
+ * var       DURATION    0 99 obj.grace
+ * var       INT         0 99 obj.hits
+ * none      HEADER      0 99 obj.http*
+ * var       DURATION    0 99 obj.keep
+ * var       STRING      0 99 obj.proto
+ * var       STRING      0 99 obj.reason
+ * var       INT         0 99 obj.status
+ * var       STEVEDORE   0 99 obj.storage
+ * var       DURATION    0 99 obj.ttl
+ * var       BOOL        0 99 obj.uncacheable
+ * backend   BACKEND    41 41 pim
+ * none      VOID       41 41 probe
+ * backend   BACKEND    41 41 prod
+ * acl       ACL        41 41 purge
+ * func      STRING     40 41 regsub
+ * func      STRING     40 41 regsuball
+ * none      VOID        0 99 remote
+ * var       IP          0 99 remote.ip
+ * var       HTTP        0 99 req
+ * var       BACKEND     0 99 req.backend_hint
+ * var       BOOL        0 99 req.can_gzip
+ * var       BOOL        0 40 req.esi
+ * var       INT         0 99 req.esi_level
+ * var       DURATION    0 99 req.grace
+ * var       BLOB        0 99 req.hash
+ * var       BOOL        0 99 req.hash_always_miss
+ * var       BOOL        0 99 req.hash_ignore_busy
+ * none      HEADER      0 99 req.http*
+ * var       HEADER     41 41 req.http.Authorization
+ * var       HEADER     41 41 req.http.CF-Connecting-IP
+ * var       HEADER     41 41 req.http.CF-Visitor
+ * var       HEADER     41 41 req.http.Cookie
+ * var       HEADER     41 41 req.http.host
+ * var       HEADER     41 41 req.http.User-Agent
+ * var       HEADER     41 41 req.http.X-Device
+ * var       HEADER     41 41 req.http.X-Forwarded-For
+ * var       HEADER     41 41 req.http.X-Forwarded-Proto
+ * var       BOOL        0 99 req.is_hitmiss
+ * var       BOOL        0 99 req.is_hitpass
+ * var       STRING      0 99 req.method
+ * var       STRING      0 40 req.proto
+ * var       STRING     41 99 req.proto
+ * var       INT         0 99 req.restarts
+ * var       STEVEDORE   0 99 req.storage
+ * var       DURATION    0 99 req.ttl
+ * var       STRING      0 99 req.url
+ * var       STRING      0 99 req.xid
+ * none      VOID        0 99 req_top
+ * none      HEADER      0 99 req_top.http*
+ * var       STRING      0 99 req_top.method
+ * var       STRING      0 99 req_top.proto
+ * var       STRING      0 99 req_top.url
+ * var       HTTP        0 99 resp
+ * var       BODY        0 99 resp.body
+ * var       BOOL       41 99 resp.do_esi
+ * none      HEADER      0 99 resp.http*
+ * var       HEADER     41 41 resp.http.Age
+ * var       HEADER     41 41 resp.http.Content-Type
+ * var       HEADER     41 41 resp.http.Retry-After
+ * var       HEADER     41 41 resp.http.Via
+ * var       HEADER     41 41 resp.http.X-Cache
+ * var       HEADER     41 41 resp.http.X-Cache-Age
+ * var       HEADER     41 41 resp.http.X-Cache-Hits
+ * var       HEADER     41 41 resp.http.X-Device
+ * var       HEADER     41 41 resp.http.X-Powered-By
+ * var       HEADER     41 41 resp.http.x-url
+ * var       HEADER     41 41 resp.http.X-Varnish
+ * var       HEADER     41 41 resp.http.X-Varnish-Host
+ * var       BOOL        0 99 resp.is_streaming
+ * var       STRING      0 40 resp.proto
+ * var       STRING     41 99 resp.proto
+ * var       STRING      0 99 resp.reason
+ * var       INT         0 99 resp.status
+ * action    VOID       40 41 return
+ * none      VOID        0 99 server
+ * var       STRING      0 99 server.hostname
+ * var       STRING      0 99 server.identity
+ * var       IP          0 99 server.ip
+ * none      VOID        0 99 sess
+ * var       DURATION    0 99 sess.timeout_idle
+ * var       STRING     41 99 sess.xid
+ * action    VOID       40 41 set
+ * vmod      VOID       41 41 std*
+ * none      VOID       40 41 storage
+ * var       STEVEDORE  40 41 storage.s0
+ * var       BYTES      40 41 storage.s0.free_space
+ * var       BOOL       40 41 storage.s0.happy
+ * var       BYTES      40 41 storage.s0.used_space
+ * var       STEVEDORE  40 41 storage.Transient
+ * var       BYTES      40 41 storage.Transient.free_space
+ * var       BOOL       40 41 storage.Transient.happy
+ * var       BYTES      40 41 storage.Transient.used_space
+ * none      VOID       41 41 sub
+ * action    VOID       40 41 synthetic
+ * func      BOOL       40 41 true
+ * action    VOID       40 41 unset
+ * none      VOID       41 41 vcl
+ * sub       VOID       40 41 vcl_backend_error
+ * sub       VOID       40 41 vcl_backend_fetch
+ * sub       VOID       40 41 vcl_backend_response
+ * sub       VOID       40 41 vcl_deliver
+ * sub       VOID       40 41 vcl_fini
+ * sub       VOID       40 41 vcl_hash
+ * sub       VOID       40 41 vcl_hit
+ * sub       VOID       40 41 vcl_init
+ * sub       VOID       40 41 vcl_miss
+ * sub       VOID       40 41 vcl_pass
+ * sub       VOID       40 41 vcl_pipe
+ * sub       VOID       40 41 vcl_purge
+ * sub       VOID       40 41 vcl_recv
+ * sub       VOID       40 41 vcl_synth
+*/
+
+
+Backend name                   Admin      Probe                Last updated
+reload_20260504_011203_267709.prod probe      Sick                2/5 Mon, 04 May 2026 01:12:03 GMT
+reload_20260504_011203_267709.beta probe      Sick                2/5 Mon, 04 May 2026 01:12:03 GMT
+reload_20260504_011203_267709.dashboard probe      Healthy (no probe)   Mon, 04 May 2026 01:12:03 GMT
+reload_20260504_011203_267709.lms probe      Healthy (no probe)   Mon, 04 May 2026 01:12:03 GMT
+reload_20260504_011203_267709.pim probe      Healthy (no probe)   Mon, 04 May 2026 01:12:03 GMT
+MAIN.cache_hit                         0         0.00 Cache hits
+MAIN.cache_hit_grace                   0         0.00 Cache grace hits
+MAIN.cache_hitpass                     0         0.00 Cache hits for pass.
+MAIN.cache_hitmiss                     0         0.00 Cache hits for miss.
+MAIN.cache_miss                       25         0.00 Cache misses
+MAIN.fetch_failed                     32         0.00 Fetch failed (all causes)
+SMA.s0.g_bytes                                0          .   Bytes outstanding
