@@ -1,0 +1,90 @@
+{
+  "timestamp": "2026-05-10T15:25:57.864Z",
+  "tests": {
+    "loginPageLoad": {
+      "passed": true,
+      "status": 200,
+      "url": "https://pim.technostationery.com/user/login"
+    },
+    "loginSubmit": {
+      "passed": false,
+      "url": "https://pim.technostationery.com/user/login",
+      "redirected": false
+    },
+    "dashboardElements": {
+      "passed": false,
+      "container": false,
+      "header": false,
+      "menu": false,
+      "mainContent": false
+    },
+    "fixed404Errors": {
+      "passed": true,
+      "errors": []
+    },
+    "formBuilderErrors": {
+      "passed": true,
+      "errors": []
+    },
+    "cssStyles": {
+      "passed": true,
+      "fontFamily": "\"Times New Roman\"",
+      "backgroundColor": "rgba(0, 0, 0, 0)"
+    },
+    "webpackBundles": {
+      "passed": false,
+      "mainJs": false,
+      "vendorJs": false
+    }
+  },
+  "consoleErrors": [
+    {
+      "type": "error",
+      "text": "Refused to apply style from 'https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.",
+      "timestamp": "2026-05-10T15:25:59.054Z"
+    },
+    {
+      "type": "error",
+      "text": "Refused to apply style from 'https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.",
+      "timestamp": "2026-05-10T15:26:02.638Z"
+    }
+  ],
+  "jsErrors": [],
+  "networkErrors": [
+    {
+      "url": "https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df",
+      "failure": "net::ERR_ABORTED",
+      "timestamp": "2026-05-10T15:25:59.055Z"
+    },
+    {
+      "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&_p=1778426758937&_gaz=1&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEAAAGAC&_uip=%3A%3A&ae=a&are=1&cid=902601586.1778426759&fp=1&frm=0&pscdl=noapi&rcb=9&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&ur=US-CA&_gsid=XOABZ4gLnHdhSL8lEJHeIluwVNoz6RefUQ&gaf=2&_s=1&tag_exp=0~115938465~115938469~118463262&sid=1778426759&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&en=scroll&_fv=1&_nsi=1&_ss=1&gap.gtb=2&epn.percent_scrolled=90&tfd=1539",
+      "failure": "net::ERR_ABORTED",
+      "timestamp": "2026-05-10T15:25:59.427Z"
+    },
+    {
+      "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&_p=1778426758937&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEEAAGQC&_uip=%3A%3A&ae=a&are=1&cid=902601586.1778426759&fp=1&frm=0&pscdl=noapi&rcb=9&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&ur=US-CA&_gsid=XOABZ4gLnHdhSL8lEJHeIluwVNoz6RefUQ&gaf=2&tag_exp=0~115938465~115938469~118463262&sid=1778426759&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&_s=2&tfd=4716",
+      "failure": "net::ERR_ABORTED",
+      "timestamp": "2026-05-10T15:26:02.618Z"
+    },
+    {
+      "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+      "failure": "net::ERR_ABORTED",
+      "timestamp": "2026-05-10T15:26:02.618Z"
+    },
+    {
+      "url": "https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df",
+      "failure": "net::ERR_ABORTED",
+      "timestamp": "2026-05-10T15:26:02.638Z"
+    },
+    {
+      "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&_p=1778426762595&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEAAAGQC&_uip=%3A%3A&ae=a&are=1&cid=902601586.1778426759&fp=1&frm=0&pscdl=noapi&rcb=14&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&ur=US-CA&_gsid=XOABZ4gLnHdhSL8lEJHeIluwVNoz6RefUQ&gaf=2&_s=1&tag_exp=0~115938466~115938468~118463262&sid=1778426759&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dr=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&en=scroll&gap.gtb=2&epn.percent_scrolled=90&_et=39&tfd=5321",
+      "failure": "net::ERR_ABORTED",
+      "timestamp": "2026-05-10T15:26:07.797Z"
+    }
+  ],
+  "screenshots": {
+    "loginPage": "test_1_login_page.png",
+    "afterLogin": "test_2_after_login.png",
+    "dashboard": "test_3_dashboard.png"
+  }
+}
