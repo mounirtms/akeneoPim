@@ -1,0 +1,1680 @@
+{
+  "timestamp": "2026-05-11T16:36:30.458Z",
+  "logs": {
+    "console": [],
+    "errors": [],
+    "requests": [
+      {
+        "url": "https://pim.technostationery.com/user/login",
+        "method": "GET",
+        "headers": {
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\""
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/speculation",
+        "method": "GET",
+        "headers": {
+          "origin": "https://pim.technostationery.com",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/bundles/pimui/images/illustrations/login/Logo.svg",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/bundles/pimui/images/logo_login.svg",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+        "method": "GET",
+        "headers": {
+          "origin": "https://pim.technostationery.com",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/h/g/scripts/jsd/fe6331af5207/main.js?",
+        "method": "GET",
+        "headers": {
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "referer": ""
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/fe6331af5207/0.405447013468484:1778512970:QFeraNcmubUcBu9ggVAS7OO20CPSvL1G5sL2cvIL3Xc/9fa299f848d5f3ec",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "text/plain;charset=UTF-8",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/Y0qlUOM_RqA9azWCAHUcH3Nyylx3KyTkQvALMHQV0TGzfrxb9D91_37nBA",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5LXKWLFR&gtg_health=1",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://connect.facebook.net/en_US/fbevents.js",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "application/json",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://scripts.clarity.ms/0.8.64/clarity.js",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://c.clarity.ms/c.gif",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://c.bing.com/c.gif?ctsa=mr&CtsSyncId=757E9852F8AC4BF5B9886EE206780217&RedC=c.clarity.ms&MXFR=29D847B3EA23638201E650E5EE236D50",
+        "method": "GET",
+        "headers": {
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "referer": "https://pim.technostationery.com/"
+        }
+      },
+      {
+        "url": "https://c.clarity.ms/c.gif?ctsa=mr&CtsSyncId=757E9852F8AC4BF5B9886EE206780217&MUID=12EF082A1EC5694C173E1F7C1F816818",
+        "method": "GET",
+        "headers": {
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "referer": "https://pim.technostationery.com/"
+        }
+      },
+      {
+        "url": "https://d.clarity.ms/collect",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "accept": "application/x-clarity-gzip",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://connect.facebook.net/signals/config/303018311383850?v=2.9.313&r=stable&domain=pim.technostationery.com&hme=97937018cefade17726f0472876fc101316b2ce9008a35a6a5a7977d7436151a&ex_m=104%2C205%2C154%2C22%2C72%2C73%2C145%2C68%2C67%2C11%2C162%2C90%2C16%2C138%2C48%2C146%2C77%2C112%2C47%2C127%2C39%2C75%2C78%2C134%2C159%2C164%2C8%2C4%2C5%2C7%2C6%2C3%2C91%2C101%2C165%2C170%2C219%2C62%2C186%2C187%2C55%2C276%2C30%2C74%2C231%2C230%2C229%2C23%2C33%2C103%2C61%2C10%2C63%2C97%2C98%2C99%2C105%2C130%2C31%2C29%2C132%2C133%2C129%2C128%2C155%2C76%2C158%2C156%2C157%2C50%2C60%2C123%2C15%2C161%2C45%2C263%2C264%2C262%2C26%2C27%2C28%2C18%2C20%2C44%2C40%2C42%2C41%2C83%2C92%2C96%2C110%2C144%2C147%2C46%2C111%2C24%2C21%2C119%2C69%2C36%2C149%2C148%2C150%2C141%2C139%2C25%2C35%2C59%2C109%2C160%2C70%2C17%2C152%2C114%2C81%2C66%2C19%2C85%2C86%2C116%2C84%2C136%2C135%2C34%2C278%2C293%2C212%2C201%2C202%2C200%2C296%2C288%2C52%2C213%2C107%2C131%2C80%2C121%2C54%2C49%2C113%2C120%2C126%2C58%2C64%2C151%2C115%2C37%2C32%2C53%2C56%2C100%2C163%2C1%2C124%2C14%2C122%2C12%2C2%2C57%2C93%2C65%2C118%2C89%2C88%2C166%2C167%2C94%2C95%2C9%2C125%2C102%2C51%2C142%2C87%2C79%2C71%2C117%2C106%2C43%2C143%2C0%2C82%2C137%2C140%2C153%2C38%2C108%2C13%2C168",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://www.facebook.com/tr/?id=303018311383850&ev=PageView&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&rl=&if=false&ts=1778517377397&sw=1920&sh=1080&v=2.9.313&r=stable&a=tmSimo-GTM-WebTemplate&ec=0&o=12318&fbp=fb.1.1778517377391.346109724497104371&ler=empty&pmd[title]=Connexion&plt=765.3000001907349&it=1778517377096&coo=false&tm=1&expv2[0]=pl1&expv2[1]=el3&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im0&expv2[6]=hf1&expv2[7]=pt1&rqm=GET",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6570v9127101817za20kzb9206585199zd9206585199&_p=1778517375171&_gaz=1&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEAAAGAC&_uip=%3A%3A&ae=a&are=1&cid=1094153076.1778517381&fp=1&frm=0&pscdl=noapi&rcb=10&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-us&ur=US-CA&_gsid=p_9Qn_TOMMbJ31qqKpGd4ItoKBiSqMZ1xQ&gaf=2&_s=1&tag_exp=0~115616986~115938466~115938469~118463261&sid=1778517380&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&en=scroll&_fv=1&_nsi=1&_ss=1&gap.gtb=2&epn.percent_scrolled=90&tfd=6371",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-72HCNG92F2&cid=1094153076.1778517381&gtm=45g92e6570v9127101817za20kzb9206585199zd9206585199&rcb=10&aip=1&dma=0&gcs=G111&gcd=13t3t3t3t5l1&npa=0&frm=0&tag_exp=0~115616986~115938466~115938469~118463261",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://analytics.google.com/g/s/collect?_gsid=p_9Qn_TOMMbJ31qqKpGd4ItoKBiSqMZ1xQ&gtm=45g92e6570v9127101817za20kzb9206585199zd9206585199",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://www.facebook.com/tr/",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryEb3ywQASVUZcnWFE",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/user/login-check",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "origin": "https://pim.technostationery.com",
+          "referer": "https://pim.technostationery.com/user/login",
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\""
+        }
+      },
+      {
+        "url": "https://d.clarity.ms/collect",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "accept": "application/x-clarity-gzip",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://d.clarity.ms/collect",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "accept": "application/x-clarity-gzip",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6570v9127101817za20kzb9206585199zd9206585199&_p=1778517375171&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEEAAGQC&_uip=%3A%3A&ae=a&are=1&cid=1094153076.1778517381&fp=1&frm=0&pscdl=noapi&rcb=10&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-us&ur=US-CA&_gsid=p_9Qn_TOMMbJ31qqKpGd4ItoKBiSqMZ1xQ&gaf=2&tag_exp=0~115616986~115938466~115938469~118463261&sid=1778517380&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&_s=2&tfd=12322",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "text/plain;charset=UTF-8",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/user/login",
+        "method": "GET",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "origin": "https://pim.technostationery.com",
+          "referer": "https://pim.technostationery.com/user/login",
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Windows\""
+        }
+      },
+      {
+        "url": "https://d.clarity.ms/collect",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "text/plain;charset=UTF-8",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6570v9127101817za20kzb9206585199zd9206585199&_p=1778517375171&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AAAAAGQC&_uip=%3A%3A&are=1&cid=1094153076.1778517381&fp=1&frm=0&pscdl=noapi&rcb=10&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-us&ur=US-CA&_gsid=p_9Qn_TOMMbJ31qqKpGd4ItoKBiSqMZ1xQ&gaf=2&_s=3&tag_exp=0~115616986~115938466~115938469~118463261&sid=1778517380&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&en=user_engagement&gap.gtb=2&_et=5620&tfd=13148",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "application/json",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/speculation",
+        "method": "GET",
+        "headers": {
+          "origin": "https://pim.technostationery.com",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/bundles/pimui/images/illustrations/login/Logo.svg",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/bundles/pimui/images/logo_login.svg",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+        "method": "GET",
+        "headers": {
+          "origin": "https://pim.technostationery.com",
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/Y0qlUOM_RqA9azWCAHUcH3Nyylx3KyTkQvALMHQV0TGzfrxb9D91_37nBA",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://connect.facebook.net/en_US/fbevents.js",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://connect.facebook.net/signals/config/303018311383850?v=2.9.313&r=stable&domain=pim.technostationery.com&hme=97937018cefade17726f0472876fc101316b2ce9008a35a6a5a7977d7436151a&ex_m=104%2C205%2C154%2C22%2C72%2C73%2C145%2C68%2C67%2C11%2C162%2C90%2C16%2C138%2C48%2C146%2C77%2C112%2C47%2C127%2C39%2C75%2C78%2C134%2C159%2C164%2C8%2C4%2C5%2C7%2C6%2C3%2C91%2C101%2C165%2C170%2C219%2C62%2C186%2C187%2C55%2C276%2C30%2C74%2C231%2C230%2C229%2C23%2C33%2C103%2C61%2C10%2C63%2C97%2C98%2C99%2C105%2C130%2C31%2C29%2C132%2C133%2C129%2C128%2C155%2C76%2C158%2C156%2C157%2C50%2C60%2C123%2C15%2C161%2C45%2C263%2C264%2C262%2C26%2C27%2C28%2C18%2C20%2C44%2C40%2C42%2C41%2C83%2C92%2C96%2C110%2C144%2C147%2C46%2C111%2C24%2C21%2C119%2C69%2C36%2C149%2C148%2C150%2C141%2C139%2C25%2C35%2C59%2C109%2C160%2C70%2C17%2C152%2C114%2C81%2C66%2C19%2C85%2C86%2C116%2C84%2C136%2C135%2C34%2C278%2C293%2C212%2C201%2C202%2C200%2C296%2C288%2C52%2C213%2C107%2C131%2C80%2C121%2C54%2C49%2C113%2C120%2C126%2C58%2C64%2C151%2C115%2C37%2C32%2C53%2C56%2C100%2C163%2C1%2C124%2C14%2C122%2C12%2C2%2C57%2C93%2C65%2C118%2C89%2C88%2C166%2C167%2C94%2C95%2C9%2C125%2C102%2C51%2C142%2C87%2C79%2C71%2C117%2C106%2C43%2C143%2C0%2C82%2C137%2C140%2C153%2C38%2C108%2C13%2C168",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://scripts.clarity.ms/0.8.64/clarity.js",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://www.facebook.com/tr/?id=303018311383850&ev=PageView&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&rl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&if=false&ts=1778517388079&sw=1920&sh=1080&v=2.9.313&r=stable&a=tmSimo-GTM-WebTemplate&ec=0&o=12318&fbp=fb.1.1778517377391.346109724497104371&ler=empty&pmd[title]=Connexion&plt=5915.800000190735&it=1778517388049&coo=false&tm=1&expv2[0]=pl0&expv2[1]=el2&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im0&expv2[6]=hf1&rqm=GET",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://d.clarity.ms/collect",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "accept": "application/x-clarity-gzip",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "application/json",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "url": "https://d.clarity.ms/collect",
+        "method": "POST",
+        "headers": {
+          "sec-ch-ua-platform": "\"Windows\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0",
+          "accept": "application/x-clarity-gzip",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      }
+    ],
+    "responses": [
+      {
+        "url": "https://pim.technostationery.com/user/login",
+        "status": 200,
+        "headers": {
+          "access-control-allow-headers": "Content-Type, Authorization",
+          "access-control-allow-methods": "GET, POST, OPTIONS",
+          "access-control-allow-origin": "https://techno-webapp.web.app",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "no-cache, no-store, must-revalidate, max-age=0",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa299f848d5f3ec-LAX",
+          "content-encoding": "zstd",
+          "content-type": "text/html; charset=UTF-8",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "expires": "0",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "permissions-policy": "geolocation=(), microphone=(), camera=()",
+          "pragma": "no-cache",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=tvjSiIgNVZOrUgqPuLcH8VSdq%2Bz93JDHhM9fi%2BoAKdHrLiLihFLkU3YHOAAY7XAneCnK0ZDxYSdrr%2BUYJ6aZ5jwBEbOQQ1TCJvzsSfNUexNNfwiO9zx%2FkOGHD%2FrmmGKvuDcWw9Ys%2FKXFyY0%3D\"}]}",
+          "server": "cloudflare",
+          "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfEdge;dur=384,cfOrigin;dur=0",
+          "set-cookie": "BAPID=747765550d09eab5754012a05bcf2113; path=/; domain=pim.technostationery.com; secure; httponly; samesite=lax",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "SAMEORIGIN",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/bundles/pimui/images/logo_login.svg",
+        "status": 200,
+        "headers": {
+          "access-control-allow-headers": "Content-Type, Authorization",
+          "access-control-allow-methods": "GET, POST, OPTIONS",
+          "access-control-allow-origin": "https://techno-webapp.web.app",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "no-cache, no-store, must-revalidate, max-age=0, public, max-age=31536000, immutable",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa299fadb60f3ec-LAX",
+          "content-encoding": "zstd",
+          "content-type": "image/svg+xml",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "expires": "0",
+          "last-modified": "Tue, 08 Oct 2024 11:51:39 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "permissions-policy": "geolocation=(), microphone=(), camera=()",
+          "pragma": "no-cache",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=UWFflwEtZHo5SC%2BUugUGhbu7jWM3b5Vs7Tqw6JfeNGp6jv7eIkoS3mYaUaJxzYG3UcBDjr4w8%2BE1QZibSd9Dzh2bWEDhXuh%2BxQMq0OutCdY1H3mtTcKCh2RhUIzBf629e8r4lHn7t7fi56Y%3D\"}]}",
+          "server": "cloudflare",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "SAMEORIGIN",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/bundles/pimui/images/illustrations/login/Logo.svg",
+        "status": 200,
+        "headers": {
+          "access-control-allow-headers": "Content-Type, Authorization",
+          "access-control-allow-methods": "GET, POST, OPTIONS",
+          "access-control-allow-origin": "https://techno-webapp.web.app",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "no-cache, no-store, must-revalidate, max-age=0, public, max-age=31536000, immutable",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa299fadb5df3ec-LAX",
+          "content-encoding": "zstd",
+          "content-type": "image/svg+xml",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "expires": "0",
+          "last-modified": "Tue, 08 Oct 2024 11:51:39 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "permissions-policy": "geolocation=(), microphone=(), camera=()",
+          "pragma": "no-cache",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=GoMwxR1va%2FtCBRgyuOAhS3dk3Dy2WJ%2BgqreThZlE05QKMuivXtTlljxB816ngI4jcsuyQctlUw65TYAdyhbWaeyUziJCeEomP2Q2oVkrX9UsC4ySKHsvRFIRPxHuKgTBX2eQUUKLx6dmt2s%3D\"}]}",
+          "server": "cloudflare",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "SAMEORIGIN",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/speculation",
+        "status": 200,
+        "headers": {
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "cf-ray": "9fa299faebb3f3ec-LAX",
+          "content-length": "128",
+          "content-type": "application/speculationrules+json",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=C5jrHokOn31%2FGj0VhmqkMQ13jviVfw4dr7qZF0ezpDEhX%2BcpoBXikJwI4p0GrR8gL6NcN%2BE7QVM0fuhJM8XBMD0AudAOWpEGNlCgcYMYlJcHwv5uxR9xSDT22FeXbGJ2iZt0%2F3UiZiHYkV8%3D\"}]}",
+          "server": "cloudflare",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "vary": "Origin"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df",
+        "status": 200,
+        "headers": {
+          "access-control-allow-headers": "Content-Type, Authorization",
+          "access-control-allow-methods": "GET, POST, OPTIONS",
+          "access-control-allow-origin": "https://techno-webapp.web.app",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "no-cache, no-store, must-revalidate, max-age=0, public, max-age=31536000, immutable",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa299fadb5cf3ec-LAX",
+          "content-encoding": "zstd",
+          "content-type": "text/css",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "expires": "0",
+          "last-modified": "Mon, 11 May 2026 15:29:37 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "permissions-policy": "geolocation=(), microphone=(), camera=()",
+          "pragma": "no-cache",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=d4BmfWjCFw8KvHpkKzjR0ht%2Bc85PPu1PjO08iQT9YaguDQH%2FjJrOF9tLlLBS2pmDcz6CVMBnImLwseT4%2FEsZLqe6lnocg34RYCYigKIcDHXTo%2FBVvgU27yCzrPpSsgNGRx5taHp5Hv95KUc%3D\"}]}",
+          "server": "cloudflare",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "SAMEORIGIN",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      {
+        "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+        "status": 200,
+        "headers": {
+          "access-control-allow-origin": "*",
+          "cache-control": "public, max-age=86400",
+          "cf-ray": "9fa299fb1a74cba2-LAX",
+          "content-encoding": "gzip",
+          "content-type": "text/javascript;charset=UTF-8",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "etag": "W/\"2026.2.0\"",
+          "last-modified": "Thu, 07 May 2026 16:44:36 GMT",
+          "server": "cloudflare"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+        "status": 302,
+        "headers": {
+          "access-control-allow-origin": "*",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "max-age=300, stale-if-error=10800, stale-while-revalidate=10800, public",
+          "cf-ray": "9fa299fbbe36f7e5-LAX",
+          "content-length": "0",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "location": "/cdn-cgi/challenge-platform/h/g/scripts/jsd/fe6331af5207/main.js?",
+          "priority": "u=3,i=?0",
+          "server": "cloudflare",
+          "server-timing": "cfExtPri"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/h/g/scripts/jsd/fe6331af5207/main.js?",
+        "status": 200,
+        "headers": {
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "max-age=14400, stale-if-error=10800, stale-while-revalidate=10800, public",
+          "cf-ray": "9fa299fbde3af7e5-LAX",
+          "content-encoding": "zstd",
+          "content-type": "application/javascript; charset=UTF-8",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "priority": "u=3,i=?0",
+          "server": "cloudflare",
+          "server-timing": "cfExtPri",
+          "x-content-type-options": "nosniff"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/",
+        "status": 200,
+        "headers": {
+          "access-control-allow-headers": "Cache-Control",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "private, max-age=900",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa299fafbf0f3ec-LAX",
+          "content-encoding": "br",
+          "content-length": "136441",
+          "content-type": "application/javascript; charset=UTF-8",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "expires": "Mon, 11 May 2026 16:36:15 GMT",
+          "last-modified": "Mon, 11 May 2026 16:11:50 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=b1Dsq3biISYO6lgDbF%2FZdvCQpPJECH8%2BPQXAyDe8JGgPky3PNqYxDqDPm4iXAgsosXcUi2H4SEstMHOFoIj%2FEewXCGoTmXNs5s8v6diWQ2bUsn9H5bBYP5R91YonnoK8lfQ5UsdqYtrHpc4%3D\"}]}",
+          "server": "cloudflare",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "vary": "Accept-Encoding"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/fe6331af5207/0.405447013468484:1778512970:QFeraNcmubUcBu9ggVAS7OO20CPSvL1G5sL2cvIL3Xc/9fa299f848d5f3ec",
+        "status": 200,
+        "headers": {
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cf-chl-out-s": "XLVHBK85CyEd2RcFpuoAnPYskVBA5dLC73/Goc9E03nw81HpfueX1q0onQHcgWs+Mu4sOHbZqrlZhcOGDymtXqVT/jo0ik4Vvh91mHEesuVAqNRSpO1AMX6nBPpUYZ/pqcWPRpLLpFDJ7AH3nXo7CJq9g3vfX5BRMTMedBv9BpeNd1lTlYZ1jFU5ITwLl51sNJ5EwhTQx2rvU7I9LIwr4XmXv0yXXupDWSbaPv1Ej9y9edyKN9p45IKEvJQyrKL1rA6eAL8dd4MzgM4l1FQBhINekj8U/ua/rCNt8PBVSx2jVuUAsJCk+htqWc+YLl5EN/AEeZs1WxJkzLu9zmhrzKJOe6VN22KVrPOi73MCirps0yEGpbdeWZM6jYMzYPIfQ9ZjlEbHIfyCnuZ33P+0GNPt9GtL5rJ9+WB4nW0fGeEHqAoOTdRA7a4W922mWpuzvTNvurcc2rCq+7BCaCQJu67zLyuCVhnQuXSYB2Qtjj/Z14zVkuZosia+UkleeGkSwbp/bKFrauRcpXUQ7YeaUSLW4Ah/QLEafPh+a+9KROdsJeEnySHmfAKn17ce24QaFYOplwlLUnPDxoOPxC+PriPZajrFm4LqHjbHR8wOcJ40mlOlBpIO/aGODooWz23ZkRZxEsV8TqeeLXJzAN80cLjbDosQslr6GqSXzo3rBI20LD/eNSQkAFSK3I9bfpG2p//cyVXeTE+9bwBiL64EPcrU6xL7PXVY2YP+UE2i7TQ=$Zu2hYgWIxIuCQ6nuFdv15g==",
+          "cf-ray": "9fa299fc8e68f7e5-LAX",
+          "content-length": "0",
+          "content-type": "text/plain; charset=UTF-8",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "priority": "u=1,i",
+          "server": "cloudflare",
+          "server-timing": "cfExtPri",
+          "set-cookie": "cf_clearance=n8fc6AKjHZCLT34_FdlwQVr912PY6MAp04nx6bTdocA-1778517375-1.2.1.1-JHfF2JcudgUHkIcqlBYW5Tae0Gye7vb3xTNF9T_hpY.Gy0re42wFqs_bJq2jfHhwH8dJh7ew7y0f8d_9cnz7E9jdN4lzJ6kLb3O8iJ7kaVGiMPPd23eeZAb6CaB.qg57ILg9u6QKwRu7AdiQrEWrO3hqffjh_x8V2RT77hWanlvFmhjtV.vV0fzL8uShgC9S9wdYVzm_VSfo7NDQPGoBSKJmZhTD5O7LMc23924rNw5vm7_v6omS83p.g56b82OIDBSGWj2WBLi_JDHZ.qK94DP5IQ6ICb.PqcGCyktDhWCvDHhDv.GPVrzSJDf.a5.wD6mEEcsbqpf4n9b5y6d.Og; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=technostationery.com; Expires=Tue, 11 May 2027 16:36:15 GMT",
+          "timing-allow-origin": "https://pim.technostationery.com"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+        "status": 204,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-methods": "POST,OPTIONS",
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "access-control-max-age": "86400",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cf-ray": "9fa299fd3e9df7e5-LAX",
+          "content-type": "text/plain",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "priority": "u=1,i",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=rXQeNSU5oZM2hE8hVnAVB8wiQJpbdpTgFfviSSuLDPBu4sJiGXPmzR8K5CRDU1MvncqNhofLibJTt%2FFN5fd5DBWLdcFPS3pBGVGHy5taCHVjf0h49%2F3HJmARltSrObSBDIbXIIqtdWmS7%2BU%3D\"}]}",
+          "server": "cloudflare",
+          "server-timing": "cfExtPri",
+          "vary": "Origin"
+        }
+      },
+      {
+        "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5LXKWLFR&gtg_health=1",
+        "status": 200,
+        "headers": {
+          "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+          "cache-control": "private, max-age=900",
+          "content-encoding": "br",
+          "content-length": "137",
+          "content-type": "application/javascript; charset=UTF-8",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "expires": "Mon, 11 May 2026 16:36:15 GMT",
+          "server": "Google Tag Manager",
+          "vary": "Accept-Encoding",
+          "x-xss-protection": "0"
+        }
+      },
+      {
+        "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+        "status": 200,
+        "headers": {
+          "cache-control": "no-cache, no-store",
+          "connection": "keep-alive",
+          "content-length": "725",
+          "content-type": "application/x-javascript",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "expires": "-1",
+          "request-context": "appId=cid-v1:a894a21c-0197-44e5-b203-3cbc01252c82",
+          "server": "nginx",
+          "set-cookie": "CLID=a36589aac4ad46a19ec919741569002e.20260511.20270511; expires=Tue, 11 May 2027 16:36:15 GMT; path=/; secure; samesite=none; httponly"
+        }
+      },
+      {
+        "url": "https://c.clarity.ms/c.gif",
+        "status": 302,
+        "headers": {
+          "cache-control": "private, no-cache, proxy-revalidate, no-store",
+          "content-length": "0",
+          "date": "Mon, 11 May 2026 16:36:16 GMT",
+          "location": "https://c.bing.com/c.gif?ctsa=mr&CtsSyncId=757E9852F8AC4BF5B9886EE206780217&RedC=c.clarity.ms&MXFR=29D847B3EA23638201E650E5EE236D50",
+          "p3p": "CP=\"BUS CUR CONo FIN IVDo ONL OUR PHY SAMo TELo\"",
+          "pragma": "no-cache",
+          "set-cookie": "SM=T; domain=c.clarity.ms; path=/; SameSite=None; Secure;\nMUID=29D847B3EA23638201E650E5EE236D50; domain=.clarity.ms; expires=Sat, 05-Jun-2027 16:36:15 GMT; path=/; SameSite=None; Secure; Priority=High;",
+          "x-azure-ref": "20260511T163615Z-18569d7bdc4vnwbzhC1BL1a49n00000005ug0000000160md",
+          "x-cache": "CONFIG_NOCACHE",
+          "x-powered-by": "ASP.NET"
+        }
+      },
+      {
+        "url": "https://c.bing.com/c.gif?ctsa=mr&CtsSyncId=757E9852F8AC4BF5B9886EE206780217&RedC=c.clarity.ms&MXFR=29D847B3EA23638201E650E5EE236D50",
+        "status": 302,
+        "headers": {
+          "accept-ch": "Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version",
+          "cache-control": "private, no-cache, proxy-revalidate, no-store",
+          "content-length": "0",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "location": "https://c.clarity.ms/c.gif?ctsa=mr&CtsSyncId=757E9852F8AC4BF5B9886EE206780217&MUID=12EF082A1EC5694C173E1F7C1F816818",
+          "p3p": "CP=\"BUS CUR CONo FIN IVDo ONL OUR PHY SAMo TELo\"",
+          "pragma": "no-cache",
+          "set-cookie": "MUID=12EF082A1EC5694C173E1F7C1F816818; domain=.bing.com; expires=Sat, 05-Jun-2027 16:36:16 GMT; path=/; SameSite=None; Secure; Priority=High;\nMR=0; domain=c.bing.com; expires=Mon, 18-May-2026 16:36:16 GMT; path=/; SameSite=None; Secure;\nSRM_B=12EF082A1EC5694C173E1F7C1F816818; domain=c.bing.com; expires=Sat, 05-Jun-2027 16:36:16 GMT; path=/; SameSite=None; Secure;",
+          "x-cache": "CONFIG_NOCACHE",
+          "x-msedge-ref": "Ref A: 264B8A641CD54B8C8F3ECB20C2CAF188 Ref B: BY1AA1072317023 Ref C: 2026-05-11T16:36:16Z",
+          "x-powered-by": "ASP.NET"
+        }
+      },
+      {
+        "url": "https://scripts.clarity.ms/0.8.64/clarity.js",
+        "status": 200,
+        "headers": {
+          "access-control-allow-origin": "*",
+          "cache-control": "public, max-age=86400",
+          "content-encoding": "br",
+          "content-type": "application/javascript;charset=utf-8",
+          "date": "Mon, 11 May 2026 16:36:16 GMT",
+          "etag": "W/\"0x8DEAE809ACA90A3\"",
+          "last-modified": "Sun, 10 May 2026 10:40:50 GMT",
+          "vary": "Accept-Encoding",
+          "x-azure-ref": "20260511T163616Z-17d9f946bf5vg6qghC1BL1xxhc00000006rg00000000g2ep",
+          "x-cache": "TCP_HIT",
+          "x-fd-int-roxy-purgeid": "0",
+          "x-ms-request-id": "16dcd851-c01e-0066-546b-e061fb000000",
+          "x-ms-version": "2018-03-28"
+        }
+      },
+      {
+        "url": "https://c.clarity.ms/c.gif?ctsa=mr&CtsSyncId=757E9852F8AC4BF5B9886EE206780217&MUID=12EF082A1EC5694C173E1F7C1F816818",
+        "status": 200,
+        "headers": {
+          "accept-ranges": "bytes",
+          "cache-control": "private, no-cache, proxy-revalidate, no-store",
+          "content-length": "42",
+          "content-type": "image/gif",
+          "date": "Mon, 11 May 2026 16:36:16 GMT",
+          "etag": "\"c5a16fdf92d9dc1:0\"",
+          "last-modified": "Fri, 01 May 2026 17:49:35 GMT",
+          "p3p": "CP=\"BUS CUR CONo FIN IVDo ONL OUR PHY SAMo TELo\"",
+          "pragma": "no-cache",
+          "set-cookie": "SM=C; domain=c.clarity.ms; path=/; SameSite=None; Secure;\nMUID=12EF082A1EC5694C173E1F7C1F816818; domain=.clarity.ms; expires=Sat, 05-Jun-2027 16:36:16 GMT; path=/; SameSite=None; Secure; Priority=High;\nMR=0; domain=c.clarity.ms; expires=Mon, 18-May-2026 16:36:16 GMT; path=/; SameSite=None; Secure;\nANONCHK=0; domain=c.clarity.ms; expires=Mon, 11-May-2026 16:46:16 GMT; path=/; SameSite=None; Secure;",
+          "x-azure-ref": "20260511T163616Z-18569d7bdc4vnwbzhC1BL1a49n00000005ug0000000160n3",
+          "x-cache": "CONFIG_NOCACHE",
+          "x-powered-by": "ASP.NET"
+        }
+      },
+      {
+        "url": "https://d.clarity.ms/collect",
+        "status": 204,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "connection": "keep-alive",
+          "date": "Mon, 11 May 2026 16:36:16 GMT",
+          "request-context": "appId=cid-v1:a449a586-8786-487f-a449-dc1b282a2628",
+          "server": "nginx",
+          "vary": "Origin"
+        }
+      },
+      {
+        "url": "https://connect.facebook.net/en_US/fbevents.js",
+        "status": 200,
+        "headers": {
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "public, max-age=1200",
+          "content-encoding": "gzip",
+          "content-length": "99297",
+          "content-security-policy": "default-src *.facebook.com *.fbcdn.net *.facebook.net 'self' blob:;script-src *.facebook.com *.fbcdn.net *.facebook.net blob: 'self' 'nonce-HjkjGz4Q';style-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob: 'unsafe-inline';connect-src *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* wss://*.fbcdn.net attachment.fbsbx.com *.cdninstagram.com blob: 'self' data: https://edge-chat.facebook.net https://edge-chat-latest.facebook.net wss://edge-chat-latest.facebook.net wss://edge-chat.facebook.net wss://edge-chat.socialplugin.facebook.net wss://edge-chat-latest.socialplugin.facebook.net https://edge-chat.socialplugin.facebook.net https://edge-chat-latest.socialplugin.facebook.net;font-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;img-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;media-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;child-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;frame-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;manifest-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;object-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;worker-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;block-all-mixed-content;upgrade-insecure-requests;",
+          "content-type": "application/x-javascript; charset=utf-8",
+          "cross-origin-embedder-policy-report-only": "require-corp;report-to=\"coep_report\"",
+          "cross-origin-opener-policy": "same-origin-allow-popups",
+          "cross-origin-opener-policy-report-only": "restrict-properties;report-to=\"coop_report\"",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:16 GMT",
+          "document-policy": "force-load-at-top, include-js-call-stacks-in-crash-reports",
+          "expires": "Sat, 01 Jan 2000 00:00:00 GMT",
+          "origin-agent-cluster": "?1",
+          "permissions-policy": "accelerometer=(), attribution-reporting=(), autoplay=(), bluetooth=(), camera=(), ch-device-memory=(), ch-downlink=(), ch-dpr=(), ch-ect=(), ch-rtt=(), ch-save-data=(), ch-ua-arch=(), ch-ua-bitness=(), ch-viewport-height=(), ch-viewport-width=(), ch-width=(), clipboard-read=(), clipboard-write=(), compute-pressure=(), display-capture=(), encrypted-media=(), fullscreen=(self), gamepad=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), otp-credentials=(), payment=(), picture-in-picture=(), private-state-token-issuance=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), shared-storage=(), shared-storage-select-url=(), private-state-token-redemption=(), usb=(), unload=(self), window-management=(), xr-spatial-tracking=();report-to=\"permissions_policy\"",
+          "pragma": "public",
+          "report-to": "{\"max_age\":2592000,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/browser_reporting\\/coop\\/?minimize=0\"}],\"group\":\"coop_report\",\"include_subdomains\":true}, {\"max_age\":86400,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/browser_reporting\\/coep\\/?minimize=0\"}],\"group\":\"coep_report\"}, {\"max_age\":21600,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/ajax\\/browser_error_reports\\/\"}],\"group\":\"permissions_policy\"}",
+          "reporting-endpoints": "coop_report=\"https://www.facebook.com/browser_reporting/coop/?minimize=0\", coep_report=\"https://www.facebook.com/browser_reporting/coep/?minimize=0\", permissions_policy=\"https://www.facebook.com/ajax/browser_error_reports/\"",
+          "strict-transport-security": "max-age=31536000; preload; includeSubDomains",
+          "timing-allow-origin": "*",
+          "vary": "Accept-Encoding",
+          "x-content-type-options": "nosniff",
+          "x-fb-connection-quality": "MODERATE; q=0.3, rtt=208, rtx=0, c=14, mss=1380, tbw=4547, tp=-1, tpl=-1, uplat=0, ullat=-1",
+          "x-fb-debug": "qz+a45PFXNit+DYZ8UyUtvlHXKsUsPljykoYa/gFHOBR3KJ8/qjwNbU7ge1rwmkDvQaxcGT0uqInYHw9MX/irw==",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "0"
+        }
+      },
+      {
+        "url": "https://connect.facebook.net/signals/config/303018311383850?v=2.9.313&r=stable&domain=pim.technostationery.com&hme=97937018cefade17726f0472876fc101316b2ce9008a35a6a5a7977d7436151a&ex_m=104%2C205%2C154%2C22%2C72%2C73%2C145%2C68%2C67%2C11%2C162%2C90%2C16%2C138%2C48%2C146%2C77%2C112%2C47%2C127%2C39%2C75%2C78%2C134%2C159%2C164%2C8%2C4%2C5%2C7%2C6%2C3%2C91%2C101%2C165%2C170%2C219%2C62%2C186%2C187%2C55%2C276%2C30%2C74%2C231%2C230%2C229%2C23%2C33%2C103%2C61%2C10%2C63%2C97%2C98%2C99%2C105%2C130%2C31%2C29%2C132%2C133%2C129%2C128%2C155%2C76%2C158%2C156%2C157%2C50%2C60%2C123%2C15%2C161%2C45%2C263%2C264%2C262%2C26%2C27%2C28%2C18%2C20%2C44%2C40%2C42%2C41%2C83%2C92%2C96%2C110%2C144%2C147%2C46%2C111%2C24%2C21%2C119%2C69%2C36%2C149%2C148%2C150%2C141%2C139%2C25%2C35%2C59%2C109%2C160%2C70%2C17%2C152%2C114%2C81%2C66%2C19%2C85%2C86%2C116%2C84%2C136%2C135%2C34%2C278%2C293%2C212%2C201%2C202%2C200%2C296%2C288%2C52%2C213%2C107%2C131%2C80%2C121%2C54%2C49%2C113%2C120%2C126%2C58%2C64%2C151%2C115%2C37%2C32%2C53%2C56%2C100%2C163%2C1%2C124%2C14%2C122%2C12%2C2%2C57%2C93%2C65%2C118%2C89%2C88%2C166%2C167%2C94%2C95%2C9%2C125%2C102%2C51%2C142%2C87%2C79%2C71%2C117%2C106%2C43%2C143%2C0%2C82%2C137%2C140%2C153%2C38%2C108%2C13%2C168",
+        "status": 200,
+        "headers": {
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "public, max-age=1200",
+          "content-encoding": "gzip",
+          "content-length": "45671",
+          "content-security-policy": "default-src *.facebook.com *.fbcdn.net *.facebook.net 'self' blob:;script-src *.facebook.com *.fbcdn.net *.facebook.net blob: 'self' 'nonce-iUXoQ1A0';style-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob: 'unsafe-inline';connect-src *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* wss://*.fbcdn.net attachment.fbsbx.com *.cdninstagram.com blob: 'self' data: https://edge-chat.facebook.net https://edge-chat-latest.facebook.net wss://edge-chat-latest.facebook.net wss://edge-chat.facebook.net wss://edge-chat.socialplugin.facebook.net wss://edge-chat-latest.socialplugin.facebook.net https://edge-chat.socialplugin.facebook.net https://edge-chat-latest.socialplugin.facebook.net;font-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;img-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;media-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;child-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;frame-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;manifest-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;object-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;worker-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;block-all-mixed-content;upgrade-insecure-requests;",
+          "content-type": "application/x-javascript; charset=utf-8",
+          "cross-origin-embedder-policy-report-only": "require-corp;report-to=\"coep_report\"",
+          "cross-origin-opener-policy": "same-origin-allow-popups",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:17 GMT",
+          "document-policy": "force-load-at-top, include-js-call-stacks-in-crash-reports",
+          "expires": "Sat, 01 Jan 2000 00:00:00 GMT",
+          "origin-agent-cluster": "?1",
+          "permissions-policy": "accelerometer=(), attribution-reporting=(), autoplay=(), bluetooth=(), camera=(), ch-device-memory=(), ch-downlink=(), ch-dpr=(), ch-ect=(), ch-rtt=(), ch-save-data=(), ch-ua-arch=(), ch-ua-bitness=(), ch-viewport-height=(), ch-viewport-width=(), ch-width=(), clipboard-read=(), clipboard-write=(), compute-pressure=(), display-capture=(), encrypted-media=(), fullscreen=(self), gamepad=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), otp-credentials=(), payment=(), picture-in-picture=(), private-state-token-issuance=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), shared-storage=(), shared-storage-select-url=(), private-state-token-redemption=(), usb=(), unload=(self), window-management=(), xr-spatial-tracking=();report-to=\"permissions_policy\"",
+          "pragma": "public",
+          "report-to": "{\"max_age\":2592000,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/browser_reporting\\/coop\\/?minimize=0\"}],\"group\":\"coop_report\",\"include_subdomains\":true}, {\"max_age\":86400,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/browser_reporting\\/coep\\/?minimize=0\"}],\"group\":\"coep_report\"}, {\"max_age\":21600,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/ajax\\/browser_error_reports\\/\"}],\"group\":\"permissions_policy\"}",
+          "reporting-endpoints": "coop_report=\"https://www.facebook.com/browser_reporting/coop/?minimize=0\", coep_report=\"https://www.facebook.com/browser_reporting/coep/?minimize=0\", permissions_policy=\"https://www.facebook.com/ajax/browser_error_reports/\"",
+          "strict-transport-security": "max-age=31536000; preload; includeSubDomains",
+          "timing-allow-origin": "*",
+          "vary": "Accept-Encoding",
+          "x-content-type-options": "nosniff",
+          "x-fb-connection-quality": "MODERATE; q=0.3, rtt=222, rtx=5, c=73, mss=1380, tbw=107333, tp=-1, tpl=-1, uplat=1, ullat=-1",
+          "x-fb-debug": "K3uf65a4i6wZ4Hr0T43jq83eWSVvvzYDZ6WSaL7lKEu+rGjW8Tq8db+ggXtrc8rdFcB6bMfYgiPIIlglWX0tTQ==",
+          "x-frame-options": "DENY",
+          "x-xss-protection": "0"
+        }
+      },
+      {
+        "url": "https://www.facebook.com/tr/?id=303018311383850&ev=PageView&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&rl=&if=false&ts=1778517377397&sw=1920&sh=1080&v=2.9.313&r=stable&a=tmSimo-GTM-WebTemplate&ec=0&o=12318&fbp=fb.1.1778517377391.346109724497104371&ler=empty&pmd[title]=Connexion&plt=765.3000001907349&it=1778517377096&coo=false&tm=1&expv2[0]=pl1&expv2[1]=el3&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im0&expv2[6]=hf1&expv2[7]=pt1&rqm=GET",
+        "status": 200,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-origin": "",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "content-length": "0",
+          "content-type": "text/plain",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:17 GMT",
+          "server": "proxygen-bolt",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "x-fb-connection-quality": "MODERATE; q=0.3, rtt=166, rtx=0, c=10, mss=1380, tbw=4547, tp=-1, tpl=-1, uplat=0, ullat=0"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/Y0qlUOM_RqA9azWCAHUcH3Nyylx3KyTkQvALMHQV0TGzfrxb9D91_37nBA",
+        "status": 200,
+        "headers": {
+          "access-control-allow-headers": "Cache-Control",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "private, max-age=900",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa299fd2e94f7e5-LAX",
+          "content-encoding": "gzip",
+          "content-length": "187824",
+          "content-type": "application/javascript; charset=UTF-8",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:18 GMT",
+          "expires": "Mon, 11 May 2026 16:36:17 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "priority": "u=3,i=?0",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=nBatdBSDlvIt0tvnqsyG3NSsLAHy1bQLwhnrS6GQss5%2F9hVbhvF5yM3cnCOiA2kwdjYHgJ2r1H%2Bn03uQfIt%2Fg%2F9jlc5pysPXblHO2L7bPwl23XiU%2FG02eAw32%2Fj6zjShtu2scdaL80%2BsMls%3D\"}]}",
+          "server": "cloudflare",
+          "server-timing": "cfExtPri",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "vary": "Accept-Encoding"
+        }
+      },
+      {
+        "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-72HCNG92F2&cid=1094153076.1778517381&gtm=45g92e6570v9127101817za20kzb9206585199zd9206585199&rcb=10&aip=1&dma=0&gcs=G111&gcd=13t3t3t3t5l1&npa=0&frm=0&tag_exp=0~115616986~115938466~115938469~118463261",
+        "status": 204,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+          "cache-control": "no-cache, no-store, must-revalidate",
+          "content-length": "0",
+          "content-security-policy-report-only": "script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/ascnsrsggc:164:0",
+          "content-type": "text/plain",
+          "cross-origin-opener-policy-report-only": "same-origin; report-to=ascnsrsggc:164:0",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:20 GMT",
+          "expires": "Fri, 01 Jan 1990 00:00:00 GMT",
+          "pragma": "no-cache",
+          "report-to": "{\"group\":\"ascnsrsggc:164:0\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/scaffolding/ascnsrsggc:164:0\"}],}",
+          "server": "Golfe2"
+        }
+      },
+      {
+        "url": "https://analytics.google.com/g/s/collect?_gsid=p_9Qn_TOMMbJ31qqKpGd4ItoKBiSqMZ1xQ&gtm=45g92e6570v9127101817za20kzb9206585199zd9206585199",
+        "status": 204,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+          "cache-control": "no-cache, no-store, must-revalidate",
+          "content-length": "0",
+          "content-security-policy-report-only": "script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/ascnsrsggc:329:0",
+          "content-type": "text/plain",
+          "cross-origin-opener-policy-report-only": "same-origin; report-to=ascnsrsggc:329:0",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:20 GMT",
+          "expires": "Fri, 01 Jan 1990 00:00:00 GMT",
+          "pragma": "no-cache",
+          "report-to": "{\"group\":\"ascnsrsggc:329:0\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/scaffolding/ascnsrsggc:329:0\"}],}",
+          "server": "Golfe2"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6570v9127101817za20kzb9206585199zd9206585199&_p=1778517375171&_gaz=1&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEAAAGAC&_uip=%3A%3A&ae=a&are=1&cid=1094153076.1778517381&fp=1&frm=0&pscdl=noapi&rcb=10&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-us&ur=US-CA&_gsid=p_9Qn_TOMMbJ31qqKpGd4ItoKBiSqMZ1xQ&gaf=2&_s=1&tag_exp=0~115616986~115938466~115938469~118463261&sid=1778517380&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&en=scroll&_fv=1&_nsi=1&_ss=1&gap.gtb=2&epn.percent_scrolled=90&tfd=6371",
+        "status": 204,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "no-cache, no-store, must-revalidate",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa29a1e9833f7e5-LAX",
+          "content-security-policy-report-only": "script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/ascnsrsggc:196:0",
+          "content-type": "text/plain",
+          "cross-origin-opener-policy-report-only": "same-origin; report-to=ascnsrsggc:196:0",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:21 GMT",
+          "expires": "Fri, 01 Jan 1990 00:00:00 GMT",
+          "pragma": "no-cache",
+          "priority": "u=1,i",
+          "report-to": "{\"group\":\"ascnsrsggc:196:0\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/scaffolding/ascnsrsggc:196:0\"}],}",
+          "server": "cloudflare",
+          "server-timing": "cfExtPri"
+        }
+      },
+      {
+        "url": "https://www.facebook.com/tr/",
+        "status": 200,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "content-length": "0",
+          "content-type": "text/plain",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:22 GMT",
+          "server": "proxygen-bolt",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "x-fb-connection-quality": "MODERATE; q=0.3, rtt=166, rtx=0, c=10, mss=1380, tbw=4900, tp=-1, tpl=-1, uplat=0, ullat=0"
+        }
+      },
+      {
+        "url": "https://d.clarity.ms/collect",
+        "status": 204,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "connection": "keep-alive",
+          "date": "Mon, 11 May 2026 16:36:22 GMT",
+          "request-context": "appId=cid-v1:a449a586-8786-487f-a449-dc1b282a2628",
+          "server": "nginx",
+          "vary": "Origin"
+        }
+      },
+      {
+        "url": "https://d.clarity.ms/collect",
+        "status": 204,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "connection": "keep-alive",
+          "date": "Mon, 11 May 2026 16:36:24 GMT",
+          "request-context": "appId=cid-v1:a449a586-8786-487f-a449-dc1b282a2628",
+          "server": "nginx",
+          "vary": "Origin"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/user/login-check",
+        "status": 302,
+        "headers": {
+          "access-control-allow-headers": "Content-Type, Authorization",
+          "access-control-allow-methods": "GET, POST, OPTIONS",
+          "access-control-allow-origin": "https://techno-webapp.web.app",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "no-cache, no-store, must-revalidate, max-age=0",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa29a25ca29f7e5-LAX",
+          "content-type": "text/html; charset=utf-8",
+          "date": "Mon, 11 May 2026 16:36:27 GMT",
+          "expires": "0",
+          "location": "https://pim.technostationery.com/user/login",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "permissions-policy": "geolocation=(), microphone=(), camera=()",
+          "pragma": "no-cache",
+          "priority": "u=0,i",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=aSw1mL2kESuwsJgjo01qPflPzy7tFmkQVEUrzMBD4P4bPvXp2hSysN0sezS76mIi6PsptUWZ5lrazjPua7nLy6BcNxcos%2F7nzwGdxc4%2F1BTSqtoABF5fyISuP2UDQ31uIV%2B84Gl0A0oQZoI%3D\"}]}",
+          "server": "cloudflare",
+          "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfEdge;dur=5453,cfOrigin;dur=0, cfExtPri",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "SAMEORIGIN",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/user/login",
+        "status": 200,
+        "headers": {
+          "access-control-allow-headers": "Content-Type, Authorization",
+          "access-control-allow-methods": "GET, POST, OPTIONS",
+          "access-control-allow-origin": "https://techno-webapp.web.app",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "no-cache, no-store, must-revalidate, max-age=0",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa29a47ebaaf7e5-LAX",
+          "content-encoding": "zstd",
+          "content-type": "text/html; charset=UTF-8",
+          "date": "Mon, 11 May 2026 16:36:27 GMT",
+          "expires": "0",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "permissions-policy": "geolocation=(), microphone=(), camera=()",
+          "pragma": "no-cache",
+          "priority": "u=0,i",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Hpi8woRsieqaKQjV9SCjQuOoMVl1e1v0%2B%2BAnj9yM8whh4LFEOgSjssvH6V8gTPVltF48JoXWmbOql7zeR8L5b77HS7CDI6CxPFsneGU%2FkMHPiXvweT8BaMD%2FwZZSfK4hkLvXqOieI6IaCrI%3D\"}]}",
+          "server": "cloudflare",
+          "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfEdge;dur=142,cfOrigin;dur=0, cfExtPri",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "SAMEORIGIN",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      {
+        "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+        "status": 200,
+        "headers": {
+          "cache-control": "public, max-age=86400",
+          "content-encoding": "gzip",
+          "etag": "W/\"2026.2.0\"",
+          "cross-origin-resource-policy": "cross-origin",
+          "cf-ray": "9fa299fb1a74cba2-LAX",
+          "access-control-allow-origin": "*",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "content-type": "text/javascript;charset=UTF-8",
+          "last-modified": "Thu, 07 May 2026 16:44:36 GMT",
+          "server": "cloudflare"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/",
+        "status": 200,
+        "headers": {
+          "content-encoding": "br",
+          "cf-cache-status": "DYNAMIC",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=b1Dsq3biISYO6lgDbF%2FZdvCQpPJECH8%2BPQXAyDe8JGgPky3PNqYxDqDPm4iXAgsosXcUi2H4SEstMHOFoIj%2FEewXCGoTmXNs5s8v6diWQ2bUsn9H5bBYP5R91YonnoK8lfQ5UsdqYtrHpc4%3D\"}]}",
+          "expires": "Mon, 11 May 2026 16:36:15 GMT",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Mon, 11 May 2026 16:36:15 GMT",
+          "content-type": "application/javascript; charset=UTF-8",
+          "last-modified": "Mon, 11 May 2026 16:11:50 GMT",
+          "vary": "Accept-Encoding",
+          "access-control-allow-headers": "Cache-Control",
+          "cache-control": "private, max-age=900",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "cross-origin-resource-policy": "cross-origin",
+          "cf-ray": "9fa299fafbf0f3ec-LAX",
+          "content-length": "136441",
+          "server": "cloudflare"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/bundles/pimui/images/logo_login.svg",
+        "status": 200,
+        "headers": {
+          "access-control-allow-headers": "Content-Type, Authorization",
+          "access-control-allow-methods": "GET, POST, OPTIONS",
+          "access-control-allow-origin": "https://techno-webapp.web.app",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "no-cache, no-store, must-revalidate, max-age=0, public, max-age=31536000, immutable",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa29a48fc07f7e5-LAX",
+          "content-encoding": "zstd",
+          "content-type": "image/svg+xml",
+          "date": "Mon, 11 May 2026 16:36:27 GMT",
+          "expires": "0",
+          "last-modified": "Tue, 08 Oct 2024 11:51:39 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "permissions-policy": "geolocation=(), microphone=(), camera=()",
+          "pragma": "no-cache",
+          "priority": "u=2,i",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=CCOBl7ACFtLHwcfOWM%2FHMfyiIm66vO1Zw4HspGd32qfpndVv%2BxN4JuaOllTPZwNmVDI7%2Ffoo9u3Ee%2FLMJ9G7SjrtkA7Wx67WLMIy3lKTcSKC6tXIQbEPAiGmWJELAe2PFH5RCs%2Ff6wxzlIA%3D\"}]}",
+          "server": "cloudflare",
+          "server-timing": "cfExtPri",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "SAMEORIGIN",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df",
+        "status": 200,
+        "headers": {
+          "access-control-allow-headers": "Content-Type, Authorization",
+          "access-control-allow-methods": "GET, POST, OPTIONS",
+          "access-control-allow-origin": "https://techno-webapp.web.app",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "no-cache, no-store, must-revalidate, max-age=0, public, max-age=31536000, immutable",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa29a48fc08f7e5-LAX",
+          "content-encoding": "zstd",
+          "content-type": "text/css",
+          "date": "Mon, 11 May 2026 16:36:27 GMT",
+          "expires": "0",
+          "last-modified": "Mon, 11 May 2026 15:29:37 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "permissions-policy": "geolocation=(), microphone=(), camera=()",
+          "pragma": "no-cache",
+          "priority": "u=0,i=?0",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=qKQMqmhkBs%2FL1KmxuwQXZ8JAmM8jPz8huiA7l87%2FgN9lQljLTXV9CIfj7EDgolJahtJ1uhuR4xOavxwF9YGBqkbcsMULlhTT7BHrfg1AVqqzTCpGPNLdKIo6iPQPzZb2UjbHVMhSdwJKoJo%3D\"}]}",
+          "server": "cloudflare",
+          "server-timing": "cfExtPri",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "SAMEORIGIN",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/bundles/pimui/images/illustrations/login/Logo.svg",
+        "status": 200,
+        "headers": {
+          "access-control-allow-headers": "Content-Type, Authorization",
+          "access-control-allow-methods": "GET, POST, OPTIONS",
+          "access-control-allow-origin": "https://techno-webapp.web.app",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "no-cache, no-store, must-revalidate, max-age=0, public, max-age=31536000, immutable",
+          "cf-cache-status": "DYNAMIC",
+          "cf-ray": "9fa29a48fc0af7e5-LAX",
+          "content-encoding": "zstd",
+          "content-type": "image/svg+xml",
+          "date": "Mon, 11 May 2026 16:36:27 GMT",
+          "expires": "0",
+          "last-modified": "Tue, 08 Oct 2024 11:51:39 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "permissions-policy": "geolocation=(), microphone=(), camera=()",
+          "pragma": "no-cache",
+          "priority": "u=2,i",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=QCOktimEfdZHtFFWnbM2fIVIPQFv7a8g6V7vNw3%2FwmRjcqyMUvKZdHeXIxJYVTLn3K30EofDxV8deg6zSWWNB3QNE7ufpZi7BQOeYtmXwHGLrONV4dVg8Sfqr03XZKioCfvIAIEqMN8HrmI%3D\"}]}",
+          "server": "cloudflare",
+          "server-timing": "cfExtPri",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "SAMEORIGIN",
+          "x-xss-protection": "1; mode=block"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/speculation",
+        "status": 200,
+        "headers": {
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "cf-ray": "9fa29a48fc09f7e5-LAX",
+          "content-length": "128",
+          "content-type": "application/speculationrules+json",
+          "date": "Mon, 11 May 2026 16:36:27 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=2Q0R631NujUJN7v2HEe98gHYHET4qVlOO1JFRZGfovrDLNQ6TJ1hcm3XDwbcekoGpQyI4n3Q9hW%2BJwTLdlkha2z%2BqAN8oa8WuQptgVBnKdxDzwt4dBdf3OVTx0IBahVdiSjekYM7knrL0xk%3D\"}]}",
+          "server": "cloudflare",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "vary": "Origin"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/465q/Y0qlUOM_RqA9azWCAHUcH3Nyylx3KyTkQvALMHQV0TGzfrxb9D91_37nBA",
+        "status": 200,
+        "headers": {
+          "content-encoding": "gzip",
+          "cf-cache-status": "DYNAMIC",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=nBatdBSDlvIt0tvnqsyG3NSsLAHy1bQLwhnrS6GQss5%2F9hVbhvF5yM3cnCOiA2kwdjYHgJ2r1H%2Bn03uQfIt%2Fg%2F9jlc5pysPXblHO2L7bPwl23XiU%2FG02eAw32%2Fj6zjShtu2scdaL80%2BsMls%3D\"}]}",
+          "expires": "Mon, 11 May 2026 16:36:17 GMT",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Mon, 11 May 2026 16:36:18 GMT",
+          "content-type": "application/javascript; charset=UTF-8",
+          "vary": "Accept-Encoding",
+          "priority": "u=3,i=?0",
+          "access-control-allow-headers": "Cache-Control",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cache-control": "private, max-age=900",
+          "speculation-rules": "\"/cdn-cgi/speculation\"",
+          "cross-origin-resource-policy": "cross-origin",
+          "cf-ray": "9fa299fd2e94f7e5-LAX",
+          "content-length": "187824",
+          "server": "cloudflare"
+        }
+      },
+      {
+        "url": "https://connect.facebook.net/en_US/fbevents.js",
+        "status": 200,
+        "headers": {
+          "content-encoding": "gzip",
+          "report-to": "{\"max_age\":2592000,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/browser_reporting\\/coop\\/?minimize=0\"}],\"group\":\"coop_report\",\"include_subdomains\":true}, {\"max_age\":86400,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/browser_reporting\\/coep\\/?minimize=0\"}],\"group\":\"coep_report\"}, {\"max_age\":21600,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/ajax\\/browser_error_reports\\/\"}],\"group\":\"permissions_policy\"}",
+          "x-content-type-options": "nosniff",
+          "expires": "Sat, 01 Jan 2000 00:00:00 GMT",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Mon, 11 May 2026 16:36:16 GMT",
+          "content-type": "application/x-javascript; charset=utf-8",
+          "vary": "Accept-Encoding",
+          "cross-origin-embedder-policy-report-only": "require-corp;report-to=\"coep_report\"",
+          "x-frame-options": "DENY",
+          "strict-transport-security": "max-age=31536000; preload; includeSubDomains",
+          "reporting-endpoints": "coop_report=\"https://www.facebook.com/browser_reporting/coop/?minimize=0\", coep_report=\"https://www.facebook.com/browser_reporting/coep/?minimize=0\", permissions_policy=\"https://www.facebook.com/ajax/browser_error_reports/\"",
+          "content-security-policy": "default-src *.facebook.com *.fbcdn.net *.facebook.net 'self' blob:;script-src *.facebook.com *.fbcdn.net *.facebook.net blob: 'self' 'nonce-HjkjGz4Q';style-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob: 'unsafe-inline';connect-src *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* wss://*.fbcdn.net attachment.fbsbx.com *.cdninstagram.com blob: 'self' data: https://edge-chat.facebook.net https://edge-chat-latest.facebook.net wss://edge-chat-latest.facebook.net wss://edge-chat.facebook.net wss://edge-chat.socialplugin.facebook.net wss://edge-chat-latest.socialplugin.facebook.net https://edge-chat.socialplugin.facebook.net https://edge-chat-latest.socialplugin.facebook.net;font-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;img-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;media-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;child-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;frame-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;manifest-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;object-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;worker-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;block-all-mixed-content;upgrade-insecure-requests;",
+          "cache-control": "public, max-age=1200",
+          "timing-allow-origin": "*",
+          "cross-origin-opener-policy": "same-origin-allow-popups",
+          "x-fb-connection-quality": "MODERATE; q=0.3, rtt=208, rtx=0, c=14, mss=1380, tbw=4547, tp=-1, tpl=-1, uplat=0, ullat=-1",
+          "pragma": "public",
+          "x-fb-debug": "qz+a45PFXNit+DYZ8UyUtvlHXKsUsPljykoYa/gFHOBR3KJ8/qjwNbU7ge1rwmkDvQaxcGT0uqInYHw9MX/irw==",
+          "cross-origin-resource-policy": "cross-origin",
+          "permissions-policy": "accelerometer=(), attribution-reporting=(), autoplay=(), bluetooth=(), camera=(), ch-device-memory=(), ch-downlink=(), ch-dpr=(), ch-ect=(), ch-rtt=(), ch-save-data=(), ch-ua-arch=(), ch-ua-bitness=(), ch-viewport-height=(), ch-viewport-width=(), ch-width=(), clipboard-read=(), clipboard-write=(), compute-pressure=(), display-capture=(), encrypted-media=(), fullscreen=(self), gamepad=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), otp-credentials=(), payment=(), picture-in-picture=(), private-state-token-issuance=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), shared-storage=(), shared-storage-select-url=(), private-state-token-redemption=(), usb=(), unload=(self), window-management=(), xr-spatial-tracking=();report-to=\"permissions_policy\"",
+          "document-policy": "force-load-at-top, include-js-call-stacks-in-crash-reports",
+          "cross-origin-opener-policy-report-only": "restrict-properties;report-to=\"coop_report\"",
+          "content-length": "99297",
+          "x-xss-protection": "0",
+          "origin-agent-cluster": "?1"
+        }
+      },
+      {
+        "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+        "status": 200,
+        "headers": {
+          "cache-control": "no-cache, no-store",
+          "connection": "keep-alive",
+          "content-length": "588",
+          "content-type": "application/x-javascript",
+          "date": "Mon, 11 May 2026 16:36:27 GMT",
+          "expires": "-1",
+          "request-context": "appId=cid-v1:a894a21c-0197-44e5-b203-3cbc01252c82",
+          "server": "nginx"
+        }
+      },
+      {
+        "url": "https://connect.facebook.net/signals/config/303018311383850?v=2.9.313&r=stable&domain=pim.technostationery.com&hme=97937018cefade17726f0472876fc101316b2ce9008a35a6a5a7977d7436151a&ex_m=104%2C205%2C154%2C22%2C72%2C73%2C145%2C68%2C67%2C11%2C162%2C90%2C16%2C138%2C48%2C146%2C77%2C112%2C47%2C127%2C39%2C75%2C78%2C134%2C159%2C164%2C8%2C4%2C5%2C7%2C6%2C3%2C91%2C101%2C165%2C170%2C219%2C62%2C186%2C187%2C55%2C276%2C30%2C74%2C231%2C230%2C229%2C23%2C33%2C103%2C61%2C10%2C63%2C97%2C98%2C99%2C105%2C130%2C31%2C29%2C132%2C133%2C129%2C128%2C155%2C76%2C158%2C156%2C157%2C50%2C60%2C123%2C15%2C161%2C45%2C263%2C264%2C262%2C26%2C27%2C28%2C18%2C20%2C44%2C40%2C42%2C41%2C83%2C92%2C96%2C110%2C144%2C147%2C46%2C111%2C24%2C21%2C119%2C69%2C36%2C149%2C148%2C150%2C141%2C139%2C25%2C35%2C59%2C109%2C160%2C70%2C17%2C152%2C114%2C81%2C66%2C19%2C85%2C86%2C116%2C84%2C136%2C135%2C34%2C278%2C293%2C212%2C201%2C202%2C200%2C296%2C288%2C52%2C213%2C107%2C131%2C80%2C121%2C54%2C49%2C113%2C120%2C126%2C58%2C64%2C151%2C115%2C37%2C32%2C53%2C56%2C100%2C163%2C1%2C124%2C14%2C122%2C12%2C2%2C57%2C93%2C65%2C118%2C89%2C88%2C166%2C167%2C94%2C95%2C9%2C125%2C102%2C51%2C142%2C87%2C79%2C71%2C117%2C106%2C43%2C143%2C0%2C82%2C137%2C140%2C153%2C38%2C108%2C13%2C168",
+        "status": 200,
+        "headers": {
+          "content-encoding": "gzip",
+          "report-to": "{\"max_age\":2592000,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/browser_reporting\\/coop\\/?minimize=0\"}],\"group\":\"coop_report\",\"include_subdomains\":true}, {\"max_age\":86400,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/browser_reporting\\/coep\\/?minimize=0\"}],\"group\":\"coep_report\"}, {\"max_age\":21600,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/ajax\\/browser_error_reports\\/\"}],\"group\":\"permissions_policy\"}",
+          "x-content-type-options": "nosniff",
+          "expires": "Sat, 01 Jan 2000 00:00:00 GMT",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Mon, 11 May 2026 16:36:17 GMT",
+          "content-type": "application/x-javascript; charset=utf-8",
+          "vary": "Accept-Encoding",
+          "cross-origin-embedder-policy-report-only": "require-corp;report-to=\"coep_report\"",
+          "x-frame-options": "DENY",
+          "strict-transport-security": "max-age=31536000; preload; includeSubDomains",
+          "reporting-endpoints": "coop_report=\"https://www.facebook.com/browser_reporting/coop/?minimize=0\", coep_report=\"https://www.facebook.com/browser_reporting/coep/?minimize=0\", permissions_policy=\"https://www.facebook.com/ajax/browser_error_reports/\"",
+          "content-security-policy": "default-src *.facebook.com *.fbcdn.net *.facebook.net 'self' blob:;script-src *.facebook.com *.fbcdn.net *.facebook.net blob: 'self' 'nonce-iUXoQ1A0';style-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob: 'unsafe-inline';connect-src *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* wss://*.fbcdn.net attachment.fbsbx.com *.cdninstagram.com blob: 'self' data: https://edge-chat.facebook.net https://edge-chat-latest.facebook.net wss://edge-chat-latest.facebook.net wss://edge-chat.facebook.net wss://edge-chat.socialplugin.facebook.net wss://edge-chat-latest.socialplugin.facebook.net https://edge-chat.socialplugin.facebook.net https://edge-chat-latest.socialplugin.facebook.net;font-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;img-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;media-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;child-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;frame-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;manifest-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;object-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;worker-src *.facebook.com *.fbcdn.net *.facebook.net 'self' data: blob:;block-all-mixed-content;upgrade-insecure-requests;",
+          "cache-control": "public, max-age=1200",
+          "timing-allow-origin": "*",
+          "cross-origin-opener-policy": "same-origin-allow-popups",
+          "x-fb-connection-quality": "MODERATE; q=0.3, rtt=222, rtx=5, c=73, mss=1380, tbw=107333, tp=-1, tpl=-1, uplat=1, ullat=-1",
+          "pragma": "public",
+          "x-fb-debug": "K3uf65a4i6wZ4Hr0T43jq83eWSVvvzYDZ6WSaL7lKEu+rGjW8Tq8db+ggXtrc8rdFcB6bMfYgiPIIlglWX0tTQ==",
+          "cross-origin-resource-policy": "cross-origin",
+          "permissions-policy": "accelerometer=(), attribution-reporting=(), autoplay=(), bluetooth=(), camera=(), ch-device-memory=(), ch-downlink=(), ch-dpr=(), ch-ect=(), ch-rtt=(), ch-save-data=(), ch-ua-arch=(), ch-ua-bitness=(), ch-viewport-height=(), ch-viewport-width=(), ch-width=(), clipboard-read=(), clipboard-write=(), compute-pressure=(), display-capture=(), encrypted-media=(), fullscreen=(self), gamepad=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), otp-credentials=(), payment=(), picture-in-picture=(), private-state-token-issuance=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), shared-storage=(), shared-storage-select-url=(), private-state-token-redemption=(), usb=(), unload=(self), window-management=(), xr-spatial-tracking=();report-to=\"permissions_policy\"",
+          "document-policy": "force-load-at-top, include-js-call-stacks-in-crash-reports",
+          "content-length": "45671",
+          "x-xss-protection": "0",
+          "origin-agent-cluster": "?1"
+        }
+      },
+      {
+        "url": "https://scripts.clarity.ms/0.8.64/clarity.js",
+        "status": 200,
+        "headers": {
+          "x-azure-ref": "20260511T163616Z-17d9f946bf5vg6qghC1BL1xxhc00000006rg00000000g2ep",
+          "cache-control": "public, max-age=86400",
+          "x-ms-version": "2018-03-28",
+          "content-encoding": "br",
+          "etag": "W/\"0x8DEAE809ACA90A3\"",
+          "x-fd-int-roxy-purgeid": "0",
+          "x-ms-request-id": "16dcd851-c01e-0066-546b-e061fb000000",
+          "access-control-allow-origin": "*",
+          "x-cache": "TCP_HIT",
+          "date": "Mon, 11 May 2026 16:36:16 GMT",
+          "content-type": "application/javascript;charset=utf-8",
+          "vary": "Accept-Encoding",
+          "last-modified": "Sun, 10 May 2026 10:40:50 GMT"
+        }
+      },
+      {
+        "url": "https://www.facebook.com/tr/?id=303018311383850&ev=PageView&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&rl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&if=false&ts=1778517388079&sw=1920&sh=1080&v=2.9.313&r=stable&a=tmSimo-GTM-WebTemplate&ec=0&o=12318&fbp=fb.1.1778517377391.346109724497104371&ler=empty&pmd[title]=Connexion&plt=5915.800000190735&it=1778517388049&coo=false&tm=1&expv2[0]=pl0&expv2[1]=el2&expv2[2]=bc1&expv2[3]=ra2&expv2[4]=rp2&expv2[5]=im0&expv2[6]=hf1&rqm=GET",
+        "status": 200,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-origin": "",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "content-length": "0",
+          "content-type": "text/plain",
+          "cross-origin-resource-policy": "cross-origin",
+          "date": "Mon, 11 May 2026 16:36:28 GMT",
+          "priority": "u=1,i",
+          "server": "proxygen-bolt",
+          "strict-transport-security": "max-age=31536000; includeSubDomains",
+          "x-fb-connection-quality": "MODERATE; q=0.3, rtt=177, rtx=0, c=27, mss=1232, tbw=8957, tp=17, tpl=0, uplat=0, ullat=0"
+        }
+      },
+      {
+        "url": "https://d.clarity.ms/collect",
+        "status": 204,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "connection": "keep-alive",
+          "date": "Mon, 11 May 2026 16:36:28 GMT",
+          "request-context": "appId=cid-v1:a449a586-8786-487f-a449-dc1b282a2628",
+          "server": "nginx",
+          "vary": "Origin"
+        }
+      },
+      {
+        "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+        "status": 204,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-methods": "POST,OPTIONS",
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "access-control-max-age": "86400",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cf-ray": "9fa29a4c9ceff7e5-LAX",
+          "content-type": "text/plain",
+          "date": "Mon, 11 May 2026 16:36:28 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "priority": "u=1,i",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=M8Qb6DSS%2FNdwsVr9RvwimKekbjfUToxcinL1eHN0oxzFqIaLYy1v3uz8PvhgwiYfNP4ZUeoollAzeQ41vL0n6JaYzaIRf72768OFEBu6bkijNuw8E3ZPDNBDDkK5H0ctKlmjm%2BRlg1K4R50%3D\"}]}",
+          "server": "cloudflare",
+          "server-timing": "cfExtPri",
+          "vary": "Origin"
+        }
+      },
+      {
+        "url": "https://d.clarity.ms/collect",
+        "status": 204,
+        "headers": {
+          "access-control-allow-credentials": "true",
+          "access-control-allow-origin": "https://pim.technostationery.com",
+          "connection": "keep-alive",
+          "date": "Mon, 11 May 2026 16:36:29 GMT",
+          "request-context": "appId=cid-v1:a449a586-8786-487f-a449-dc1b282a2628",
+          "server": "nginx",
+          "vary": "Origin"
+        }
+      }
+    ],
+    "headers": [],
+    "cookies": [
+      {
+        "name": "BAPID",
+        "value": "747765550d09eab5754012a05bcf2113",
+        "domain": ".pim.technostationery.com",
+        "path": "/",
+        "expires": -1,
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "Lax"
+      },
+      {
+        "name": "cf_clearance",
+        "value": "n8fc6AKjHZCLT34_FdlwQVr912PY6MAp04nx6bTdocA-1778517375-1.2.1.1-JHfF2JcudgUHkIcqlBYW5Tae0Gye7vb3xTNF9T_hpY.Gy0re42wFqs_bJq2jfHhwH8dJh7ew7y0f8d_9cnz7E9jdN4lzJ6kLb3O8iJ7kaVGiMPPd23eeZAb6CaB.qg57ILg9u6QKwRu7AdiQrEWrO3hqffjh_x8V2RT77hWanlvFmhjtV.vV0fzL8uShgC9S9wdYVzm_VSfo7NDQPGoBSKJmZhTD5O7LMc23924rNw5vm7_v6omS83p.g56b82OIDBSGWj2WBLi_JDHZ.qK94DP5IQ6ICb.PqcGCyktDhWCvDHhDv.GPVrzSJDf.a5.wD6mEEcsbqpf4n9b5y6d.Og",
+        "domain": ".technostationery.com",
+        "path": "/",
+        "expires": 1810053375.461241,
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "None",
+        "partitionKey": "https://technostationery.com",
+        "_crHasCrossSiteAncestor": false
+      },
+      {
+        "name": "CLID",
+        "value": "a36589aac4ad46a19ec919741569002e.20260511.20270511",
+        "domain": "www.clarity.ms",
+        "path": "/",
+        "expires": 1810053375.780552,
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "None"
+      },
+      {
+        "name": "MUID",
+        "value": "12EF082A1EC5694C173E1F7C1F816818",
+        "domain": ".bing.com",
+        "path": "/",
+        "expires": 1812213377.137027,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+      },
+      {
+        "name": "MR",
+        "value": "0",
+        "domain": ".c.bing.com",
+        "path": "/",
+        "expires": 1779122177.137126,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+      },
+      {
+        "name": "SRM_B",
+        "value": "12EF082A1EC5694C173E1F7C1F816818",
+        "domain": ".c.bing.com",
+        "path": "/",
+        "expires": 1812213377.137162,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+      },
+      {
+        "name": "SM",
+        "value": "C",
+        "domain": ".c.clarity.ms",
+        "path": "/",
+        "expires": -1,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+      },
+      {
+        "name": "MUID",
+        "value": "12EF082A1EC5694C173E1F7C1F816818",
+        "domain": ".clarity.ms",
+        "path": "/",
+        "expires": 1812213376.202503,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+      },
+      {
+        "name": "MR",
+        "value": "0",
+        "domain": ".c.clarity.ms",
+        "path": "/",
+        "expires": 1779122176.202563,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+      },
+      {
+        "name": "ANONCHK",
+        "value": "0",
+        "domain": ".c.clarity.ms",
+        "path": "/",
+        "expires": 1778517976.202595,
+        "httpOnly": false,
+        "secure": true,
+        "sameSite": "None"
+      },
+      {
+        "name": "_clck",
+        "value": "knl31h%5E2%5Eg5y%5E0%5E2322",
+        "domain": ".technostationery.com",
+        "path": "/",
+        "expires": 1810053376,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+      },
+      {
+        "name": "_clsk",
+        "value": "k6dhqm%5E1778517376554%5E1%5E1%5Ed.clarity.ms%2Fcollect",
+        "domain": ".technostationery.com",
+        "path": "/",
+        "expires": 1778603776,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+      },
+      {
+        "name": "_fbp",
+        "value": "fb.1.1778517377391.346109724497104371",
+        "domain": ".technostationery.com",
+        "path": "/",
+        "expires": 1786293377,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+      },
+      {
+        "name": "_ga_72HCNG92F2",
+        "value": "GS2.1.s1778517380$o1$g0$t1778517380$j60$l0$h0$dp_9Qn_TOMMbJ31qqKpGd4ItoKBiSqMZ1xQ",
+        "domain": ".technostationery.com",
+        "path": "/",
+        "expires": 1813077380.883423,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+      },
+      {
+        "name": "_ga",
+        "value": "GA1.1.1094153076.1778517381",
+        "domain": ".technostationery.com",
+        "path": "/",
+        "expires": 1813077380.884265,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "Lax"
+      }
+    ]
+  },
+  "summary": {
+    "consoleMessages": 0,
+    "errors": 0,
+    "requests": 49,
+    "responses": 45,
+    "cookies": 15
+  }
+}
