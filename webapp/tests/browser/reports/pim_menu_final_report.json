@@ -1,0 +1,55 @@
+{
+  "timestamp": "2026-05-11T18:30:19.906Z",
+  "credentials": {
+    "username": "Mounir",
+    "password": "***"
+  },
+  "summary": {
+    "consoleLogs": 18,
+    "errors": 1,
+    "navigationSteps": 1,
+    "menuItems": 0
+  },
+  "logs": {
+    "console": [
+      "[log] [fos-routing-wrapper] Loading with Routing: object",
+      "[log] [fos-routing-wrapper] Routes not loaded, will be loaded dynamically by API calls",
+      "[log] [fos-routing-wrapper] ✓ Routes loaded successfully: 393 routes",
+      "[log] [fos-routing-wrapper] ✓ Routing configured successfully",
+      "[log] [Akeneo Bootstrap] Starting application initialization...",
+      "[log] [Akeneo] Starting PIM initialization...",
+      "[log] [Akeneo] DOM ready, loading PIM application...",
+      "[warning] jQuery.Deferred exception: n.extensions.filter is not a function TypeError: n.extensions.filter is not a function\n    at Array.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260509_090000:2:1447945)\n    at C (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:148851)\n    at u (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:149153) undefined",
+      "[warning] jQuery.Deferred exception: n.extensions.filter is not a function TypeError: n.extensions.filter is not a function\n    at Array.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260509_090000:2:1447945)\n    at C (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:148851)\n    at u (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:149153) undefined",
+      "[warning] jQuery.Deferred exception: n.extensions.filter is not a function TypeError: n.extensions.filter is not a function\n    at Array.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260509_090000:2:1447945)\n    at C (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:148851)\n    at u (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:149153) undefined",
+      "[warning] jQuery.Deferred exception: n.extensions.filter is not a function TypeError: n.extensions.filter is not a function\n    at Array.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260509_090000:2:1447945)\n    at C (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:148851)\n    at u (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:149153) undefined",
+      "[warning] jQuery.Deferred exception: n.extensions.filter is not a function TypeError: n.extensions.filter is not a function\n    at Array.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260509_090000:2:1447945)\n    at C (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:148851)\n    at u (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:149153) undefined",
+      "[warning] jQuery.Deferred exception: n.extensions.filter is not a function TypeError: n.extensions.filter is not a function\n    at Array.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260509_090000:2:1447945)\n    at C (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:148851)\n    at u (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:149153) undefined",
+      "[warning] jQuery.Deferred exception: n.extensions.filter is not a function TypeError: n.extensions.filter is not a function\n    at Array.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260509_090000:2:1447945)\n    at C (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:148851)\n    at u (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:149153) undefined",
+      "[error] [Akeneo Bootstrap] Failed to build form: TypeError: n.extensions.filter is not a function\n    at Array.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260509_090000:2:1447945)\n    at C (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:148851)\n    at u (https://pim.technostationery.com/dist/vendor.min.js?v=20260509_090000:976:149153)",
+      "[error] Failed to load resource: the server responded with a status of 404 ()",
+      "[error] Refused to execute script from 'https://pim.technostationery.com/bundles/pimui/js/js/index.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled.",
+      "[error] [Akeneo] Failed to initialize PIM application: Error: Script error for \"pimui/js/index\"\nhttps://requirejs.org/docs/errors.html#scripterror\n    at makeError (https://pim.technostationery.com/dist/require.min.js?v=20260509_090000:169:17)\n    at HTMLScriptElement.onScriptError (https://pim.technostationery.com/dist/require.min.js?v=20260509_090000:1739:36)"
+    ],
+    "errors": [
+      "It seems that your web server is not well\n                     configured as we were not able to load the frontend\n                      configuration. The most likely reason is that the\n                       mod_rewrite module is not installed/enabled."
+    ],
+    "menuItems": [],
+    "navigation": [
+      {
+        "step": "After login",
+        "url": "https://pim.technostationery.com/#/dashboard"
+      }
+    ],
+    "dashboardElements": {
+      "title": "Loading...",
+      "url": "https://pim.technostationery.com/#/dashboard",
+      "hasPimApp": false,
+      "hasDashboard": false,
+      "hasNavigation": false,
+      "menuItems": [],
+      "requireJSLoaded": true,
+      "backboneLoaded": true
+    }
+  }
+}
