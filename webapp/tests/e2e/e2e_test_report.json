@@ -21,11 +21,11 @@
     {
       "name": "Page Load Performance",
       "status": "PASS",
-      "duration": 1351,
+      "duration": 2459,
       "metrics": {
-        "domContentLoaded": 0.40000009536743164,
-        "loadComplete": 0.09999990463256836,
-        "domInteractive": 447.5
+        "domContentLoaded": 1,
+        "loadComplete": 0.39999961853027344,
+        "domInteractive": 1499.9000000953674
       }
     },
     {
