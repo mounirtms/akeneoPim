@@ -1,0 +1,91 @@
+{% set cache_buster = "20260329a" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Loading...</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="/" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+
+        <link rel="stylesheet" href="/css/pim.css?v={{ cache_buster }}"/>
+
+        {{ external_javascript_dependencies() }}
+
+        {# External libraries required by webpack externals config #}
+        <script type="text/javascript" src="/dist/jquery.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/underscore.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/backbone.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/react.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/react-dom.min.js?v={{ cache_buster }}"></script>
+
+        {# FOS Routing - provides fos.Router for route generation #}
+        <script type="text/javascript" src="/bundles/fosjsrouting/js/router.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+        {# Process polyfill - fixes "process is not defined" for vfile/styled-components #}
+        <script type="text/javascript" src="/dist/process-polyfill.js?v={{ cache_buster }}"></script>
+
+        {# RequireJS - needed for AMD module loading #}
+        <script type="text/javascript" src="/dist/require.min.js?v={{ cache_buster }}"></script>
+        
+        {# Webpack bundles - rebuilt with esModule:false fix for raw-loader #}
+        <script type="text/javascript" src="/dist/vendor.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/main.min.js?v={{ cache_buster }}"></script>
+        
+        {# RequireJS Configuration and PIM initialization #}
+        <script type="text/javascript">
+            // Configure RequireJS with paths
+            if (typeof requirejs !== 'undefined') {
+                requirejs.config({
+                    baseUrl: '/js',
+                    paths: {
+                        'jquery': '/dist/jquery.min',
+                        'underscore': '/dist/underscore.min',
+                        'backbone': '/dist/backbone.min',
+                        'react': '/dist/react.min',
+                        'react-dom': '/dist/react-dom.min'
+                    },
+                    shim: {
+                        'backbone': {
+                            deps: ['underscore', 'jquery'],
+                            exports: 'Backbone'
+                        }
+                    }
+                });
+                
+                // Wait for DOM and initialize
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Check if webpack modules are loaded
+                    if (typeof __webpack_require__ !== 'undefined') {
+                        console.log('[Akeneo] Webpack modules loaded, initializing...');
+                        
+                        // Try to initialize via window.pimInit if available
+                        if (typeof window.pimInit === 'function') {
+                            window.pimInit();
+                        } else {
+                            console.log('[Akeneo] PIM initialization not found');
+                        }
+                    } else {
+                        console.warn('[Akeneo] Webpack modules not loaded');
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div class="app">
+            <div class="AknDefault-progressContainer">
+                <h3>
+                    Loading ...
+                </h3>
+                <img src="/bundles/pimui/images/main-loader.gif"/>
+                {% if true == oro_config_value('pim_ui.loading_message_enabled') %}
+                <h4 class="AknDefault-progressContainer--loadingMessages">
+                    {{ random(oro_config_value('pim_ui.loading_messages')|split('\n')) }}
+                </h4>
+                {% endif %}
+            </div>
+        </div>
+        <div class="hash-loading-mask"></div>
+    </body>
+</html>

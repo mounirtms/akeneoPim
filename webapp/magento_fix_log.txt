@@ -1,0 +1,93 @@
+========================================
+MAGENTO PLATFORM DIAGNOSTICS & FIX
+========================================
+Started: 2026-04-24 00:37:54
+
+1. Checking Magento Installation...
+   Directory: /home/technadminy7/public_html
+   ✓ Magento CLI found
+Magento CLI 2.4.6
+
+2. Checking Magento Mode...
+   Current mode: value.)
+
+3. Testing Frontend URL...
+   HTTP Status: 500
+   ✗ Frontend error detected
+
+4. Checking Magento Error Logs...
+   Last 10 errors from system.log:
+[2026-04-23T23:25:02.534346+00:00] main.ERROR: There are no commands defined in the "setup:cron" namespace.
+
+   Last 10 errors from exception.log:
+#25 /home/technadminy7/public_html/pub/errors/processor.php(438): require_once('/home/technadmi...')
+#26 /home/technadminy7/public_html/pub/errors/processor.php(256): Magento\Framework\Error\Processor->_renderPage('report.phtml')
+#27 /home/technadminy7/public_html/pub/errors/report.php(22): Magento\Framework\Error\Processor->processReport()
+#28 /home/technadminy7/public_html/vendor/magento/framework/App/ExceptionHandler.php(255): require('/home/technadmi...')
+#29 /home/technadminy7/public_html/vendor/magento/framework/App/ExceptionHandler.php(74): Magento\Framework\App\ExceptionHandler->handleGenericReport(Object(Magento\Framework\App\Bootstrap), Object(Zend_Db_Adapter_Exception))
+#30 /home/technadminy7/public_html/vendor/magento/framework/App/Http.php(156): Magento\Framework\App\ExceptionHandler->handle(Object(Magento\Framework\App\Bootstrap), Object(Zend_Db_Adapter_Exception), Object(Magento\Framework\App\Response\Http\Interceptor), Object(Magento\Framework\App\Request\Http))
+#31 /home/technadminy7/public_html/vendor/magento/framework/App/Bootstrap.php(270): Magento\Framework\App\Http->catchException(Object(Magento\Framework\App\Bootstrap), Object(Zend_Db_Adapter_Exception))
+#32 /home/technadminy7/public_html/pub/index.php(30): Magento\Framework\App\Bootstrap->run(Object(Magento\Framework\App\Http))
+#33 {main} {"exception":"[object] (Zend_Db_Adapter_Exception(code: 2002): SQLSTATE[HY000] [2002] Connection refused at /home/technadminy7/public_html/vendor/magento/zend-db/library/Zend/Db/Adapter/Pdo/Abstract.php:148)
+[previous exception] [object] (PDOException(code: 2002): SQLSTATE[HY000] [2002] Connection refused at /home/technadminy7/public_html/vendor/magento/zend-db/library/Zend/Db/Adapter/Pdo/Abstract.php:128)"} []
+
+5. Checking Database Connection...
+Unsuccessful stat on filename containing newline at /var/cpanel/ea4/ea_php_cli.pm line 87.
+   ✓ Database connection successful\n   Database version: 10.6.17-MariaDB\n
+6. Checking Cache Status...
+   Cache size: 4.0K
+   Page cache size: 4.0K
+
+7. Checking File Permissions...
+   var/ owner: technadminy7
+
+========================================
+AUTOMATIC FIXES
+========================================
+
+FIX 1: Clearing all caches...
+Flushed cache types:
+config
+layout
+block_html
+collections
+reflection
+db_ddl
+compiled_config
+eav
+customer_notification
+config_integration
+config_integration_api
+full_page
+config_webservice
+translate
+amasty_blog
+amasty_report_builder_scheme
+mab_delivery
+
+FIX 2: Clearing generated code...
+   ✓ Generated code cleared
+
+FIX 3: Running setup:upgrade...
+block_html: 1
+full_page: 1
+Nothing to import.
+Media files stored outside of 'Media Gallery Allowed' folders will not be available to the media gallery.
+Please refer to Developer Guide for more details.
+
+FIX 4: Running setup:di:compile...
+   (This may take 2-3 minutes...)
+Interception cache generation... 7/9 [==========>--]  77% 46 secs 391.0 MiB
+App action list generation... 7/9 [==========>--]  77% 46 secs 391.0 MiB
+Plugin list generation... 8/9 [===========>-]  88% 46 secs 391.0 MiB
+Plugin list generation... 9/9 [=============] 100% 48 secs 391.0 MiB
+Generated code and dependency injection configuration successfully.
+
+FIX 5: Deploying static content...
+frontend/Sm/themecore/fr_FR             2915/2915           ============================ 100%   0                   
+frontend/Sm/market/fr_FR                3717/3717           ============================ 100%   1 sec               
+frontend/Sm/smtheme_mobile/fr_FR        3731/3731           ============================ 100%   1 sec
+
+Execution time: 6.4981281757355
+
+FIX 6: Fixing file permissions...

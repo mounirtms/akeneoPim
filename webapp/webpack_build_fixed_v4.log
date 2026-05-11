@@ -1,0 +1,30 @@
+Starting webpack from /home/pim/public_html in prod mode 
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+DeprecationWarning: 'createLiteral' has been deprecated since v4.0.0. Use `factory.createStringLiteral`, `factory.createStringLiteralFromNode`, `factory.createNumericLiteral`, `factory.createBigIntLiteral`, `factory.createTrue`, `factory.createFalse`, or the factory supplied by your transformation context instead.
+DeprecationWarning: 'createPropertyAssignment' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: '' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: 'createObjectLiteralExpression' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: 'createCallExpression' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+Version: webpack 4.44.2
+Time: 43718ms
+Built at: 05/09/2026 5:23:47 AM
+ 16 assets
+Entrypoint main = vendor.min.js vendor.min.js.map main.min.js main.min.js.map
+
+ERROR in ./public/bundles/pimui/js/attribute/form/SelectAttributeType.tsx
+Module not found: Error: Can't resolve 'akeneo-design-system/lib/icons' in '/home/pim/public_html/public/bundles/pimui/js/attribute/form'
+ @ ./public/bundles/pimui/js/attribute/form/SelectAttributeType.tsx 36:25-66
+ @ ./public/bundles/pimui/js/attribute/form/CreateAttributeButtonApp.tsx
+ @ ./public/bundles/pimui/js/form/common/attributes/create-button.tsx
+ @ ./public/js/module-registry.js
+ @ ./vendor/akeneo/pim-community-dev/frontend/webpack/require-context.js
+ @ ./public/bundles/pimui/js/form/builder.js
+ @ ./public/bundles/pimui/js/index.js
+ @ multi babel-polyfill ./public/bundles/pimui/js/index.js

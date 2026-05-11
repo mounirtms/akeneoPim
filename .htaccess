@@ -1,23 +1,10 @@
-# Enable rewrite engine
-RewriteEngine On
+# Akeneo PIM Root Directory
+# This is NOT the web root - web root is /public/
 
-# Serve static files directly from public directory
-RewriteCond %{REQUEST_URI} ^/bundles/|^/css/|^/js/|^/dist/|^/images/|^/img/
-RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f
-RewriteRule ^(.*)$ /public/$1 [L]
+Options -Indexes
 
-# Handle favicon.ico specifically
-RewriteCond %{REQUEST_URI} ^/favicon.ico$
-RewriteCond %{DOCUMENT_ROOT}/public/favicon.ico -f
-RewriteRule ^(.*)$ /public/favicon.ico [L]
-
-# Redirect all other requests to public directory
-RewriteCond %{REQUEST_URI} !^/public/
-RewriteRule ^(.*)$ /public/$1 [L]
-
-# php -- BEGIN cPanel-generated handler, do not edit
-# Set the "ea-php83" package as the default "PHP" programming language.
 <IfModule mime_module>
   AddHandler application/x-httpd-ea-php83 .php .php8 .phtml
 </IfModule>
-# php -- END cPanel-generated handler, do not edit
+
+# No redirects here - all handled by Apache port 80 config

@@ -1,0 +1,264 @@
+{
+  "timestamp": "2026-05-08T19:17:11.102Z",
+  "tests": {
+    "extensionMapAnalysis": {
+      "found": false,
+      "requireModules": []
+    },
+    "moduleLoadOrder": [
+      {
+        "file": "extensions.json",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "file": "main.js",
+        "status": 302,
+        "ok": false
+      },
+      {
+        "file": "main.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "extensions.json",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "file": "main.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "extensions.json",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "file": "extensions.json",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "file": "extensions.json",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "file": "main.min.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "vendor.min.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "jquery.min.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "router.min.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "process-polyfill.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "react.min.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "react-dom.min.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "underscore.min.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "backbone.min.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "require.min.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "main.min.js",
+        "status": 200,
+        "ok": true
+      },
+      {
+        "file": "extensions.json",
+        "status": 404,
+        "ok": false
+      }
+    ],
+    "akeneoModules": {
+      "pimExtension": false,
+      "pimRouter": false,
+      "pimApp": false,
+      "registeredModules": []
+    },
+    "screenshotTaken": "diagnostic_dashboard.png"
+  },
+  "errors": [
+    {
+      "message": "r.initialize is not a function",
+      "stack": "TypeError: r.initialize is not a function\n    at o (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:374152)\n    at Object.getExtensionMap (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:374745)\n    at Object.getFormMeta (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:78707)\n    at o (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:99435)\n    at Object.build (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:100623)\n    at Object.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:43857)\n    at 1364 (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:43929)\n    at r (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397472)\n    at https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397738\n    at https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397747",
+      "timestamp": "2026-05-08T19:17:14.914Z"
+    }
+  ],
+  "warnings": [
+    {
+      "type": "error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "type": "error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "type": "error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "type": "error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "type": "error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "type": "error",
+      "message": "Loading the script 'https://scripts.clarity.ms/0.8.62/clarity.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms https://gc.kes.v2.scr.kaspersky-labs.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "type": "log",
+      "message": "[Akeneo] jQuery loaded successfully: 3.7.1"
+    },
+    {
+      "type": "log",
+      "message": "Vendor libraries loaded"
+    },
+    {
+      "type": "log",
+      "message": "[Akeneo] DOM loaded, checking modules..."
+    },
+    {
+      "type": "warning",
+      "message": "[Akeneo] Webpack modules not loaded"
+    },
+    {
+      "type": "error",
+      "message": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "type": "error",
+      "message": "Loading the script 'https://scripts.clarity.ms/0.8.62/clarity.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms https://gc.kes.v2.scr.kaspersky-labs.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    }
+  ],
+  "resources": {},
+  "mainJsAnalysis": {
+    "size": 397815,
+    "hasInitialize": true,
+    "initializeCount": 2,
+    "hasWebpackRequire": false,
+    "webpackRequireCount": 0,
+    "pattern1": {
+      "pattern": "/r\\.initialize\\s*=/g",
+      "count": 0,
+      "found": false
+    },
+    "pattern2": {
+      "pattern": "/initialize:\\s*function/g",
+      "count": 0,
+      "found": false
+    },
+    "pattern3": {
+      "pattern": "/\\.prototype\\.initialize/g",
+      "count": 0,
+      "found": false
+    },
+    "pattern4": {
+      "pattern": "/initialize:\\s*\\(/g",
+      "count": 1,
+      "found": true
+    },
+    "errorContext": " null===n&&(n=e.when(e.get(\"/js/extensions.json\",{version:Math.random().toString(36).substring(7)}),t.initialize(),r.initialize()).then(function(e){va"
+  },
+  "extensionsJsonAnalysis": {
+    "https://pim.technostationery.com/js/extensions.json": {
+      "status": 404,
+      "found": false,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    "https://pim.technostationery.com/public/js/extensions.json": {
+      "status": 404,
+      "found": false,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    "https://pim.technostationery.com/bundles/extensions.json": {
+      "status": 404,
+      "found": false,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    "https://pim.technostationery.com/dist/extensions.json": {
+      "status": 404,
+      "found": false,
+      "contentType": "text/html; charset=iso-8859-1"
+    },
+    "https://pim.technostationery.com/config/extensions.json": {
+      "status": 404,
+      "found": false,
+      "contentType": "text/html; charset=UTF-8"
+    }
+  },
+  "webpackAnalysis": {
+    "webpackDefined": false,
+    "webpackType": "undefined",
+    "windowKeys": [],
+    "requireJsDefined": true,
+    "requireJsConfig": {
+      "waitSeconds": 7,
+      "baseUrl": "/js/",
+      "paths": {
+        "jquery": "/dist/jquery.min",
+        "underscore": "/dist/underscore.min",
+        "backbone": "/dist/backbone.min",
+        "react": "/dist/react.min",
+        "react-dom": "/dist/react-dom.min"
+      },
+      "bundles": {},
+      "pkgs": {},
+      "shim": {
+        "backbone": {
+          "deps": [
+            "underscore",
+            "jquery"
+          ],
+          "exports": "Backbone"
+        }
+      },
+      "config": {}
+    },
+    "backboneVersion": "0.9.10",
+    "backboneRouterExists": true,
+    "mainModules": false,
+    "documentReadyState": "complete"
+  }
+}

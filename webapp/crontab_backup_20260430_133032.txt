@@ -1,1 +1,0 @@
-* * * * * /opt/cpanel/ea-php82/root/usr/bin/php /home/dashboard/public_html/api/telegram/poller.php >> /home/dashboard/public_html/api/telegram/logs/poller.log 2>&1

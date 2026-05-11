@@ -1,0 +1,135 @@
+==========================================
+COMPREHENSIVE FIX EXECUTION
+==========================================
+Started: Thu Apr 23 23:38:44 CET 2026
+
+Creating backup: /home/pim/backups/pre_comprehensive_fix_20260423_233844.sql.gz
+✓ Backup created: 901K
+
+=== FIX 1: JavaScript Routing Errors ===
+Clearing frontend cache and rebuilding assets...
+
+ // Clearing the cache for the prod environment with debug                      
+ // false                                                                       
+
+ [OK] Cache for the "prod" environment (debug=false) was successfully cleared.  
+
+Akeneo PIM assets
+Dumping exposed routes.
+
+[file+] /home/pim/public_html/src/../public/js/fos_js_routes.json
+
+ Installing assets as hard copies.
+
+ --- ------------------------------------ ---------------- 
+      Bundle                               Method / Error  
+ --- ------------------------------------ ---------------- 
+  ✔   FOSJsRoutingBundle                   copy            
+  ✔   OroConfigBundle                      copy            
+  ✔   AkeneoMeasureBundle                  copy            
+  ✔   PimUserBundle                        copy            
+  ✔   AkeneoPimEnrichmentBundle            copy            
+  ✔   AkeneoPimStructureBundle             copy            
+  ✔   PimAnalyticsBundle                   copy            
+  ✔   PimDashboardBundle                   copy            
+  ✔   PimDataGridBundle                    copy            
+  ✔   PimImportExportBundle                copy            
+  ✔   PimNotificationBundle                copy            
+  ✔   PimUIBundle                          copy            
+  ✔   AkeneoConnectivityConnectionBundle   copy            
+  ✔   AkeneoCommunicationChannelBundle     copy            
+  ✔   AkeneoDataQualityInsightsBundle      copy            
+  ✔   AkeneoJobBundle                      copy            
+ --- ------------------------------------ ---------------- 
+
+ ! [NOTE] Some assets were installed via copy. If you make changes to these     
+ !        assets you have to run this command again.                            
+
+ [OK] All assets were successfully installed.                                   
+
+Generating require.js main config
+22:38:47 [file+] ca_ES.js
+22:38:47 [file+] da_DK.js
+22:38:48 [file+] de_DE.js
+22:38:48 [file+] en_AU.js
+22:38:48 [file+] en_GB.js
+22:38:48 [file+] en_NZ.js
+22:38:48 [file+] en_US.js
+22:38:48 [file+] es_ES.js
+22:38:48 [file+] fi_FI.js
+22:38:48 [file+] fr_FR.js
+22:38:48 [file+] hr_HR.js
+22:38:48 [file+] it_IT.js
+22:38:48 [file+] ja_JP.js
+22:38:48 [file+] ko_KR.js
+22:38:48 [file+] nl_NL.js
+22:38:48 [file+] pl_PL.js
+22:38:48 [file+] pt_BR.js
+22:38:48 [file+] pt_PT.js
+22:38:48 [file+] ru_RU.js
+22:38:48 [file+] sv_SE.js
+22:38:48 [file+] sv_SE.js
+22:38:48 [file+] tl_PH.js
+22:38:48 [file+] zh_CN.js
+
+ Trying to install assets as relative symbolic links.
+
+ --- ------------------------------------ ------------------ 
+      Bundle                               Method / Error    
+ --- ------------------------------------ ------------------ 
+  ✔   FOSJsRoutingBundle                   relative symlink  
+  ✔   OroConfigBundle                      relative symlink  
+  ✔   AkeneoMeasureBundle                  relative symlink  
+  ✔   PimUserBundle                        relative symlink  
+  ✔   AkeneoPimEnrichmentBundle            relative symlink  
+  ✔   AkeneoPimStructureBundle             relative symlink  
+  ✔   PimAnalyticsBundle                   relative symlink  
+  ✔   PimDashboardBundle                   relative symlink  
+  ✔   PimDataGridBundle                    relative symlink  
+  ✔   PimImportExportBundle                relative symlink  
+  ✔   PimNotificationBundle                relative symlink  
+  ✔   PimUIBundle                          relative symlink  
+  ✔   AkeneoConnectivityConnectionBundle   relative symlink  
+  ✔   AkeneoCommunicationChannelBundle     relative symlink  
+  ✔   AkeneoDataQualityInsightsBundle      relative symlink  
+  ✔   AkeneoJobBundle                      relative symlink  
+ --- ------------------------------------ ------------------ 
+
+ [OK] All assets were successfully installed.                                   
+
+
+ Trying to install assets as absolute symbolic links.
+
+ --- ------------------------------------ ------------------ 
+      Bundle                               Method / Error    
+ --- ------------------------------------ ------------------ 
+  ✔   FOSJsRoutingBundle                   absolute symlink  
+  ✔   OroConfigBundle                      absolute symlink  
+  ✔   AkeneoMeasureBundle                  absolute symlink  
+  ✔   PimUserBundle                        absolute symlink  
+  ✔   AkeneoPimEnrichmentBundle            absolute symlink  
+  ✔   AkeneoPimStructureBundle             absolute symlink  
+  ✔   PimAnalyticsBundle                   absolute symlink  
+  ✔   PimDashboardBundle                   absolute symlink  
+  ✔   PimDataGridBundle                    absolute symlink  
+  ✔   PimImportExportBundle                absolute symlink  
+  ✔   PimNotificationBundle                absolute symlink  
+  ✔   PimUIBundle                          absolute symlink  
+  ✔   AkeneoConnectivityConnectionBundle   absolute symlink  
+  ✔   AkeneoCommunicationChannelBundle     absolute symlink  
+  ✔   AkeneoDataQualityInsightsBundle      absolute symlink  
+  ✔   AkeneoJobBundle                      absolute symlink  
+ --- ------------------------------------ ------------------ 
+
+ [OK] All assets were successfully installed.                                   
+
+
+ // Warming up the cache for the prod environment with debug                    
+ // false                                                                       
+
+ [OK] Cache for the "prod" environment (debug=false) was successfully warmed.   
+
+✓ Frontend assets rebuilt
+
+=== FIX 2: Database Unserialization Errors ===
+ERROR 4025 (23000) at line 2: CONSTRAINT `oro_user.properties` failed for `akeneo_pim`.`oro_user`

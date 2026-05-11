@@ -6,7 +6,10 @@
         "rootDir": "./public/bundles",
         "skipLibCheck": true,
         "strict": false,
-        "noImplicitAny": false
+        "noImplicitAny": false,
+        "types": [],
+        "noUnusedLocals": false,
+        "noUnusedParameters": false
     },
     "include": [
         "public/bundles/**/*.ts",

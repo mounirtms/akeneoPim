@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-05-08T18:42:52.569Z",
+  "testDuration": 0,
+  "phases": {
+    "loginPage": {
+      "success": true,
+      "jQuery": {
+        "loaded": false,
+        "version": null,
+        "globalDollar": false,
+        "globalJQuery": false
+      },
+      "screenshot": "test_phase1_login_page.png"
+    }
+  },
+  "error": {
+    "message": "page.waitForNavigation: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"networkidle\"\n============================================================",
+    "stack": "page.waitForNavigation: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation until \"networkidle\"\n============================================================\n    at /home/pim/public_html/webapp/comprehensive_login_test.js:124:20"
+  }
+}

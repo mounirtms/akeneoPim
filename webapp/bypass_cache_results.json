@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-05-08T20:51:22.654Z",
+  "patchMessages": [],
+  "state": {
+    "rExists": false,
+    "rHasInitialize": false,
+    "featureFlagsExists": false,
+    "featureFlagsHasInit": false,
+    "jQuery": "3.7.1",
+    "url": "https://pim.technostationery.com/#/dashboard"
+  },
+  "hasRInitializeError": true,
+  "errors": [
+    "r.initialize is not a function"
+  ],
+  "success": false
+}

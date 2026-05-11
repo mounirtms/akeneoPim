@@ -1,0 +1,21 @@
+yarn run v1.22.22
+$ yarn requirements && yarn generate-models && NODE_OPTIONS=--openssl-legacy-provider NODE_PATH=node_modules webpack --config $npm_package_config_source/webpack.config.js --env=prod
+$ node $npm_package_config_source/frontend/build/check-requirements.js
+Checking PIM frontend requirements
+$ node $npm_package_config_source/frontend/build/generate-models.js || echo 'Skipping model generation temporarily'
+internal/modules/cjs/loader.js:888
+  throw err;
+  ^
+
+Error: Cannot find module '/home/pim/public_html/vendor/akeneo/pim-community-dev/frontend/build/generate-models.js'
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:885:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:730:27)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+    at internal/main/run_main_module.js:17:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+Skipping model generation temporarily
+/root/.nvm/versions/node/v14.17.0/bin/node: --openssl-legacy-provider is not allowed in NODE_OPTIONS
+error Command failed with exit code 9.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

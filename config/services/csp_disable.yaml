@@ -1,13 +1,12 @@
-# Disable CSP completely
+# Disable CSP completely - allow all inline scripts for RequireJS
 services:
-    # Override the CSP provider to return empty policy
-    akeneo_platform_ui.content_security_policy_provider:
-        class: AppBundle\Provider\ContentSecurityPolicy\EmptyContentSecurityPolicyProvider
-        arguments:
-            - []
+    _defaults:
+        autowire: true
+        autoconfigure: true
 
-    # Override the CSP listener to do nothing
-    akeneo_platform_ui.event_listener.add_content_security_policy:
-        class: AppBundle\EventListener\EmptyContentSecurityPolicyListener
-        arguments:
-            - '@akeneo_platform_ui.content_security_policy_provider'
+    # High-priority listener to remove CSP headers after they're set
+    AppBundle\EventListener\RemoveCspListener:
+        autowire: true
+        autoconfigure: true
+        tags:
+            - { name: kernel.event_subscriber }

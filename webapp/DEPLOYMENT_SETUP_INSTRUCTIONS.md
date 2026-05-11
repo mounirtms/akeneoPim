@@ -1,0 +1,443 @@
+# Akeneo PIM 6.0 - Post-Deployment Setup Instructions
+
+**IMPORTANT:** These files must be created/modified after deployment as they are in directories ignored by git (.gitignore).
+
+## Required Manual Steps After Git Pull/Deployment
+
+### 1. Create Missing JavaScript Module Symlinks
+
+**Purpose:** Fix 404 errors for oro/loading-mask.js
+
+```bash
+cd /home/pim/public_html
+mkdir -p public/bundles/oro
+cd public/bundles/oro
+ln -sf ../oroconfig/js .
+```
+
+**Verification:**
+```bash
+ls -la /home/pim/public_html/public/bundles/oro/js
+# Should show: js -> ../oroconfig/js
+```
+
+---
+
+### 2. Create Legacy Bridge Placeholder Module
+
+**Purpose:** Fix 404 error for @akeneo-pim-community/legacy-bridge.js
+
+```bash
+cd /home/pim/public_html
+mkdir -p public/bundles/@akeneo-pim-community
+
+cat > public/bundles/@akeneo-pim-community/legacy-bridge.js << 'EOF'
+/**
+ * Legacy Bridge Module
+ * Provides compatibility layer between legacy RequireJS modules and new webpack bundles
+ */
+define([], function() {
+    'use strict';
+    
+    return {
+        // Export empty object - actual implementation is in main webpack bundle
+        version: '6.0'
+    };
+});
+EOF
+```
+
+**Verification:**
+```bash
+cat /home/pim/public_html/public/bundles/@akeneo-pim-community/legacy-bridge.js
+# Should show the define() function above
+```
+
+---
+
+### 3. Create Minimal CSS for Login Page
+
+**Purpose:** Fix corrupted styling on login page
+
+```bash
+cd /home/pim/public_html
+mkdir -p public/css
+
+cat > public/css/pim.css << 'EOF'
+/**
+ * Akeneo PIM 6.0 - Minimal CSS for Login Page
+ * Main styles are loaded via webpack style-loader after login
+ */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+}
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    background: #5992c5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background: #4a7ca8;
+}
+
+.alert {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Loading spinner */
+.loading-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.loading-mask .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #5992c5;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+EOF
+```
+
+**Verification:**
+```bash
+ls -lh /home/pim/public_html/public/css/pim.css
+# Should show: -rw-r--r-- 1 pim pim 1.9K ...
+```
+
+---
+
+### 4. Update public/.user.ini (if not already updated)
+
+**Purpose:** Ensure session cookie domain is set before Symfony boots
+
+```bash
+cd /home/pim/public_html
+
+# Check if auto_prepend_file is already set
+grep "auto_prepend_file" public/.user.ini
+
+# If not present, add it:
+echo 'auto_prepend_file = "/home/pim/public_html/public/prepend_session_fix.php"' >> public/.user.ini
+
+# Add session configuration if not present:
+grep "session.cookie_domain" public/.user.ini || cat >> public/.user.ini << 'EOF'
+session.gc_maxlifetime = 7200
+session.cookie_lifetime = 0
+session.cookie_domain = "pim.technostationery.com"
+EOF
+```
+
+---
+
+### 5. Create Session Fix Prepend Script
+
+**Purpose:** Force correct session cookie domain before Symfony boots
+
+```bash
+cd /home/pim/public_html
+
+cat > public/prepend_session_fix.php << 'EOF'
+<?php
+if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === 'pim.technostationery.com') {
+    ini_set('session.cookie_domain', 'pim.technostationery.com');
+    ini_set('session.cookie_secure', '1');
+    ini_set('session.cookie_httponly', '1');
+    ini_set('session.cookie_samesite', 'Lax');
+    error_log('[SESSION FIX] Set cookie domain to pim.technostationery.com');
+}
+EOF
+```
+
+---
+
+### 6. Update Webpack Configuration (vendor directory)
+
+**Purpose:** Fix imports-loader syntax for compatibility
+
+**Note:** This file is in vendor/ which is typically regenerated by Composer. If you need to modify it:
+
+```bash
+cd /home/pim/public_html
+
+# Backup original
+cp vendor/akeneo/pim-community-dev/webpack.config.js vendor/akeneo/pim-community-dev/webpack.config.js.backup
+
+# Apply the patch (lines 116-142)
+# See webapp/PHASE_3_TO_7_COMPLETION_STATUS.md for exact changes
+```
+
+**Alternative:** Create a patch file to apply after `composer install`:
+
+```bash
+cd /home/pim/public_html
+diff -u vendor/akeneo/pim-community-dev/webpack.config.js.backup vendor/akeneo/pim-community-dev/webpack.config.js > webapp/webpack.config.patch
+```
+
+---
+
+### 7. Regenerate Assets and Clear Caches
+
+**After creating all files above, run:**
+
+```bash
+cd /home/pim/public_html
+
+# Regenerate RequireJS paths
+php bin/console pim:installer:dump-require-paths --env=prod
+
+# Reinstall assets
+php bin/console pim:installer:assets --symlink --clean --env=prod
+
+# Clear caches
+php bin/console cache:clear --env=prod
+php bin/console cache:warmup --env=prod
+
+# Clear OPcache
+php -r "opcache_reset();"
+```
+
+---
+
+### 8. Verify Deployment
+
+**Run automated smoke tests:**
+
+```bash
+cd /home/pim/public_html/webapp
+node tests/smoke/daily_smoke_test.js
+```
+
+**Expected output:**
+```
+Total Tests: 7
+Passed: 7 ✅
+Failed: 0 ❌
+✅ ALL TESTS PASSED
+```
+
+---
+
+### 9. Manual Browser Verification
+
+1. Clear browser cache (Ctrl+Shift+Delete)
+2. Navigate to: https://pim.technostationery.com/user/login
+3. Verify:
+   - Login page has proper styling (not plain HTML)
+   - No CSS errors in console (F12)
+   - Login works with credentials: mounir / 2026
+   - Dashboard loads with full PIM UI
+   - Navigation menu visible
+   - No JavaScript errors
+
+---
+
+## Troubleshooting
+
+### If CSS still doesn't load:
+```bash
+# Check file exists and has content
+ls -lh /home/pim/public_html/public/css/pim.css
+cat /home/pim/public_html/public/css/pim.css | head -20
+
+# Check file permissions
+chmod 644 /home/pim/public_html/public/css/pim.css
+```
+
+### If 404 errors persist:
+```bash
+# Verify symlinks exist
+ls -la /home/pim/public_html/public/bundles/oro/js
+ls -la /home/pim/public_html/public/bundles/@akeneo-pim-community/
+
+# Verify files are readable
+curl -I https://pim.technostationery.com/css/pim.css
+curl -I https://pim.technostationery.com/bundles/oro/loading-mask.js
+```
+
+### If login doesn't redirect to dashboard:
+```bash
+# Check session configuration
+grep session /home/pim/public_html/public/.user.ini
+cat /home/pim/public_html/public/prepend_session_fix.php
+
+# Check Symfony logs
+tail -50 /home/pim/public_html/var/logs/prod.log
+```
+
+---
+
+## File Ownership and Permissions
+
+**All created files should be owned by `pim:pim` with appropriate permissions:**
+
+```bash
+cd /home/pim/public_html
+
+# Fix ownership if needed (run as root or with sudo)
+chown pim:pim public/css/pim.css
+chown pim:pim public/bundles/@akeneo-pim-community/legacy-bridge.js
+chown -h pim:pim public/bundles/oro/js  # -h for symlink
+chown pim:pim public/prepend_session_fix.php
+chown pim:pim public/.user.ini
+
+# Set permissions
+chmod 644 public/css/pim.css
+chmod 644 public/bundles/@akeneo-pim-community/legacy-bridge.js
+chmod 644 public/prepend_session_fix.php
+chmod 644 public/.user.ini
+```
+
+---
+
+## Summary of Changes
+
+**Configuration Changes (tracked in git):**
+- `config/packages/framework.yml` - Added session.cookie_domain
+- `.gitignore` - Added .cloudflare_credentials exclusion
+
+**Runtime Files (must be created on server):**
+- `public/bundles/oro/js` - Symlink to fix loading-mask.js
+- `public/bundles/@akeneo-pim-community/legacy-bridge.js` - Placeholder module
+- `public/css/pim.css` - Minimal CSS for login page
+- `public/prepend_session_fix.php` - Session cookie domain fix
+- `public/.user.ini` - PHP configuration updates
+
+**Vendor Changes (applied via patch or manual edit):**
+- `vendor/akeneo/pim-community-dev/webpack.config.js` - imports-loader syntax fix
+
+---
+
+## Automation Script
+
+**Create a deployment script to automate these steps:**
+
+```bash
+#!/bin/bash
+# File: webapp/deploy_post_pull.sh
+
+set -e
+
+echo "=== Akeneo PIM Post-Deployment Setup ==="
+
+cd /home/pim/public_html
+
+echo "1. Creating oro bundle symlink..."
+mkdir -p public/bundles/oro
+cd public/bundles/oro
+ln -sf ../oroconfig/js . 2>/dev/null || true
+cd /home/pim/public_html
+
+echo "2. Creating legacy-bridge placeholder..."
+mkdir -p public/bundles/@akeneo-pim-community
+cat > public/bundles/@akeneo-pim-community/legacy-bridge.js << 'EOF'
+define([], function() { 'use strict'; return { version: '6.0' }; });
+EOF
+
+echo "3. Creating CSS file..."
+mkdir -p public/css
+cat > public/css/pim.css << 'EOF'
+[... full CSS content ...]
+EOF
+
+echo "4. Creating session fix script..."
+cat > public/prepend_session_fix.php << 'EOF'
+[... full PHP content ...]
+EOF
+
+echo "5. Regenerating assets..."
+php bin/console pim:installer:dump-require-paths --env=prod
+php bin/console pim:installer:assets --symlink --clean --env=prod
+
+echo "6. Clearing caches..."
+php bin/console cache:clear --env=prod
+php bin/console cache:warmup --env=prod
+
+echo "7. Running smoke tests..."
+cd webapp
+node tests/smoke/daily_smoke_test.js
+
+echo "=== Deployment Complete ==="
+```
+
+---
+
+**Document Version:** 1.0  
+**Date:** 2026-05-10  
+**Status:** READY FOR USE

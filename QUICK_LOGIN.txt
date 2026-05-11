@@ -1,0 +1,60 @@
+═══════════════════════════════════════════════════════════════════════════════
+                   AKENEO PIM - QUICK LOGIN REFERENCE
+═══════════════════════════════════════════════════════════════════════════════
+
+🌐 LOGIN URL
+   https://pim.technostationery.com
+
+👤 CREDENTIALS
+   Username:  admin
+   Password:  Admin123!
+   
+   ⚠️  CHANGE THIS PASSWORD ON FIRST LOGIN!
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📊 SYSTEM DETAILS
+
+   Version:              Akeneo PIM v6.0.113 Community Edition
+   PHP:                  8.1.34 (cPanel)
+   Database:             MariaDB 10.6.17
+   Environment:          Production
+   Status:               ✓ Ready for Use
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚡ QUICK COMMANDS
+
+   Clear Cache:
+   cd /home/pim/public_html && php bin/console cache:clear --env=prod
+
+   Warm Cache:
+   cd /home/pim/public_html && php bin/console cache:warmup --env=prod
+
+   Check Database:
+   cd /home/pim/public_html && php bin/console doctrine:query:sql "SELECT VERSION()"
+
+   View Logs:
+   tail -50 /home/pim/public_html/var/logs/prod.log
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📁 IMPORTANT PATHS
+
+   Installation:  /home/pim/public_html/
+   Config:        /home/pim/public_html/.env.local
+   Logs:          /home/pim/public_html/var/logs/prod.log
+   Cache:         /home/pim/public_html/var/cache/prod/
+   Backups:       /home/pim/backups/
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🆘 NEED HELP?
+
+   See: /home/pim/public_html/LOGIN_READY.md for full documentation
+   See: /home/pim/public_html/FRESH_INSTALLATION_SUMMARY.md for setup details
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Installation Date: May 6, 2026 - 03:47 UTC
+Status: ✓ READY FOR PRODUCTION

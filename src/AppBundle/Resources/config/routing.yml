@@ -1,10 +1,3 @@
-app_dashboard:
-    path: /
-    defaults:
-        _controller: AppBundle:Dashboard:dashboard
-
-app_login_check:
-    path: /login_check
-
-app_logout:
-    path: /logout
+# AppBundle routes - SPA shell only
+# app_dashboard removed: Akeneo handles / via pim_root_spa in config/routes.yml
+# app_login_check/app_logout removed: handled by Akeneo security bundle

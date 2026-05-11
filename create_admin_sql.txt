@@ -1,0 +1,12 @@
+INSERT INTO oro_user (username, email, password, salt, first_name, last_name, enabled, created_at, updated_at)
+VALUES (
+    'admin',
+    'admin@technostationery.com',
+    '$2y$13$jKR/rthPmD02sB.FWrV2u.6FJ1pHDp6t0/BqPjMH8CvQG7JQXN4fu',
+    '',
+    'Admin',
+    'User',
+    1,
+    NOW(),
+    NOW()
+)

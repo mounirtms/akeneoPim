@@ -1,0 +1,67 @@
+yarn run v1.22.22
+$ yarn requirements && yarn generate-models && NODE_OPTIONS=--openssl-legacy-provider NODE_PATH=node_modules webpack --config $npm_package_config_source/webpack.config.js --env=prod
+$ node $npm_package_config_source/frontend/build/check-requirements.js
+Checking PIM frontend requirements
+$ node $npm_package_config_source/frontend/build/generate-models.js || echo 'Skipping model generation temporarily'
+node:internal/modules/cjs/loader:1386
+  throw err;
+  ^
+
+Error: Cannot find module '/home/pim/public_html/vendor/akeneo/pim-community-dev/frontend/build/generate-models.js'
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+    at Function._load (node:internal/modules/cjs/loader:1192:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+    at node:internal/main/run_main_module:36:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v22.22.2
+Skipping model generation temporarily
+Starting webpack from /home/pim/public_html in prod mode 
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+DeprecationWarning: 'createLiteral' has been deprecated since v4.0.0. Use `factory.createStringLiteral`, `factory.createStringLiteralFromNode`, `factory.createNumericLiteral`, `factory.createBigIntLiteral`, `factory.createTrue`, `factory.createFalse`, or the factory supplied by your transformation context instead.
+DeprecationWarning: 'createPropertyAssignment' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: '' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: 'createObjectLiteralExpression' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: 'createCallExpression' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+Version: webpack 4.44.2
+Time: 41943ms
+Built at: 05/10/2026 1:35:15 AM
+ 16 assets
+Entrypoint main = vendor.min.js vendor.min.js.map main.min.js main.min.js.map
+
+ERROR in ./node_modules/backbone/backbone.js
+Module build failed (from ./node_modules/imports-loader/dist/cjs.js):
+TypeError: this.getOptions is not a function
+    at Object.loader (/home/pim/public_html/node_modules/imports-loader/dist/index.js:23:24)
+ @ ./public/bundles/akeneocommunicationchannel/menu/communication-channel.ts 40:28-47
+ @ ./public/js/module-registry.js
+ @ ./vendor/akeneo/pim-community-dev/frontend/webpack/require-context.js
+ @ ./public/bundles/pimui/js/form/builder.js
+ @ ./public/bundles/pimui/js/bootstrap.js
+ @ multi ./public/bundles/pimui/js/bootstrap.js
+
+ERROR in ./public/bundles/pimui/lib/summernote/summernote.js
+Module build failed (from ./node_modules/imports-loader/dist/cjs.js):
+TypeError: this.getOptions is not a function
+    at Object.loader (/home/pim/public_html/node_modules/imports-loader/dist/index.js:23:24)
+ @ ./public/bundles/pimui/js/product/field/wysiwyg-field.js 11:0-106:2
+ @ ./public/js/module-registry.js
+ @ ./vendor/akeneo/pim-community-dev/frontend/webpack/require-context.js
+ @ ./public/bundles/pimui/js/form/builder.js
+ @ ./public/bundles/pimui/js/bootstrap.js
+ @ multi ./public/bundles/pimui/js/bootstrap.js
+error Command failed with exit code 2.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

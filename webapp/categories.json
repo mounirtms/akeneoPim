@@ -1,0 +1,149 @@
+{
+  "_links": {
+    "self": {
+      "href": "https://pim.technostationery.com/api/rest/v1/categories?page=1&limit=10&with_count=false"
+    },
+    "first": {
+      "href": "https://pim.technostationery.com/api/rest/v1/categories?page=1&limit=10&with_count=false"
+    },
+    "next": {
+      "href": "https://pim.technostationery.com/api/rest/v1/categories?page=2&limit=10&with_count=false"
+    }
+  },
+  "current_page": 1,
+  "_embedded": {
+    "items": [
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/categories/master"
+          }
+        },
+        "code": "master",
+        "parent": null,
+        "updated": "2026-04-23T09:25:03+00:00",
+        "labels": {
+          "en_US": "Master catalog",
+          "fr_FR": "Catalogue Principal"
+        }
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/categories/cat_1349"
+          }
+        },
+        "code": "cat_1349",
+        "parent": null,
+        "updated": "2026-04-23T12:54:09+00:00",
+        "labels": {
+          "fr_FR": "CRAYONS NOIR"
+        }
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/categories/cat_83"
+          }
+        },
+        "code": "cat_83",
+        "parent": null,
+        "updated": "2026-04-23T12:54:09+00:00",
+        "labels": {
+          "fr_FR": "PAPIER À DESSIN"
+        }
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/categories/cat_46"
+          }
+        },
+        "code": "cat_46",
+        "parent": null,
+        "updated": "2026-04-23T12:54:09+00:00",
+        "labels": {
+          "fr_FR": "CRAYONS NOIR"
+        }
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/categories/cat_48"
+          }
+        },
+        "code": "cat_48",
+        "parent": null,
+        "updated": "2026-04-23T12:54:09+00:00",
+        "labels": {
+          "fr_FR": "CRAYONS NOIR"
+        }
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/categories/cat_320"
+          }
+        },
+        "code": "cat_320",
+        "parent": null,
+        "updated": "2026-04-23T12:54:08+00:00",
+        "labels": {
+          "fr_FR": "SAC A DOS SCOLAIRES TIGER FAMILY GARÇON"
+        }
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/categories/cat_20"
+          }
+        },
+        "code": "cat_20",
+        "parent": null,
+        "updated": "2026-04-23T12:54:09+00:00",
+        "labels": {
+          "fr_FR": "COMPAS SCOLAIRE"
+        }
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/categories/cat_184"
+          }
+        },
+        "code": "cat_184",
+        "parent": null,
+        "updated": "2026-04-23T12:54:09+00:00",
+        "labels": {
+          "fr_FR": "PAPIER ALBUM & BLOC"
+        }
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/categories/cat_429"
+          }
+        },
+        "code": "cat_429",
+        "parent": null,
+        "updated": "2026-04-23T12:54:09+00:00",
+        "labels": {
+          "fr_FR": "JEUX EDUCATIFS"
+        }
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://pim.technostationery.com/api/rest/v1/categories/cat_3"
+          }
+        },
+        "code": "cat_3",
+        "parent": null,
+        "updated": "2026-04-23T12:54:08+00:00",
+        "labels": {
+          "fr_FR": "Tous les produits"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+
+################################################################################
+#                                                                              #
+#                   AKENEO PIM AUTOMATED RECOVERY                              #
+#                                                                              #
+################################################################################
+
+This script will:
+  1. Backup current state
+  2. Restore database from April 26, 2026
+  3. Recover configuration files from stable git commit
+  4. Reset caches and reindex products
+  5. Run verification tests
+  6. Commit recovery changes
+
+Estimated time: 2-3 hours
+Log file: /home/pim/public_html/recovery_log_20260506_084914.txt
+

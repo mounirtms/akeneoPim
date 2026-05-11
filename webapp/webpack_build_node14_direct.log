@@ -1,0 +1,41 @@
+Starting webpack from /home/pim/public_html in prod mode 
+(node:3737973) [DEP_WEBPACK_RULE_LOADER_OPTIONS_STRING] DeprecationWarning: Using a string as loader options is deprecated (ruleSet[1].rules[2].use[0].options)
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:3737973) [DEP_WEBPACK_MAIN_TEMPLATE_HASH_FOR_CHUNK] DeprecationWarning: MainTemplate.hooks.hashForChunk is deprecated (use JavascriptModulesPlugin.getCompilationHooks().chunkHash instead)
+(node:3737973) [DEP_WEBPACK_CHUNK_TEMPLATE_HASH_FOR_CHUNK] DeprecationWarning: ChunkTemplate.hooks.hashForChunk is deprecated (use JavascriptModulesPlugin.getCompilationHooks().chunkHash instead)
+(node:3737973) [DEP_WEBPACK_COMPILATION_OPTIMIZE_CHUNK_ASSETS] DeprecationWarning: optimizeChunkAssets is deprecated (use Compilation.hooks.processAssets instead and use one of Compilation.PROCESS_ASSETS_STAGE_* as stage option)
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+DeprecationWarning: 'createLiteral' has been deprecated since v4.0.0. Use `factory.createStringLiteral`, `factory.createStringLiteralFromNode`, `factory.createNumericLiteral`, `factory.createBigIntLiteral`, `factory.createTrue`, `factory.createFalse`, or the factory supplied by your transformation context instead.
+DeprecationWarning: 'createPropertyAssignment' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: '' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: 'createObjectLiteralExpression' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: 'createCallExpression' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+/home/pim/public_html/node_modules/webpack/lib/NormalModule.js:1447
+				const state = dep.getModuleEvaluationSideEffectsState(moduleGraph);
+				                  ^
+
+TypeError: dep.getModuleEvaluationSideEffectsState is not a function
+    at NormalModule.getSideEffectsConnectionState (/home/pim/public_html/node_modules/webpack/lib/NormalModule.js:1447:23)
+    at optimizeIncomingConnections (/home/pim/public_html/node_modules/webpack/lib/optimize/SideEffectsFlagPlugin.js:288:19)
+    at /home/pim/public_html/node_modules/webpack/lib/optimize/SideEffectsFlagPlugin.js:382:8
+    at Hook.eval [as call] (eval at create (/home/pim/public_html/node_modules/webpack/node_modules/tapable/lib/HookCodeFactory.js:19:10), <anonymous>:7:16)
+    at Hook.CALL_DELEGATE [as _call] (/home/pim/public_html/node_modules/webpack/node_modules/tapable/lib/Hook.js:16:14)
+    at Compilation.seal (/home/pim/public_html/node_modules/webpack/lib/Compilation.js:3145:42)
+    at /home/pim/public_html/node_modules/webpack/lib/Compiler.js:1369:20
+    at /home/pim/public_html/node_modules/webpack/lib/Compilation.js:3099:4
+    at _next2 (eval at create (/home/pim/public_html/node_modules/webpack/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:25:1)
+    at eval (eval at create (/home/pim/public_html/node_modules/webpack/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:52:1)
+    at /home/pim/public_html/node_modules/webpack/lib/FlagDependencyExportsPlugin.js:404:10
+    at /home/pim/public_html/node_modules/neo-async/async.js:2830:7
+    at Object.each (/home/pim/public_html/node_modules/neo-async/async.js:2850:39)
+    at /home/pim/public_html/node_modules/webpack/lib/FlagDependencyExportsPlugin.js:374:17
+    at /home/pim/public_html/node_modules/neo-async/async.js:2830:7
+    at Object.each (/home/pim/public_html/node_modules/neo-async/async.js:2850:39)
+    at /home/pim/public_html/node_modules/webpack/lib/FlagDependencyExportsPlugin.js:52:15
+    at Hook.eval [as callAsync] (eval at create (/home/pim/public_html/node_modules/webpack/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:48:1)
+    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/home/pim/public_html/node_modules/webpack/node_modules/tapable/lib/Hook.js:21:14)
+    at Compilation.finish (/home/pim/public_html/node_modules/webpack/lib/Compilation.js:3056:28)
+    at /home/pim/public_html/node_modules/webpack/lib/Compiler.js:1364:19
+    at processTicksAndRejections (internal/process/task_queues.js:77:11)

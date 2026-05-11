@@ -1,0 +1,50 @@
+/home/pim/public_html/node_modules/webpack-cli/bin/cli.js:93
+				throw err;
+				^
+
+Error: Cannot find module 'yamljs'
+Require stack:
+- /home/pim/public_html/vendor/akeneo/pim-community-dev/frontend/webpack/requirejs-utils.js
+- /home/pim/public_html/vendor/akeneo/pim-community-dev/webpack.config.js
+- /home/pim/public_html/node_modules/webpack-cli/bin/utils/convert-argv.js
+- /home/pim/public_html/node_modules/webpack-cli/bin/cli.js
+- /home/pim/public_html/node_modules/webpack/bin/webpack.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:885:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:730:27)
+    at Module.require (internal/modules/cjs/loader.js:957:19)
+    at require (/home/pim/public_html/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at Object.<anonymous> (/home/pim/public_html/vendor/akeneo/pim-community-dev/frontend/webpack/requirejs-utils.js:4:19)
+    at Module._compile (/home/pim/public_html/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)
+    at Module.load (internal/modules/cjs/loader.js:933:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:774:14)
+    at Module.require (internal/modules/cjs/loader.js:957:19)
+    at require (/home/pim/public_html/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at Object.<anonymous> (/home/pim/public_html/vendor/akeneo/pim-community-dev/webpack.config.js:13:48)
+    at Module._compile (/home/pim/public_html/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)
+    at Module.load (internal/modules/cjs/loader.js:933:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:774:14)
+    at Module.require (internal/modules/cjs/loader.js:957:19)
+    at require (/home/pim/public_html/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at WEBPACK_OPTIONS (/home/pim/public_html/node_modules/webpack-cli/bin/utils/convert-argv.js:114:13)
+    at requireConfig (/home/pim/public_html/node_modules/webpack-cli/bin/utils/convert-argv.js:116:6)
+    at /home/pim/public_html/node_modules/webpack-cli/bin/utils/convert-argv.js:123:17
+    at Array.forEach (<anonymous>)
+    at module.exports (/home/pim/public_html/node_modules/webpack-cli/bin/utils/convert-argv.js:121:15)
+    at /home/pim/public_html/node_modules/webpack-cli/bin/cli.js:71:45
+    at Object.parse (/home/pim/public_html/node_modules/yargs/yargs.js:576:18)
+    at /home/pim/public_html/node_modules/webpack-cli/bin/cli.js:49:8
+    at Object.<anonymous> (/home/pim/public_html/node_modules/webpack-cli/bin/cli.js:366:3)
+    at Module._compile (internal/modules/cjs/loader.js:1068:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1097:10)
+    at Module.load (internal/modules/cjs/loader.js:933:32) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/pim/public_html/vendor/akeneo/pim-community-dev/frontend/webpack/requirejs-utils.js',
+    '/home/pim/public_html/vendor/akeneo/pim-community-dev/webpack.config.js',
+    '/home/pim/public_html/node_modules/webpack-cli/bin/utils/convert-argv.js',
+    '/home/pim/public_html/node_modules/webpack-cli/bin/cli.js',
+    '/home/pim/public_html/node_modules/webpack/bin/webpack.js'
+  ]
+}

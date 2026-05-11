@@ -1,1 +1,0 @@
-vendor/akeneo/pim-community-dev/webpack.config.js

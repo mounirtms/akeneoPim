@@ -1,0 +1,1436 @@
+{
+  "timestamp": "2026-05-08T19:13:31.801Z",
+  "phases": {
+    "loginPage": {
+      "title": "Connexion",
+      "url": "https://pim.technostationery.com/user/login",
+      "hasForm": true,
+      "libraries": {
+        "jQuery": null,
+        "requirejs": false,
+        "underscore": false,
+        "backbone": false
+      },
+      "scripts": [
+        {
+          "src": "https://scripts.clarity.ms/0.8.62/clarity.js",
+          "type": "",
+          "async": true,
+          "defer": false
+        },
+        {
+          "src": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+          "type": "",
+          "async": true,
+          "defer": false
+        },
+        {
+          "src": "https://connect.facebook.net/signals/config/303018311383850?v=2.9.313&r=stable&domain=pim.technostationery.com&hme=97937018cefade17726f0472876fc101316b2ce9008a35a6a5a7977d7436151a&ex_m=104%2C205%2C154%2C22%2C72%2C73%2C145%2C68%2C67%2C11%2C162%2C90%2C16%2C138%2C48%2C146%2C77%2C112%2C47%2C127%2C39%2C75%2C78%2C134%2C159%2C164%2C8%2C4%2C5%2C7%2C6%2C3%2C91%2C101%2C165%2C170%2C219%2C62%2C186%2C187%2C55%2C276%2C30%2C74%2C231%2C230%2C229%2C23%2C33%2C103%2C61%2C10%2C63%2C97%2C98%2C99%2C105%2C130%2C31%2C29%2C132%2C133%2C129%2C128%2C155%2C76%2C158%2C156%2C157%2C50%2C60%2C123%2C15%2C161%2C45%2C263%2C264%2C262%2C26%2C27%2C28%2C18%2C20%2C44%2C40%2C42%2C41%2C83%2C92%2C96%2C110%2C144%2C147%2C46%2C111%2C24%2C21%2C119%2C69%2C36%2C149%2C148%2C150%2C141%2C139%2C25%2C35%2C59%2C109%2C160%2C70%2C17%2C152%2C114%2C81%2C66%2C19%2C85%2C86%2C116%2C84%2C136%2C135%2C34%2C278%2C293%2C212%2C201%2C202%2C200%2C296%2C288%2C52%2C213%2C107%2C131%2C80%2C121%2C54%2C49%2C113%2C120%2C126%2C58%2C64%2C151%2C115%2C37%2C32%2C53%2C56%2C100%2C163%2C1%2C124%2C14%2C122%2C12%2C2%2C57%2C93%2C65%2C118%2C89%2C88%2C166%2C167%2C94%2C95%2C9%2C125%2C102%2C51%2C142%2C87%2C79%2C71%2C117%2C106%2C43%2C143%2C0%2C82%2C137%2C140%2C153%2C38%2C108%2C13%2C168",
+          "type": "",
+          "async": true,
+          "defer": false
+        },
+        {
+          "src": "https://connect.facebook.net/en_US/fbevents.js",
+          "type": "text/javascript",
+          "async": true,
+          "defer": false
+        },
+        {
+          "src": "https://www.googletagmanager.com/gtm.js?id=GTM-5LXKWLFR&gtg_health=1",
+          "type": "text/javascript",
+          "async": true,
+          "defer": false
+        },
+        {
+          "src": "https://pim.technostationery.com/465q/Y0qlUOM_RqA9azWCAHUcH3Nyylx3KyTkQvALMHQV0TGyfLxb9D91_37nBA",
+          "type": "text/javascript",
+          "async": true,
+          "defer": false
+        },
+        {
+          "src": "https://pim.technostationery.com/465q/",
+          "type": "",
+          "async": true,
+          "defer": false
+        },
+        {
+          "src": "",
+          "type": "",
+          "async": false,
+          "defer": false
+        },
+        {
+          "src": "",
+          "type": "",
+          "async": false,
+          "defer": false
+        },
+        {
+          "src": "",
+          "type": "text/javascript",
+          "async": false,
+          "defer": false
+        },
+        {
+          "src": "",
+          "type": "text/javascript",
+          "async": false,
+          "defer": false
+        },
+        {
+          "src": "",
+          "type": "text/javascript",
+          "async": false,
+          "defer": false
+        },
+        {
+          "src": "",
+          "type": "",
+          "async": false,
+          "defer": false
+        },
+        {
+          "src": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+          "type": "",
+          "async": false,
+          "defer": true
+        },
+        {
+          "src": "",
+          "type": "text/javascript",
+          "async": false,
+          "defer": false
+        }
+      ],
+      "stylesheets": [
+        {
+          "href": "https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df",
+          "disabled": false
+        }
+      ]
+    },
+    "postLogin": {
+      "url": "https://pim.technostationery.com/#/dashboard",
+      "title": "Loading...",
+      "hash": "#/dashboard",
+      "libraries": {
+        "jQuery": "3.7.1",
+        "requirejs": true,
+        "underscore": "1.12.1",
+        "backbone": "0.9.10",
+        "react": "16.14.0",
+        "webpack": false
+      },
+      "globals": {
+        "pimInit": "undefined",
+        "Routing": "object",
+        "fos": "object"
+      },
+      "dom": {
+        "bodyClasses": "",
+        "appDiv": true,
+        "rootDiv": false,
+        "loadingVisible": true,
+        "menuSelectors": {
+          ".AknDefault-mainMenu": false,
+          "nav": false,
+          "[role=\"navigation\"]": false
+        }
+      },
+      "requirejsModules": [],
+      "errors": {
+        "lastError": null
+      }
+    }
+  },
+  "summary": {
+    "totalConsoleMessages": 7,
+    "totalErrors": 1,
+    "totalNetworkErrors": 6,
+    "totalRequests": 53,
+    "jQueryLoaded": true,
+    "dashboardReached": true,
+    "menuVisible": false,
+    "loadingStuck": true
+  },
+  "errors": {
+    "extensions": [],
+    "initialize": [
+      {
+        "timestamp": "2026-05-08T19:13:38.656Z",
+        "message": "r.initialize is not a function",
+        "stack": "TypeError: r.initialize is not a function\n    at o (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:374152)\n    at Object.getExtensionMap (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:374745)\n    at Object.getFormMeta (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:78707)\n    at o (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:99435)\n    at Object.build (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:100623)\n    at Object.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:43857)\n    at 1364 (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:43929)\n    at r (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397472)\n    at https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397738\n    at https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397747",
+        "name": "TypeError"
+      }
+    ],
+    "moduleLoading": [],
+    "routing": [],
+    "other": []
+  },
+  "networkStats": {
+    "total": 49,
+    "by_status": {
+      "200": 37,
+      "204": 6,
+      "301": 1,
+      "302": 4,
+      "404": 1
+    },
+    "by_type": {
+      "document": 4,
+      "other": 2,
+      "stylesheet": 2,
+      "image": 6,
+      "script": 26,
+      "xhr": 5,
+      "ping": 2,
+      "fetch": 2
+    },
+    "failed": 6,
+    "notFound": 1
+  },
+  "notFoundResources": [
+    {
+      "timestamp": "2026-05-08T19:13:38.747Z",
+      "url": "https://pim.technostationery.com/js/extensions.json?version=olsb0o",
+      "status": 404,
+      "statusText": "",
+      "contentType": "text/html; charset=UTF-8",
+      "resourceType": "xhr"
+    }
+  ],
+  "logs": {
+    "console": [
+      {
+        "timestamp": "2026-05-08T19:13:32.585Z",
+        "type": "error",
+        "text": "Loading the script 'https://scripts.clarity.ms/0.8.62/clarity.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms https://gc.kes.v2.scr.kaspersky-labs.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked.",
+        "location": {
+          "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+          "lineNumber": 0,
+          "columnNumber": 0
+        },
+        "args": 0
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.593Z",
+        "type": "log",
+        "text": "[Akeneo] jQuery loaded successfully: 3.7.1",
+        "location": {
+          "url": "https://pim.technostationery.com/",
+          "lineNumber": 24,
+          "columnNumber": 24
+        },
+        "args": 2
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.600Z",
+        "type": "log",
+        "text": "Vendor libraries loaded",
+        "location": {
+          "url": "https://pim.technostationery.com/dist/vendor.min.js?v=20260508_194500",
+          "lineNumber": 0,
+          "columnNumber": 401
+        },
+        "args": 1
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.666Z",
+        "type": "log",
+        "text": "[Akeneo] DOM loaded, checking modules...",
+        "location": {
+          "url": "https://pim.technostationery.com/",
+          "lineNumber": 66,
+          "columnNumber": 28
+        },
+        "args": 1
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.666Z",
+        "type": "warning",
+        "text": "[Akeneo] Webpack modules not loaded",
+        "location": {
+          "url": "https://pim.technostationery.com/",
+          "lineNumber": 92,
+          "columnNumber": 32
+        },
+        "args": 1
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.747Z",
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 ()",
+        "location": {
+          "url": "https://pim.technostationery.com/js/extensions.json?version=olsb0o",
+          "lineNumber": 0,
+          "columnNumber": 0
+        },
+        "args": 0
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.875Z",
+        "type": "error",
+        "text": "Loading the script 'https://scripts.clarity.ms/0.8.62/clarity.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms https://gc.kes.v2.scr.kaspersky-labs.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked.",
+        "location": {
+          "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+          "lineNumber": 0,
+          "columnNumber": 0
+        },
+        "args": 0
+      }
+    ],
+    "errors": [
+      {
+        "timestamp": "2026-05-08T19:13:38.656Z",
+        "message": "r.initialize is not a function",
+        "stack": "TypeError: r.initialize is not a function\n    at o (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:374152)\n    at Object.getExtensionMap (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:374745)\n    at Object.getFormMeta (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:78707)\n    at o (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:99435)\n    at Object.build (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:100623)\n    at Object.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:43857)\n    at 1364 (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:43929)\n    at r (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397472)\n    at https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397738\n    at https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397747",
+        "name": "TypeError"
+      }
+    ],
+    "warnings": [],
+    "network": [
+      {
+        "timestamp": "2026-05-08T19:13:32.064Z",
+        "url": "https://pim.technostationery.com/user/login",
+        "status": 200,
+        "statusText": "",
+        "contentType": "text/html; charset=UTF-8",
+        "resourceType": "document"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.074Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/speculation",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/speculationrules+json",
+        "resourceType": "other"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.089Z",
+        "url": "https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df",
+        "status": 200,
+        "statusText": "",
+        "contentType": "text/css",
+        "resourceType": "stylesheet"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.093Z",
+        "url": "https://pim.technostationery.com/bundles/pimui/images/logo_login.svg",
+        "status": 200,
+        "statusText": "",
+        "contentType": "image/svg+xml",
+        "resourceType": "image"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.096Z",
+        "url": "https://pim.technostationery.com/bundles/pimui/images/illustrations/login/Logo.svg",
+        "status": 200,
+        "statusText": "",
+        "contentType": "image/svg+xml",
+        "resourceType": "image"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.109Z",
+        "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+        "status": 200,
+        "statusText": "",
+        "contentType": "text/javascript;charset=UTF-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.127Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+        "status": 302,
+        "statusText": "",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.135Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/h/g/scripts/jsd/fe6331af5207/main.js?",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript; charset=UTF-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.208Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/fe6331af5207/0.5116887226992494:1778264516:exwr5HH0cGkK-CUAGMI8UhEhXHYMZ7_3TxAdFnwM3zo/9f8ac83eb9e6f7d9",
+        "status": 200,
+        "statusText": "",
+        "contentType": "text/plain; charset=UTF-8",
+        "resourceType": "xhr"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.231Z",
+        "url": "https://pim.technostationery.com/465q/",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript; charset=UTF-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.328Z",
+        "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5LXKWLFR&gtg_health=1",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript; charset=UTF-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.498Z",
+        "url": "https://pim.technostationery.com/465q/Y0qlUOM_RqA9azWCAHUcH3Nyylx3KyTkQvALMHQV0TGyfLxb9D91_37nBA",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript; charset=UTF-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.566Z",
+        "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+        "status": 200,
+        "statusText": "OK",
+        "contentType": "application/x-javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.619Z",
+        "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-72HCNG92F2&cid=315417785.1778267613&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&rcb=11&aip=1&dma=0&gcs=G111&gcd=13t3t3t3t5l1&npa=0&frm=0&tag_exp=0~115938465~115938469~118463262",
+        "status": 204,
+        "statusText": "",
+        "contentType": "text/plain",
+        "resourceType": "ping"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.620Z",
+        "url": "https://analytics.google.com/g/s/collect?_gsid=UDGJn-6bWVxjxQxrSznV0j7fldEmF0Awyw&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199",
+        "status": 204,
+        "statusText": "",
+        "contentType": "text/plain",
+        "resourceType": "ping"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.643Z",
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&_p=1778267612069&_gaz=1&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEAAAGAC&_uip=%3A%3A&ae=a&are=1&cid=315417785.1778267613&fp=1&frm=0&pscdl=noapi&rcb=11&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&ur=US-CA&_gsid=UDGJn-6bWVxjxQxrSznV0j7fldEmF0Awyw&gaf=2&_s=1&tag_exp=0~115938465~115938469~118463262&sid=1778267612&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&en=scroll&_fv=1&_nsi=1&_ss=1&gap.gtb=2&epn.percent_scrolled=90&tfd=774",
+        "status": 204,
+        "statusText": "",
+        "contentType": "text/plain",
+        "resourceType": "fetch"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:33.139Z",
+        "url": "https://connect.facebook.net/en_US/fbevents.js",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/x-javascript; charset=utf-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:33.566Z",
+        "url": "https://connect.facebook.net/signals/config/303018311383850?v=2.9.313&r=stable&domain=pim.technostationery.com&hme=97937018cefade17726f0472876fc101316b2ce9008a35a6a5a7977d7436151a&ex_m=104%2C205%2C154%2C22%2C72%2C73%2C145%2C68%2C67%2C11%2C162%2C90%2C16%2C138%2C48%2C146%2C77%2C112%2C47%2C127%2C39%2C75%2C78%2C134%2C159%2C164%2C8%2C4%2C5%2C7%2C6%2C3%2C91%2C101%2C165%2C170%2C219%2C62%2C186%2C187%2C55%2C276%2C30%2C74%2C231%2C230%2C229%2C23%2C33%2C103%2C61%2C10%2C63%2C97%2C98%2C99%2C105%2C130%2C31%2C29%2C132%2C133%2C129%2C128%2C155%2C76%2C158%2C156%2C157%2C50%2C60%2C123%2C15%2C161%2C45%2C263%2C264%2C262%2C26%2C27%2C28%2C18%2C20%2C44%2C40%2C42%2C41%2C83%2C92%2C96%2C110%2C144%2C147%2C46%2C111%2C24%2C21%2C119%2C69%2C36%2C149%2C148%2C150%2C141%2C139%2C25%2C35%2C59%2C109%2C160%2C70%2C17%2C152%2C114%2C81%2C66%2C19%2C85%2C86%2C116%2C84%2C136%2C135%2C34%2C278%2C293%2C212%2C201%2C202%2C200%2C296%2C288%2C52%2C213%2C107%2C131%2C80%2C121%2C54%2C49%2C113%2C120%2C126%2C58%2C64%2C151%2C115%2C37%2C32%2C53%2C56%2C100%2C163%2C1%2C124%2C14%2C122%2C12%2C2%2C57%2C93%2C65%2C118%2C89%2C88%2C166%2C167%2C94%2C95%2C9%2C125%2C102%2C51%2C142%2C87%2C79%2C71%2C117%2C106%2C43%2C143%2C0%2C82%2C137%2C140%2C153%2C38%2C108%2C13%2C168",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/x-javascript; charset=utf-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:33.600Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+        "status": 204,
+        "statusText": "",
+        "contentType": "text/plain",
+        "resourceType": "xhr"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:33.915Z",
+        "url": "https://c.clarity.ms/c.gif",
+        "status": 302,
+        "statusText": "",
+        "resourceType": "image"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:34.032Z",
+        "url": "https://c.bing.com/c.gif?ctsa=mr&CtsSyncId=62F448488E2644E5B52385B805AFAB19&RedC=c.clarity.ms&MXFR=1DDD2E76319267CF16C43925359269F8",
+        "status": 302,
+        "statusText": "",
+        "resourceType": "image"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:34.118Z",
+        "url": "https://c.clarity.ms/c.gif?ctsa=mr&CtsSyncId=62F448488E2644E5B52385B805AFAB19&MUID=1C7C67D6D13B695510787085D0B868CB",
+        "status": 200,
+        "statusText": "",
+        "contentType": "image/gif",
+        "resourceType": "image"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.255Z",
+        "url": "https://pim.technostationery.com/user/login-check",
+        "status": 302,
+        "statusText": "",
+        "contentType": "text/html; charset=utf-8",
+        "resourceType": "document"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.300Z",
+        "url": "https://pim.technostationery.com/dashboard",
+        "status": 301,
+        "statusText": "",
+        "contentType": "text/html; charset=utf-8",
+        "resourceType": "document"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.405Z",
+        "url": "https://pim.technostationery.com/",
+        "status": 200,
+        "statusText": "",
+        "contentType": "text/html; charset=UTF-8",
+        "resourceType": "document"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+        "status": 200,
+        "statusText": "",
+        "contentType": "text/javascript;charset=UTF-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.421Z",
+        "url": "https://pim.technostationery.com/465q/",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript; charset=UTF-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.440Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/speculation",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/speculationrules+json",
+        "resourceType": "other"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.449Z",
+        "url": "https://pim.technostationery.com/465q/Y0qlUOM_RqA9azWCAHUcH3Nyylx3KyTkQvALMHQV0TGyfLxb9D91_37nBA",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript; charset=UTF-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.449Z",
+        "url": "https://connect.facebook.net/en_US/fbevents.js",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/x-javascript; charset=utf-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.450Z",
+        "url": "https://pim.technostationery.com/css/pim.css?v=20260508_194500",
+        "status": 200,
+        "statusText": "",
+        "contentType": "text/css",
+        "resourceType": "stylesheet"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.451Z",
+        "url": "https://pim.technostationery.com/bundles/pimui/images/main-loader.gif",
+        "status": 200,
+        "statusText": "",
+        "contentType": "image/gif",
+        "resourceType": "image"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.451Z",
+        "url": "https://pim.technostationery.com/dist/vendor.min.js?v=20260508_194500",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.452Z",
+        "url": "https://pim.technostationery.com/dist/underscore.min.js?v=20260508_194500",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.566Z",
+        "url": "https://pim.technostationery.com/dist/jquery.min.js?v=20260508_194500",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.580Z",
+        "url": "https://pim.technostationery.com/dist/process-polyfill.js?v=20260508_194500",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.581Z",
+        "url": "https://pim.technostationery.com/dist/require.min.js?v=20260508_194500",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.581Z",
+        "url": "https://pim.technostationery.com/dist/react.min.js?v=20260508_194500",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.583Z",
+        "url": "https://pim.technostationery.com/bundles/fosjsrouting/js/router.min.js?v=20260508_194500",
+        "status": 200,
+        "statusText": "",
+        "contentType": "text/javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.584Z",
+        "url": "https://pim.technostationery.com/dist/backbone.min.js?v=20260508_194500",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.584Z",
+        "url": "https://pim.technostationery.com/dist/react-dom.min.js?v=20260508_194500",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.584Z",
+        "url": "https://pim.technostationery.com/js/routing?callback=fos.Router.setData",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.585Z",
+        "url": "https://pim.technostationery.com/dist/main.min.js?v=20260508_194500",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.726Z",
+        "url": "https://connect.facebook.net/signals/config/303018311383850?v=2.9.313&r=stable&domain=pim.technostationery.com&hme=97937018cefade17726f0472876fc101316b2ce9008a35a6a5a7977d7436151a&ex_m=104%2C205%2C154%2C22%2C72%2C73%2C145%2C68%2C67%2C11%2C162%2C90%2C16%2C138%2C48%2C146%2C77%2C112%2C47%2C127%2C39%2C75%2C78%2C134%2C159%2C164%2C8%2C4%2C5%2C7%2C6%2C3%2C91%2C101%2C165%2C170%2C219%2C62%2C186%2C187%2C55%2C276%2C30%2C74%2C231%2C230%2C229%2C23%2C33%2C103%2C61%2C10%2C63%2C97%2C98%2C99%2C105%2C130%2C31%2C29%2C132%2C133%2C129%2C128%2C155%2C76%2C158%2C156%2C157%2C50%2C60%2C123%2C15%2C161%2C45%2C263%2C264%2C262%2C26%2C27%2C28%2C18%2C20%2C44%2C40%2C42%2C41%2C83%2C92%2C96%2C110%2C144%2C147%2C46%2C111%2C24%2C21%2C119%2C69%2C36%2C149%2C148%2C150%2C141%2C139%2C25%2C35%2C59%2C109%2C160%2C70%2C17%2C152%2C114%2C81%2C66%2C19%2C85%2C86%2C116%2C84%2C136%2C135%2C34%2C278%2C293%2C212%2C201%2C202%2C200%2C296%2C288%2C52%2C213%2C107%2C131%2C80%2C121%2C54%2C49%2C113%2C120%2C126%2C58%2C64%2C151%2C115%2C37%2C32%2C53%2C56%2C100%2C163%2C1%2C124%2C14%2C122%2C12%2C2%2C57%2C93%2C65%2C118%2C89%2C88%2C166%2C167%2C94%2C95%2C9%2C125%2C102%2C51%2C142%2C87%2C79%2C71%2C117%2C106%2C43%2C143%2C0%2C82%2C137%2C140%2C153%2C38%2C108%2C13%2C168",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/x-javascript; charset=utf-8",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.734Z",
+        "url": "https://pim.technostationery.com/rest/security/",
+        "status": 200,
+        "statusText": "",
+        "contentType": "application/json",
+        "resourceType": "xhr"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.747Z",
+        "url": "https://pim.technostationery.com/js/extensions.json?version=olsb0o",
+        "status": 404,
+        "statusText": "",
+        "contentType": "text/html; charset=UTF-8",
+        "resourceType": "xhr"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.875Z",
+        "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+        "status": 200,
+        "statusText": "OK",
+        "contentType": "application/x-javascript",
+        "resourceType": "script"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.883Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+        "status": 204,
+        "statusText": "",
+        "contentType": "text/plain",
+        "resourceType": "xhr"
+      },
+      {
+        "timestamp": "2026-05-08T19:13:43.653Z",
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&_p=1778267618417&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEAAAGQC&_uip=%3A%3A&ae=a&are=1&cid=315417785.1778267613&fp=1&frm=0&pscdl=noapi&rcb=5&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&ur=US-CA&_gsid=UDGJn-6bWVxjxQxrSznV0j7fldEmF0Awyw&gaf=2&_s=1&tag_exp=0~115938465~115938468~118463262~118851535&sid=1778267612&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2F&dr=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Loading...&_tu=CA&en=scroll&gap.gtb=2&epn.percent_scrolled=90&_et=38&tfd=5420",
+        "status": 204,
+        "statusText": "",
+        "contentType": "text/plain",
+        "resourceType": "fetch"
+      }
+    ],
+    "networkErrors": [
+      {
+        "timestamp": "2026-05-08T19:13:32.586Z",
+        "url": "https://scripts.clarity.ms/0.8.62/clarity.js",
+        "method": "GET",
+        "resourceType": "script",
+        "failure": {
+          "errorText": "csp"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.643Z",
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&_p=1778267612069&_gaz=1&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEAAAGAC&_uip=%3A%3A&ae=a&are=1&cid=315417785.1778267613&fp=1&frm=0&pscdl=noapi&rcb=11&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&ur=US-CA&_gsid=UDGJn-6bWVxjxQxrSznV0j7fldEmF0Awyw&gaf=2&_s=1&tag_exp=0~115938465~115938469~118463262&sid=1778267612&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&en=scroll&_fv=1&_nsi=1&_ss=1&gap.gtb=2&epn.percent_scrolled=90&tfd=774",
+        "method": "POST",
+        "resourceType": "fetch",
+        "failure": {
+          "errorText": "net::ERR_ABORTED"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.413Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+        "method": "POST",
+        "resourceType": "ping",
+        "failure": {
+          "errorText": "net::ERR_ABORTED"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.413Z",
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&_p=1778267612069&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEEAAGQC&_uip=%3A%3A&ae=a&are=1&cid=315417785.1778267613&fp=1&frm=0&pscdl=noapi&rcb=11&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&ur=US-CA&_gsid=UDGJn-6bWVxjxQxrSznV0j7fldEmF0Awyw&gaf=2&tag_exp=0~115938465~115938469~118463262&sid=1778267612&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&_s=2&tfd=6604",
+        "method": "POST",
+        "resourceType": "fetch",
+        "failure": {
+          "errorText": "net::ERR_ABORTED"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.876Z",
+        "url": "https://scripts.clarity.ms/0.8.62/clarity.js",
+        "method": "GET",
+        "resourceType": "script",
+        "failure": {
+          "errorText": "csp"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:43.653Z",
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&_p=1778267618417&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEAAAGQC&_uip=%3A%3A&ae=a&are=1&cid=315417785.1778267613&fp=1&frm=0&pscdl=noapi&rcb=5&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&ur=US-CA&_gsid=UDGJn-6bWVxjxQxrSznV0j7fldEmF0Awyw&gaf=2&_s=1&tag_exp=0~115938465~115938468~118463262~118851535&sid=1778267612&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2F&dr=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Loading...&_tu=CA&en=scroll&gap.gtb=2&epn.percent_scrolled=90&_et=38&tfd=5420",
+        "method": "POST",
+        "resourceType": "fetch",
+        "failure": {
+          "errorText": "net::ERR_ABORTED"
+        }
+      }
+    ],
+    "requests": [
+      {
+        "timestamp": "2026-05-08T19:13:31.807Z",
+        "url": "https://pim.technostationery.com/user/login",
+        "method": "GET",
+        "resourceType": "document",
+        "headers": {
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Linux\""
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.069Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/speculation",
+        "method": "GET",
+        "resourceType": "other",
+        "headers": {
+          "origin": "https://pim.technostationery.com",
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.070Z",
+        "url": "https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df",
+        "method": "GET",
+        "resourceType": "stylesheet",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.070Z",
+        "url": "https://pim.technostationery.com/bundles/pimui/images/illustrations/login/Logo.svg",
+        "method": "GET",
+        "resourceType": "image",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.070Z",
+        "url": "https://pim.technostationery.com/bundles/pimui/images/logo_login.svg",
+        "method": "GET",
+        "resourceType": "image",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.070Z",
+        "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "origin": "https://pim.technostationery.com",
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.071Z",
+        "url": "https://pim.technostationery.com/465q/",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.117Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.127Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/h/g/scripts/jsd/fe6331af5207/main.js?",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "referer": ""
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.186Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/fe6331af5207/0.5116887226992494:1778264516:exwr5HH0cGkK-CUAGMI8UhEhXHYMZ7_3TxAdFnwM3zo/9f8ac83eb9e6f7d9",
+        "method": "POST",
+        "resourceType": "xhr",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "text/plain;charset=UTF-8",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.288Z",
+        "url": "https://pim.technostationery.com/465q/Y0qlUOM_RqA9azWCAHUcH3Nyylx3KyTkQvALMHQV0TGyfLxb9D91_37nBA",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.288Z",
+        "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5LXKWLFR&gtg_health=1",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.288Z",
+        "url": "https://connect.facebook.net/en_US/fbevents.js",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.288Z",
+        "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.582Z",
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&_p=1778267612069&_gaz=1&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEAAAGAC&_uip=%3A%3A&ae=a&are=1&cid=315417785.1778267613&fp=1&frm=0&pscdl=noapi&rcb=11&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&ur=US-CA&_gsid=UDGJn-6bWVxjxQxrSznV0j7fldEmF0Awyw&gaf=2&_s=1&tag_exp=0~115938465~115938469~118463262&sid=1778267612&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&en=scroll&_fv=1&_nsi=1&_ss=1&gap.gtb=2&epn.percent_scrolled=90&tfd=774",
+        "method": "POST",
+        "resourceType": "fetch",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.582Z",
+        "url": "https://stats.g.doubleclick.net/g/collect?v=2&tid=G-72HCNG92F2&cid=315417785.1778267613&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&rcb=11&aip=1&dma=0&gcs=G111&gcd=13t3t3t3t5l1&npa=0&frm=0&tag_exp=0~115938465~115938469~118463262",
+        "method": "POST",
+        "resourceType": "ping",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.582Z",
+        "url": "https://analytics.google.com/g/s/collect?_gsid=UDGJn-6bWVxjxQxrSznV0j7fldEmF0Awyw&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199",
+        "method": "POST",
+        "resourceType": "ping",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:32.585Z",
+        "url": "https://scripts.clarity.ms/0.8.62/clarity.js",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "referer": "https://pim.technostationery.com/"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:33.179Z",
+        "url": "https://connect.facebook.net/signals/config/303018311383850?v=2.9.313&r=stable&domain=pim.technostationery.com&hme=97937018cefade17726f0472876fc101316b2ce9008a35a6a5a7977d7436151a&ex_m=104%2C205%2C154%2C22%2C72%2C73%2C145%2C68%2C67%2C11%2C162%2C90%2C16%2C138%2C48%2C146%2C77%2C112%2C47%2C127%2C39%2C75%2C78%2C134%2C159%2C164%2C8%2C4%2C5%2C7%2C6%2C3%2C91%2C101%2C165%2C170%2C219%2C62%2C186%2C187%2C55%2C276%2C30%2C74%2C231%2C230%2C229%2C23%2C33%2C103%2C61%2C10%2C63%2C97%2C98%2C99%2C105%2C130%2C31%2C29%2C132%2C133%2C129%2C128%2C155%2C76%2C158%2C156%2C157%2C50%2C60%2C123%2C15%2C161%2C45%2C263%2C264%2C262%2C26%2C27%2C28%2C18%2C20%2C44%2C40%2C42%2C41%2C83%2C92%2C96%2C110%2C144%2C147%2C46%2C111%2C24%2C21%2C119%2C69%2C36%2C149%2C148%2C150%2C141%2C139%2C25%2C35%2C59%2C109%2C160%2C70%2C17%2C152%2C114%2C81%2C66%2C19%2C85%2C86%2C116%2C84%2C136%2C135%2C34%2C278%2C293%2C212%2C201%2C202%2C200%2C296%2C288%2C52%2C213%2C107%2C131%2C80%2C121%2C54%2C49%2C113%2C120%2C126%2C58%2C64%2C151%2C115%2C37%2C32%2C53%2C56%2C100%2C163%2C1%2C124%2C14%2C122%2C12%2C2%2C57%2C93%2C65%2C118%2C89%2C88%2C166%2C167%2C94%2C95%2C9%2C125%2C102%2C51%2C142%2C87%2C79%2C71%2C117%2C106%2C43%2C143%2C0%2C82%2C137%2C140%2C153%2C38%2C108%2C13%2C168",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:33.588Z",
+        "url": "https://c.clarity.ms/c.gif",
+        "method": "GET",
+        "resourceType": "image",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:33.589Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+        "method": "POST",
+        "resourceType": "xhr",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "application/json",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:33.916Z",
+        "url": "https://c.bing.com/c.gif?ctsa=mr&CtsSyncId=62F448488E2644E5B52385B805AFAB19&RedC=c.clarity.ms&MXFR=1DDD2E76319267CF16C43925359269F8",
+        "method": "GET",
+        "resourceType": "image",
+        "headers": {
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "referer": "https://pim.technostationery.com/"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:34.032Z",
+        "url": "https://c.clarity.ms/c.gif?ctsa=mr&CtsSyncId=62F448488E2644E5B52385B805AFAB19&MUID=1C7C67D6D13B695510787085D0B868CB",
+        "method": "GET",
+        "resourceType": "image",
+        "headers": {
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "referer": "https://pim.technostationery.com/"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.172Z",
+        "url": "https://pim.technostationery.com/user/login-check",
+        "method": "POST",
+        "resourceType": "document",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "origin": "https://pim.technostationery.com",
+          "referer": "https://pim.technostationery.com/user/login",
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Linux\""
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.255Z",
+        "url": "https://pim.technostationery.com/dashboard",
+        "method": "GET",
+        "resourceType": "document",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "origin": "https://pim.technostationery.com",
+          "referer": "https://pim.technostationery.com/user/login",
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Linux\""
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.300Z",
+        "url": "https://pim.technostationery.com/",
+        "method": "GET",
+        "resourceType": "document",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "origin": "https://pim.technostationery.com",
+          "referer": "https://pim.technostationery.com/user/login",
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Linux\""
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.413Z",
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&_p=1778267612069&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEEAAGQC&_uip=%3A%3A&ae=a&are=1&cid=315417785.1778267613&fp=1&frm=0&pscdl=noapi&rcb=11&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&ur=US-CA&_gsid=UDGJn-6bWVxjxQxrSznV0j7fldEmF0Awyw&gaf=2&tag_exp=0~115938465~115938469~118463262&sid=1778267612&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Connexion&_tu=CA&_s=2&tfd=6604",
+        "method": "POST",
+        "resourceType": "fetch",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "text/plain;charset=UTF-8",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.413Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+        "method": "POST",
+        "resourceType": "ping",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/user/login",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "application/json",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.419Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/speculation",
+        "method": "GET",
+        "resourceType": "other",
+        "headers": {
+          "origin": "https://pim.technostationery.com",
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/css/pim.css?v=20260508_194500",
+        "method": "GET",
+        "resourceType": "stylesheet",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/dist/jquery.min.js?v=20260508_194500",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/dist/underscore.min.js?v=20260508_194500",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/dist/backbone.min.js?v=20260508_194500",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/dist/react.min.js?v=20260508_194500",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/dist/react-dom.min.js?v=20260508_194500",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/bundles/fosjsrouting/js/router.min.js?v=20260508_194500",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/js/routing?callback=fos.Router.setData",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/dist/process-polyfill.js?v=20260508_194500",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/dist/require.min.js?v=20260508_194500",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/dist/vendor.min.js?v=20260508_194500",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/dist/main.min.js?v=20260508_194500",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://pim.technostationery.com/bundles/pimui/images/main-loader.gif",
+        "method": "GET",
+        "resourceType": "image",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.420Z",
+        "url": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "origin": "https://pim.technostationery.com",
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.421Z",
+        "url": "https://pim.technostationery.com/465q/",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.449Z",
+        "url": "https://pim.technostationery.com/465q/Y0qlUOM_RqA9azWCAHUcH3Nyylx3KyTkQvALMHQV0TGyfLxb9D91_37nBA",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.449Z",
+        "url": "https://connect.facebook.net/en_US/fbevents.js",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.656Z",
+        "url": "https://pim.technostationery.com/js/extensions.json?version=olsb0o",
+        "method": "GET",
+        "resourceType": "xhr",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "x-requested-with": "XMLHttpRequest",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "accept": "*/*",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.656Z",
+        "url": "https://pim.technostationery.com/rest/security/",
+        "method": "GET",
+        "resourceType": "xhr",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "x-requested-with": "XMLHttpRequest",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "accept": "*/*",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.657Z",
+        "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.726Z",
+        "url": "https://connect.facebook.net/signals/config/303018311383850?v=2.9.313&r=stable&domain=pim.technostationery.com&hme=97937018cefade17726f0472876fc101316b2ce9008a35a6a5a7977d7436151a&ex_m=104%2C205%2C154%2C22%2C72%2C73%2C145%2C68%2C67%2C11%2C162%2C90%2C16%2C138%2C48%2C146%2C77%2C112%2C47%2C127%2C39%2C75%2C78%2C134%2C159%2C164%2C8%2C4%2C5%2C7%2C6%2C3%2C91%2C101%2C165%2C170%2C219%2C62%2C186%2C187%2C55%2C276%2C30%2C74%2C231%2C230%2C229%2C23%2C33%2C103%2C61%2C10%2C63%2C97%2C98%2C99%2C105%2C130%2C31%2C29%2C132%2C133%2C129%2C128%2C155%2C76%2C158%2C156%2C157%2C50%2C60%2C123%2C15%2C161%2C45%2C263%2C264%2C262%2C26%2C27%2C28%2C18%2C20%2C44%2C40%2C42%2C41%2C83%2C92%2C96%2C110%2C144%2C147%2C46%2C111%2C24%2C21%2C119%2C69%2C36%2C149%2C148%2C150%2C141%2C139%2C25%2C35%2C59%2C109%2C160%2C70%2C17%2C152%2C114%2C81%2C66%2C19%2C85%2C86%2C116%2C84%2C136%2C135%2C34%2C278%2C293%2C212%2C201%2C202%2C200%2C296%2C288%2C52%2C213%2C107%2C131%2C80%2C121%2C54%2C49%2C113%2C120%2C126%2C58%2C64%2C151%2C115%2C37%2C32%2C53%2C56%2C100%2C163%2C1%2C124%2C14%2C122%2C12%2C2%2C57%2C93%2C65%2C118%2C89%2C88%2C166%2C167%2C94%2C95%2C9%2C125%2C102%2C51%2C142%2C87%2C79%2C71%2C117%2C106%2C43%2C143%2C0%2C82%2C137%2C140%2C153%2C38%2C108%2C13%2C168",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.876Z",
+        "url": "https://scripts.clarity.ms/0.8.62/clarity.js",
+        "method": "GET",
+        "resourceType": "script",
+        "headers": {
+          "referer": "https://pim.technostationery.com/"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:38.877Z",
+        "url": "https://pim.technostationery.com/cdn-cgi/rum?",
+        "method": "POST",
+        "resourceType": "xhr",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "content-type": "application/json",
+          "sec-ch-ua-mobile": "?0"
+        }
+      },
+      {
+        "timestamp": "2026-05-08T19:13:43.593Z",
+        "url": "https://pim.technostationery.com/465q/ag/g/c?v=2&tid=G-72HCNG92F2&gtm=45g92e6562v9127101817za20kzb9206585199zd9206585199&_p=1778267618417&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYzg1YT.dNzQzZD&_eu=AEAAAGQC&_uip=%3A%3A&ae=a&are=1&cid=315417785.1778267613&fp=1&frm=0&pscdl=noapi&rcb=5&sr=1920x1080&uaa=x86&uab=64&uafvl=HeadlessChrome%3B147.0.7727.15%7CNot.A%252FBrand%3B8.0.0.0%7CChromium%3B147.0.7727.15&uam=&uamb=0&uap=Linux&uapv=&uaw=0&ul=en-us&ur=US-CA&_gsid=UDGJn-6bWVxjxQxrSznV0j7fldEmF0Awyw&gaf=2&_s=1&tag_exp=0~115938465~115938468~118463262~118851535&sid=1778267612&sct=1&seg=0&dl=https%3A%2F%2Fpim.technostationery.com%2F&dr=https%3A%2F%2Fpim.technostationery.com%2Fuser%2Flogin&dt=Loading...&_tu=CA&en=scroll&gap.gtb=2&epn.percent_scrolled=90&_et=38&tfd=5420",
+        "method": "POST",
+        "resourceType": "fetch",
+        "headers": {
+          "sec-ch-ua-platform": "\"Linux\"",
+          "referer": "https://pim.technostationery.com/",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36",
+          "sec-ch-ua": "\"HeadlessChrome\";v=\"147\", \"Not.A/Brand\";v=\"8\", \"Chromium\";v=\"147\"",
+          "sec-ch-ua-mobile": "?0"
+        }
+      }
+    ]
+  }
+}

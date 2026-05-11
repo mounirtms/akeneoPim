@@ -1,0 +1,322 @@
+{
+  "mapping_version": "1.0",
+  "created": "2026-04-26",
+  "description": "Akeneo PIM to Magento 2 Attribute Mapping Configuration",
+  
+  "core_attributes": {
+    "sku": {
+      "akeneo": "identifier",
+      "magento": "sku",
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "description": "Product SKU/Identifier"
+    },
+    "name": {
+      "akeneo": "values.name",
+      "magento": "name",
+      "type": "string",
+      "required": true,
+      "localizable": true,
+      "description": "Product Name"
+    },
+    "description": {
+      "akeneo": "values.description",
+      "magento": "description",
+      "type": "text",
+      "required": false,
+      "localizable": true,
+      "description": "Product Description"
+    },
+    "short_description": {
+      "akeneo": "values.short_description",
+      "magento": "short_description",
+      "type": "text",
+      "required": false,
+      "localizable": true,
+      "description": "Short Description"
+    },
+    "price": {
+      "akeneo": "values.price",
+      "magento": "price",
+      "type": "price",
+      "required": true,
+      "scopable": true,
+      "description": "Product Price"
+    },
+    "special_price": {
+      "akeneo": "values.special_price",
+      "magento": "special_price",
+      "type": "price",
+      "required": false,
+      "description": "Special Price"
+    },
+    "weight": {
+      "akeneo": "values.weight",
+      "magento": "weight",
+      "type": "decimal",
+      "required": false,
+      "description": "Product Weight"
+    },
+    "status": {
+      "akeneo": "enabled",
+      "magento": "status",
+      "type": "boolean",
+      "required": true,
+      "mapping": {
+        "true": 1,
+        "false": 2
+      },
+      "description": "Product Status (Enabled/Disabled)"
+    },
+    "visibility": {
+      "akeneo": null,
+      "magento": "visibility",
+      "type": "select",
+      "required": true,
+      "default": 4,
+      "options": {
+        "1": "Not Visible Individually",
+        "2": "Catalog",
+        "3": "Search",
+        "4": "Catalog, Search"
+      },
+      "description": "Product Visibility"
+    },
+    "tax_class_id": {
+      "akeneo": "values.tax_class",
+      "magento": "tax_class_id",
+      "type": "select",
+      "required": true,
+      "default": 2,
+      "description": "Tax Class"
+    }
+  },
+
+  "inventory_attributes": {
+    "qty": {
+      "akeneo": "values.quantity",
+      "magento": "stock_data.qty",
+      "type": "decimal",
+      "required": true,
+      "default": 0,
+      "description": "Stock Quantity"
+    },
+    "is_in_stock": {
+      "akeneo": "values.in_stock",
+      "magento": "stock_data.is_in_stock",
+      "type": "boolean",
+      "required": true,
+      "default": true,
+      "mapping": {
+        "true": 1,
+        "false": 0
+      },
+      "description": "Stock Availability"
+    },
+    "manage_stock": {
+      "akeneo": null,
+      "magento": "stock_data.manage_stock",
+      "type": "boolean",
+      "required": true,
+      "default": true,
+      "description": "Manage Stock"
+    }
+  },
+
+  "media_attributes": {
+    "image": {
+      "akeneo": "values.image",
+      "magento": "media_gallery_entries",
+      "type": "image",
+      "required": false,
+      "roles": ["image", "small_image", "thumbnail"],
+      "description": "Product Images"
+    },
+    "thumbnail": {
+      "akeneo": "values.thumbnail",
+      "magento": "thumbnail",
+      "type": "image",
+      "required": false,
+      "description": "Thumbnail Image"
+    }
+  },
+
+  "category_mapping": {
+    "akeneo": "categories",
+    "magento": "category_ids",
+    "type": "array",
+    "required": true,
+    "description": "Product Categories",
+    "default_category": "2",
+    "mapping_strategy": "hierarchical"
+  },
+
+  "family_mapping": {
+    "akeneo": "family",
+    "magento": "attribute_set_id",
+    "type": "select",
+    "required": true,
+    "description": "Product Family/Attribute Set",
+    "mappings": {
+      "products": 4,
+      "bags_sac": 4,
+      "beaux_arts": 4,
+      "bureautique": 4,
+      "cahier": 4,
+      "calculatrices": 4,
+      "classement": 4
+    },
+    "default": 4
+  },
+
+  "custom_attributes": {
+    "manufacturer": {
+      "akeneo": "values.manufacturer",
+      "magento": "manufacturer",
+      "type": "select",
+      "required": false,
+      "description": "Manufacturer"
+    },
+    "brand": {
+      "akeneo": "values.brand",
+      "magento": "brand",
+      "type": "text",
+      "required": false,
+      "description": "Brand Name"
+    },
+    "color": {
+      "akeneo": "values.color",
+      "magento": "color",
+      "type": "select",
+      "required": false,
+      "description": "Product Color"
+    },
+    "size": {
+      "akeneo": "values.size",
+      "magento": "size",
+      "type": "select",
+      "required": false,
+      "description": "Product Size"
+    },
+    "material": {
+      "akeneo": "values.material",
+      "magento": "material",
+      "type": "text",
+      "required": false,
+      "description": "Product Material"
+    }
+  },
+
+  "seo_attributes": {
+    "meta_title": {
+      "akeneo": "values.meta_title",
+      "magento": "meta_title",
+      "type": "text",
+      "required": false,
+      "localizable": true,
+      "description": "Meta Title"
+    },
+    "meta_description": {
+      "akeneo": "values.meta_description",
+      "magento": "meta_description",
+      "type": "text",
+      "required": false,
+      "localizable": true,
+      "description": "Meta Description"
+    },
+    "meta_keyword": {
+      "akeneo": "values.meta_keywords",
+      "magento": "meta_keyword",
+      "type": "text",
+      "required": false,
+      "localizable": true,
+      "description": "Meta Keywords"
+    },
+    "url_key": {
+      "akeneo": "values.url_key",
+      "magento": "url_key",
+      "type": "text",
+      "required": false,
+      "description": "URL Key (auto-generated from name if missing)"
+    }
+  },
+
+  "transformation_rules": {
+    "enabled_to_status": {
+      "description": "Convert Akeneo enabled boolean to Magento status",
+      "logic": "enabled ? 1 : 2"
+    },
+    "price_formatting": {
+      "description": "Extract price value from Akeneo price collection",
+      "logic": "price[0].amount (first channel/currency)"
+    },
+    "image_download": {
+      "description": "Download images from Akeneo and upload to Magento",
+      "logic": "GET /api/rest/v1/media-files/{code} → POST /rest/V1/products/{sku}/media"
+    },
+    "category_hierarchy": {
+      "description": "Map Akeneo category codes to Magento category IDs",
+      "logic": "Lookup in category_mapping table, create if missing"
+    },
+    "url_key_generation": {
+      "description": "Generate URL key from product name",
+      "logic": "lowercase(name).replace(/[^a-z0-9]+/g, '-')"
+    }
+  },
+
+  "data_validation": {
+    "sku": {
+      "max_length": 64,
+      "pattern": "^[a-zA-Z0-9_-]+$",
+      "required": true
+    },
+    "name": {
+      "max_length": 255,
+      "required": true
+    },
+    "price": {
+      "min": 0,
+      "required": true
+    },
+    "weight": {
+      "min": 0,
+      "max": 99999.9999
+    },
+    "qty": {
+      "min": 0,
+      "type": "integer"
+    }
+  },
+
+  "locale_mapping": {
+    "en_US": "en_US",
+    "fr_FR": "fr_FR",
+    "de_DE": "de_DE",
+    "es_ES": "es_ES",
+    "it_IT": "it_IT"
+  },
+
+  "channel_mapping": {
+    "ecommerce": "default",
+    "mobile": "default",
+    "print": null
+  },
+
+  "error_handling": {
+    "missing_required_field": "skip_product",
+    "invalid_price": "skip_product",
+    "invalid_category": "use_default",
+    "image_download_failed": "continue_without_image",
+    "duplicate_sku": "skip_product"
+  },
+
+  "sync_configuration": {
+    "batch_size": 50,
+    "retry_attempts": 3,
+    "retry_delay_seconds": 5,
+    "timeout_seconds": 30,
+    "log_level": "INFO",
+    "dry_run": false
+  }
+}

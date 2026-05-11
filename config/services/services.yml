@@ -3,6 +3,7 @@ parameters:
 
 imports:
     - { resource: '../../src/AppBundle/Resources/config/services.yml' }
+    - { resource: 'csp_disable.yaml' }
 
 services:
     # Default services from Akeneo

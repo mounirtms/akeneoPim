@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-05-08T18:42:16.509Z",
+  "cacheBuster": "20260508_154531",
+  "directTest": {
+    "jQueryLoaded": true,
+    "version": "3.7.1",
+    "bodyText": "jQuery Loading Test\n\n1. Starting test...\n\n2. typeof jQuery before load: undefined\n\n3. typeof jQuery after load: function\n\nâœ… SUCCESS: jQuery loaded! Version: 3.7.1\n\n4. typeof $: function\n\n5. typeof window.jQuery: function"
+  },
+  "loginPageCheck": {
+    "jQueryLoaded": false,
+    "version": null,
+    "hasUsername": true,
+    "hasPassword": true
+  },
+  "errors": [],
+  "logsCount": 8,
+  "jQuerySuccessMessage": false
+}

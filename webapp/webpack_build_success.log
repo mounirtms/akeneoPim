@@ -1,0 +1,52 @@
+Starting webpack from /home/pim/public_html in prod mode 
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+DeprecationWarning: 'createLiteral' has been deprecated since v4.0.0. Use `factory.createStringLiteral`, `factory.createStringLiteralFromNode`, `factory.createNumericLiteral`, `factory.createBigIntLiteral`, `factory.createTrue`, `factory.createFalse`, or the factory supplied by your transformation context instead.
+DeprecationWarning: 'createPropertyAssignment' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: '' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: 'createObjectLiteralExpression' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: 'createCallExpression' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+Version: webpack 4.44.2
+Time: 27567ms
+Built at: 05/09/2026 5:25:28 AM
+                                      Asset       Size  Chunks                                Chunk Names
+assets/101778b5208d7a98d809a22980d255e6.svg   3.28 KiB          [emitted] [immutable]         
+assets/1319ea10307fb83e7422ba0dfefb0473.svg   6.59 KiB          [emitted] [immutable]         
+assets/658d44eddef3715130b6710e5682c12d.svg    137 KiB          [emitted] [immutable]         
+assets/68da72d8c23cead7058c1bdad26bd3c4.svg   63.8 KiB          [emitted] [immutable]         
+assets/7b55dd4ad2d786289b7e15937505253e.svg    116 KiB          [emitted] [immutable]         
+assets/aea5099ffb02c2169a479f1481383ee5.gif    126 KiB          [emitted] [immutable]         
+assets/b63c0b7c00280562999053ba1fec3590.svg  573 bytes          [emitted] [immutable]         
+assets/d77366f89bfa8f280b7286cb44e3a5de.svg   1.48 KiB          [emitted] [immutable]         
+assets/efa2ea8756e50cea3ace64af4c672abd.svg     94 KiB          [emitted] [immutable]         
+assets/f7f64900728f1d13cfce88a66ab8c6f3.svg  678 bytes          [emitted] [immutable]         
+                                main.min.js   1.61 MiB       0  [emitted]              [big]  main
+                    main.min.js.LICENSE.txt     65 KiB          [emitted]                     
+                            main.min.js.map   88 bytes       0  [emitted] [dev]               main
+                              vendor.min.js     11 MiB       1  [emitted]              [big]  vendor
+                  vendor.min.js.LICENSE.txt   3.88 KiB          [emitted]                     
+                          vendor.min.js.map   90 bytes       1  [emitted] [dev]               vendor
+Entrypoint main [big] = vendor.min.js vendor.min.js.map main.min.js main.min.js.map
+
+WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  main.min.js (1.61 MiB)
+  vendor.min.js (11 MiB)
+
+WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  main (12.6 MiB)
+      vendor.min.js
+      main.min.js
+
+
+WARNING in webpack performance recommendations: 
+You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+For more info visit https://webpack.js.org/guides/code-splitting/

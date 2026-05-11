@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-05-07T06:39:22.983Z",
+  "credentials": "mounir/2026",
+  "consoleLogs": [
+    {
+      "type": "error",
+      "text": "Loading the script 'https://scripts.clarity.ms/0.8.62/clarity.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms https://gc.kes.v2.scr.kaspersky-labs.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked.",
+      "location": {
+        "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "type": "error",
+      "text": "Loading the script 'https://scripts.clarity.ms/0.8.62/clarity.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms https://gc.kes.v2.scr.kaspersky-labs.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked.",
+      "location": {
+        "url": "https://www.clarity.ms/tag/qnhpwtk5do?ref=gtm2",
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "errors": [
+    {
+      "message": "jQuery is not defined",
+      "stack": "ReferenceError: jQuery is not defined\n    at https://pim.technostationery.com/dist/vendor.min.js:1:257\n    at https://pim.technostationery.com/dist/vendor.min.js:1:434"
+    },
+    {
+      "message": "jQuery is not defined",
+      "stack": "ReferenceError: jQuery is not defined\n    at 1669 (https://pim.technostationery.com/dist/main.min.js:2:47451)\n    at r (https://pim.technostationery.com/dist/main.min.js:2:397472)\n    at 1364 (https://pim.technostationery.com/dist/main.min.js:2:43812)\n    at r (https://pim.technostationery.com/dist/main.min.js:2:397472)\n    at https://pim.technostationery.com/dist/main.min.js:2:397738\n    at https://pim.technostationery.com/dist/main.min.js:2:397747"
+    }
+  ],
+  "networkErrors": [],
+  "screenshots": [
+    "mounir_1_login_page.png",
+    "mounir_2_form_filled.png",
+    "mounir_3_after_submit.png",
+    "mounir_4_dashboard.png",
+    "mounir_5_after_loading.png",
+    "mounir_6_final_state.png"
+  ]
+}

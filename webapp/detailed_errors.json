@@ -1,0 +1,8 @@
+[
+  {
+    "timestamp": "2026-05-08T19:13:38.656Z",
+    "message": "r.initialize is not a function",
+    "stack": "TypeError: r.initialize is not a function\n    at o (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:374152)\n    at Object.getExtensionMap (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:374745)\n    at Object.getFormMeta (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:78707)\n    at o (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:99435)\n    at Object.build (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:100623)\n    at Object.<anonymous> (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:43857)\n    at 1364 (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:43929)\n    at r (https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397472)\n    at https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397738\n    at https://pim.technostationery.com/dist/main.min.js?v=20260508_194500:2:397747",
+    "name": "TypeError"
+  }
+]

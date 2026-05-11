@@ -1,135 +1,37 @@
-# Akeneo PIM - SPA Route Fallback Configuration
-# These routes serve the SPA shell so client-side routing works on direct URL access
+# Akeneo PIM Routes Configuration
 
-# Products
-pim_enrich_product_spa:
-    path: /enrich/product/
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
+# Import default Akeneo routes
+pim_dashboard_index:
+    resource: '@PimDashboardBundle/Controller/'
+    type: annotation
+    prefix: /
 
-# Import profiles
-pim_import_profile_spa:
-    path: /collect/import/
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
+pim_user:
+    resource: '@PimUserBundle/Controller/'
+    type: annotation
 
-# Export profiles
-pim_export_profile_spa:
-    path: /spread/export/
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
+pim_enrich:
+    resource: '@PimEnrichBundle/Controller/'
+    type: annotation
 
-# Groups
-pim_enrich_group_spa:
-    path: /enrich/group/
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
+# API routes
+pim_api:
+    resource: '@PimApiBundle/Resources/config/routing.yml'
 
-# Category tree
-pim_category_tree_spa:
-    path: /enrich/product-category-tree/
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
+# Locale switching
+pim_user_locale:
+    resource: '@PimUserBundle/Resources/config/routing/locale.yml'
 
-# Settings page
-pim_settings_spa:
-    path: /settings
+# Login route - explicit
+pim_user_security_login:
+    path: /user/login
     defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
+        _controller: Pim\Bundle\UserBundle\Controller\SecurityController::loginAction
 
-# Configuration pages
-pim_config_attribute_spa:
-    path: /configuration/attribute/
+# Root - redirect to dashboard
+_root:
+    path: /
     defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-pim_config_family_spa:
-    path: /configuration/family/
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-pim_config_channel_spa:
-    path: /configuration/channel/
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-pim_config_locale_spa:
-    path: /configuration/locale/
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-pim_config_currency_spa:
-    path: /configuration/currency/
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-pim_config_association_type_spa:
-    path: /configuration/association-type/
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-pim_config_attribute_group_spa:
-    path: /configuration/attribute-group/
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-pim_config_group_type_spa:
-    path: /configuration/group-type
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-pim_config_measurement_spa:
-    path: /configuration/measurement
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-# Connectivity
-pim_connect_settings_spa:
-    path: /connect/connection-settings
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-pim_connect_dataflows_spa:
-    path: /connect/data-flows
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-# Dashboard
-pim_dashboard_spa:
-    path: /dashboard
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-# Job Tracker
-pim_job_tracker_spa:
-    path: /job
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/index.html.twig'
-
-# Translation files - catch-all to prevent 404s
-pim_translation_spa:
-    path: /_translation/{catchall}
-    defaults:
-        _controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction()
-        template: '@PimUI/translation.html.twig'
-    requirements:
-        catchall: .+
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+        route: pim_dashboard_index
+        permanent: false

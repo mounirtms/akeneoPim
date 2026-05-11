@@ -1,0 +1,75 @@
+{
+  "timestamp": "2026-05-08T20:21:06.945Z",
+  "testName": "Template Patch Verification",
+  "phases": [
+    {
+      "phase": "HTML Source Check",
+      "checks": {
+        "cacheBuster": false,
+        "criticalFixComment": false,
+        "featureFlagsInit": false,
+        "rAssignment": false,
+        "patchAppliedLog": false,
+        "patchSuccessLog": false
+      },
+      "allPassed": false
+    },
+    {
+      "phase": "Console Messages",
+      "patchMessages": [
+        "[Akeneo] jQuery loaded successfully: 3.7.1",
+        "[Akeneo] DOM loaded, checking modules...",
+        "[Akeneo] Webpack modules not loaded"
+      ],
+      "count": 3
+    },
+    {
+      "phase": "Runtime Objects",
+      "windowFeatureFlagsExists": false,
+      "windowRExists": false,
+      "featureFlagsHasInitialize": false,
+      "rHasInitialize": false,
+      "featureFlagsHasIsEnabled": false,
+      "rEqualsFeatureFlags": true,
+      "jQuery": "3.7.1",
+      "Backbone": "0.9.10",
+      "allPassed": false
+    },
+    {
+      "phase": "Error Check",
+      "hasRInitializeError": true,
+      "errorCount": 1,
+      "errors": [
+        "r.initialize is not a function"
+      ]
+    },
+    {
+      "phase": "Manual Test",
+      "success": false,
+      "message": "r.initialize is not available",
+      "rType": "undefined",
+      "rInitType": "undefined"
+    },
+    {
+      "phase": "Page State",
+      "url": "https://pim.technostationery.com/#/dashboard",
+      "loadingVisible": true,
+      "menuExists": false,
+      "totalLinks": 0,
+      "totalButtons": 0,
+      "bodyClasses": ""
+    }
+  ],
+  "summary": {
+    "checks": {
+      "htmlHasPatch": false,
+      "runtimeHasPatch": false,
+      "noErrors": false,
+      "manualCallWorks": false
+    },
+    "overallSuccess": false,
+    "totalConsoleMessages": 6,
+    "totalErrors": 1,
+    "recommendation": "Patch not loading. Check: 1) Template being used, 2) Cache layers, 3) Cloudflare cache."
+  }
+}

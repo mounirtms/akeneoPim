@@ -1,0 +1,2369 @@
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#
+#   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#   DO NOT EDIT. AUTOMATICALLY GENERATED.  USE INCLUDE FILES IF YOU NEED TO MAKE A CHANGE
+#   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#
+#   Direct modifications to the Apache configuration file WILL be lost upon subsequent
+#   regeneration of this configuration file, or an Apache update.
+#
+#   To have your modifications retained, you should create/edit administrator-specific
+#   include files:
+#
+#       /etc/apache2/conf.d/includes/pre_main_global.conf
+#       /etc/apache2/conf.d/includes/pre_virtualhost_global.conf
+#       /etc/apache2/conf.d/includes/post_virtualhost_global.conf
+#
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+##################################################
+##################################################
+#
+# cPanel & WHM controlled Apache configuration
+#
+##################################################
+##################################################
+
+Include "/etc/apache2/conf.modules.d/*.conf"
+
+# Administrator locations for safely altering httpd.conf
+Include "/etc/apache2/conf.d/includes/pre_main_global.conf"
+
+# Major Version Specific
+Include "/etc/apache2/conf.d/includes/pre_main_2.conf"
+
+# These are hard-coded values that are required by cPanel & WHM
+PidFile /run/apache2/httpd.pid
+User nobody
+Group nobody
+ExtendedStatus On
+LogLevel warn
+SymlinkProtect Off
+SymlinkProtectRoot /var/www/html
+
+# You can change this by using WHM, and navigating to the 'Basic WebHost Manager® Setup' -> 'Contact Information' interface.
+ServerAdmin machinemessages@forum.inmotionhosting.com
+
+# You can change this by using WHM, and navigating to the 'Networking Setup' => 'Change Hostname' interface.
+ServerName ded701.inmotionhosting.com
+
+# You can change this by using WHM, and navigating to the 'Apache Configuration' -> 'Global Configuration' interface.
+TraceEnable Off
+ServerSignature Off
+ServerTokens ProductOnly
+FileETag None
+
+<Directory "/">
+    
+      AllowOverride All
+    
+    Options ExecCGI FollowSymLinks Indexes IncludesNOEXEC
+</Directory>
+
+StartServers 5
+<IfModule prefork.c>
+    MinSpareServers 5
+    MaxSpareServers 20
+</IfModule>
+
+ServerLimit 150
+MaxRequestWorkers 3750
+MaxConnectionsPerChild 10000
+KeepAlive On
+KeepAliveTimeout 5
+MaxKeepAliveRequests 100
+Timeout 300
+
+
+<IfModule rewrite_module>
+# Global DCV Exclude - Rewrites
+RewriteEngine on
+RewriteCond %{REQUEST_URI} ^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$ [OR]
+RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Sectigo\ DCV)?$ [OR]
+RewriteCond %{REQUEST_URI} ^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$ [OR]
+RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/(?:\ Ballot169)? 
+
+# Exclude proxy subdomains as we need rewrites to capture the DCV requests
+RewriteCond %{HTTP_HOST} !^(?:autoconfig|autodiscover|cpanel|cpcalendars|cpcontacts|webdisk|webmail|whm)\.
+RewriteRule ^ - [END]
+</IfModule>
+
+<LocationMatch "(^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$|^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?: Sectigo DCV)?$|^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$|^/\.well-known/pki-validation/(?: Ballot169)?)">
+# Global DCV Exclude - Location
+Satisfy Any
+Order Allow,Deny
+Allow from all
+</LocationMatch>
+
+
+
+# You can change this by using WHM, and navigating to the 'Apache Configuration' -> 'DirectoryIndex Priority' interface.
+<IfModule dir_module>
+    DirectoryIndex index.php index.php8 index.php7 index.php5 index.perl index.pl index.plx index.ppl index.cgi index.jsp index.jp index.phtml index.shtml index.xhtml index.html index.htm index.js default.htm
+</IfModule>
+
+# You can change this by using WHM, and navigating to the 'Apache Configuration' -> 'Memory Usage Restrictions' interface.
+
+# This setting is required by cPanel & WHM in order to provide access to a default webpage when none exists
+<Directory "/var/www/html">
+    Options All
+    AllowOverride None
+    Require all granted
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</Directory>
+
+# Required cPanel security policy: Disallow remote access to .htaccess, .htpasswd, .user.ini, and php.ini files
+<FilesMatch "^(\.ht(access|passwds?)|\.user\.ini|php\.ini)$">
+    Require all denied
+</FilesMatch>
+
+# PHP error_log protection
+<Files ~ "^error_log$">
+   <RequireAll>
+       Require all denied
+   </RequireAll>
+</Files>
+
+<IfModule alias_module>
+    ScriptAliasMatch ^/?controlpanel/?$ /usr/local/cpanel/cgi-sys/redirect.cgi
+    ScriptAliasMatch ^/?cpanel/?$ /usr/local/cpanel/cgi-sys/redirect.cgi
+    ScriptAliasMatch ^/?kpanel/?$ /usr/local/cpanel/cgi-sys/redirect.cgi
+    ScriptAliasMatch ^/?securecontrolpanel/?$ /usr/local/cpanel/cgi-sys/sredirect.cgi
+    ScriptAliasMatch ^/?securecpanel/?$ /usr/local/cpanel/cgi-sys/sredirect.cgi
+    ScriptAliasMatch ^/?securewhm/?$ /usr/local/cpanel/cgi-sys/swhmredirect.cgi
+    ScriptAliasMatch ^/?webmail$ /usr/local/cpanel/cgi-sys/wredirect.cgi
+    ScriptAliasMatch ^/?webmail/ /usr/local/cpanel/cgi-sys/wredirect.cgi
+    ScriptAliasMatch ^/?whm/?$ /usr/local/cpanel/cgi-sys/whmredirect.cgi
+
+    Alias /bandwidth /usr/local/bandmin/htdocs/
+    Alias /img-sys /usr/local/cpanel/img-sys/
+    Alias /java-sys /usr/local/cpanel/java-sys/
+    Alias /sys_cpanel /usr/local/cpanel/sys_cpanel/
+
+    ScriptAlias /cgi-sys /usr/local/cpanel/cgi-sys/
+    
+</IfModule>
+
+# This can be configured in the cPanel 'Leech Protection' interface.
+<IfModule rewrite_module>
+    RewriteEngine on
+    RewriteMap LeechProtect prg:/usr/local/cpanel/bin/leechprotect
+    Mutex file:/run/apache2 rewrite-map
+</IfModule>
+
+<IfModule mime_module>
+    TypesConfig conf/mime.types
+
+    AddType application/x-compress .Z
+    AddType application/x-gzip .gz .tgz
+    AddType text/html .shtml
+    AddType application/x-tar .tgz
+    AddType text/vnd.wap.wml .wml
+    AddType image/vnd.wap.wbmp .wbmp
+    AddType text/vnd.wap.wmlscript .wmls
+    AddType application/vnd.wap.wmlc .wmlc
+    AddType application/vnd.wap.wmlscriptc .wmlsc
+
+    # These extensions are used to redirect incoming requests to WHM
+    AddHandler cgi-script .cgi .pl .plx .ppl .perl
+
+    # This is used for custom error documents
+    AddHandler server-parsed .shtml
+</IfModule>
+
+# You can change this by using WHM, and updating the 'Tweak Settings' -> 'System' -> 'Allow server-info' option.
+<IfModule status_module>
+    # This is used by the WHM 'Apache Status' application
+    <Location /whm-server-status>
+        SetHandler server-status
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.1 ::1
+        <IfModule security2_module>
+            SecRuleEngine Off
+        </IfModule>
+        <IfModule security3_module>
+           modsecurity_rules 'SecRuleEngine Off'
+        </IfModule>
+    </Location>
+
+</IfModule>
+
+# Required cPanel security policy: disable userdir when mod_ruid2 or mpm_itk or mod_passenger are loaded
+<IfModule userdir_module>
+    UserDir public_html
+
+    <IfModule ruid2_module>
+        UserDir disabled
+    </IfModule>
+    <IfModule mpm_itk.c>
+        UserDir disabled
+    </IfModule>
+    <IfModule mod_passenger.c>
+        UserDir disabled
+    </IfModule>
+</IfModule>
+
+
+
+Include /etc/apache2/conf.d/includes/cloudflare.conf
+
+
+<IfModule log_config_module>
+
+    LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+    LogFormat "%h %l %u %t \"%r\" %>s %b" common
+    LogFormat "%{Referer}i -> %U" referer
+    LogFormat "%{User-agent}i" agent
+    <IfModule logio_module>
+        LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+        CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+
+    CustomLog logs/access_log combined env=!isproxyrequest
+</IfModule>
+
+
+# The Listen port can be updated using 'Tweak Settings' -> 'System',
+# However, if you have any Apache Reserved IPs, then this Tweak setting will
+# be ignored. Instead, each IP on your system (excluding Apache Reserved IPs)
+# will be listed here.
+Listen 0.0.0.0:8080
+Listen [::]:8080
+
+<IfModule ssl_module>
+    # cipher and protocol directives can be set in WHM under 'Apache Configuration' -> 'Global Configuration'
+    SSLCipherSuite ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256
+    SSLProtocol all -SSLv2 -SSLv3 -TLSv1 -TLSv1.1
+    SSLPassPhraseDialog  builtin
+
+    <IfModule socache_shmcb_module>
+        SSLUseStapling On
+        SSLStaplingCache shmcb:/run/apache2/stapling_cache_shmcb(256000)
+
+        # Prevent browsers from failing if an OCSP server is temporarily broken.
+        SSLStaplingReturnResponderErrors off
+        SSLStaplingErrorCacheTimeout 60
+        SSLStaplingFakeTryLater off
+        SSLStaplingResponderTimeout 3
+        SSLSessionCache shmcb:/run/apache2/ssl_gcache_data_shmcb(1024000)
+    </IfModule>
+    <IfModule !socache_shmcb_module>
+        SSLSessionCache dbm:/run/apache2/ssl_gcache_data_dbm
+    </IfModule>
+
+    SSLSessionCacheTimeout  300
+    Mutex                   file:/run/apache2 ssl-cache
+    SSLRandomSeed startup builtin
+    SSLRandomSeed connect builtin
+
+    # The Listen port can be updated using 'Tweak Settings' -> 'System',
+    # However, if you have any Apache Reserved IPs, then this Tweak setting will
+    # be ignored. Instead, each IP on your system (excluding Apache Reserved IPs)
+    # will be listed here.
+    Listen 0.0.0.0:443
+    Listen [::]:443
+
+    AddType application/x-x509-ca-cert .crt
+    AddType application/x-pkcs7-crl .crl
+</IfModule>
+
+Include "/etc/apache2/conf.d/*.conf"
+
+Include "/etc/apache2/conf.d/includes/account_suspensions.conf"
+Include "/etc/apache2/conf.d/includes/errordocument.conf"
+
+# Administrator locations for safely globally altering all virtualhost configurations
+Include "/etc/apache2/conf.d/includes/pre_virtualhost_global.conf"
+
+# Major Version Specific
+Include "/etc/apache2/conf.d/includes/pre_virtualhost_2.conf"
+
+ProxyPass /___proxy_subdomain_ws_cpanel  ws://127.0.0.1:2082 max=1 retry=0
+ProxyPass /___proxy_subdomain_ws_whm     ws://127.0.0.1:2086 max=1 retry=0
+ProxyPass /___proxy_subdomain_ws_webmail ws://127.0.0.1:2095 max=1 retry=0
+
+ProxyPass /cpanelwebcall/ http://127.0.0.1:2082/cpanelwebcall/ max=1 retry=0
+
+
+##################################################
+##################################################
+#
+# Define default vhosts for shared IPs
+#
+##################################################
+##################################################
+
+<VirtualHost 127.0.0.1:8080>
+    ServerName ded701.inmotionhosting.com
+    DocumentRoot /var/www/html
+    ServerAdmin machinemessages@forum.inmotionhosting.com
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+    RewriteOptions Inherit
+    </IfModule>
+
+
+    <Directory "/">
+      AllowOverride All
+    </Directory>
+
+
+    <IfModule suphp_module>
+        suPHP_UserGroup nobody nobody
+    </IfModule>
+
+</VirtualHost>
+
+<VirtualHost 205.134.249.177:8080>
+    ServerName ded701.inmotionhosting.com
+    DocumentRoot /var/www/html
+    ServerAdmin machinemessages@forum.inmotionhosting.com
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+    RewriteOptions Inherit
+    </IfModule>
+
+
+    <Directory "/">
+      AllowOverride All
+    </Directory>
+
+
+    <IfModule suphp_module>
+        suPHP_UserGroup nobody nobody
+    </IfModule>
+
+</VirtualHost>
+
+
+##################################################
+##################################################
+#
+# Define default vhosts for unbound IPs
+#
+##################################################
+##################################################
+
+<VirtualHost *>
+    ServerName ded701.inmotionhosting.com
+    DocumentRoot /var/www/html
+    ServerAdmin machinemessages@forum.inmotionhosting.com
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+    RewriteOptions Inherit
+    </IfModule>
+
+
+    <Directory "/">
+      AllowOverride All
+    </Directory>
+
+
+    <IfModule suphp_module>
+        suPHP_UserGroup nobody nobody
+    </IfModule>
+
+</VirtualHost>
+
+##################################################
+##################################################
+#
+# Define the virtual host configurtion for user domains
+#
+##################################################
+##################################################
+
+# BEGIN: HTTP vhosts list
+
+<VirtualHost 205.134.249.177:8080>
+  ServerName technostationery.com
+    <IfModule rewrite_module>
+    RewriteEngine On
+
+                RewriteCond %{REQUEST_URI} ^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$ [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Sectigo\ DCV)?$ [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$ [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/(?:\ Ballot169)? 
+        RewriteRule ^ - [END]
+
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  </IfModule>
+    ServerAlias mail.technostationery.com mail.technostationery.com.dz technostationery.com.dz www.technostationery.com www.technostationery.com.dz
+  DocumentRoot /home/technadminy7/public_html
+  ServerAdmin webmaster@technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/technostationery.com combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User technadminy7 # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir enabled
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule include_module>
+    <Directory "/home/technadminy7/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+
+  <IfModule suphp_module>
+    suPHP_UserGroup technadminy7 technadminy7
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup technadminy7 technadminy7
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid technadminy7 technadminy7
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID technadminy7 technadminy7
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser technadminy7
+    PassengerGroup technadminy7
+  </IfModule>
+
+  <IfModule security2_module>
+    SecRuleEngine Off
+  </IfModule>
+  <IfModule security3_module>
+    modsecurity_rules 'SecRuleEngine Off'
+  </IfModule>
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/technadminy7/public_html/cgi-bin/
+  </IfModule>
+
+
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+        RewriteOptions Inherit
+    </IfModule>
+
+        
+        
+            
+                
+                
+  Include "/etc/apache2/conf.d/userdata/std/2_4/technadminy7/technostationery.com/*.conf"
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php82/root/usr/var/run/php-fpm/843b1a0571aeef5ee1517a7d713bc5ce591e43b5.sock|fcgi://technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/std/2_4/technadminy7/technostationery.com/*.conf"
+</VirtualHost>
+
+<VirtualHost 205.134.249.177:8080>
+  ServerName beta.technostationery.com
+    <IfModule rewrite_module>
+    RewriteEngine On
+
+                RewriteCond %{REQUEST_URI} ^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$ [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Sectigo\ DCV)?$ [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$ [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/(?:\ Ballot169)? 
+        RewriteRule ^ - [END]
+
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  </IfModule>
+    ServerAlias mail.beta.technostationery.com www.beta.technostationery.com
+  DocumentRoot /home/beta/public_html
+  ServerAdmin webmaster@beta.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/beta.technostationery.com combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/beta.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User beta # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir enabled
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule include_module>
+    <Directory "/home/beta/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+
+  <IfModule suphp_module>
+    suPHP_UserGroup beta beta
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup beta beta
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid beta beta
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID beta beta
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser beta
+    PassengerGroup beta
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/beta/public_html/cgi-bin/
+  </IfModule>
+
+
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+        RewriteOptions Inherit
+    </IfModule>
+
+        
+        
+            
+                
+                
+  Include "/etc/apache2/conf.d/userdata/std/2_4/beta/beta.technostationery.com/*.conf"
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php82/root/usr/var/run/php-fpm/9e67589f1d312f4fc8b0673e34c960a952a31a2c.sock|fcgi://beta.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/std/2_4/beta/beta.technostationery.com/*.conf"
+</VirtualHost>
+
+<VirtualHost 205.134.249.177:8080>
+  ServerName dashboard.technostationery.com
+    ServerAlias mail.dashboard.technostationery.com www.dashboard.technostationery.com
+  DocumentRoot /home/dashboard/public_html
+  ServerAdmin webmaster@dashboard.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/dashboard.technostationery.com combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/dashboard.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User dashboard # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir enabled
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule include_module>
+    <Directory "/home/dashboard/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+
+  <IfModule suphp_module>
+    suPHP_UserGroup dashboard dashboard
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup dashboard dashboard
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid dashboard dashboard
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID dashboard dashboard
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser dashboard
+    PassengerGroup dashboard
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/dashboard/public_html/cgi-bin/
+  </IfModule>
+
+
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+        RewriteOptions Inherit
+    </IfModule>
+
+        
+        
+            
+                
+                
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php82/root/usr/var/run/php-fpm/00f9e49d3f3f0fd065f39c68d04a7e2c756bd735.sock|fcgi://dashboard.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/std/2_4/dashboard/dashboard.technostationery.com/*.conf"
+</VirtualHost>
+
+<VirtualHost 205.134.249.177:8080>
+  ServerName dev.technostationery.com
+    ServerAlias mail.dev.technostationery.com www.dev.technostationery.com
+  DocumentRoot /home/dev/public_html
+  ServerAdmin webmaster@dev.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/dev.technostationery.com combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/dev.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User dev # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir disabled
+          UserDir enabled dev 
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule include_module>
+    <Directory "/home/dev/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+
+  <IfModule suphp_module>
+    suPHP_UserGroup dev dev
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup dev dev
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid dev dev
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID dev dev
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser dev
+    PassengerGroup dev
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/dev/public_html/cgi-bin/
+  </IfModule>
+
+
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+        RewriteOptions Inherit
+    </IfModule>
+
+        
+        
+            
+                
+                
+  Include "/etc/apache2/conf.d/userdata/std/2_4/dev/dev.technostationery.com/*.conf"
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php82/root/usr/var/run/php-fpm/bb3b4e2349f6e7badf62eed07931a5afb5be6539.sock|fcgi://dev.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/std/2_4/dev/dev.technostationery.com/*.conf"
+</VirtualHost>
+
+<VirtualHost 205.134.249.177:8080>
+  ServerName lms.technostationery.com
+    <IfModule rewrite_module>
+    RewriteEngine On
+
+                RewriteCond %{REQUEST_URI} ^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$ [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Sectigo\ DCV)?$ [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$ [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/(?:\ Ballot169)? 
+        RewriteRule ^ - [END]
+
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  </IfModule>
+    ServerAlias mail.lms.technostationery.com www.lms.technostationery.com
+  DocumentRoot /home/lms/public_html
+  ServerAdmin webmaster@lms.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/lms.technostationery.com combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/lms.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User lms # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir enabled
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule include_module>
+    <Directory "/home/lms/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+
+  <IfModule suphp_module>
+    suPHP_UserGroup lms lms
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup lms lms
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid lms lms
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID lms lms
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser lms
+    PassengerGroup lms
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/lms/public_html/cgi-bin/
+  </IfModule>
+
+
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+        RewriteOptions Inherit
+    </IfModule>
+
+        
+        
+            
+                
+                
+  Include "/etc/apache2/conf.d/userdata/std/2_4/lms/lms.technostationery.com/*.conf"
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php82/root/usr/var/run/php-fpm/abdf0e7635b2af066789e1b50b8919fd7009fccc.sock|fcgi://lms.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/std/2_4/lms/lms.technostationery.com/*.conf"
+</VirtualHost>
+
+<VirtualHost 205.134.249.177:8080>
+  ServerName pim.technostationery.com
+    ServerAlias mail.pim.technostationery.com www.pim.technostationery.com
+  DocumentRoot /home/pim/public_html/public
+  ServerAdmin webmaster@pim.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/pim.technostationery.com combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/pim.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User pim # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir disabled
+          UserDir enabled pim 
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule include_module>
+    <Directory "/home/pim/public_html/public">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+
+  <IfModule suphp_module>
+    suPHP_UserGroup pim pim
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup pim pim
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid pim pim
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID pim pim
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser pim
+    PassengerGroup pim
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/pim/public_html/public/cgi-bin/
+  </IfModule>
+
+
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+        RewriteOptions Inherit
+    </IfModule>
+
+        
+        
+            
+                
+                
+  Include "/etc/apache2/conf.d/userdata/std/2_4/pim/pim.technostationery.com/*.conf"
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php81/root/usr/var/run/php-fpm/af69ec77e1acf28282f6052993f69919b9c5e2c0.sock|fcgi://pim.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/std/2_4/pim/pim.technostationery.com/*.conf"
+</VirtualHost>
+# END: HTTP vhosts list
+
+# BEGIN: HTTPS vhosts list
+
+<VirtualHost 205.134.249.177:443>
+  ServerName technostationery.com
+  ServerAlias mail.technostationery.com mail.technostationery.com.dz technostationery.com.dz www.technostationery.com www.technostationery.com.dz webmail.technostationery.com cpcontacts.technostationery.com cpcalendars.technostationery.com webdisk.technostationery.com cpanel.technostationery.com
+  DocumentRoot /home/technadminy7/public_html
+  ServerAdmin webmaster@technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/technostationery.com-ssl_log combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User technadminy7 # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir enabled
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule mod_include.c>
+    <Directory "/home/technadminy7/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+  <Proxymatch ^https?://127\.0\.0\.1:(2082|2083|2077|2078|2079|2080|2086|2087|2095|2096)/>
+       <IfModule security2_module>
+          SecRuleEngine Off
+       </IfModule>
+       <IfModule security3_module>
+          modsecurity_rules 'SecRuleEngine Off'
+       </IfModule>
+  </Proxymatch>
+
+  <IfModule mod_suphp.c>
+    suPHP_UserGroup technadminy7 technadminy7
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup technadminy7 technadminy7
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid technadminy7 technadminy7
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID technadminy7 technadminy7
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser technadminy7
+    PassengerGroup technadminy7
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/technadminy7/public_html/cgi-bin/
+  </IfModule>
+  <IfModule ssl_module>
+    SSLEngine on
+    
+    SSLCertificateFile /var/cpanel/ssl/apache_tls/technostationery.com/combined
+
+    <Directory "/home/technadminy7/public_html/cgi-bin">
+      SSLOptions +StdEnvVars
+    </Directory>
+  </IfModule>
+        
+        
+            
+                
+                
+    Include "/etc/apache2/conf.d/userdata/ssl/2_4/technadminy7/technostationery.com/*.conf"
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php82/root/usr/var/run/php-fpm/843b1a0571aeef5ee1517a7d713bc5ce591e43b5.sock|fcgi://technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/ssl/2_4/technadminy7/technostationery.com/*.conf"
+
+    <IfModule headers_module>
+    RequestHeader set X-HTTPS 1
+    </IfModule>
+    RewriteEngine On
+                RewriteCond %{HTTP_HOST} =cpanel.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpanel.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpanel/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpanel" "http://127.0.0.1:2082" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcalendars.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcalendars.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcalendars/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcalendars" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcontacts.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcontacts.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcontacts/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcontacts" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webdisk.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webdisk.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webdisk/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webdisk" "http://127.0.0.1:2077" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webmail.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webmail.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webmail/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webmail" "http://127.0.0.1:2095" max=1 retry=0
+
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =cpanel.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =cpanel.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_cpanel/$1 [PT]
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =webmail.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =webmail.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_webmail/$1 [PT]
+
+    RewriteRule ^/Microsoft-Server-ActiveSync /___proxy_activesync/$1 [PT]
+    ProxyPass "/___proxy_activesync" "http://127.0.0.1:2090/Microsoft-Server-ActiveSync" max=1 retry=0
+
+
+</VirtualHost>
+
+
+<VirtualHost 205.134.249.177:443>
+  ServerName dashboard.technostationery.com
+  ServerAlias mail.dashboard.technostationery.com www.dashboard.technostationery.com cpanel.dashboard.technostationery.com webdisk.dashboard.technostationery.com cpcontacts.dashboard.technostationery.com cpcalendars.dashboard.technostationery.com webmail.dashboard.technostationery.com
+  DocumentRoot /home/dashboard/public_html
+  ServerAdmin webmaster@dashboard.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/dashboard.technostationery.com-ssl_log combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/dashboard.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User dashboard # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir enabled
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule mod_include.c>
+    <Directory "/home/dashboard/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+  <Proxymatch ^https?://127\.0\.0\.1:(2082|2083|2077|2078|2079|2080|2086|2087|2095|2096)/>
+       <IfModule security2_module>
+          SecRuleEngine Off
+       </IfModule>
+       <IfModule security3_module>
+          modsecurity_rules 'SecRuleEngine Off'
+       </IfModule>
+  </Proxymatch>
+
+  <IfModule mod_suphp.c>
+    suPHP_UserGroup dashboard dashboard
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup dashboard dashboard
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid dashboard dashboard
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID dashboard dashboard
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser dashboard
+    PassengerGroup dashboard
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/dashboard/public_html/cgi-bin/
+  </IfModule>
+  <IfModule ssl_module>
+    SSLEngine on
+    
+    SSLCertificateFile /var/cpanel/ssl/apache_tls/dashboard.technostationery.com/combined
+
+    SSLUseStapling off
+    <Directory "/home/dashboard/public_html/cgi-bin">
+      SSLOptions +StdEnvVars
+    </Directory>
+  </IfModule>
+        
+        
+            
+                
+                
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php82/root/usr/var/run/php-fpm/00f9e49d3f3f0fd065f39c68d04a7e2c756bd735.sock|fcgi://dashboard.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/ssl/2_4/dashboard/dashboard.technostationery.com/*.conf"
+
+    <IfModule headers_module>
+    RequestHeader set X-HTTPS 1
+    </IfModule>
+    RewriteEngine On
+                RewriteCond %{HTTP_HOST} =cpanel.dashboard.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpanel.dashboard.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpanel/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpanel" "http://127.0.0.1:2082" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcalendars.dashboard.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcalendars.dashboard.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcalendars/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcalendars" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcontacts.dashboard.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcontacts.dashboard.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcontacts/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcontacts" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webdisk.dashboard.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webdisk.dashboard.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webdisk/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webdisk" "http://127.0.0.1:2077" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webmail.dashboard.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webmail.dashboard.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webmail/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webmail" "http://127.0.0.1:2095" max=1 retry=0
+
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =cpanel.dashboard.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =cpanel.dashboard.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_cpanel/$1 [PT]
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =webmail.dashboard.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =webmail.dashboard.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_webmail/$1 [PT]
+
+    RewriteRule ^/Microsoft-Server-ActiveSync /___proxy_activesync/$1 [PT]
+    ProxyPass "/___proxy_activesync" "http://127.0.0.1:2090/Microsoft-Server-ActiveSync" max=1 retry=0
+
+
+</VirtualHost>
+
+<VirtualHost 205.134.249.177:443>
+  ServerName dev.technostationery.com
+  ServerAlias mail.dev.technostationery.com www.dev.technostationery.com cpcontacts.dev.technostationery.com cpcalendars.dev.technostationery.com webmail.dev.technostationery.com cpanel.dev.technostationery.com webdisk.dev.technostationery.com
+  DocumentRoot /home/dev/public_html
+  ServerAdmin webmaster@dev.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/dev.technostationery.com-ssl_log combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/dev.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User dev # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir disabled
+          UserDir enabled dev 
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule mod_include.c>
+    <Directory "/home/dev/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+  <Proxymatch ^https?://127\.0\.0\.1:(2082|2083|2077|2078|2079|2080|2086|2087|2095|2096)/>
+       <IfModule security2_module>
+          SecRuleEngine Off
+       </IfModule>
+       <IfModule security3_module>
+          modsecurity_rules 'SecRuleEngine Off'
+       </IfModule>
+  </Proxymatch>
+
+  <IfModule mod_suphp.c>
+    suPHP_UserGroup dev dev
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup dev dev
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid dev dev
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID dev dev
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser dev
+    PassengerGroup dev
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/dev/public_html/cgi-bin/
+  </IfModule>
+  <IfModule ssl_module>
+    SSLEngine on
+    
+    SSLCertificateFile /var/cpanel/ssl/apache_tls/dev.technostationery.com/combined
+
+    SSLUseStapling off
+    <Directory "/home/dev/public_html/cgi-bin">
+      SSLOptions +StdEnvVars
+    </Directory>
+  </IfModule>
+        
+        
+            
+                
+                
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php82/root/usr/var/run/php-fpm/bb3b4e2349f6e7badf62eed07931a5afb5be6539.sock|fcgi://dev.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/ssl/2_4/dev/dev.technostationery.com/*.conf"
+
+    <IfModule headers_module>
+    RequestHeader set X-HTTPS 1
+    </IfModule>
+    RewriteEngine On
+                RewriteCond %{HTTP_HOST} =cpanel.dev.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpanel.dev.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpanel/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpanel" "http://127.0.0.1:2082" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcalendars.dev.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcalendars.dev.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcalendars/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcalendars" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcontacts.dev.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcontacts.dev.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcontacts/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcontacts" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webdisk.dev.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webdisk.dev.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webdisk/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webdisk" "http://127.0.0.1:2077" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webmail.dev.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webmail.dev.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webmail/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webmail" "http://127.0.0.1:2095" max=1 retry=0
+
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =cpanel.dev.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =cpanel.dev.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_cpanel/$1 [PT]
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =webmail.dev.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =webmail.dev.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_webmail/$1 [PT]
+
+    RewriteRule ^/Microsoft-Server-ActiveSync /___proxy_activesync/$1 [PT]
+    ProxyPass "/___proxy_activesync" "http://127.0.0.1:2090/Microsoft-Server-ActiveSync" max=1 retry=0
+
+
+</VirtualHost>
+
+<VirtualHost 205.134.249.177:443>
+  ServerName lms.technostationery.com
+  ServerAlias mail.lms.technostationery.com www.lms.technostationery.com webdisk.lms.technostationery.com cpanel.lms.technostationery.com webmail.lms.technostationery.com cpcalendars.lms.technostationery.com cpcontacts.lms.technostationery.com
+  DocumentRoot /home/lms/public_html
+  ServerAdmin webmaster@lms.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/lms.technostationery.com-ssl_log combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/lms.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User lms # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir enabled
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule mod_include.c>
+    <Directory "/home/lms/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+  <Proxymatch ^https?://127\.0\.0\.1:(2082|2083|2077|2078|2079|2080|2086|2087|2095|2096)/>
+       <IfModule security2_module>
+          SecRuleEngine Off
+       </IfModule>
+       <IfModule security3_module>
+          modsecurity_rules 'SecRuleEngine Off'
+       </IfModule>
+  </Proxymatch>
+
+  <IfModule mod_suphp.c>
+    suPHP_UserGroup lms lms
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup lms lms
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid lms lms
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID lms lms
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser lms
+    PassengerGroup lms
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/lms/public_html/cgi-bin/
+  </IfModule>
+  <IfModule ssl_module>
+    SSLEngine on
+    
+    SSLCertificateFile /var/cpanel/ssl/apache_tls/lms.technostationery.com/combined
+
+    SSLUseStapling off
+    <Directory "/home/lms/public_html/cgi-bin">
+      SSLOptions +StdEnvVars
+    </Directory>
+  </IfModule>
+        
+        
+            
+                
+                
+    Include "/etc/apache2/conf.d/userdata/ssl/2_4/lms/lms.technostationery.com/*.conf"
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php82/root/usr/var/run/php-fpm/abdf0e7635b2af066789e1b50b8919fd7009fccc.sock|fcgi://lms.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/ssl/2_4/lms/lms.technostationery.com/*.conf"
+
+    <IfModule headers_module>
+    RequestHeader set X-HTTPS 1
+    </IfModule>
+    RewriteEngine On
+                RewriteCond %{HTTP_HOST} =cpanel.lms.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpanel.lms.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpanel/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpanel" "http://127.0.0.1:2082" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcalendars.lms.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcalendars.lms.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcalendars/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcalendars" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcontacts.lms.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcontacts.lms.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcontacts/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcontacts" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webdisk.lms.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webdisk.lms.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webdisk/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webdisk" "http://127.0.0.1:2077" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webmail.lms.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webmail.lms.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webmail/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webmail" "http://127.0.0.1:2095" max=1 retry=0
+
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =cpanel.lms.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =cpanel.lms.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_cpanel/$1 [PT]
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =webmail.lms.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =webmail.lms.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_webmail/$1 [PT]
+
+    RewriteRule ^/Microsoft-Server-ActiveSync /___proxy_activesync/$1 [PT]
+    ProxyPass "/___proxy_activesync" "http://127.0.0.1:2090/Microsoft-Server-ActiveSync" max=1 retry=0
+
+
+</VirtualHost>
+
+# END: HTTPS vhosts list
+
+##################################################
+##################################################
+#
+# Define the main cPanel & WHM proxy subdomains
+#
+##################################################
+##################################################
+
+<VirtualHost 205.134.249.177:80>
+  ServerName beta.technostationery.com
+    <IfModule rewrite_module>
+    RewriteEngine On
+
+                RewriteCond %{REQUEST_URI} ^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$ [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/(?:\ Ballot169)? [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Sectigo\ DCV)?$ [OR]
+            RewriteCond %{REQUEST_URI} ^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$ 
+        RewriteRule ^ - [END]
+
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  </IfModule>
+    ServerAlias mail.beta.technostationery.com www.beta.technostationery.com
+  DocumentRoot /home/beta/public_html
+  ServerAdmin webmaster@beta.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/beta.technostationery.com combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/beta.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User beta # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir enabled
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule include_module>
+    <Directory "/home/beta/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+
+  <IfModule suphp_module>
+    suPHP_UserGroup beta beta
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup beta beta
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid beta beta
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID beta beta
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser beta
+    PassengerGroup beta
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/beta/public_html/cgi-bin/
+  </IfModule>
+
+
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+        RewriteOptions Inherit
+    </IfModule>
+
+        
+        
+            
+                
+                
+  Include "/etc/apache2/conf.d/userdata/std/2_4/beta/beta.technostationery.com/*.conf"
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php82/root/usr/var/run/php-fpm/9e67589f1d312f4fc8b0673e34c960a952a31a2c.sock|fcgi://beta.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/std/2_4/beta/beta.technostationery.com/*.conf"
+</VirtualHost>
+<VirtualHost 205.134.249.177:443>
+  ServerName beta.technostationery.com
+  ServerAlias mail.beta.technostationery.com www.beta.technostationery.com cpcontacts.beta.technostationery.com cpanel.beta.technostationery.com webmail.beta.technostationery.com webdisk.beta.technostationery.com cpcalendars.beta.technostationery.com
+  DocumentRoot /home/beta/public_html
+  ServerAdmin webmaster@beta.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/beta.technostationery.com-ssl_log combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/beta.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User beta # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir enabled
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule mod_include.c>
+    <Directory "/home/beta/public_html">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+  <Proxymatch ^https?://127\.0\.0\.1:(2082|2083|2077|2078|2079|2080|2086|2087|2095|2096)/>
+       <IfModule security2_module>
+          SecRuleEngine Off
+       </IfModule>
+       <IfModule security3_module>
+          modsecurity_rules 'SecRuleEngine Off'
+       </IfModule>
+  </Proxymatch>
+
+  <IfModule mod_suphp.c>
+    suPHP_UserGroup beta beta
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup beta beta
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid beta beta
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID beta beta
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser beta
+    PassengerGroup beta
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/beta/public_html/cgi-bin/
+  </IfModule>
+  <IfModule ssl_module>
+    SSLEngine on
+    
+    SSLCertificateFile /var/cpanel/ssl/apache_tls/beta.technostationery.com/combined
+
+    SSLUseStapling off
+    <Directory "/home/beta/public_html/cgi-bin">
+      SSLOptions +StdEnvVars
+    </Directory>
+  </IfModule>
+        
+        
+            
+                
+                
+    Include "/etc/apache2/conf.d/userdata/ssl/2_4/beta/beta.technostationery.com/*.conf"
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php82/root/usr/var/run/php-fpm/9e67589f1d312f4fc8b0673e34c960a952a31a2c.sock|fcgi://beta.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/ssl/2_4/beta/beta.technostationery.com/*.conf"
+
+    <IfModule headers_module>
+    RequestHeader set X-HTTPS 1
+    </IfModule>
+    RewriteEngine On
+                RewriteCond %{HTTP_HOST} =cpanel.beta.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpanel.beta.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpanel/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpanel" "http://127.0.0.1:2082" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcalendars.beta.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcalendars.beta.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcalendars/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcalendars" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcontacts.beta.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcontacts.beta.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcontacts/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcontacts" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webdisk.beta.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webdisk.beta.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webdisk/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webdisk" "http://127.0.0.1:2077" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webmail.beta.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webmail.beta.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webmail/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webmail" "http://127.0.0.1:2095" max=1 retry=0
+
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =cpanel.beta.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =cpanel.beta.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_cpanel/$1 [PT]
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =webmail.beta.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =webmail.beta.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_webmail/$1 [PT]
+
+    RewriteRule ^/Microsoft-Server-ActiveSync /___proxy_activesync/$1 [PT]
+    ProxyPass "/___proxy_activesync" "http://127.0.0.1:2090/Microsoft-Server-ActiveSync" max=1 retry=0
+
+
+</VirtualHost>
+<VirtualHost 205.134.249.177:80>
+  ServerName pim.technostationery.com
+    ServerAlias mail.pim.technostationery.com www.pim.technostationery.com
+  DocumentRoot /home/pim/public_html/public
+  ServerAdmin webmaster@pim.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/pim.technostationery.com combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/pim.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User pim # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir disabled
+          UserDir enabled pim 
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule include_module>
+    <Directory "/home/pim/public_html/public">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+
+  <IfModule suphp_module>
+    suPHP_UserGroup pim pim
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup pim pim
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid pim pim
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID pim pim
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser pim
+    PassengerGroup pim
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/pim/public_html/public/cgi-bin/
+  </IfModule>
+
+
+    # Global DCV Rewrite Exclude
+    <IfModule rewrite_module>
+        RewriteOptions Inherit
+    </IfModule>
+
+        
+        
+            
+                
+                
+  Include "/etc/apache2/conf.d/userdata/std/2_4/pim/pim.technostationery.com/*.conf"
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php81/root/usr/var/run/php-fpm/af69ec77e1acf28282f6052993f69919b9c5e2c0.sock|fcgi://pim.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/std/2_4/pim/pim.technostationery.com/*.conf"
+</VirtualHost>
+<VirtualHost 205.134.249.177:443>
+  ServerName pim.technostationery.com
+  ServerAlias mail.pim.technostationery.com www.pim.technostationery.com cpanel.pim.technostationery.com webmail.pim.technostationery.com webdisk.pim.technostationery.com cpcontacts.pim.technostationery.com cpcalendars.pim.technostationery.com
+  DocumentRoot /home/pim/public_html/public
+  ServerAdmin webmaster@pim.technostationery.com
+  UseCanonicalName Off
+  CustomLog /etc/apache2/logs/domlogs/pim.technostationery.com-ssl_log combined env=!isproxyrequest
+  <IfModule log_config_module>
+    <IfModule logio_module>
+      CustomLog /etc/apache2/logs/domlogs/pim.technostationery.com-bytes_log "%{%s}t %I .\n%{%s}t %O ." env=!isproxyrequest
+    </IfModule>
+    <IfModule logio_module>
+      LogFormat "%{%F}t %H %{SSL_PROTOCOL}x %{Host}i %I %O %{c}a %a" trafficlog
+      CustomLog /var/log/cpanel-server-traffic/web/traffic-apache.log trafficlog env=!isproxyrequest
+    </IfModule>
+  </IfModule>
+  ## User pim # Needed for Cpanel::ApacheConf
+  <IfModule userdir_module>
+    <IfModule !mpm_itk.c>
+      <IfModule !ruid2_module>
+        <IfModule !mod_passenger.c>
+          UserDir disabled
+          UserDir enabled pim 
+        </IfModule>
+      </IfModule>
+    </IfModule>
+  </IfModule>
+
+  # Enable backwards compatible Server Side Include expression parser for Apache versions >= 2.4.
+  # To selectively use the newer Apache 2.4 expression parser, disable SSILegacyExprParser in
+  # the user's .htaccess file.  For more information, please read:
+  #    http://httpd.apache.org/docs/2.4/mod/mod_include.html#ssilegacyexprparser
+  <IfModule mod_include.c>
+    <Directory "/home/pim/public_html/public">
+      SSILegacyExprParser On
+    </Directory>
+  </IfModule>
+
+  
+  <Proxymatch ^https?://127\.0\.0\.1:(2082|2083|2077|2078|2079|2080|2086|2087|2095|2096)/>
+       <IfModule security2_module>
+          SecRuleEngine Off
+       </IfModule>
+       <IfModule security3_module>
+          modsecurity_rules 'SecRuleEngine Off'
+       </IfModule>
+  </Proxymatch>
+
+  <IfModule mod_suphp.c>
+    suPHP_UserGroup pim pim
+  </IfModule>
+  <IfModule suexec_module>
+    <IfModule !mod_ruid2.c>
+      SuexecUserGroup pim pim
+    </IfModule>
+  </IfModule>
+  <IfModule ruid2_module>
+    RMode config
+    RUidGid pim pim
+  </IfModule>
+  <IfModule mpm_itk.c>
+    # For more information on MPM ITK, please read:
+    #   http://mpm-itk.sesse.net/
+    AssignUserID pim pim
+  </IfModule>
+  <IfModule mod_passenger.c>
+    PassengerUser pim
+    PassengerGroup pim
+  </IfModule>
+
+  <IfModule alias_module>
+    ScriptAlias /cgi-bin/ /home/pim/public_html/public/cgi-bin/
+  </IfModule>
+  <IfModule ssl_module>
+    SSLEngine on
+    
+    SSLCertificateFile /var/cpanel/ssl/apache_tls/pim.technostationery.com/combined
+
+    SSLUseStapling off
+    <Directory "/home/pim/public_html/public/cgi-bin">
+      SSLOptions +StdEnvVars
+    </Directory>
+  </IfModule>
+        
+        
+            
+                
+                
+    Include "/etc/apache2/conf.d/userdata/ssl/2_4/pim/pim.technostationery.com/*.conf"
+    <IfModule proxy_fcgi_module>
+        <FilesMatch \.(phtml|php[0-9]*)$>
+            SetHandler proxy:unix:/opt/cpanel/ea-php81/root/usr/var/run/php-fpm/af69ec77e1acf28282f6052993f69919b9c5e2c0.sock|fcgi://pim.technostationery.com
+        </FilesMatch>
+    </IfModule>
+
+
+
+
+  # To customize this VirtualHost use an include file at the following location
+  # Include "/etc/apache2/conf.d/userdata/ssl/2_4/pim/pim.technostationery.com/*.conf"
+
+    <IfModule headers_module>
+    RequestHeader set X-HTTPS 1
+    </IfModule>
+    RewriteEngine On
+                RewriteCond %{HTTP_HOST} =cpanel.pim.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpanel.pim.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpanel/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpanel" "http://127.0.0.1:2082" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcalendars.pim.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcalendars.pim.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcalendars/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcalendars" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =cpcontacts.pim.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =cpcontacts.pim.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_cpcontacts/$1 [PT]
+		ProxyPass "/___proxy_subdomain_cpcontacts" "http://127.0.0.1:2079" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webdisk.pim.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webdisk.pim.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webdisk/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webdisk" "http://127.0.0.1:2077" max=1 retry=0
+                RewriteCond %{HTTP_HOST} =webmail.pim.technostationery.com [OR]
+                RewriteCond %{HTTP_HOST} =webmail.pim.technostationery.com:443
+            RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+            RewriteRule ^/(.*) /___proxy_subdomain_webmail/$1 [PT]
+		ProxyPass "/___proxy_subdomain_webmail" "http://127.0.0.1:2095" max=1 retry=0
+
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =cpanel.pim.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =cpanel.pim.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_cpanel/$1 [PT]
+                RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+                    RewriteCond %{HTTP_HOST} =webmail.pim.technostationery.com [OR]
+                    RewriteCond %{HTTP_HOST} =webmail.pim.technostationery.com:443
+
+                RewriteRule ^/(.*) /___proxy_subdomain_ws_webmail/$1 [PT]
+
+    RewriteRule ^/Microsoft-Server-ActiveSync /___proxy_activesync/$1 [PT]
+    ProxyPass "/___proxy_activesync" "http://127.0.0.1:2090/Microsoft-Server-ActiveSync" max=1 retry=0
+
+
+</VirtualHost>
+# CPANEL/WHM/WEBMAIL/WEBDISK PROXY SUBDOMAINS
+<VirtualHost 205.134.249.177:80 127.0.0.1:8080>
+    ServerName proxy-subdomains-vhost.localhost
+    ServerAlias cpanel.* whm.* webmail.* webdisk.* cpcalendars.* cpcontacts.*
+
+    DocumentRoot /var/www/html
+    ServerAdmin machinemessages@forum.inmotionhosting.com
+
+    <IfModule suphp_module>
+        suPHP_UserGroup nobody nobody
+    </IfModule>
+    <Proxy "*">
+        <IfModule security2_module>
+            SecRuleEngine Off
+        </IfModule>
+        <IfModule security3_module>
+           modsecurity_rules 'SecRuleEngine Off'
+        </IfModule>
+    </Proxy>
+
+    <Directory "/">
+      AllowOverride All
+    </Directory>
+
+
+
+
+    ScriptAlias /.cpanel/dcv /usr/local/cpanel/cgi-priv/get_local.cgi
+
+    RewriteEngine On
+
+                    RewriteCond %{REQUEST_URI} ^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$ [OR]
+                    RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Sectigo\ DCV)?$ [OR]
+                    RewriteCond %{REQUEST_URI} ^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$ [OR]
+                    RewriteCond %{REQUEST_URI} ^/\.well-known/pki-validation/(?:\ Ballot169)? 
+                RewriteRule ^ /.cpanel/dcv [passthrough]
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^cpanel\.
+    RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+    RewriteRule ^/(.*) /___proxy_subdomain_cpanel/$1 [PT]
+    ProxyPass "/___proxy_subdomain_cpanel" "http://127.0.0.1:2082" max=1 retry=0
+
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^webmail\.
+    RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+    RewriteRule ^/(.*) /___proxy_subdomain_webmail/$1 [PT]
+    ProxyPass "/___proxy_subdomain_webmail" "http://127.0.0.1:2095" max=1 retry=0
+
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^whm\.
+    RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+    RewriteRule ^/(.*) /___proxy_subdomain_whm/$1 [PT]
+    ProxyPass "/___proxy_subdomain_whm" "http://127.0.0.1:2086" max=1 retry=0
+
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^webdisk\.
+
+    RewriteRule ^/(.*) /___proxy_subdomain_webdisk/$1 [PT]
+    ProxyPass "/___proxy_subdomain_webdisk" "http://127.0.0.1:2077" max=1 retry=0
+
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^cpcalendars\.
+
+    RewriteRule ^/(.*) /___proxy_subdomain_cpcalendars/$1 [PT]
+    ProxyPass "/___proxy_subdomain_cpcalendars" "http://127.0.0.1:2079" max=1 retry=0
+
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^cpcontacts\.
+
+    RewriteRule ^/(.*) /___proxy_subdomain_cpcontacts/$1 [PT]
+    ProxyPass "/___proxy_subdomain_cpcontacts" "http://127.0.0.1:2079" max=1 retry=0
+
+
+
+
+                    RewriteCond %{HTTP_HOST} ^cpanel\.
+    RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+    RewriteRule ^/(.*) /___proxy_subdomain_ws_cpanel/$1 [PT]
+
+        RewriteCond %{HTTP_HOST} ^webmail\.
+    RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+    RewriteRule ^/(.*) /___proxy_subdomain_ws_webmail/$1 [PT]
+
+        RewriteCond %{HTTP_HOST} ^whm\.
+    RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+    RewriteRule ^/(.*) /___proxy_subdomain_ws_whm/$1 [PT]
+    
+
+    UseCanonicalName Off
+
+    <IfModule security2_module>
+        SecRuleEngine On
+    </IfModule>
+    <IfModule security3_module>
+        modsecurity_rules 'SecRuleEngine On'
+    </IfModule>
+</VirtualHost>
+
+
+# CPANEL/WHM/WEBMAIL/WEBDISK PROXY SUBDOMAINS
+<VirtualHost 205.134.249.177:443 127.0.0.1:443>
+    ServerName ded701.inmotionhosting.com
+
+    ServerAlias cpanel.* whm.* webmail.* webdisk.* cpcalendars.* cpcontacts.*
+
+    DocumentRoot /var/www/html
+    ServerAdmin machinemessages@forum.inmotionhosting.com
+
+    <IfModule suphp_module>
+        suPHP_UserGroup nobody nobody
+    </IfModule>
+    <Proxy "*">
+        <IfModule security2_module>
+            SecRuleEngine Off
+        </IfModule>
+        <IfModule security3_module>
+            modsecurity_rules 'SecRuleEngine Off'
+        </IfModule>
+    </Proxy>
+
+    <Directory "/">
+      AllowOverride All
+    </Directory>
+
+
+
+
+    RewriteEngine On
+
+    <IfModule ssl_module>
+        SSLEngine on
+
+
+
+        SSLCertificateFile /var/cpanel/ssl/cpanel/mycpanel.pem
+        SSLCertificateKeyFile /var/cpanel/ssl/cpanel/mycpanel.pem
+        SSLCertificateChainFile /var/cpanel/ssl/cpanel/mycpanel.pem
+        SSLUseStapling Off
+
+    </IfModule>
+
+    
+    
+
+    <IfModule headers_module>
+    RequestHeader set X-HTTPS 1
+    </IfModule>
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^cpanel\.
+    RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+    RewriteRule ^/(.*) /___proxy_subdomain_cpanel/$1 [PT]
+    ProxyPass "/___proxy_subdomain_cpanel" "http://127.0.0.1:2082" max=1 retry=0
+
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^webmail\.
+    RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+    RewriteRule ^/(.*) /___proxy_subdomain_webmail/$1 [PT]
+    ProxyPass "/___proxy_subdomain_webmail" "http://127.0.0.1:2095" max=1 retry=0
+
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^whm\.
+    RewriteCond %{HTTP:Upgrade} !websocket   [nocase]
+
+    RewriteRule ^/(.*) /___proxy_subdomain_whm/$1 [PT]
+    ProxyPass "/___proxy_subdomain_whm" "http://127.0.0.1:2086" max=1 retry=0
+
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^webdisk\.
+
+    RewriteRule ^/(.*) /___proxy_subdomain_webdisk/$1 [PT]
+    ProxyPass "/___proxy_subdomain_webdisk" "http://127.0.0.1:2077" max=1 retry=0
+
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^cpcontacts\.
+
+    RewriteRule ^/(.*) /___proxy_subdomain_cpcontacts/$1 [PT]
+    ProxyPass "/___proxy_subdomain_cpcontacts" "http://127.0.0.1:2079" max=1 retry=0
+
+
+    RewriteCond %{HTTP_HOST} !^ded701.inmotionhosting.com$
+    RewriteCond %{HTTP_HOST} ^cpcalendars\.
+
+    RewriteRule ^/(.*) /___proxy_subdomain_cpcalendars/$1 [PT]
+    ProxyPass "/___proxy_subdomain_cpcalendars" "http://127.0.0.1:2079" max=1 retry=0
+
+
+
+
+                    RewriteCond %{HTTP_HOST} ^cpanel\.
+    RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+    RewriteRule ^/(.*) /___proxy_subdomain_ws_cpanel/$1 [PT]
+
+        RewriteCond %{HTTP_HOST} ^webmail\.
+    RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+    RewriteRule ^/(.*) /___proxy_subdomain_ws_webmail/$1 [PT]
+
+        RewriteCond %{HTTP_HOST} ^whm\.
+    RewriteCond %{HTTP:Upgrade} websocket   [nocase]
+    RewriteRule ^/(.*) /___proxy_subdomain_ws_whm/$1 [PT]
+    
+
+    UseCanonicalName Off
+
+    <IfModule security2_module>
+        SecRuleEngine On
+    </IfModule>
+    <IfModule security3_module>
+        modsecurity_rules 'SecRuleEngine On'
+    </IfModule>
+</VirtualHost>
+
+# Administrator locations for safely altering virtualhost configuration
+Include "/etc/apache2/conf.d/includes/post_virtualhost_global.conf"
+
+# Major Version Specific
+Include "/etc/apache2/conf.d/includes/post_virtualhost_2.conf"
+
+##################################################
+##################################################
+#
+# Define the Domain Forwarding virtual hosts
+#
+##################################################
+##################################################
+
+# Domain forwarding is currently disabled.
+# You can set this by logging into WHM, and navigating to the 'DNS Functions' => 'Setup/Edit Domain Forwarding' interface.
+
+
+##################################################
+##################################################
+#
+# Default SSL Hostname Virtual Host
+#
+##################################################
+##################################################
+<VirtualHost 127.0.0.1:443 205.134.249.177:443 *:443>
+    ServerName ded701.inmotionhosting.com
+    DocumentRoot /var/www/html
+
+    ServerAdmin machinemessages@forum.inmotionhosting.com
+    <IfModule suphp_module>
+        suPHP_UserGroup nobody nobody
+    </IfModule>
+    <Directory "/">
+        AllowOverride All
+    </Directory>
+    
+
+    
+    <IfModule ssl_module>
+        SSLEngine on
+        
+
+        SSLCertificateFile /var/cpanel/ssl/cpanel/mycpanel.pem
+        SSLCertificateKeyFile /var/cpanel/ssl/cpanel/mycpanel.pem
+        SSLCertificateChainFile /var/cpanel/ssl/cpanel/mycpanel.pem
+        SSLUseStapling Off
+
+    </IfModule>
+
+    UseCanonicalName Off
+
+    <IfModule security2_module>
+        SecRuleEngine On
+    </IfModule>
+    <IfModule security3_module>
+        modsecurity_rules 'SecRuleEngine On'
+    </IfModule>
+</VirtualHost>
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#
+#   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#   DO NOT EDIT. AUTOMATICALLY GENERATED.  USE INCLUDE FILES IF YOU NEED TO MAKE A CHANGE
+#   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+

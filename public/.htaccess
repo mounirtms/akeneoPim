@@ -1,73 +1,50 @@
-RewriteEngine On
+# Akeneo PIM - Public Directory (Web Root)
+# This configuration ensures proper routing to index.php
 
-# Pass Authorization header to PHP (required for API OAuth)
-RewriteCond %{HTTP:Authorization} ^(.+)$
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+DirectoryIndex index.php
 
-# Pass PHP_AUTH headers for Basic Auth
-SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
-
-# Serve static translation files for any path pattern (must come before catch-all)
-RewriteCond %{REQUEST_URI} ^/.*?/js/translation/([a-z]{2}_[A-Z]{2})\.js$
-RewriteCond %{DOCUMENT_ROOT}/js/translation/%1.js -f
-RewriteRule ^.*?/js/translation/([a-z]{2}_[A-Z]{2})\.js$ /js/translation/%1.js [L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ index.php [QSA,L]
-
-# AddHandler for PHP 8.3
-AddHandler application/x-httpd-ea-php83 .php
-
-# First, unset ALL existing CSP and CORS headers from the application
-Header unset Content-Security-Policy
-Header unset X-Content-Security-Policy
-Header unset X-WebKit-CSP
-Header unset Access-Control-Allow-Origin
-Header unset Access-Control-Allow-Methods
-Header unset Access-Control-Allow-Headers
-
-# Set permissive CSP allowing all necessary third-party scripts
-# Note: 'nonce-*' is invalid CSP syntax - removed. Using 'unsafe-inline' instead.
-Header always set Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; img-src 'self' data: blob: *; font-src 'self' data: *; connect-src 'self' *; frame-src *;"
-Header always set X-Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src 'self' 'unsafe-inline' *; img-src 'self' data: *; font-src 'self' data: *; connect-src 'self' *;"
-
-# Set CORS headers
-Header always set Access-Control-Allow-Origin "*"
-Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
-
-# Security Headers
-Header always set X-Frame-Options "SAMEORIGIN"
-Header always set X-Content-Type-Options "nosniff"
-Header always set Referrer-Policy "strict-origin-when-cross-origin"
-Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-
-# Emergency cache bypass for Cloudflare issues
-<IfModule mod_headers.c>
-    # If nocache parameter present, send no-cache headers
-    SetEnvIf Request_URI "nocache=1" nocache_bypass
-    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0" env=nocache_bypass
-    Header set Pragma "no-cache" env=nocache_bypass
-    Header set Expires "0" env=nocache_bypass
+<IfModule mod_negotiation.c>
+    Options -MultiViews
 </IfModule>
 
-# ==============================================
-# CACHE CONTROL HEADERS
-# ==============================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Set base if needed
+    RewriteBase /
+    
+    # Pass Authorization header to PHP
+    RewriteCond %{HTTP:Authorization} .+
+    RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    
+    # Redirect to URI without front controller to prevent duplicate content
+    # (with and without `/index.php`)
+    RewriteCond %{REQUEST_URI}::$0 ^(/.+)/(.*)::\2$
+    RewriteRule .* - [E=BASE:%1]
+    
+    # If the requested filename exists, serve it directly
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+    
+    # If the requested directory exists, serve it directly  
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+    
+    # Route everything else to the front controller (index.php)
+    RewriteRule ^ %{ENV:BASE}index.php [L]
+</IfModule>
 
-# Prevent caching of dynamic content
-<FilesMatch "\.(html|htm|twig|php)$">
-    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
-    Header set Pragma "no-cache"
-    Header set Expires "0"
-</FilesMatch>
+# Fallback for when mod_rewrite is not available
+<IfModule !mod_rewrite.c>
+    FallbackResource /index.php
+</IfModule>
 
-# Cache static assets with long expiry
-<FilesMatch "\.(js|css|jpg|jpeg|png|gif|svg|woff|woff2|ttf|eot|ico)$">
-    Header set Cache-Control "public, max-age=31536000"
-</FilesMatch>
-
-# Versioned assets (with ?v= parameter) can be cached forever
-<If "%{QUERY_STRING} =~ /v=/">
-    Header set Cache-Control "public, max-age=31536000, immutable"
-</If>
+<IfModule mod_headers.c>
+    # Content Security Policy - Updated to allow all necessary external scripts
+    # CSP disabled for Akeneo PIM - uses inline scripts and eval for RequireJS
+    # Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://www.googletagmanager.com https://connect.facebook.net https://www.clarity.ms https://scripts.clarity.ms https://gc.kes.v2.scr.kaspersky-labs.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; media-src 'self'; object-src 'none';"
+    # Content Security Policy
+    # Security headers
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>

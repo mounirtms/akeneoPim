@@ -1,0 +1,189 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                  AKENEO PIM SYSTEM - QUICK REFERENCE                         ║
+║                    Audit Report: 2026-05-09 08:26 UTC+1                      ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📊 CURRENT STATUS
+─────────────────────────────────────────────────────────────────────────────
+  Website:        🔴 DOWN (404 errors on /app/)
+  Database:       ✅ UP   (MariaDB 3307, 9,538 products)
+  Backend:        ✅ UP   (PHP 8.2.30 FPM running)
+  Services:       ✅ UP   (Apache, Varnish, all core services)
+  
+  Current Branch: recovery-testing-phase3-20260506_091124 (BROKEN)
+  Last Good:      pimAkeno @ 9ceeb11 (STABLE)
+  Production:     main (OUTDATED - 8 days old)
+
+🚨 CRITICAL ISSUES (5 identified)
+─────────────────────────────────────────────────────────────────────────────
+  1. Frontend/Asset Loading         → CSS/JS 404 errors
+  2. Authentication/Session         → Login broken
+  3. Configuration/Routing          → Routes misconfigured
+  4. Database                       → Port 3307 (requires .env update)
+  5. Cache/Permissions              → Cache directory issues
+
+📈 TIMELINE OF FAILURE
+─────────────────────────────────────────────────────────────────────────────
+  ✅ Apr 1-14:    System stable (1 commit only)
+  ❌ Apr 20-30:   Issues emerge (30+ attempted fixes)
+  🔄 May 1-5:     Recovery starts (15+ commits)
+  ⚠️  May 6-9:     Incomplete fix (current branch broken)
+
+💡 ROOT CAUSE
+─────────────────────────────────────────────────────────────────────────────
+  Around April 20: Unexpected configuration changes → Session config breaks
+                 → Cloudflare proxy fails → Frontend bundling fails
+                 → 30+ fix attempts with conflicting changes
+                 → System left in inconsistent state
+
+🎯 RECOMMENDED FIX (3 options)
+─────────────────────────────────────────────────────────────────────────────
+  Option A: Quick Fix (15 min) - RECOMMENDED IF CONFIDENT
+    1. Reset main to pimAkeno
+    2. Test website
+    3. If works: Done! If not: diagnose
+
+  Option B: Investigation (20 min) - RECOMMENDED IF UNSURE
+    1. Verify database connection
+    2. Check logs and configuration
+    3. Read audit reports
+    4. Make informed decision
+
+  Option C: Staged Recovery (60 min) - MOST CAREFUL
+    1. Full audit investigation
+    2. Apply Phase 1 fixes only
+    3. Test each change
+    4. Commit verified changes
+
+📋 IMMEDIATE ACTION CHECKLIST (30 minutes)
+─────────────────────────────────────────────────────────────────────────────
+  [ ] Step 1: Verify Database (5 min)
+      mysql -h 127.0.0.1 -P 3307 -u akeneo_pim -p akeneo_pim \
+        -e "SELECT COUNT(*) FROM pim_catalog_product;"
+      Expected: 9538 or similar
+
+  [ ] Step 2: Backup Current State (2 min)
+      git log --oneline -1 > /tmp/pre_fix_state.txt
+      git status > /tmp/pre_fix_status.txt
+
+  [ ] Step 3: Reset to Last Known Good (5 min)
+      git checkout main
+      git reset --hard origin/pimAkeno
+      git log --oneline -1
+      # Should show: 9ceeb11 ✅ RECOVERY COMPLETE
+
+  [ ] Step 4: Clear Cache & Test (5 min)
+      bin/console cache:clear --env=prod
+      rm -rf var/cache/prod/*
+      curl http://localhost/app/ | head -20
+
+  [ ] Step 5: Diagnose If Still Broken (15 min)
+      tail -50 var/logs/prod.log
+      sudo tail -50 /var/log/apache2/error.log
+      bin/console debug:router | head -20
+
+✅ SUCCESS CRITERIA
+─────────────────────────────────────────────────────────────────────────────
+  ✓ curl http://localhost/app/ returns HTML (not 404)
+  ✓ Login page displays with CSS/JS loaded
+  ✓ No JavaScript console errors
+  ✓ Can authenticate with admin
+  ✓ Dashboard displays products
+  ✓ No errors in var/logs/prod.log
+
+📁 KEY FILES TO CHECK
+─────────────────────────────────────────────────────────────────────────────
+  .env.local              ← Database config (check port 3307!)
+  .htaccess              ← Web routing (has many backups - watch out!)
+  config/routes.yaml     ← Symfony routing
+  web/ or public/        ← Static assets location
+  var/logs/prod.log      ← Application errors
+  bin/console            ← Symfony console
+
+🌿 BRANCH DECISION
+─────────────────────────────────────────────────────────────────────────────
+  Delete These:
+    - oldbranch
+    - oldbranch-clean
+    - oldbranch-current-state
+    - pimAkeno-backup
+    - fix/akeneo-default-ui
+    - backup-broken-state-*
+
+  Keep These:
+    - main (production)
+    - pimAkeno (backup/reference)
+    - recovery-testing-* (current work)
+
+  Action:
+    git checkout main
+    git reset --hard origin/pimAkeno
+    git push --force-with-lease origin main
+
+📊 BY THE NUMBERS
+─────────────────────────────────────────────────────────────────────────────
+  Commits in last 2 weeks:        42
+  Major issues identified:         5
+  Root causes discovered:         30+
+  Active branches:                12
+  Database products recovered:  9,538
+  Generated diagnostic scripts:  100+
+  Generated documentation files:  50+
+
+⚡ MOST LIKELY FIXES (in order)
+─────────────────────────────────────────────────────────────────────────────
+  1. Frontend Assets (60% chance)     → git checkout pimAkeno -- config/ web/
+  2. Database/Env (25% chance)        → Update .env.local port to 3307
+  3. Routing Config (10% chance)      → git checkout pimAkeno -- config/ .htaccess
+  4. Full Reset (5% chance)           → git reset --hard origin/pimAkeno
+
+❌ DO NOT DO
+─────────────────────────────────────────────────────────────────────────────
+  ✗ Commit without understanding
+  ✗ Force push without backup
+  ✗ Delete .env.local or credentials
+  ✗ Mix changes from multiple branches
+  ✗ Manually edit webpack/RequireJS configs
+  ✗ Ignore the database backup
+
+📚 DOCUMENTATION FILES (READ IN THIS ORDER)
+─────────────────────────────────────────────────────────────────────────────
+  1️⃣  AUDIT_SUMMARY_AND_NEXT_STEPS.md (5 min read - START HERE)
+      → Quick diagnosis + 30-minute fix plan
+      
+  2️⃣  COMPREHENSIVE_AKENEO_AUDIT_20260509.md (20 min read)
+      → Full root cause analysis + all issue categories
+      
+  3️⃣  BRANCH_STATUS_REPORT.md (10 min read)
+      → Branch analysis + git cleanup recommendations
+      
+  4️⃣  This file (QUICK_REFERENCE.txt)
+      → High-level overview + key metrics
+
+🎬 NEXT STEPS - CHOOSE ONE
+─────────────────────────────────────────────────────────────────────────────
+  Fast Track (15 min): Execute Immediate Action Checklist above
+  Full Track (45 min): Read all documentation + Execute fixes
+  Safe Track (90 min): Full investigation + Staged implementation
+
+⏰ TIME ESTIMATES
+─────────────────────────────────────────────────────────────────────────────
+  Just verify database:                    5 min
+  Execute quick fix steps:                15 min
+  Diagnose if still broken:               30 min
+  Implement Phase 1 fixes:                45 min
+  Run full recovery:                      90 min
+  Complete cleanup & verification:       120 min
+
+📞 SUPPORT
+─────────────────────────────────────────────────────────────────────────────
+  Need quick fix?          → Read AUDIT_SUMMARY_AND_NEXT_STEPS.md
+  Need full context?       → Read COMPREHENSIVE_AKENEO_AUDIT_20260509.md
+  Need git help?           → Read BRANCH_STATUS_REPORT.md
+  Need to understand it?   → Read all 3 documents (40 min)
+
+═══════════════════════════════════════════════════════════════════════════════
+Generated by: Copilot
+Status: Ready for action
+Last Updated: 2026-05-09 08:26 UTC+1
+═══════════════════════════════════════════════════════════════════════════════

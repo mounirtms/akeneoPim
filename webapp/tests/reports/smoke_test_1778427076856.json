@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-05-10T15:30:48.841Z",
+  "duration": 28015,
+  "passed": 7,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "Test 1: Login Page Loads",
+      "passed": true,
+      "duration": 2807,
+      "details": {
+        "status": 200,
+        "url": "https://pim.technostationery.com/user/login",
+        "title": "Connexion"
+      },
+      "error": null,
+      "screenshot": null
+    },
+    {
+      "name": "Test 2: Login Form Elements Present",
+      "passed": true,
+      "duration": 2371,
+      "details": {
+        "usernameExists": true,
+        "passwordExists": true,
+        "submitExists": true
+      },
+      "error": null,
+      "screenshot": null
+    },
+    {
+      "name": "Test 3: CSS Loads Without Errors",
+      "passed": true,
+      "duration": 4268,
+      "details": {
+        "cssErrors": 0,
+        "errors": []
+      },
+      "error": null,
+      "screenshot": null
+    },
+    {
+      "name": "Test 4: No Critical JavaScript Errors",
+      "passed": true,
+      "duration": 5321,
+      "details": {
+        "criticalErrors": 0,
+        "totalJSErrors": 0,
+        "totalConsoleErrors": 1,
+        "errors": []
+      },
+      "error": null,
+      "screenshot": null
+    },
+    {
+      "name": "Test 5: Webpack Bundles Accessible",
+      "passed": true,
+      "duration": 5588,
+      "details": {
+        "bundleErrors": []
+      },
+      "error": null,
+      "screenshot": null
+    },
+    {
+      "name": "Test 6: Fixed Modules Load",
+      "passed": true,
+      "duration": 5307,
+      "details": {
+        "moduleErrors": []
+      },
+      "error": null,
+      "screenshot": null
+    },
+    {
+      "name": "Test 7: Page Load Performance",
+      "passed": true,
+      "duration": 2325,
+      "details": {
+        "loadTime": 2174,
+        "threshold": 5000,
+        "unit": "ms"
+      },
+      "error": null,
+      "screenshot": null
+    }
+  ]
+}

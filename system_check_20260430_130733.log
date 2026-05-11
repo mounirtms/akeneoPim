@@ -1,7 +1,0 @@
-=== COMPREHENSIVE AKENEO PIM SYSTEM CHECK ===
-Date: 2026-04-30 12:07:33
-
-❌ Database error: SQLSTATE[HY000] [1045] Access denied for user 'pim'@'localhost' (using password: YES)
-
-=== CHECK COMPLETED ===
-Date: 2026-04-30 12:07:33

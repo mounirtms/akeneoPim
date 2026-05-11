@@ -20,10 +20,6 @@
         <!-- Load other external JavaScript dependencies -->
         {{ external_javascript_dependencies() }}
         
-        <!-- Load RequireJS with path mappings -->
-        <script type="text/javascript" src="{{ asset('dist/require.min.js', 'frontend') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/require-paths.js', 'frontend') }}"></script>
-        
         <!-- Load Akeneo specific JavaScript files in correct order -->
         <script type="text/javascript" src="{{ asset('dist/vendor.min.js', 'frontend') }}"></script>
         <script type="text/javascript" src="{{ asset('dist/main.min.js', 'frontend') }}"></script>

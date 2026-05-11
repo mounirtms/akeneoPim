@@ -1,0 +1,4 @@
+# Disable installation status check in production
+# Prevents CREATE_TIME exception errors
+akeneo_platform_installer:
+    check_installation_status: false

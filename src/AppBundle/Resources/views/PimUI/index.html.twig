@@ -1,117 +1,114 @@
+{% set cache_buster = "20260508_213900" %}
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Techno Stationery - PIM Dashboard</title>
+        <title>Loading...</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="favicon.ico" />
+        <base href="/" />
+        <link rel="shortcut icon" href="/favicon.ico" />
 
-        <link rel="stylesheet" href="{{asset('css/pim.css', 'frontend')}}"/>
+        <link rel="stylesheet" href="/css/pim.css?v={{ cache_buster }}"/>
 
         {{ external_javascript_dependencies() }}
-        <script type="text/javascript" src="{{asset('dist/require.min.js', 'frontend')}} "></script>
-        <script type="text/javascript" src="{{asset('js/require-paths.js', 'frontend')}} "></script>
-        <script type="text/javascript" src="{{asset('dist/vendor.min.js', 'frontend')}} "></script>
-        <script type="text/javascript" src="{{asset('dist/main.min.js', 'frontend')}} "></script>
+
+        {# External libraries required by webpack externals config - LOAD SYNCHRONOUSLY #}
+        <script type="text/javascript" src="/dist/jquery.min.js?v={{ cache_buster }}"></script>
         
-        <style>
-            .custom-dashboard {
-                padding: 20px;
-                font-family: Arial, sans-serif;
+        {# Verify jQuery is loaded before continuing #}
+        <script type="text/javascript">
+            if (typeof jQuery === 'undefined') {
+                console.error('[Akeneo] CRITICAL: jQuery failed to load!');
+                document.write('<div style="position:fixed;top:0;left:0;right:0;background:red;color:white;padding:20px;z-index:99999;">ERROR: jQuery failed to load. Please refresh the page.</div>');
+            } else {
+                console.log('[Akeneo] jQuery loaded successfully:', jQuery.fn.jquery);
+                window.$ = window.jQuery = jQuery; // Ensure global scope
             }
-            
-            .dashboard-header {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-                padding: 20px;
-                border-radius: 8px;
-                margin-bottom: 20px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        </script>
+        
+        <script type="text/javascript" src="/dist/underscore.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/backbone.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/react.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/react-dom.min.js?v={{ cache_buster }}"></script>
+
+        {# FOS Routing - provides fos.Router for route generation #}
+        <script type="text/javascript" src="/bundles/fosjsrouting/js/router.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+        {# Process polyfill - fixes "process is not defined" for vfile/styled-components #}
+        <script type="text/javascript" src="/dist/process-polyfill.js?v={{ cache_buster }}"></script>
+
+        {# RequireJS - needed for AMD module loading #}
+        <script type="text/javascript" src="/dist/require.min.js?v={{ cache_buster }}"></script>
+        
+        {# CRITICAL FIX: Load r.initialize patch BEFORE main.min.js #}
+        <script type="text/javascript" src="/js/r-initialize-patch.js?v={{ cache_buster }}"></script>
+        
+        {# Webpack bundles - NOW jQuery is guaranteed to be available #}
+        <script type="text/javascript" src="/dist/vendor.min.js?v={{ cache_buster }}"></script>
+        <script type="text/javascript" src="/dist/main.min.js?v={{ cache_buster }}"></script>
+        
+        {# RequireJS Configuration and PIM initialization #}
+        <script type="text/javascript">
+            // Configure RequireJS with paths
+            if (typeof requirejs !== 'undefined') {
+                requirejs.config({
+                    baseUrl: '/js',
+                    paths: {
+                        'jquery': '/dist/jquery.min',
+                        'underscore': '/dist/underscore.min',
+                        'backbone': '/dist/backbone.min',
+                        'react': '/dist/react.min',
+                        'react-dom': '/dist/react-dom.min'
+                    },
+                    shim: {
+                        'backbone': {
+                            deps: ['underscore', 'jquery'],
+                            exports: 'Backbone'
+                        }
+                    }
+                });
+                
+                // Wait for DOM and initialize
+                document.addEventListener('DOMContentLoaded', function() {
+                    console.log('[Akeneo] DOM loaded, checking modules...');
+                    
+                    // Verify jQuery is still available
+                    if (typeof jQuery === 'undefined') {
+                        console.error('[Akeneo] jQuery lost after DOM load!');
+                        return;
+                    }
+                    
+                    // Check if webpack modules are loaded
+                    if (typeof __webpack_require__ !== 'undefined') {
+                        console.log('[Akeneo] Webpack modules loaded successfully');
+                        
+                        // Try to initialize via window.pimInit if available
+                        if (typeof window.pimInit === 'function') {
+                            console.log('[Akeneo] Calling pimInit()...');
+                            window.pimInit();
+                        } else {
+                            console.log('[Akeneo] window.pimInit not found, checking for alternative init methods...');
+                            
+                            // Alternative: trigger Backbone router
+                            if (typeof Backbone !== 'undefined' && Backbone.history) {
+                                console.log('[Akeneo] Starting Backbone.history...');
+                                Backbone.history.start({ pushState: false });
+                            }
+                        }
+                    } else {
+                        console.warn('[Akeneo] Webpack modules not loaded');
+                    }
+                });
             }
-            
-            .dashboard-header h1 {
-                margin: 0;
-                font-size: 2em;
-            }
-            
-            .dashboard-widgets {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 20px;
-                margin-top: 20px;
-            }
-            
-            .widget {
-                background: white;
-                border-radius: 8px;
-                padding: 20px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                border: 1px solid #eee;
-            }
-            
-            .widget h2 {
-                margin-top: 0;
-                color: #333;
-                border-bottom: 2px solid #667eea;
-                padding-bottom: 10px;
-            }
-            
-            .loading-container {
-                text-align: center;
-                padding: 40px;
-            }
-            
-            .loading-container h3 {
-                color: #667eea;
-                margin-bottom: 20px;
-            }
-        </style>
+        </script>
     </head>
     <body>
         <div class="app">
-            <div id="dashboard-content" style="display:none;">
-                <div class="custom-dashboard">
-                    <div class="dashboard-header">
-                        <h1>Techno Stationery PIM Dashboard</h1>
-                        <p>Welcome to your Product Information Management System</p>
-                    </div>
-                    
-                    <div class="dashboard-widgets">
-                        <div class="widget">
-                            <h2>Quick Stats</h2>
-                            <p>Products: <strong>1,250</strong></p>
-                            <p>Categories: <strong>42</strong></p>
-                            <p>Families: <strong>18</strong></p>
-                        </div>
-                        
-                        <div class="widget">
-                            <h2>Recent Activity</h2>
-                            <ul>
-                                <li>Product ABC001 updated 2 hours ago</li>
-                                <li>New category "Office Supplies" created</li>
-                                <li>Import job completed successfully</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="widget">
-                            <h2>System Status</h2>
-                            <p>All systems operational</p>
-                            <p>Last backup: Today, 02:00 AM</p>
-                        </div>
-                        
-                        <div class="widget">
-                            <h2>Quick Actions</h2>
-                            <button onclick="window.location.href='#'" style="background: #667eea; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; margin: 5px;">Add Product</button>
-                            <button onclick="window.location.href='#'" style="background: #764ba2; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; margin: 5px;">Import Data</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="loading-container" id="loading-container">
+            <div class="AknDefault-progressContainer">
                 <h3>
-                    Loading Techno Stationery PIM Dashboard...
+                    Loading ...
                 </h3>
-                <img src="{{ asset('bundles/pimui/images/main-loader.gif') }}"/>
+                <img src="/bundles/pimui/images/main-loader.gif"/>
                 {% if true == oro_config_value('pim_ui.loading_message_enabled') %}
                 <h4 class="AknDefault-progressContainer--loadingMessages">
                     {{ random(oro_config_value('pim_ui.loading_messages')|split('\n')) }}
@@ -120,26 +117,5 @@
             </div>
         </div>
         <div class="hash-loading-mask"></div>
-        
-        <script>
-            // Simulate dashboard loading
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(function() {
-                    document.getElementById('loading-container').style.display = 'none';
-                    document.getElementById('dashboard-content').style.display = 'block';
-                    
-                    // Initialize PIM if available
-                    if (typeof require !== 'undefined' && typeof require.config === 'function') {
-                        try {
-                            require(['pim/init'], function (app) {
-                                app.initialize();
-                            });
-                        } catch (e) {
-                            console.warn('PIM initialization failed:', e);
-                        }
-                    }
-                }, 2000);
-            });
-        </script>
     </body>
 </html>

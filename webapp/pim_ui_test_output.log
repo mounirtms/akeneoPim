@@ -1,0 +1,69 @@
+🚀 Starting Complete PIM UI Tests
+======================================================================
+
+======================================================================
+Testing Mounir (mounir/2026)
+======================================================================
+
+1️⃣  Navigating to login page...
+  📝 [error] Refused to apply style from 'https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.
+2️⃣  Filling login credentials...
+3️⃣  Submitting login...
+4️⃣  Waiting for dashboard or error (60s timeout)...
+  📝 [error] Refused to apply style from 'https://pim.technostationery.com/css/pim.css?v=20260508_214500' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.
+  📝 [log] [Akeneo] jQuery loaded successfully: 3.7.1
+  📝 [log] [Akeneo] Applying r.initialize patch...
+  📝 [log] [Akeneo] r.initialize patch applied successfully
+  📝 [log] Vendor libraries loaded
+  ❌ r.initialize is not a function
+  📝 [log] [Akeneo] DOM loaded, checking modules...
+  📝 [warning] [Akeneo] Webpack modules not loaded
+  ⚠️  404 https://pim.technostationery.com/js/extensions.json?version=f3tfck
+  📝 [error] Failed to load resource: the server responded with a status of 404 ()
+   Current URL: https://pim.technostationery.com/#/dashboard
+   Loading indicator visible: false
+   Page title: Loading...
+6️⃣  Checking for dashboard elements...
+   Dashboard elements found:
+     ❌ navigation
+     ❌ header
+     ❌ mainMenu
+     ❌ content
+7️⃣  Login successful! Testing navigation...
+8️⃣  Looking for menu items...
+   Found 0 links:
+  📝 [error] Refused to apply style from 'https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.
+
+======================================================================
+Testing Admin (admin/Admin2026!)
+======================================================================
+
+1️⃣  Navigating to login page...
+  📝 [error] Refused to apply style from 'https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.
+2️⃣  Filling login credentials...
+3️⃣  Submitting login...
+4️⃣  Waiting for dashboard or error (60s timeout)...
+  📝 [error] Refused to apply style from 'https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.
+   Current URL: https://pim.technostationery.com/user/login
+   Loading indicator visible: false
+   Page title: Login
+6️⃣  Checking for dashboard elements...
+   Dashboard elements found:
+     ❌ navigation
+     ❌ header
+     ❌ mainMenu
+     ❌ content
+   ❌ Login failed - still on login page
+  📝 [error] Refused to apply style from 'https://pim.technostationery.com/css/pim.css?d1e6cc55bc9a548f7c56f7486b08d5df' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.
+
+======================================================================
+📊 TEST SUMMARY
+======================================================================
+Tests run: 2
+Passed: 1
+Failed: 1
+Console logs: 13
+Network logs: 108
+Errors: 1
+
+✅ Results saved to: pim_ui_test_results.json
