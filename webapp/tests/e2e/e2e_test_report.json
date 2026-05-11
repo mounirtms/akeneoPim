@@ -1,0 +1,37 @@
+{
+  "totalTests": 5,
+  "passed": 3,
+  "failed": 2,
+  "tests": [
+    {
+      "name": "User Authentication",
+      "status": "FAIL",
+      "error": "Login failed - still on login page"
+    },
+    {
+      "name": "Dashboard Navigation",
+      "status": "PASS",
+      "duration": 0
+    },
+    {
+      "name": "Navigation Menu",
+      "status": "FAIL",
+      "error": "Insufficient navigation elements found"
+    },
+    {
+      "name": "Page Load Performance",
+      "status": "PASS",
+      "duration": 1351,
+      "metrics": {
+        "domContentLoaded": 0.40000009536743164,
+        "loadComplete": 0.09999990463256836,
+        "domInteractive": 447.5
+      }
+    },
+    {
+      "name": "Session Persistence",
+      "status": "PASS",
+      "duration": 0
+    }
+  ]
+}
